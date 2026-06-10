@@ -1,5 +1,8 @@
 'use client'
 
+import React from 'react'
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -50,7 +53,7 @@ function IconDove({ className }: { className?: string }) {
   )
 }
 
-const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => JSX.Element }[] = [
+const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => React.ReactNode }[] = [
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'mass', label: 'Mass', icon: IconChurch },
   { id: 'formation', label: 'Formation', icon: IconDove },

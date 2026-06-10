@@ -93,13 +93,10 @@ export function MassTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }
         </p>
         <div className="flex flex-col gap-3 text-sm leading-relaxed text-foreground/80">
           <p>
-            You are welcome here exactly as you are. You don't need to know everything — or anything — to be here. This guide will walk you through every moment.
+            Welcome. You don't need to know anything to attend Mass — just show up. This guide walks you through everything that happens and why, so you can feel prepared and present.
           </p>
           <p>
-            <span className="font-semibold text-foreground">Not yet baptized?</span> You're welcome to walk past the holy water font at the entrance. Simply enter, find a seat, and be present.
-          </p>
-          <p>
-            <span className="font-semibold text-foreground">Not receiving Communion?</span> Come forward anyway with your arms crossed over your chest — the priest or minister will offer you a blessing instead. You are not excluded; you simply receive differently.
+            Catholics have been celebrating Mass in essentially the same way for nearly 2,000 years. What you're about to read is the same experience shared by over a billion people around the world every Sunday.
           </p>
         </div>
       </section>
