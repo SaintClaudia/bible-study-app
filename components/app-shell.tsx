@@ -101,9 +101,9 @@ export function AppShell() {
         <div className="flex items-center justify-between px-5 py-[18px]">
           <div className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
-              <svg viewBox="0 0 32 32" className="h-5 w-5" aria-hidden>
-                <rect x="13.5" y="4" width="5" height="24" rx="1" fill="white"/>
-                <rect x="6" y="10" width="20" height="5" rx="1" fill="white"/>
+              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
+                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="white"/>
+                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="white"/>
               </svg>
             </div>
             <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">

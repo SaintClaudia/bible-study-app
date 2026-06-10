@@ -61,24 +61,11 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
       <section>
         <p className="text-sm text-muted-foreground">{dateStr}</p>
         <h1 className="mt-1 font-heading text-3xl font-semibold leading-tight text-foreground">
-          {data.liturgicalDay}
+          {data.liturgicalDay.replace(/\s+in\s+Ordinary\s+Time/i, '')}
         </h1>
         <span className="mt-2 inline-block rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
           {data.season}
         </span>
-      </section>
-
-      {/* Theme of the week */}
-      <section className="rounded-2xl border border-border bg-secondary/50 p-5">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Theme of the week
-        </p>
-        <h2 className="mt-2 font-heading text-2xl font-semibold text-foreground">
-          {data.theme}
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          {data.themeNote}
-        </p>
       </section>
 
       {/* Readings */}
