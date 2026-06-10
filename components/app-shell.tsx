@@ -100,13 +100,13 @@ export function AppShell() {
       )}>
         <div className="flex items-center justify-between px-5 py-[18px]">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-foreground flex-shrink-0">
-              <svg viewBox="0 0 32 32" className="h-4 w-4" aria-hidden>
+            <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
+              <svg viewBox="0 0 32 32" className="h-5 w-5" aria-hidden>
                 <rect x="13.5" y="4" width="5" height="24" rx="1" fill="white"/>
                 <rect x="6" y="10" width="20" height="5" rx="1" fill="white"/>
               </svg>
             </div>
-            <span className="font-heading text-[15px] font-medium tracking-[0.01em] text-foreground">
+            <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
               Bible Study
             </span>
           </div>
