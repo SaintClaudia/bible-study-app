@@ -12,6 +12,8 @@ export const glossary: GlossaryTerm[] = [
     definition: 'A gesture of prayer made by tracing a cross over your body. It is one of the most fundamental acts of Catholic prayer — a physical profession of faith in the Trinity.',
     also: 'How to make it: Touch your forehead and say "In the name of the Father." Touch your chest and say "and of the Son." Touch your left shoulder then right shoulder and say "and of the Holy Spirit. Amen."',
   },
+  {
+    id: 'tabernacle',
     term: 'Tabernacle',
     definition: 'The ornate box or container — often golden, sometimes in a side chapel — where Jesus remains truly present after Mass in the form of the consecrated Eucharist. Look for the red sanctuary lamp burning nearby. If the light is on, Jesus is present.',
   },
