@@ -91,18 +91,16 @@ export function AppShell() {
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
-      {/* Top rule line — full width, matches landing page */}
-      <div className="fixed top-0 left-0 right-0 z-30 border-t border-border" style={{ height: '1px' }} />
 
-      {/* Fixed header — covers status bar + nav bar as one unit */}
+      {/* Fixed header — full width border, content max-width constrained */}
       <header className={cn(
-        'fixed top-0 left-0 right-0 z-20 bg-background transition-transform duration-300 mx-auto max-w-2xl',
+        'fixed top-0 left-0 right-0 z-20 bg-background border-b border-border transition-transform duration-300',
         !barsVisible && '-translate-y-full'
       )}>
         {/* Status bar safe area fill */}
         <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
-        {/* Nav bar */}
-        <div className="flex items-center justify-between px-5 py-[18px] border-b border-border">
+        {/* Nav content constrained to max-width */}
+        <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
           <div className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
@@ -133,14 +131,13 @@ export function AppShell() {
       <nav
         aria-label="Primary"
         className={cn(
-          'fixed inset-x-0 bottom-0 z-20 bg-background transition-transform duration-300 mx-auto max-w-2xl',
+          'fixed inset-x-0 bottom-0 z-20 bg-background border-t border-border transition-transform duration-300',
           !barsVisible && 'translate-y-full'
         )}
       >
-        <div className="border-t border-border">
-          <div className="flex items-stretch justify-around px-2 pt-2"
-            style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
-          >
+        <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 pt-2"
+          style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
+        >
             {tabs.map((tab) => {
               const Icon = tab.icon
               const active = activeTab === tab.id
@@ -161,7 +158,6 @@ export function AppShell() {
               )
             })}
           </div>
-        </div>
       </nav>
 
     </div>
