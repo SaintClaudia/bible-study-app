@@ -1,0 +1,35 @@
+{
+  "sunday": {
+    "date": "2026-06-14",
+    "liturgicalDay": "Eleventh Sunday in Ordinary Time",
+    "season": "Ordinary Time",
+    "theme": "Choosing what truly lasts",
+    "themeNote": "This week the readings invite us to weigh our choices honestly and to set our hearts on the things that endure rather than the things that pass away.",
+    "readings": [
+      {
+        "label": "First Reading",
+        "reference": "Ezekiel 17:22-24",
+        "fullText": "Thus says the Lord God:\nI, too, will take from the crest of the cedar,\nfrom its topmost branches tear off a tender shoot,\nand plant it on a high and lofty mountain;\non the mountain heights of Israel I will plant it.\nIt shall put forth branches and bear fruit,\nand become a majestic cedar.\nBirds of every kind shall dwell beneath it,\nevery winged thing in the shade of its boughs.\nAnd all the trees of the field shall know\nthat I, the Lord,\nbring low the high tree,\nlift high the lowly tree,\nwither up the green tree,\nand make the withered tree bloom.\nAs I, the Lord, have spoken, so will I do.",
+        "summary": "God promises to take something small and overlooked — a tender shoot — and make it into something great. This is the pattern of the Kingdom: God lifts the lowly and brings life where there seemed to be none."
+      },
+      {
+        "label": "Responsorial Psalm",
+        "reference": "Psalm 92:2-3, 13-14, 15-16",
+        "fullText": "R. Lord, it is good to give thanks to you.\n\nIt is good to give thanks to the Lord,\nto sing praise to your name, Most High,\nTo proclaim your kindness at dawn\nand your faithfulness throughout the night.\n\nR. Lord, it is good to give thanks to you.\n\nThe just one shall flourish like the palm tree,\nlike a cedar of Lebanon shall he grow.\nThey that are planted in the house of the Lord\nshall flourish in the courts of our God.\n\nR. Lord, it is good to give thanks to you.\n\nThey shall bear fruit even in old age;\nvigorous and sturdy shall they be,\nDeclaring how just is the Lord,\nmy rock, in whom there is no wrong.\n\nR. Lord, it is good to give thanks to you.",
+        "summary": "The psalm echoes the first reading — those rooted in God bear fruit even in old age. It is a song of gratitude for the faithfulness of the Lord across a whole lifetime."
+      },
+      {
+        "label": "Second Reading",
+        "reference": "2 Corinthians 5:6-10",
+        "fullText": "Brothers and sisters:\nWe are always courageous,\nalthough we know that while we are at home in the body\nwe are away from the Lord,\nfor we walk by faith, not by sight.\nYet we are courageous,\nand we would rather leave the body and go home to the Lord.\nTherefore, we aspire to please him,\nwhether we are at home or away.\nFor we must all appear before the judgment seat of Christ,\nso that each may receive recompense,\naccording to what he did in the body, whether good or evil.",
+        "summary": "Paul reminds us that our lives on earth are a journey toward God. We walk by faith — not by what we can see — and our deepest goal is to please the Lord in everything we do."
+      },
+      {
+        "label": "Gospel",
+        "reference": "Mark 4:26-34",
+        "fullText": "Jesus said to the crowds:\n\"This is how it is with the kingdom of God;\nit is as if a man were to scatter seed on the land\nand would sleep and rise night and day\nand through it all the seed would sprout and grow,\nhe knows not how.\nOf its own accord the land yields fruit,\nfirst the blade, then the ear, then the full grain in the ear.\nAnd when the grain is ripe, he wields the sickle at once,\nfor the harvest has come.\"\n\nHe said:\n\"To what shall we compare the kingdom of God,\nor what parable can we use for it?\nIt is like a mustard seed that, when it is sown in the ground,\nis the smallest of all the seeds on the earth.\nBut once it is sown, it springs up and becomes the largest of plants\nand puts forth large branches,\nso that the birds of the sky can dwell in its shade.\"\nWith many such parables\nhe spoke the word to them as they were able to understand it.\nWithout parables he did not speak to them,\nbut to his own disciples he explained everything in private.",
+        "summary": "Jesus describes the Kingdom of God as something that grows quietly and imperceptibly — like a seed in the ground. We do not make it grow; we trust, we wait, and we are astonished by what God brings forth."
+      }
+    ]
+  }
+}
