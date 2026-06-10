@@ -91,14 +91,16 @@ export function AppShell() {
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
-      {/* Colored status bar area for mobile */}
-      <div className="bg-background" style={{ paddingTop: 'env(safe-area-inset-top)' }} />
 
+      {/* Fixed header — covers status bar + nav bar as one unit */}
       <header className={cn(
-        'sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-md transition-transform duration-300',
+        'fixed top-0 left-0 right-0 z-20 bg-background transition-transform duration-300 mx-auto max-w-2xl',
         !barsVisible && '-translate-y-full'
       )}>
-        <div className="flex items-center justify-between px-5 py-[18px]">
+        {/* Status bar safe area fill */}
+        <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
+        {/* Nav bar */}
+        <div className="flex items-center justify-between px-5 py-[18px] border-b border-border">
           <div className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
@@ -114,7 +116,13 @@ export function AppShell() {
         </div>
       </header>
 
-      <main className="flex-1 px-5 pb-28 pt-6">
+      {/* Spacer so content starts below the fixed header */}
+      <div
+        className="flex-shrink-0 bg-background"
+        style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }}
+      />
+
+      <main className="flex-1 px-5 pb-32 pt-4">
         {activeTab === 'readings' && <ReadingsTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}
@@ -123,13 +131,14 @@ export function AppShell() {
       <nav
         aria-label="Primary"
         className={cn(
-          'fixed inset-x-0 bottom-0 z-20 bg-background/90 backdrop-blur-md transition-transform duration-300',
+          'fixed inset-x-0 bottom-0 z-20 bg-background transition-transform duration-300 mx-auto max-w-2xl',
           !barsVisible && 'translate-y-full'
         )}
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
         <div className="border-t border-border">
-          <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 py-2">
+          <div className="flex items-stretch justify-around px-2 pt-2"
+            style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
+          >
             {tabs.map((tab) => {
               const Icon = tab.icon
               const active = activeTab === tab.id
@@ -153,8 +162,6 @@ export function AppShell() {
         </div>
       </nav>
 
-      {/* Bottom safe area fill */}
-      <div className="fixed bottom-0 inset-x-0 bg-background/90" style={{ height: 'env(safe-area-inset-bottom)', zIndex: 19 }} />
     </div>
   )
 }
