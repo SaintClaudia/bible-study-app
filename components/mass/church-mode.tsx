@@ -22,7 +22,7 @@ const steps: Step[] = [
     body: (
       <div className="flex flex-col gap-4 text-[17px] leading-relaxed text-foreground">
         <p>
-          At the entrance, dip your fingers in the holy water font and make the <GlossaryTerm id="genuflect">Sign of the Cross</GlossaryTerm> — a reminder of your baptism.
+          At the entrance, dip your fingers in the holy water font and make the <GlossaryTerm id="sign-of-the-cross">Sign of the Cross</GlossaryTerm> — a reminder of your baptism.
         </p>
         <p>
           As you walk toward the <GlossaryTerm id="pew">pew</GlossaryTerm>, look for the red sanctuary lamp near the <GlossaryTerm id="altar">altar</GlossaryTerm>. If it is burning, Jesus is present in the <GlossaryTerm id="tabernacle">tabernacle</GlossaryTerm>.

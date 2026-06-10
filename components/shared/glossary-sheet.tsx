@@ -71,8 +71,55 @@ export function GlossarySheet({ term, onClose }: GlossarySheetProps) {
             {term.definition}
           </p>
 
+          {/* Special: Sign of the Cross illustrated steps */}
+          {term.id === 'sign-of-the-cross' && (
+            <div className="mt-4 flex flex-col gap-3">
+              {[
+                { step: '1', gesture: 'Forehead', words: '"In the name of the Father…"', svg: (
+                  <svg viewBox="0 0 60 60" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                    <circle cx="30" cy="14" r="8"/>
+                    <path d="M22 22c0 0-4 4-4 12h24c0-8-4-12-4-12"/>
+                    <path d="M30 8 L30 2 M26 5 L34 5" strokeWidth="2.5" stroke="#1a1a18"/>
+                    <circle cx="30" cy="4" r="2" fill="#1a1a18"/>
+                  </svg>
+                )},
+                { step: '2', gesture: 'Chest', words: '"…and of the Son…"', svg: (
+                  <svg viewBox="0 0 60 60" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                    <circle cx="30" cy="14" r="8"/>
+                    <path d="M22 22c0 0-4 4-4 12h24c0-8-4-12-4-12"/>
+                    <circle cx="30" cy="28" r="2.5" fill="#1a1a18"/>
+                  </svg>
+                )},
+                { step: '3', gesture: 'Left shoulder', words: '"…and of the Holy…"', svg: (
+                  <svg viewBox="0 0 60 60" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                    <circle cx="30" cy="14" r="8"/>
+                    <path d="M22 22c0 0-4 4-4 12h24c0-8-4-12-4-12"/>
+                    <circle cx="18" cy="26" r="2.5" fill="#1a1a18"/>
+                  </svg>
+                )},
+                { step: '4', gesture: 'Right shoulder', words: '"…Spirit. Amen."', svg: (
+                  <svg viewBox="0 0 60 60" className="h-12 w-12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                    <circle cx="30" cy="14" r="8"/>
+                    <path d="M22 22c0 0-4 4-4 12h24c0-8-4-12-4-12"/>
+                    <circle cx="42" cy="26" r="2.5" fill="#1a1a18"/>
+                  </svg>
+                )},
+              ].map(({ step, gesture, words, svg }) => (
+                <div key={step} className="flex items-center gap-4 rounded-xl bg-secondary/50 px-4 py-3">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background text-xs font-bold flex-shrink-0">
+                    {step}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{gesture}</p>
+                    <p className="text-sm text-muted-foreground italic">{words}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Secondary name / etymology */}
-          {term.also && (
+          {term.also && term.id !== 'sign-of-the-cross' && (
             <p className="mt-4 text-sm text-muted-foreground italic border-t border-border pt-4">
               {term.also}
             </p>

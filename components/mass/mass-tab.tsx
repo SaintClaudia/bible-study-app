@@ -86,6 +86,24 @@ export function MassTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }
         </p>
       </section>
 
+      {/* First time here card */}
+      <section className="rounded-2xl border border-border bg-card p-5">
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
+          First time here?
+        </p>
+        <div className="flex flex-col gap-3 text-sm leading-relaxed text-foreground/80">
+          <p>
+            You are welcome here exactly as you are. You don't need to know everything — or anything — to be here. This guide will walk you through every moment.
+          </p>
+          <p>
+            <span className="font-semibold text-foreground">Not yet baptized?</span> You're welcome to walk past the holy water font at the entrance. Simply enter, find a seat, and be present.
+          </p>
+          <p>
+            <span className="font-semibold text-foreground">Not receiving Communion?</span> Come forward anyway with your arms crossed over your chest — the priest or minister will offer you a blessing instead. You are not excluded; you simply receive differently.
+          </p>
+        </div>
+      </section>
+
       {/* Before Mass */}
       <section className="rounded-2xl border border-border bg-card p-5">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
@@ -93,13 +111,13 @@ export function MassTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }
         </p>
         <div className="flex flex-col gap-3 text-sm leading-relaxed text-foreground/80">
           <p>
-            As you enter the church, you will find a small font of holy water near the doors. Dip your fingers and make the <GlossaryTerm id="genuflect">Sign of the Cross</GlossaryTerm> — a reminder of your baptism.
+            As you enter the church, you will find a small font of holy water near the doors. Dip your fingers and make the <GlossaryTerm id="sign-of-the-cross">Sign of the Cross</GlossaryTerm> — a reminder of your baptism.
           </p>
           <p>
-            Before entering your <GlossaryTerm id="pew">pew</GlossaryTerm>, look toward the altar. If you see a red light burning, that is the sanctuary lamp — it means Jesus is present in the <GlossaryTerm id="tabernacle">tabernacle</GlossaryTerm>. Catholics <GlossaryTerm id="genuflect">genuflect</GlossaryTerm> — briefly kneel on one knee — as a sign of reverence before taking their seat.
+            Before entering your <GlossaryTerm id="pew">pew</GlossaryTerm>, look toward the front of the church. If you see a red lamp burning near the <GlossaryTerm id="altar">altar</GlossaryTerm>, Jesus is present in the <GlossaryTerm id="tabernacle">tabernacle</GlossaryTerm>. Catholics <GlossaryTerm id="genuflect">genuflect</GlossaryTerm> — briefly kneel on one knee — before taking their seat as a sign of reverence.
           </p>
           <p>
-            Once seated, pull down the <GlossaryTerm id="kneeler">kneeler</GlossaryTerm> and take a moment for quiet prayer. There is no required prayer — simply be present. Ask God to open your heart to what he wants to say to you today.
+            Once seated, pull down the <GlossaryTerm id="kneeler">kneeler</GlossaryTerm> and take a moment for quiet prayer. There is no required prayer — simply be present. You might ask God to open your heart to whatever he wants to say to you today.
           </p>
         </div>
       </section>
