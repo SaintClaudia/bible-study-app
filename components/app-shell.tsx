@@ -91,6 +91,8 @@ export function AppShell() {
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
+      {/* Top rule line — full width, matches landing page */}
+      <div className="fixed top-0 left-0 right-0 z-30 border-t border-border" style={{ height: '1px' }} />
 
       {/* Fixed header — covers status bar + nav bar as one unit */}
       <header className={cn(
