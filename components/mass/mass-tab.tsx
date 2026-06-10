@@ -162,4 +162,3 @@ export function MassTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }
     </div>
   )
 }
-// updated
