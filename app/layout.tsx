@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a18'/><rect x='14.5' y='4' width='3' height='24' rx='1' fill='white'/><rect x='6' y='10.5' width='20' height='3' rx='1' fill='white'/></svg>",
+    apple: '/apple-touch-icon.png',
   },
   other: {
     'apple-mobile-web-app-capable': 'yes',
