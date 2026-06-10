@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronDown, Church } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { fetchSundayReadings, type DailyReadings } from '@/lib/readings'
 
-export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }) {
+export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => void }) {
   const [data, setData] = useState<DailyReadings | null>(null)
   const [loading, setLoading] = useState(true)
   const [openReading, setOpenReading] = useState<number | null>(null)
@@ -136,16 +136,6 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
           })}
         </div>
       </section>
-
-      {/* Enter Church Mode */}
-      <button
-        type="button"
-        onClick={onEnterChurchMode}
-        className="flex items-center justify-center gap-2.5 rounded-2xl bg-foreground px-6 py-4 text-base font-semibold text-background shadow-sm transition-opacity hover:opacity-80 active:scale-[0.99]"
-      >
-        <Church className="h-5 w-5" aria-hidden />
-        Enter Church Mode
-      </button>
 
     </div>
   )

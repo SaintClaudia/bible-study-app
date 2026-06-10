@@ -52,7 +52,7 @@ function IconDove({ className }: { className?: string }) {
 
 const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => JSX.Element }[] = [
   { id: 'readings', label: 'Readings', icon: IconBible },
-  { id: 'mass', label: 'Mass Mode', icon: IconChurch },
+  { id: 'mass', label: 'Mass', icon: IconChurch },
   { id: 'formation', label: 'Formation', icon: IconDove },
 ]
 
@@ -123,7 +123,7 @@ export function AppShell() {
       />
 
       <main className="flex-1 px-5 pb-32 pt-4">
-        {activeTab === 'readings' && <ReadingsTab onEnterChurchMode={() => setChurchMode(true)} />}
+        {activeTab === 'readings' && <ReadingsTab />}
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}
       </main>
