@@ -98,18 +98,17 @@ export function AppShell() {
         'sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-md transition-transform duration-300',
         !barsVisible && '-translate-y-full'
       )}>
-        <div className="flex items-center justify-between px-5 py-4">
+        <div className="flex items-center justify-between px-5 py-[18px]">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-foreground">
-              <svg viewBox="0 0 24 24" className="h-4 w-4">
-                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor" className="text-background"/>
-                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor" className="text-background"/>
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-foreground flex-shrink-0">
+              <svg viewBox="0 0 32 32" className="h-4 w-4" aria-hidden>
+                <rect x="13.5" y="4" width="5" height="24" rx="1" fill="white"/>
+                <rect x="6" y="10" width="20" height="5" rx="1" fill="white"/>
               </svg>
             </div>
-            <div className="leading-tight">
-              <p className="font-heading text-lg font-semibold text-foreground">Bible Study</p>
-              <p className="text-xs text-muted-foreground">Catholic pocket companion</p>
-            </div>
+            <span className="font-heading text-[15px] font-medium tracking-[0.01em] text-foreground">
+              Bible Study
+            </span>
           </div>
           <ThemeToggle />
         </div>

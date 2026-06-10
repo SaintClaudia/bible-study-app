@@ -60,7 +60,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
       {/* Date + Title */}
       <section>
         <p className="text-sm text-muted-foreground">{dateStr}</p>
-        <h1 className="mt-1 font-heading text-3xl font-semibold leading-tight text-foreground text-balance">
+        <h1 className="mt-1 font-heading text-3xl font-semibold leading-tight text-foreground">
           {data.liturgicalDay}
         </h1>
         <span className="mt-2 inline-block rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
