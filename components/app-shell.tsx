@@ -60,12 +60,11 @@ export function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [churchMode, setChurchMode] = useState(false)
 
-  // Read ?tab= param from URL on load
+  // Read #tab hash from URL on load
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const tab = params.get('tab') as Tab | null
-    if (tab && ['readings', 'mass', 'formation'].includes(tab)) {
-      setActiveTab(tab)
+    const hash = window.location.hash.replace('#', '') as Tab
+    if (hash && ['readings', 'mass', 'formation'].includes(hash)) {
+      setActiveTab(hash)
     }
   }, [])
 

@@ -130,24 +130,18 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
                   />
                 </button>
                 {open && (
-                  <div className="border-t border-border px-4 py-4">
+                  <div className="border-t border-border px-4 py-4 flex flex-col gap-4">
                     <p className="font-heading text-base italic leading-relaxed text-foreground/90">
                       {reading.excerpt}
                     </p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      In plain language
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                      {reading.summary}
-                    </p>
-                    <a
-                      href={data.usccbLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      Read full text on USCCB <ExternalLink className="h-3 w-3" />
-                    </a>
+                    <div className="rounded-xl bg-secondary/60 px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">
+                        In plain language
+                      </p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {reading.summary}
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>
