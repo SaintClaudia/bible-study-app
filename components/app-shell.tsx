@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
@@ -59,6 +59,8 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
 export function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [churchMode, setChurchMode] = useState(false)
+  const [barsVisible, setBarsVisible] = useState(true)
+  const lastScrollY = useRef(0)
 
   // Read #tab hash from URL on load
   useEffect(() => {
@@ -66,6 +68,21 @@ export function AppShell() {
     if (hash && ['readings', 'mass', 'formation'].includes(hash)) {
       setActiveTab(hash)
     }
+  }, [])
+
+  // Hide header + nav on scroll down, show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY
+      if (current > lastScrollY.current && current > 60) {
+        setBarsVisible(false)
+      } else {
+        setBarsVisible(true)
+      }
+      lastScrollY.current = current
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   if (churchMode) {
@@ -77,7 +94,10 @@ export function AppShell() {
       {/* Colored status bar area for mobile */}
       <div className="bg-background" style={{ paddingTop: 'env(safe-area-inset-top)' }} />
 
-      <header className="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-md">
+      <header className={cn(
+        'sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-md transition-transform duration-300',
+        !barsVisible && '-translate-y-full'
+      )}>
         <div className="flex items-center justify-between px-5 py-4">
           <div className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-foreground">
@@ -103,7 +123,10 @@ export function AppShell() {
 
       <nav
         aria-label="Primary"
-        className="fixed inset-x-0 bottom-0 z-20 bg-background/90 backdrop-blur-md"
+        className={cn(
+          'fixed inset-x-0 bottom-0 z-20 bg-background/90 backdrop-blur-md transition-transform duration-300',
+          !barsVisible && 'translate-y-full'
+        )}
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
         <div className="border-t border-border">

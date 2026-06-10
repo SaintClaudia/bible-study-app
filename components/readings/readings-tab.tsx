@@ -1,27 +1,29 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronDown, Church, ExternalLink } from 'lucide-react'
+import { ChevronDown, Church } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { fetchTodaysReadings, type DailyReadings } from '@/lib/readings'
+import { fetchSundayReadings, type DailyReadings } from '@/lib/readings'
 
 export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }) {
   const [data, setData] = useState<DailyReadings | null>(null)
   const [loading, setLoading] = useState(true)
-  const [openReading, setOpenReading] = useState<number | null>(0)
+  const [openReading, setOpenReading] = useState<number | null>(null)
 
-  const today = new Date()
-  const dayOfWeek = today.getDay()
-  const daysUntilSunday = dayOfWeek === 0 ? 0 : 7 - dayOfWeek
-  const sunday = new Date(today)
-  sunday.setDate(today.getDate() + daysUntilSunday)
+  const sunday = (() => {
+    const today = new Date()
+    const day = today.getDay()
+    const s = new Date(today)
+    s.setDate(today.getDate() + (day === 0 ? 0 : 7 - day))
+    return s
+  })()
 
   const dateStr = sunday.toLocaleDateString('en-US', {
     weekday: 'long', month: 'long', day: 'numeric',
   })
 
   useEffect(() => {
-    fetchTodaysReadings().then((d) => {
+    fetchSundayReadings().then((d) => {
       setData(d)
       setLoading(false)
     })
@@ -29,31 +31,25 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
 
   if (loading) {
     return (
-      <div className="flex flex-col gap-6 animate-pulse">
-        <div className="h-4 w-40 rounded bg-secondary"/>
-        <div className="h-20 rounded-2xl bg-secondary"/>
-        <div className="h-32 rounded-2xl bg-secondary"/>
-        <div className="h-16 rounded-2xl bg-secondary"/>
-        <div className="h-16 rounded-2xl bg-secondary"/>
+      <div className="flex flex-col gap-5 animate-pulse pt-2">
+        <div className="h-3 w-36 rounded-full bg-secondary"/>
+        <div className="h-16 w-3/4 rounded-xl bg-secondary"/>
+        <div className="h-6 w-24 rounded-full bg-secondary"/>
+        <div className="h-28 rounded-2xl bg-secondary"/>
+        <div className="h-14 rounded-2xl bg-secondary"/>
+        <div className="h-14 rounded-2xl bg-secondary"/>
+        <div className="h-14 rounded-2xl bg-secondary"/>
       </div>
     )
   }
 
   if (!data) {
     return (
-      <div className="flex flex-col items-center gap-4 pt-16 text-center">
+      <div className="flex flex-col items-center gap-4 pt-20 text-center">
         <p className="font-heading text-xl text-foreground">Readings unavailable</p>
-        <p className="text-sm text-muted-foreground">
-          Could not load today&apos;s readings. Please check your connection and try again.
+        <p className="text-sm text-muted-foreground max-w-xs">
+          Could not load this Sunday&apos;s readings. Please check your connection and try again.
         </p>
-        <a
-          href="https://bible.usccb.org/bible/readings"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-opacity hover:opacity-70"
-        >
-          View on USCCB <ExternalLink className="h-4 w-4" />
-        </a>
       </div>
     )
   }
@@ -87,23 +83,13 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
 
       {/* Readings */}
       <section className="flex flex-col gap-3">
-        <div className="flex items-center justify-between">
-          <h2 className="flex items-center gap-2 font-heading text-lg font-semibold text-foreground">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 shrink-0">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-            </svg>
-            This Sunday&apos;s readings
-          </h2>
-          <a
-            href={data.usccbLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
-          >
-            USCCB <ExternalLink className="h-3 w-3" />
-          </a>
-        </div>
+        <h2 className="flex items-center gap-2 font-heading text-lg font-semibold text-foreground">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 shrink-0">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+          This Sunday&apos;s readings
+        </h2>
 
         <div className="flex flex-col gap-2.5">
           {data.readings.map((reading, i) => {
@@ -125,17 +111,31 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
                     </span>
                   </span>
                   <ChevronDown
-                    className={cn('h-5 w-5 shrink-0 text-muted-foreground transition-transform', open && 'rotate-180')}
+                    className={cn('h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200', open && 'rotate-180')}
                     aria-hidden
                   />
                 </button>
+
                 {open && (
-                  <div className="border-t border-border px-4 py-4 flex flex-col gap-4">
-                    <p className="font-heading text-base italic leading-relaxed text-foreground/90">
-                      {reading.excerpt}
-                    </p>
-                    <div className="rounded-xl bg-secondary/60 px-4 py-3">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">
+                  <div className="border-t border-border">
+                    {/* Full scripture text */}
+                    {reading.fullText ? (
+                      <div className="px-5 pt-5 pb-4">
+                        <div className="font-heading text-[17px] leading-[1.85] text-foreground whitespace-pre-wrap">
+                          {reading.fullText}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="px-5 pt-5 pb-2">
+                        <p className="text-sm text-muted-foreground italic">
+                          Full text unavailable — please see the USCCB website for this reading.
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Plain language summary */}
+                    <div className="mx-4 mb-4 rounded-xl bg-secondary/60 px-4 py-3">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1.5">
                         In plain language
                       </p>
                       <p className="text-sm leading-relaxed text-muted-foreground">
@@ -150,7 +150,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode: () => vo
         </div>
       </section>
 
-      {/* Enter Church Mode CTA */}
+      {/* Enter Church Mode */}
       <button
         type="button"
         onClick={onEnterChurchMode}

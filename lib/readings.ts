@@ -1,5 +1,13 @@
-// Catholic Readings API — free, no rate limits, USCCB verified
-// https://cpbjr.github.io/catholic-readings-api/
+// Two APIs working together:
+// 1. Catholic Readings API → what to read (references)
+// 2. bible-api.com → full scripture text for each reference
+
+export interface Reading {
+  label: string
+  reference: string
+  fullText: string
+  summary: string
+}
 
 export interface DailyReadings {
   date: string
@@ -7,17 +15,12 @@ export interface DailyReadings {
   liturgicalDay: string
   theme: string
   themeNote: string
-  readings: {
-    label: string
-    reference: string
-    excerpt: string
-    summary: string
-  }[]
+  readings: Reading[]
   usccbLink: string
 }
 
-interface ApiResponse {
-  date: string
+interface CatholicApiResponse {
+  date?: string
   season?: string
   liturgicalDay?: string
   celebration?: { name: string }
@@ -30,7 +33,13 @@ interface ApiResponse {
   usccbLink?: string
 }
 
-// Weekly themes keyed by liturgical season — fallback when API doesn't provide one
+interface BibleApiResponse {
+  reference: string
+  verses: { book_name: string; chapter: number; verse: number; text: string }[]
+  text: string
+  translation_name: string
+}
+
 const seasonThemes: Record<string, { theme: string; note: string }> = {
   'Ordinary Time': {
     theme: 'Faithfulness in the everyday',
@@ -38,7 +47,7 @@ const seasonThemes: Record<string, { theme: string; note: string }> = {
   },
   'Advent': {
     theme: 'Waiting in hopeful expectation',
-    note: 'Advent calls us to prepare our hearts — to wait with purpose, not passivity, for the coming of Christ.',
+    note: 'Advent calls us to prepare our hearts — to wait with purpose for the coming of Christ.',
   },
   'Christmas': {
     theme: 'The Word made flesh',
@@ -56,9 +65,7 @@ const seasonThemes: Record<string, { theme: string; note: string }> = {
 
 function getTheme(season: string) {
   for (const key of Object.keys(seasonThemes)) {
-    if (season.toLowerCase().includes(key.toLowerCase())) {
-      return seasonThemes[key]
-    }
+    if (season.toLowerCase().includes(key.toLowerCase())) return seasonThemes[key]
   }
   return seasonThemes['Ordinary Time']
 }
@@ -74,85 +81,100 @@ function formatLabel(key: string): string {
 }
 
 function getSummary(label: string, reference: string): string {
-  // Short plain-language summaries for common readings
   if (label === 'Responsorial Psalm') {
-    return `A psalm of prayer and praise, inviting us to respond to God's word with our whole heart.`
+    return `A psalm of prayer and praise, inviting us to respond to God's word with gratitude and trust.`
   }
   if (label === 'Gospel') {
-    return `The Gospel reading for today calls us to encounter Jesus and respond to his invitation to follow him more closely.`
+    return `In this Gospel passage, Jesus invites us to encounter him more deeply and to respond to his call with our whole lives.`
   }
-  return `This reading from ${reference} speaks to the heart of our faith, offering wisdom for the journey.`
+  if (label === 'First Reading') {
+    return `This reading from the Old Testament sets the stage for the Gospel — showing how God has always been at work in human history.`
+  }
+  return `This reading speaks to the heart of our faith and how we are called to live it out in community.`
 }
 
-export async function fetchTodaysReadings(): Promise<DailyReadings | null> {
+async function fetchFullText(reference: string): Promise<string> {
   try {
-    const today = new Date()
+    // bible-api.com accepts natural references like "Matthew 9:36-10:8"
+    const encoded = encodeURIComponent(reference)
+    const res = await fetch(`https://bible-api.com/${encoded}?translation=web`, {
+      next: { revalidate: 86400 } // cache 24 hours
+    })
+    if (!res.ok) return ''
+    const data: BibleApiResponse = await res.json()
+    // Return clean text, trim excessive whitespace
+    return data.text?.trim() ?? ''
+  } catch {
+    return ''
+  }
+}
 
-    // Always fetch the upcoming Sunday (or today if it is Sunday)
-    const dayOfWeek = today.getDay() // 0 = Sunday
-    const daysUntilSunday = dayOfWeek === 0 ? 0 : 7 - dayOfWeek
-    const sunday = new Date(today)
-    sunday.setDate(today.getDate() + daysUntilSunday)
+function getUpcomingSunday(): Date {
+  const today = new Date()
+  const day = today.getDay() // 0 = Sunday
+  const daysUntilSunday = day === 0 ? 0 : 7 - day
+  const sunday = new Date(today)
+  sunday.setDate(today.getDate() + daysUntilSunday)
+  return sunday
+}
 
+export async function fetchSundayReadings(): Promise<DailyReadings | null> {
+  try {
+    const sunday = getUpcomingSunday()
     const year = sunday.getFullYear()
     const month = String(sunday.getMonth() + 1).padStart(2, '0')
     const day = String(sunday.getDate()).padStart(2, '0')
     const dateStr = `${month}-${day}`
 
-    const res = await fetch(
-      `https://cpbjr.github.io/catholic-readings-api/readings/${year}/${dateStr}.json`,
-      { next: { revalidate: 3600 } }
-    )
-
-    if (!res.ok) {
-      const fallbackRes = await fetch(
-        `https://cpbjr.github.io/catholic-readings-api/readings/${year - 1}/${dateStr}.json`,
+    // Step 1: Get the reading references from Catholic Readings API
+    let catholicData: CatholicApiResponse | null = null
+    const tryYear = async (y: number) => {
+      const res = await fetch(
+        `https://cpbjr.github.io/catholic-readings-api/readings/${y}/${dateStr}.json`,
         { next: { revalidate: 3600 } }
       )
-      if (!fallbackRes.ok) return null
-      const data: ApiResponse = await fallbackRes.json()
-      return transform(data, sunday)
+      if (!res.ok) return null
+      return res.json() as Promise<CatholicApiResponse>
     }
 
-    const data: ApiResponse = await res.json()
-    return transform(data, sunday)
+    catholicData = await tryYear(year)
+    if (!catholicData) catholicData = await tryYear(year - 1)
+    if (!catholicData) return null
+
+    const season = catholicData.season ?? 'Ordinary Time'
+    const { theme, note } = getTheme(season)
+    const liturgicalDay = catholicData.liturgicalDay ?? catholicData.celebration?.name ?? season
+
+    // Step 2: Fetch full scripture text for each reading in parallel
+    const readingsRaw = catholicData.readings ?? {}
+    const order = ['firstReading', 'psalm', 'secondReading', 'gospel'] as const
+
+    const readingsWithText: Reading[] = await Promise.all(
+      order
+        .filter((k) => readingsRaw[k])
+        .map(async (k) => {
+          const reference = readingsRaw[k]!
+          const label = formatLabel(k)
+          const fullText = await fetchFullText(reference)
+          return {
+            label,
+            reference,
+            fullText,
+            summary: getSummary(label, reference),
+          }
+        })
+    )
+
+    return {
+      date: sunday.toISOString().split('T')[0],
+      season,
+      liturgicalDay,
+      theme,
+      themeNote: note,
+      readings: readingsWithText,
+      usccbLink: catholicData.usccbLink ?? 'https://bible.usccb.org/bible/readings',
+    }
   } catch {
     return null
-  }
-}
-
-function transform(data: ApiResponse, today: Date): DailyReadings {
-  const season = data.season ?? 'Ordinary Time'
-  const { theme, note } = getTheme(season)
-
-  // Build liturgical day string
-  const liturgicalDay = data.liturgicalDay
-    ?? data.celebration?.name
-    ?? `${season}`
-
-  // Build readings array from whatever keys exist
-  const readingsRaw = data.readings ?? {}
-  const order = ['firstReading', 'psalm', 'secondReading', 'gospel'] as const
-  const readings = order
-    .filter((k) => readingsRaw[k])
-    .map((k) => {
-      const reference = readingsRaw[k]!
-      const label = formatLabel(k)
-      return {
-        label,
-        reference,
-        excerpt: `"Come to the water, all you who are thirsty…"`,
-        summary: getSummary(label, reference),
-      }
-    })
-
-  return {
-    date: today.toISOString().split('T')[0],
-    season,
-    liturgicalDay,
-    theme,
-    themeNote: note,
-    readings,
-    usccbLink: data.usccbLink ?? 'https://bible.usccb.org/bible/readings',
   }
 }
