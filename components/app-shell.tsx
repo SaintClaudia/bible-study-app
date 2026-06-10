@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
@@ -10,7 +10,6 @@ import { ChurchMode } from '@/components/mass/church-mode'
 
 type Tab = 'readings' | 'mass' | 'formation'
 
-// Custom SVG icons matching the landing page
 function IconBible({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -61,19 +60,31 @@ export function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [churchMode, setChurchMode] = useState(false)
 
+  // Read ?tab= param from URL on load
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const tab = params.get('tab') as Tab | null
+    if (tab && ['readings', 'mass', 'formation'].includes(tab)) {
+      setActiveTab(tab)
+    }
+  }, [])
+
   if (churchMode) {
     return <ChurchMode onExit={() => setChurchMode(false)} />
   }
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
+      {/* Colored status bar area for mobile */}
+      <div className="bg-background" style={{ paddingTop: 'env(safe-area-inset-top)' }} />
+
       <header className="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-md">
         <div className="flex items-center justify-between px-5 py-4">
           <div className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-foreground">
-              <svg viewBox="0 0 24 24" className="h-4 w-4" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="white"/>
-                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="white"/>
+              <svg viewBox="0 0 24 24" className="h-4 w-4">
+                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor" className="text-background"/>
+                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor" className="text-background"/>
               </svg>
             </div>
             <div className="leading-tight">
@@ -93,30 +104,36 @@ export function AppShell() {
 
       <nav
         aria-label="Primary"
-        className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/90 backdrop-blur-md"
+        className="fixed inset-x-0 bottom-0 z-20 bg-background/90 backdrop-blur-md"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 py-2">
-          {tabs.map((tab) => {
-            const Icon = tab.icon
-            const active = activeTab === tab.id
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                aria-current={active ? 'page' : undefined}
-                className={cn(
-                  'flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-colors',
-                  active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
-                )}
-              >
-                <Icon className={cn('h-5 w-5', active && 'opacity-100', !active && 'opacity-50')} />
-                {tab.label}
-              </button>
-            )
-          })}
+        <div className="border-t border-border">
+          <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 py-2">
+            {tabs.map((tab) => {
+              const Icon = tab.icon
+              const active = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  aria-current={active ? 'page' : undefined}
+                  className={cn(
+                    'flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-colors',
+                    active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+                  )}
+                >
+                  <Icon className={cn('h-5 w-5', active ? 'opacity-100' : 'opacity-50')} />
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
         </div>
       </nav>
+
+      {/* Bottom safe area fill */}
+      <div className="fixed bottom-0 inset-x-0 bg-background/90" style={{ height: 'env(safe-area-inset-bottom)', zIndex: 19 }} />
     </div>
   )
 }

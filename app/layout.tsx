@@ -18,8 +18,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Bible Study — Catholic Pocket Companion',
-  description:
-    'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
+  description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  },
 }
 
 export const viewport: Viewport = {
@@ -27,6 +30,9 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: '#f9f8f5' },
     { media: '(prefers-color-scheme: dark)', color: '#1a1a18' },
   ],
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
@@ -36,12 +42,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${playfair.variable} ${inter.variable} bg-background`}
+      className={`${playfair.variable} ${inter.variable}`}
     >
-      <body className="font-sans antialiased">
+      <body className="bg-background font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
