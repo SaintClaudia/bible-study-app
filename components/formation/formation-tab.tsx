@@ -182,8 +182,7 @@ export function FormationTab() {
           Formation
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Learn the Catholic faith at your own pace. Short lessons, one step at
-          a time.
+          Learn the Catholic faith before or while you're on your journey towards your sacraments. Short lessons, one step at a time.
         </p>
       </section>
 
