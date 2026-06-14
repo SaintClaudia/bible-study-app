@@ -1,34 +1,34 @@
 {
   "sunday": {
-    "date": "2026-06-14",
-    "liturgicalDay": "Eleventh Sunday in Ordinary Time",
+    "date": "2026-06-21",
+    "liturgicalDay": "Twelfth Sunday in Ordinary Time",
     "season": "Ordinary Time",
-    "theme": "Chosen and sent",
-    "themeNote": "God calls a people to himself — not because they earned it, but out of love. This Sunday we hear that same call echoed in Christ, who looks at the crowds with compassion and sends his disciples out to serve.",
+    "theme": "Do not be afraid",
+    "themeNote": "Following Christ doesn't make opposition disappear — sometimes it brings it on. Jeremiah is mocked by his own friends, Paul traces how deeply sin and death run, and Jesus warns the Twelve that they'll face real hostility. Yet every reading turns the same corner: the God who sees a sparrow fall and counts every hair on our heads will not let us be lost. Courage isn't the absence of fear, but trust in whose hands we rest.",
     "readings": [
       {
         "label": "First Reading",
-        "reference": "Exodus 19:2-6a",
-        "fullText": "In those days, the Israelites came to the desert of Sinai and pitched camp. While Israel was encamped here in front of the mountain, Moses went up the mountain to God. Then the LORD called to him and said, \"Thus shall you say to the house of Jacob; tell the Israelites: You have seen for yourselves how I treated the Egyptians and how I bore you up on eagle wings and brought you here to myself. Therefore, if you hearken to my voice and keep my covenant, you shall be my special possession, dearer to me than all other people, though all the earth is mine. You shall be to me a kingdom of priests, a holy nation.\"",
-        "summary": "God speaks to Israel after the Exodus and reminds them of what he has already done — carrying them on eagle wings. The invitation is not to earn his love but to respond to it. To be his people is to be set apart for something beautiful."
+        "reference": "Jeremiah 20:10-13",
+        "fullText": "Jeremiah said: \"I hear the whisperings of many: 'Terror on every side! Denounce! let us denounce him!' All those who were my friends are on the watch for any misstep of mine. 'Perhaps he will be trapped; then we can prevail, and take our vengeance on him.' But the LORD is with me, like a mighty champion: my persecutors will stumble, they will not triumph. In their failure they will be put to utter shame, to lasting, unforgettable confusion. O LORD of hosts, you who test the just, who probe mind and heart, let me witness the vengeance you take on them, for to you I have entrusted my cause. Sing to the LORD, praise the LORD, for he has rescued the life of the poor from the power of the wicked!\"",
+        "summary": "Jeremiah feels surrounded — even people he once called friends are now waiting for him to slip up so they can turn on him. It's about as alone and exposed as a person can feel. But in the middle of that, Jeremiah holds onto one thing: God is with him, fighting for him like a champion in his corner. That trust is what lets him keep going."
       },
       {
         "label": "Responsorial Psalm",
-        "reference": "Psalm 100:1-2, 3, 5",
-        "fullText": "R. We are his people: the sheep of his flock.\n\nSing joyfully to the LORD, all you lands;\nserve the LORD with gladness;\ncome before him with joyful song.\n\nR. We are his people: the sheep of his flock.\n\nKnow that the LORD is God;\nhe made us, his we are;\nhis people, the flock he tends.\n\nR. We are his people: the sheep of his flock.\n\nThe LORD is good:\nhis kindness endures forever,\nand his faithfulness to all generations.\n\nR. We are his people: the sheep of his flock.",
-        "summary": "A joyful psalm of belonging. We did not choose God first — he made us, and we are his. That is reason enough for gladness."
+        "reference": "Psalm 69:8-10, 14, 17, 33-35",
+        "fullText": "R. Lord, in your great love, answer me.\n\nFor your sake I bear insult,\nand shame covers my face.\nI have become an outcast to my brothers,\na stranger to my mother's children,\nBecause zeal for your house consumes me,\nand the insults of those who blaspheme you fall upon me.\n\nR. Lord, in your great love, answer me.\n\nI pray to you, O LORD,\nfor the time of your favor, O God!\nIn your great kindness answer me\nwith your constant help.\nAnswer me, O LORD, for bounteous is your kindness;\nin your great mercy turn toward me.\n\nR. Lord, in your great love, answer me.\n\nSee, you lowly ones, and be glad;\nyou who seek God, may your hearts revive!\nFor the LORD hears the poor,\nand his own who are in bonds he spurns not.\nLet the heavens and the earth praise him,\nthe seas and whatever moves in them!\n\nR. Lord, in your great love, answer me.",
+        "summary": "This psalm is a prayer from someone who feels shamed and shut out — even by their own family — simply because of their devotion to God. But instead of ending in despair, it turns toward hope: God hears the poor and doesn't ignore the people who feel forgotten. Even creation itself is invited to join in praising a God who pays attention."
       },
       {
         "label": "Second Reading",
-        "reference": "Romans 5:6-11",
-        "fullText": "Brothers and sisters:\nChrist, while we were still helpless, yet died at the appointed time for the ungodly. Indeed, only with difficulty does one die for a just person, though perhaps for a good person one might even find courage to die. But God proves his love for us in that while we were still sinners Christ died for us. How much more then, since we are now justified by his blood, will we be saved through him from the wrath. Indeed, if, while we were enemies, we were reconciled to God through the death of his Son, how much more, once reconciled, will we be saved by his life. Not only that, but we also boast of God through our Lord Jesus Christ, through whom we have now received reconciliation.",
-        "summary": "Paul makes the staggering claim that God did not wait for us to be worthy. Christ died for us while we were still sinners — enemies, even. If he loved us then, how much more does he love us now that we are reconciled to him."
+        "reference": "Romans 5:12-15",
+        "fullText": "Brothers and sisters: Through one man sin entered the world, and through sin, death, and thus death came to all men, inasmuch as all sinned— for up to the time of the law, sin was in the world, though sin is not accounted when there is no law. But death reigned from Adam to Moses, even over those who did not sin after the pattern of the trespass of Adam, who is the type of the one who was to come. But the gift is not like the transgression. For if by the transgression of the one the many died, how much more did the grace of God and the gracious gift of the one man Jesus Christ overflow for the many.",
+        "summary": "Paul lays out a kind of before-and-after: through one man's sin, death spread to everyone — that's the damage Adam did. But then he flips it: through one man, Jesus Christ, grace overflows to everyone — and that gift is even bigger than the damage. Whatever sin broke, God's grace in Christ more than makes up for it."
       },
       {
         "label": "Gospel",
-        "reference": "Matthew 9:36—10:8",
-        "fullText": "At the sight of the crowds, Jesus' heart was moved with pity for them because they were troubled and abandoned, like sheep without a shepherd. Then he said to his disciples, \"The harvest is abundant but the laborers are few; so ask the master of the harvest to send out laborers for his harvest.\"\n\nThen he summoned his twelve disciples and gave them authority over unclean spirits to drive them out and to cure every disease and every illness. The names of the twelve apostles are these: first, Simon called Peter, and his brother Andrew; James, the son of Zebedee, and his brother John; Philip and Bartholomew, Thomas and Matthew the tax collector; James, the son of Alphaeus, and Thaddeus; Simon from Cana, and Judas Iscariot who betrayed him.\n\nJesus sent out these twelve after instructing them thus, \"Do not go into pagan territory or enter a Samaritan town. Go rather to the lost sheep of the house of Israel. As you go, make this proclamation: 'The kingdom of heaven is at hand.' Cure the sick, raise the dead, cleanse lepers, drive out demons. Without cost you have received; without cost you are to give.\"",
-        "summary": "Jesus sees the crowds and feels compassion — not frustration, not impatience, but pity. He then sends the Twelve out with the same mission: to give freely what they have freely received. This is the shape of Christian life."
+        "reference": "Matthew 10:26-33",
+        "fullText": "Jesus said to the Twelve: \"Fear no one. Nothing is concealed that will not be revealed, nor secret that will not be known. What I say to you in the darkness, speak in the light; what you hear whispered, proclaim on the housetops. And do not be afraid of those who kill the body but cannot kill the soul; rather, be afraid of the one who can destroy both soul and body in Gehenna. Are not two sparrows sold for a small coin? Yet not one of them falls to the ground without your Father's knowledge. Even all the hairs of your head are counted. So do not be afraid; you are worth more than many sparrows. Everyone who acknowledges me before others I will acknowledge before my heavenly Father. But whoever denies me before others, I will deny before my heavenly Father.\"",
+        "summary": "Jesus tells his disciples not to be afraid, even though following him will bring real opposition. His reasoning is simple: if God notices something as small as a sparrow falling, and knows the number of hairs on your head, then he is not going to lose track of you. Speaking the truth about Jesus might cost something — but you are never forgotten or unseen by God."
       }
     ]
   }
