@@ -12,12 +12,12 @@ const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
 
 function HeroCard({ item }: { item: ResourceItem }) {
   const inner = (
-    <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '4/3' }}>
+    <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/9' }}>
       <img
         src={item.image}
         alt={item.name}
         className="absolute inset-0 h-full w-full object-cover"
-        style={{ objectPosition: '72% center' }}
+        style={{ objectPosition: 'center' }}
       />
       {/* gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
