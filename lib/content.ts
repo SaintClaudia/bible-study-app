@@ -534,7 +534,8 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Laudate',
         note: 'A free, all-in-one Catholic app — prayers, readings, rosary, and more.',
-        image: 'https://www.google.com/s2/favicons?domain=laudateapp.com&sz=256',
+        href: 'https://apps.apple.com/us/app/laudate-1-catholic-app/id499428207',
+        image: '/laudate.png',
         display: 'app',
       },
       {
