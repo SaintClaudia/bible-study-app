@@ -85,7 +85,7 @@ export function JourneyTab() {
           Journey
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Honest answers for anyone exploring or stepping into the Catholic faith — at your own pace, with no pressure.
+          Guidance for the questions that don't always get answered in class.
         </p>
       </section>
 
