@@ -10,6 +10,39 @@ const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   learn: GraduationCap,
 }
 
+function HeroCard({ item }: { item: ResourceItem }) {
+  const inner = (
+    <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/9' }}>
+      <img
+        src={item.image}
+        alt={item.name}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      {/* text */}
+      <div className="absolute bottom-0 left-0 right-0 p-4">
+        <p className="font-heading text-xl font-semibold text-white leading-tight">{item.name}</p>
+        <p className="mt-1 text-sm text-white/80 leading-snug">{item.note}</p>
+      </div>
+      {/* link indicator */}
+      {item.href && (
+        <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
+          <ArrowUpRight className="h-4 w-4 text-white" aria-hidden />
+        </div>
+      )}
+    </div>
+  )
+
+  return item.href ? (
+    <a href={item.href} target="_blank" rel="noopener noreferrer" className="block">
+      {inner}
+    </a>
+  ) : (
+    <div>{inner}</div>
+  )
+}
+
 function AppIcon({ item }: { item: ResourceItem }) {
   return item.href ? (
     <a
@@ -137,6 +170,7 @@ export function ResourcesTab() {
 
       {resourceGroups.map((group) => {
         const Icon = groupIcons[group.kind]
+        const heroItems = group.items.filter(i => i.display === 'hero')
         const appItems = group.items.filter(i => i.display === 'app')
         const bookItems = group.items.filter(i => i.display === 'book')
         const siteItems = group.items.filter(i => !i.display)
@@ -147,6 +181,13 @@ export function ResourcesTab() {
               <Icon className="h-4 w-4" aria-hidden />
               <h2 className="text-xs font-semibold uppercase tracking-wide">{group.label}</h2>
             </div>
+
+            {/* Hero banner — full-width cinematic card */}
+            {heroItems.length > 0 && (
+              <div className="flex flex-col gap-2.5">
+                {heroItems.map(item => <HeroCard key={item.name} item={item} />)}
+              </div>
+            )}
 
             {/* App icon grid — watch, listen, learn */}
             {appItems.length > 0 && (

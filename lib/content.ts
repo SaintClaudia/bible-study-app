@@ -441,7 +441,7 @@ export type ResourceItem = {
   note: string
   href?: string
   image?: string
-  display?: 'app' | 'book'
+  display?: 'app' | 'book' | 'hero'
 }
 
 export type ResourceGroup = {
@@ -461,8 +461,8 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Chosen',
         note: 'A beautifully made series on the life of Christ and those who followed him.',
         href: 'https://www.thechosen.tv/',
-        image: 'https://www.google.com/s2/favicons?domain=thechosen.tv&sz=256',
-        display: 'app',
+        image: '/the-chosen.jpg',
+        display: 'hero',
       },
     ],
   },
