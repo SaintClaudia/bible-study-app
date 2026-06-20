@@ -526,7 +526,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'The Pillar Podcast',
         note: 'Smart, candid conversation on news and life in the Catholic Church.',
-        href: 'https://www.pillarcatholic.com/',
+        href: 'https://www.pillarcatholic.com/s/the-pillar-podcast',
       },
     ],
   },
