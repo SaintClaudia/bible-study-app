@@ -358,12 +358,12 @@ export const journeyTopics: JourneyTopic[] = [
     title: 'Do I Need OCIA?',
     summary: 'How adults come into the Church — and who the process is for.',
     intro:
-      'OCIA (the Order of Christian Initiation of Adults, formerly called RCIA) is the Church\'s process for welcoming adults into full communion. Whether you need it depends on where you are starting from.',
+      'OCIA (the Order of Christian Initiation of Adults, formerly called RCIA) is the Catholic Church\'s process for helping adults learn about the faith and prepare for the sacraments.',
     body: [
-      'OCIA is the usual path if you have never been baptized. Over a season of formation you prepare to receive Baptism, Confirmation, and First Communion — the three Sacraments of Initiation — typically at the Easter Vigil.',
-      'If you were baptized in another Christian tradition (for example Protestant or Orthodox), you are already a Christian. You would not be re-baptized; instead you make a Profession of Faith and are received into full communion, usually with Confirmation and First Communion. Many parishes still walk you through OCIA-style formation first.',
-      'If you were baptized Catholic as a child but never confirmed or never received First Communion, you do not need the full OCIA process either. Parishes often have a shorter track to complete the sacraments you are missing.',
-      'The honest answer for most people is: talk to your parish. They will ask a few questions about your background and point you to the right path — which may be full OCIA, a shorter track, or simply meeting with a priest.',
+      'In many parishes, everyone enters the same formation process regardless of where they are starting. Some participants have never been baptized, some were baptized in another Christian church, and others are Catholics who have not yet received all of their sacraments.',
+      'The goal of OCIA is not simply to attend classes, but to learn about the Catholic faith, ask questions, and discern whether God is calling you into full communion with the Church.',
+      'Most programs meet weekly and include teaching, discussion, prayer, and opportunities to build relationships with others on a similar journey. Programs often begin in late summer or early fall and continue through Easter, though schedules vary by parish.',
+      'Every person\'s situation is unique. Previous marriages, civil marriages, divorce, annulments, missing sacramental records, and other circumstances can affect the process and may require additional conversations with your parish.',
     ],
     note:
       'Every diocese and parish runs this a little differently. Your local parish office is the best place to start.',
