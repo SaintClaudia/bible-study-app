@@ -19,6 +19,24 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Bible Study — Catholic Pocket Companion',
   description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
+  metadataBase: new URL('https://app.biblestudylovesyou.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://app.biblestudylovesyou.com',
+    title: 'Bible Study — Catholic Pocket Companion',
+    description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
+    images: [{ url: '/apple-touch-icon.png' }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Bible Study — Catholic Pocket Companion',
+    description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
+    images: ['/apple-touch-icon.png'],
+  },
+  robots: { index: true, follow: true },
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a18'/><rect x='14.5' y='4' width='3' height='24' rx='1' fill='white'/><rect x='6' y='10.5' width='20' height='3' rx='1' fill='white'/></svg>",
     apple: '/apple-touch-icon.png',
@@ -39,6 +57,16 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Bible Study',
+  url: 'https://app.biblestudylovesyou.com',
+  description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
+  applicationCategory: 'LifestyleApplication',
+  operatingSystem: 'Web',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -48,7 +76,19 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${playfair.variable} ${inter.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-background font-sans antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:text-sm focus:font-medium"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

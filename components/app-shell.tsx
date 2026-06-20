@@ -122,7 +122,7 @@ export function AppShell() {
         style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }}
       />
 
-      <main className="flex-1 px-5 pb-32 pt-4">
+      <main id="main-content" className="flex-1 px-5 pb-32 pt-4">
         {activeTab === 'readings' && <ReadingsTab />}
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}
@@ -152,7 +152,7 @@ export function AppShell() {
                     active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
-                  <Icon className={cn('h-5 w-5', active ? 'opacity-100' : 'opacity-50')} />
+                  <Icon className={cn('h-5 w-5', active ? 'opacity-100' : 'opacity-50')} aria-hidden="true" />
                   {tab.label}
                 </button>
               )

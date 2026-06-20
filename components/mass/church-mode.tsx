@@ -295,14 +295,22 @@ export function ChurchMode({ onExit }: { onExit: () => void }) {
         <button
           type="button"
           onClick={onExit}
+          aria-label="Exit church mode"
           className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
         >
-          <X className="h-4 w-4" />
+          <X className="h-4 w-4" aria-hidden="true" />
         </button>
       </div>
 
       {/* Progress bar */}
-      <div className="h-0.5 bg-border">
+      <div
+        className="h-0.5 bg-border"
+        role="progressbar"
+        aria-valuenow={currentStep + 1}
+        aria-valuemin={1}
+        aria-valuemax={steps.length}
+        aria-label={`Step ${currentStep + 1} of ${steps.length}`}
+      >
         <div
           className="h-full bg-foreground transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -352,12 +360,13 @@ export function ChurchMode({ onExit }: { onExit: () => void }) {
             type="button"
             onClick={() => setCurrentStep(s => s - 1)}
             disabled={isFirst}
+            aria-label="Previous step"
             className={cn(
               'flex h-12 w-12 items-center justify-center rounded-xl border border-border transition-opacity flex-shrink-0',
               isFirst ? 'opacity-30 cursor-not-allowed' : 'hover:bg-secondary'
             )}
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
 
           <button
@@ -370,7 +379,7 @@ export function ChurchMode({ onExit }: { onExit: () => void }) {
             ) : (
               <>
                 Next
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-5 w-5" aria-hidden="true" />
               </>
             )}
           </button>

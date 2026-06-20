@@ -85,9 +85,10 @@ export function GlossarySheet({ term, onClose, anchorRef }: GlossarySheetProps) 
             <button
               type="button"
               onClick={onClose}
+              aria-label="Close glossary term"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors flex-shrink-0 mt-0.5"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
           {content}
@@ -125,9 +126,10 @@ export function GlossarySheet({ term, onClose, anchorRef }: GlossarySheetProps) 
             <button
               type="button"
               onClick={onClose}
+              aria-label="Close glossary term"
               className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
             >
-              <X className="h-3 w-3" />
+              <X className="h-3 w-3" aria-hidden="true" />
             </button>
           </div>
           {content}
