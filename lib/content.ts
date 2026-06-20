@@ -447,6 +447,7 @@ export type ResourceItem = {
   details?: string[]
   pageNote?: string
   spotifyEmbedSrc?: string
+  creator?: string
 }
 
 export type ResourceGroup = {
@@ -636,16 +637,17 @@ export const resourceGroups: ResourceGroup[] = [
     items: [
       {
         name: 'Catholic Instrumental Music',
-        note: 'A curated Spotify playlist — perfect for prayer, study, or quiet reflection.',
+        note: 'Curated by The O\'Neill Brothers — perfect for prayer, study, or quiet reflection.',
         image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84364240bc1c6534574307c30d',
         display: 'app',
-        category: 'Playlist',
+        category: 'Public Playlist',
+        creator: 'The O\'Neill Brothers',
         description:
-          'A curated playlist of instrumental Catholic music — gentle, reverent, and suited for prayer, reading, or any moment that calls for peaceful background music. No lyrics, just music that creates space for God.',
+          '"The aim and final end of all music should be none other than the glory of God and the refreshment of the soul." — J.S. Bach',
         details: [
           'Available on Spotify',
           'No lyrics — ideal for focused prayer or study',
-          'Curated from classical and contemporary Catholic composers',
+          '348 songs, over 20 hours of music',
         ],
         spotifyEmbedSrc: 'https://open.spotify.com/embed/playlist/6BgguFfzqSlE8FJ2SmvdPv?utm_source=generator&theme=0&si=2d10c99ea1f44b64',
       },

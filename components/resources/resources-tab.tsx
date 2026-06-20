@@ -85,16 +85,30 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         <h1 className="mt-1 font-heading text-3xl font-semibold text-balance text-foreground">
           {item.name}
         </h1>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          {item.note}
-        </p>
+        {item.creator ? (
+          <p className="mt-2 text-sm text-muted-foreground">
+            By <span className="font-semibold text-foreground">{item.creator}</span>
+          </p>
+        ) : (
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {item.note}
+          </p>
+        )}
       </header>
 
       {/* Description */}
       {item.description && (
-        <p className="text-base leading-relaxed text-foreground/90">
-          {item.description}
-        </p>
+        item.creator ? (
+          <blockquote className="border-l-2 border-border pl-4">
+            <p className="text-sm italic leading-relaxed text-foreground/80">
+              {item.description}
+            </p>
+          </blockquote>
+        ) : (
+          <p className="text-base leading-relaxed text-foreground/90">
+            {item.description}
+          </p>
+        )
       )}
 
       {/* Details */}
