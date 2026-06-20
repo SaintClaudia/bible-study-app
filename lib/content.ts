@@ -637,6 +637,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Catholic Instrumental Music',
         note: 'A curated Spotify playlist — perfect for prayer, study, or quiet reflection.',
+        image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84364240bc1c6534574307c30d',
         display: 'app',
         category: 'Playlist',
         description:
@@ -651,6 +652,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Gregorian Chant',
         note: 'Ancient sacred music of the Church — meditative, prayerful, and timeless.',
+        image: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d4d27bdaead278e0ceb3cacd',
         display: 'app',
         category: 'Music',
         description:
@@ -664,6 +666,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'The Chosen Soundtrack',
         note: 'The official score from the series — cinematic, moving, and deeply prayerful.',
+        image: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ea7c6eb2e35030538177416d',
         display: 'app',
         category: 'Music',
         description:

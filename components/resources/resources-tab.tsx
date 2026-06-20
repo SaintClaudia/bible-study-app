@@ -54,7 +54,18 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         </div>
       )}
 
-      {item.image && isApp && (
+      {item.image && isApp && item.spotifyEmbedSrc && (
+        <div className="flex justify-center">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-56 h-56 rounded-2xl object-cover"
+            style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.14)' }}
+          />
+        </div>
+      )}
+
+      {item.image && isApp && !item.spotifyEmbedSrc && (
         <div className="flex justify-center">
           <img
             src={item.image}
