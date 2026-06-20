@@ -39,7 +39,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a18'/><rect x='14.5' y='4' width='3' height='24' rx='1' fill='white'/><rect x='6' y='10.5' width='20' height='3' rx='1' fill='white'/></svg>",
+    icon: [
+      { url: '/icon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/apple-touch-icon.png', type: 'image/png', sizes: '180x180' },
+    ],
     apple: '/apple-touch-icon.png',
   },
   other: {
