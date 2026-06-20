@@ -59,7 +59,7 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
           <img
             src={item.image}
             alt={item.name}
-            className="h-20 w-20 rounded-[22px] object-cover shadow-md"
+            className="h-20 w-20 rounded-2xl object-cover shadow-md"
           />
         </div>
       )}
@@ -162,7 +162,7 @@ function AppIcon({ item, onSelect }: { item: ResourceItem; onSelect: () => void 
           <img
             src={item.image}
             alt={item.name}
-            className="h-12 w-12 rounded-2xl object-cover shadow-sm flex-shrink-0"
+            className="h-12 w-12 rounded-xl object-cover shadow-sm flex-shrink-0"
             onError={(e) => {
               const el = e.currentTarget
               el.style.display = 'none'
@@ -172,7 +172,7 @@ function AppIcon({ item, onSelect }: { item: ResourceItem; onSelect: () => void 
           />
         ) : null}
         <div
-          className="h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-base font-bold text-foreground flex-shrink-0"
+          className="h-12 w-12 items-center justify-center rounded-xl bg-secondary text-base font-bold text-foreground flex-shrink-0"
           style={{ display: item.image ? 'none' : 'flex' }}
         >
           {item.name[0]}
