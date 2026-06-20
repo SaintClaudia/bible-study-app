@@ -426,7 +426,7 @@ export const journeyTopics: JourneyTopic[] = [
       },
     ],
     note:
-      'Have a question that isn\'t here? Bring it to your parish — they would much rather you ask than wonder.',
+      'Have a question that isn\'t covered here? Send it our way. This guide was built from real questions asked during OCIA, and your question may help someone else on the same journey.',
   },
 ]
 
