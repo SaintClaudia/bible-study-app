@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, type LucideIcon } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
@@ -9,6 +9,54 @@ const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   read: BookOpen,
   explore: Compass,
   listen: Headphones,
+}
+
+// ── Share button ───────────────────────────────────────────────
+
+function ShareButton({ item }: { item: ResourceItem }) {
+  const [copied, setCopied] = useState(false)
+
+  const getShareUrl = (): string => {
+    if (item.href) return item.href
+    if (item.spotifyEmbedSrc) {
+      const m = item.spotifyEmbedSrc.match(/embed\/(album|playlist)\/([A-Za-z0-9]+)/)
+      if (m) return `https://open.spotify.com/${m[1]}/${m[2]}`
+    }
+    return typeof window !== 'undefined' ? window.location.href : ''
+  }
+
+  const handleShare = async () => {
+    const url = getShareUrl()
+    if (!url) return
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({ title: item.name, text: item.note, url })
+      } catch {
+        // user cancelled
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+      } catch {
+        // clipboard unavailable
+      }
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleShare}
+      className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-secondary px-6 py-3.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-80"
+    >
+      {copied
+        ? <Check className="h-4 w-4" aria-hidden />
+        : <Share2 className="h-4 w-4" aria-hidden />}
+      {copied ? 'Link copied' : 'Share'}
+    </button>
+  )
 }
 
 // ── Detail view ────────────────────────────────────────────────
@@ -163,6 +211,9 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
             : `Visit ${item.name}`}
         </a>
       )}
+
+      {/* Share */}
+      <ShareButton item={item} />
     </article>
   )
 }
