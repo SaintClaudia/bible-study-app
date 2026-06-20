@@ -43,9 +43,9 @@
 }
 
 :root {
-  --background: oklch(0.978 0.005 85);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.18 0.01 265);
-  --card: oklch(0.992 0.003 85);
+  --card: oklch(0.988 0.004 85);
   --card-foreground: oklch(0.18 0.01 265);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.01 265);
@@ -105,10 +105,4 @@
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground; }
   html { @apply font-sans; }
-
-  /* Desktop: give the outer body a slightly muted tone so the content column feels framed */
-  @media (min-width: 768px) {
-    body { background-color: oklch(0.93 0.008 85); }
-    html.dark body { background-color: oklch(0.11 0.01 265); }
-  }
 }
