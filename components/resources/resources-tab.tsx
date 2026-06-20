@@ -94,7 +94,10 @@ function AppIconInner({ item }: { item: ResourceItem }) {
 function BookCard({ item }: { item: ResourceItem }) {
   const inner = (
     <div className="flex flex-col gap-2">
-      <div className="aspect-[2/3] overflow-hidden rounded-xl bg-secondary">
+      <div
+        className="aspect-[2/3] overflow-hidden rounded-lg bg-secondary"
+        style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12)' }}
+      >
         {item.image ? (
           <img
             src={item.image}
@@ -102,15 +105,12 @@ function BookCard({ item }: { item: ResourceItem }) {
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center p-4">
+          <div className="flex h-full w-full items-center justify-center p-3">
             <p className="text-xs font-medium text-muted-foreground text-center leading-snug">{item.name}</p>
           </div>
         )}
       </div>
-      <div>
-        <p className="text-sm font-semibold text-foreground leading-tight">{item.name}</p>
-        <p className="mt-0.5 text-xs text-muted-foreground leading-snug">{item.note}</p>
-      </div>
+      <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">{item.name}</p>
     </div>
   )
 
@@ -197,16 +197,16 @@ export function ResourcesTab() {
               </div>
             )}
 
-            {/* Book cover grid */}
+            {/* Book cover grid — 3 columns so trio sits balanced */}
             {bookItems.length > 0 && (
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-3">
                 {bookItems.map(item => <BookCard key={item.name} item={item} />)}
               </div>
             )}
 
             {/* Website / text list */}
             {siteItems.length > 0 && (
-              <div className="flex flex-col gap-2.5">
+              <div className={`flex flex-col gap-2.5 ${bookItems.length > 0 ? 'mt-1' : ''}`}>
                 {siteItems.map(item => <SiteCard key={item.name} item={item} />)}
               </div>
             )}
