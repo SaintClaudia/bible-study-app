@@ -440,6 +440,8 @@ export type ResourceItem = {
   name: string
   note: string
   href?: string
+  image?: string
+  display?: 'app' | 'book'
 }
 
 export type ResourceGroup = {
@@ -459,6 +461,8 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Chosen',
         note: 'A beautifully made series on the life of Christ and those who followed him.',
         href: 'https://www.thechosen.tv/',
+        image: 'https://logo.clearbit.com/thechosen.tv',
+        display: 'app',
       },
     ],
   },
@@ -471,16 +475,22 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Hallow',
         note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
         href: 'https://hallow.com/',
+        image: 'https://logo.clearbit.com/hallow.com',
+        display: 'app',
       },
       {
         name: 'Bible in a Year',
         note: 'Fr. Mike Schmitz reads and unpacks all of Scripture across a year of episodes.',
         href: 'https://ascensionpress.com/pages/biy-registration',
+        image: 'https://logo.clearbit.com/ascensionpress.com',
+        display: 'app',
       },
       {
         name: 'Catechism in a Year',
         note: 'A companion podcast walking through the entire Catechism, day by day.',
         href: 'https://ascensionpress.com/pages/ciy-registration',
+        image: 'https://logo.clearbit.com/ascensionpress.com',
+        display: 'app',
       },
     ],
   },
@@ -492,20 +502,26 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Why We\'re Catholic',
         note: 'Trent Horn\'s warm, accessible case for the core of the Catholic faith.',
+        image: 'https://covers.openlibrary.org/b/isbn/1683570400-L.jpg',
+        display: 'book',
       },
       {
         name: 'The Case for Jesus',
         note: 'Brant Pitre on the reliability of the Gospels and the identity of Christ.',
+        image: 'https://covers.openlibrary.org/b/isbn/0385346504-L.jpg',
+        display: 'book',
       },
       {
         name: 'USCCB',
         note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
         href: 'https://www.usccb.org/',
+        image: 'https://logo.clearbit.com/usccb.org',
       },
       {
         name: 'Theology of Home',
         note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
         href: 'https://theologyofhome.com/',
+        image: 'https://logo.clearbit.com/theologyofhome.com',
       },
     ],
   },
@@ -517,16 +533,22 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Laudate',
         note: 'A free, all-in-one Catholic app — prayers, readings, rosary, and more.',
+        image: 'https://logo.clearbit.com/laudateapp.com',
+        display: 'app',
       },
       {
         name: 'Magisterium AI',
         note: 'Ask questions and get answers grounded in Church teaching, with citations.',
         href: 'https://www.magisterium.com/',
+        image: 'https://logo.clearbit.com/magisterium.com',
+        display: 'app',
       },
       {
         name: 'The Pillar Podcast',
         note: 'Smart, candid conversation on news and life in the Catholic Church.',
         href: 'https://www.pillarcatholic.com/s/the-pillar-podcast',
+        image: 'https://logo.clearbit.com/pillarcatholic.com',
+        display: 'app',
       },
     ],
   },
