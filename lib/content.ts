@@ -358,7 +358,7 @@ export const journeyTopics: JourneyTopic[] = [
     title: 'Do I Need OCIA?',
     summary: 'How adults come into the Church — and who the process is for.',
     intro:
-      'OCIA (the Order of Christian Initiation of Adults, formerly called RCIA) is the Church's process for welcoming adults into full communion. Whether you need it depends on where you are starting from.',
+      'OCIA (the Order of Christian Initiation of Adults, formerly called RCIA) is the Church\'s process for welcoming adults into full communion. Whether you need it depends on where you are starting from.',
     body: [
       'OCIA is the usual path if you have never been baptized. Over a season of formation you prepare to receive Baptism, Confirmation, and First Communion — the three Sacraments of Initiation — typically at the Easter Vigil.',
       'If you were baptized in another Christian tradition (for example Protestant or Orthodox), you are already a Christian. You would not be re-baptized; instead you make a Profession of Faith and are received into full communion, usually with Confirmation and First Communion. Many parishes still walk you through OCIA-style formation first.',
