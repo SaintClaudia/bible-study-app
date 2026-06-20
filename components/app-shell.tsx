@@ -113,7 +113,7 @@ export function AppShell() {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
+    <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background md:shadow-[0_0_60px_rgba(0,0,0,0.07)]">
 
       {/* Fixed header — full width border, content max-width constrained */}
       <header className={cn(
