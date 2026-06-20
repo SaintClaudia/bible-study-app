@@ -81,6 +81,7 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
 
 export function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
+  const [resourcesKey, setResourcesKey] = useState(0)
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
   const lastScrollY = useRef(0)
@@ -150,7 +151,7 @@ export function AppShell() {
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}
         {activeTab === 'journey' && <JourneyTab />}
-        {activeTab === 'resources' && <ResourcesTab />}
+        {activeTab === 'resources' && <ResourcesTab key={resourcesKey} />}
       </main>
 
       <nav
@@ -170,7 +171,13 @@ export function AppShell() {
                 <button
                   key={tab.id}
                   type="button"
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => {
+                    if (tab.id === 'resources' && activeTab === 'resources') {
+                      setResourcesKey(k => k + 1)
+                    } else {
+                      setActiveTab(tab.id)
+                    }
+                  }}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
                     'flex flex-1 flex-col items-center gap-1 rounded-xl px-1 py-2 text-[11px] font-medium leading-tight transition-colors',
