@@ -1,6 +1,7 @@
 'use client'
 
-import { ArrowUpRight, BookOpen, ScrollText, Headphones, Play, type LucideIcon } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { ArrowLeft, ArrowUpRight, BookOpen, Check, ExternalLink, Headphones, Play, ScrollText, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
@@ -10,97 +11,184 @@ const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   learn: ScrollText,
 }
 
-function HeroCard({ item }: { item: ResourceItem }) {
-  const inner = (
-    <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/9' }}>
-      <img
-        src={item.image}
-        alt={item.name}
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ objectPosition: 'center' }}
-      />
-      {/* gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-      {/* text */}
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        <p className="font-heading text-xl font-semibold text-white leading-tight">{item.name}</p>
-        <p className="mt-1 text-sm text-white/80 leading-snug">{item.note}</p>
-      </div>
-      {/* link indicator */}
-      {item.href && (
-        <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
-          <ArrowUpRight className="h-4 w-4 text-white" aria-hidden />
+// ── Detail view ────────────────────────────────────────────────
+
+function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => void }) {
+  const isBook = item.display === 'book'
+  const isHero = item.display === 'hero'
+  const isApp = item.display === 'app'
+
+  return (
+    <article className="flex flex-col gap-5">
+      <button
+        type="button"
+        onClick={onBack}
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="h-4 w-4" aria-hidden />
+        Resources
+      </button>
+
+      {/* Image */}
+      {item.image && isHero && (
+        <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/9' }}>
+          <img
+            src={item.image}
+            alt={item.name}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
       )}
-    </div>
-  )
 
-  return item.href ? (
-    <a href={item.href} target="_blank" rel="noopener noreferrer" className="block">
-      {inner}
-    </a>
-  ) : (
-    <div>{inner}</div>
+      {item.image && isBook && (
+        <div className="flex justify-center">
+          <div
+            className="w-36 overflow-hidden rounded-lg bg-secondary"
+            style={{
+              aspectRatio: '2/3',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.2), 0 2px 6px rgba(0,0,0,0.12)',
+            }}
+          >
+            <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+          </div>
+        </div>
+      )}
+
+      {item.image && isApp && (
+        <div className="flex justify-center">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="h-20 w-20 rounded-[22px] object-cover shadow-md"
+          />
+        </div>
+      )}
+
+      {/* Header */}
+      <header>
+        {item.category && (
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            {item.category}
+          </p>
+        )}
+        <h1 className="mt-1 font-heading text-3xl font-semibold text-balance text-foreground">
+          {item.name}
+        </h1>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          {item.note}
+        </p>
+      </header>
+
+      {/* Description */}
+      {item.description && (
+        <p className="text-base leading-relaxed text-foreground/90">
+          {item.description}
+        </p>
+      )}
+
+      {/* Details */}
+      {item.details && item.details.length > 0 && (
+        <section className="rounded-2xl border border-border bg-card p-5">
+          <ul className="flex flex-col gap-2.5">
+            {item.details.map((detail, i) => (
+              <li key={i} className="flex items-start gap-2.5">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-foreground" aria-hidden />
+                <span className="text-sm leading-relaxed text-foreground/90">{detail}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* External link CTA */}
+      {item.href && (
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
+        >
+          <ExternalLink className="h-4 w-4" aria-hidden />
+          {item.display === 'app' || item.category === 'Podcast'
+            ? `Open ${item.name}`
+            : `Visit ${item.name}`}
+        </a>
+      )}
+    </article>
   )
 }
 
-function AppIcon({ item }: { item: ResourceItem }) {
-  const inner = (
-    <div className="flex items-center gap-3 px-4 py-3.5">
-      {item.image ? (
+// ── List cards (now buttons) ───────────────────────────────────
+
+function HeroCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void }) {
+  return (
+    <button type="button" onClick={onSelect} className="block w-full text-left">
+      <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/9' }}>
         <img
           src={item.image}
           alt={item.name}
-          className="h-12 w-12 rounded-2xl object-cover shadow-sm flex-shrink-0"
-          onError={(e) => {
-            const el = e.currentTarget
-            el.style.display = 'none'
-            const fallback = el.nextElementSibling as HTMLElement | null
-            if (fallback) fallback.style.display = 'flex'
-          }}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: 'center' }}
         />
-      ) : null}
-      <div
-        className="h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-base font-bold text-foreground flex-shrink-0"
-        style={{ display: item.image ? 'none' : 'flex' }}
-      >
-        {item.name[0]}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <p className="font-heading text-xl font-semibold text-white leading-tight">{item.name}</p>
+          <p className="mt-1 text-sm text-white/80 leading-snug">{item.note}</p>
+        </div>
+        <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
+          <ArrowUpRight className="h-4 w-4 text-white" aria-hidden />
+        </div>
       </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold text-foreground leading-tight">{item.name}</p>
-        <p className="mt-0.5 text-xs text-muted-foreground leading-snug line-clamp-2">{item.note}</p>
-      </div>
-      {item.href && <ArrowUpRight className="h-4 w-4 text-muted-foreground flex-shrink-0" aria-hidden />}
-    </div>
-  )
-
-  return item.href ? (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
-    >
-      {inner}
-    </a>
-  ) : (
-    <div className="rounded-2xl border border-border bg-card">{inner}</div>
+    </button>
   )
 }
 
-function BookCard({ item }: { item: ResourceItem }) {
-  const inner = (
-    <div className="flex flex-col gap-2">
+function AppIcon({ item, onSelect }: { item: ResourceItem; onSelect: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className="block w-full rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40"
+    >
+      <div className="flex items-center gap-3 px-4 py-3.5">
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.name}
+            className="h-12 w-12 rounded-2xl object-cover shadow-sm flex-shrink-0"
+            onError={(e) => {
+              const el = e.currentTarget
+              el.style.display = 'none'
+              const fallback = el.nextElementSibling as HTMLElement | null
+              if (fallback) fallback.style.display = 'flex'
+            }}
+          />
+        ) : null}
+        <div
+          className="h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-base font-bold text-foreground flex-shrink-0"
+          style={{ display: item.image ? 'none' : 'flex' }}
+        >
+          {item.name[0]}
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-foreground leading-tight">{item.name}</p>
+          <p className="mt-0.5 text-xs text-muted-foreground leading-snug line-clamp-2">{item.note}</p>
+        </div>
+        <ArrowUpRight className="h-4 w-4 text-muted-foreground flex-shrink-0" aria-hidden />
+      </div>
+    </button>
+  )
+}
+
+function BookCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void }) {
+  return (
+    <button type="button" onClick={onSelect} className="flex flex-col gap-2 text-left">
       <div
         className="aspect-[2/3] overflow-hidden rounded-lg bg-secondary"
         style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12)' }}
       >
         {item.image ? (
-          <img
-            src={item.image}
-            alt={item.name}
-            className="h-full w-full object-cover"
-          />
+          <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
         ) : (
           <div className="flex h-full w-full items-center justify-center p-3">
             <p className="text-xs font-medium text-muted-foreground text-center leading-snug">{item.name}</p>
@@ -108,53 +196,58 @@ function BookCard({ item }: { item: ResourceItem }) {
         )}
       </div>
       <p className="text-xs font-semibold text-foreground leading-tight line-clamp-2">{item.name}</p>
-    </div>
-  )
-
-  return item.href ? (
-    <a href={item.href} target="_blank" rel="noopener noreferrer">{inner}</a>
-  ) : (
-    <div>{inner}</div>
+    </button>
   )
 }
 
-function SiteCard({ item }: { item: ResourceItem }) {
-  const inner = (
-    <div className="flex items-center gap-3 px-4 py-3.5">
-      {item.image && (
-        <img
-          src={item.image}
-          alt=""
-          aria-hidden="true"
-          className="h-9 w-9 rounded-lg object-cover flex-shrink-0"
-          onError={(e) => { e.currentTarget.style.display = 'none' }}
-        />
-      )}
-      <span className="flex-1 min-w-0">
-        <span className="flex items-center gap-1 font-heading text-base font-semibold text-foreground">
-          {item.name}
-          {item.href && <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />}
-        </span>
-        <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">{item.note}</span>
-      </span>
-    </div>
-  )
-
-  return item.href ? (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
+function SiteCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className="block w-full rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40"
     >
-      {inner}
-    </a>
-  ) : (
-    <div className="rounded-2xl border border-border bg-card">{inner}</div>
+      <div className="flex items-center gap-3 px-4 py-3.5">
+        {item.image && (
+          <img
+            src={item.image}
+            alt=""
+            aria-hidden="true"
+            className="h-9 w-9 rounded-lg object-cover flex-shrink-0"
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+        )}
+        <span className="flex-1 min-w-0">
+          <span className="flex items-center gap-1 font-heading text-base font-semibold text-foreground">
+            {item.name}
+            <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
+          </span>
+          <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">{item.note}</span>
+        </span>
+      </div>
+    </button>
   )
 }
+
+// ── Main tab ───────────────────────────────────────────────────
 
 export function ResourcesTab() {
+  const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
+
+  const openItem = useCallback((item: ResourceItem) => {
+    setActiveItem(item)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
+  const closeItem = useCallback(() => {
+    setActiveItem(null)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
+  if (activeItem) {
+    return <ResourceDetail item={activeItem} onBack={closeItem} />
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <section>
@@ -180,31 +273,35 @@ export function ResourcesTab() {
               <h2 className="text-xs font-semibold uppercase tracking-wide">{group.label}</h2>
             </div>
 
-            {/* Hero banner — full-width cinematic card */}
             {heroItems.length > 0 && (
               <div className="flex flex-col gap-2.5">
-                {heroItems.map(item => <HeroCard key={item.name} item={item} />)}
+                {heroItems.map(item => (
+                  <HeroCard key={item.name} item={item} onSelect={() => openItem(item)} />
+                ))}
               </div>
             )}
 
-            {/* App list — icon left, title + subcopy right */}
             {appItems.length > 0 && (
               <div className="flex flex-col gap-2">
-                {appItems.map(item => <AppIcon key={item.name} item={item} />)}
+                {appItems.map(item => (
+                  <AppIcon key={item.name} item={item} onSelect={() => openItem(item)} />
+                ))}
               </div>
             )}
 
-            {/* Book cover grid — 3 columns so trio sits balanced */}
             {bookItems.length > 0 && (
               <div className="grid grid-cols-3 gap-3">
-                {bookItems.map(item => <BookCard key={item.name} item={item} />)}
+                {bookItems.map(item => (
+                  <BookCard key={item.name} item={item} onSelect={() => openItem(item)} />
+                ))}
               </div>
             )}
 
-            {/* Website / text list */}
             {siteItems.length > 0 && (
               <div className={`flex flex-col gap-2.5 ${bookItems.length > 0 ? 'mt-1' : ''}`}>
-                {siteItems.map(item => <SiteCard key={item.name} item={item} />)}
+                {siteItems.map(item => (
+                  <SiteCard key={item.name} item={item} onSelect={() => openItem(item)} />
+                ))}
               </div>
             )}
           </section>

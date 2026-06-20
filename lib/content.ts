@@ -442,6 +442,9 @@ export type ResourceItem = {
   href?: string
   image?: string
   display?: 'app' | 'book' | 'hero'
+  category?: string
+  description?: string
+  details?: string[]
 }
 
 export type ResourceGroup = {
@@ -463,6 +466,14 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://www.thechosen.tv/',
         image: '/the-chosen.jpg',
         display: 'hero',
+        category: 'Series',
+        description:
+          'An acclaimed multi-season drama that follows the life and ministry of Jesus Christ through the eyes of those who walked with him — disciples, strangers, and those on the margins. Created by Dallas Jenkins, it became the highest crowd-funded media project in history.',
+        details: [
+          'Seasons 1–4 available now',
+          'Free to watch on The Chosen app',
+          'Also available on Netflix, Amazon Prime, and more',
+        ],
       },
     ],
   },
@@ -477,6 +488,14 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://hallow.com/',
         image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
         display: 'app',
+        category: 'App',
+        description:
+          'A Catholic prayer and meditation app with thousands of hours of content — guided rosaries, examens, Lectio Divina, morning and evening prayer, novenas, and sleep meditations. Used by millions of Catholics around the world.',
+        details: [
+          'Available on iOS and Android',
+          'Free tier available with premium subscription options',
+          'Audio narrated by Catholic speakers including Fr. Mike Schmitz',
+        ],
       },
       {
         name: 'YouVersion Bible App',
@@ -484,6 +503,14 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://www.youversion.com/bible-app',
         image: 'https://www.google.com/s2/favicons?domain=youversion.com&sz=256',
         display: 'app',
+        category: 'App',
+        description:
+          'The world\'s most-downloaded Bible app, with over 2,000 Bible versions in 1,500+ languages. Includes audio Bible, reading plans, devotionals, and a verse of the day — all free to use.',
+        details: [
+          'Free to download and use',
+          'Available on iOS and Android',
+          'Thousands of reading plans for every level',
+        ],
       },
     ],
   },
@@ -495,14 +522,32 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Catechism of the Catholic Church',
         note: 'The official summary of Catholic belief — a reference for the whole faith.',
+        href: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
         image: '/catechism.jpg',
         display: 'book',
+        category: 'Book',
+        description:
+          'The official summary of Catholic doctrine, promulgated by Pope John Paul II in 1992. Organized around four pillars — the Creed, the Sacraments, the Moral Life, and Prayer — it is the definitive reference for the whole of the faith.',
+        details: [
+          'Full text available free at the Vatican website',
+          'Translated into dozens of languages',
+          'Organized in four parts: Creed, Sacraments, Moral Life, Prayer',
+        ],
       },
       {
         name: 'Compendium of the Catechism',
         note: 'A shorter, question-and-answer companion to the full Catechism.',
+        href: 'https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html',
         image: '/compendium.jpg',
         display: 'book',
+        category: 'Book',
+        description:
+          'A question-and-answer format companion to the full Catechism, prepared under Pope Benedict XVI in 2005. Covering the same four pillars in 598 concise questions, it is a practical starting point for anyone exploring Catholic teaching.',
+        details: [
+          '598 questions covering the full scope of the faith',
+          'Full text available free at the Vatican website',
+          'Easier to read in daily portions than the full Catechism',
+        ],
       },
       {
         name: 'Theology of Home',
@@ -510,12 +555,28 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://theologyofhome.com/',
         image: '/theology-of-home.jpg',
         display: 'book',
+        category: 'Book',
+        description:
+          'Written by Carrie Gress and Noelle Mering, this book explores how Catholic life in the home — beauty, order, hospitality, and the rhythms of the domestic church — reflects eternal truths. The first in a series that has grown into a broader community and resource hub.',
+        details: [
+          'Part of a growing book series',
+          'Website includes essays, a podcast, and more resources',
+          'Focused on femininity, home life, and the sacred',
+        ],
       },
       {
         name: 'USCCB',
         note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
         href: 'https://www.usccb.org/',
         image: 'https://www.google.com/s2/favicons?domain=usccb.org&sz=256',
+        category: 'Website',
+        description:
+          'The official site of the United States Conference of Catholic Bishops — the central hub for daily Mass readings, the text of Church documents and encyclicals, pastoral letters, and guidance on Catholic social teaching and moral theology.',
+        details: [
+          'Daily Mass readings and prayers',
+          'Full text of Church documents and encyclicals',
+          'Resources for OCIA, parish life, and Catholic education',
+        ],
       },
     ],
   },
@@ -530,6 +591,14 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://apps.apple.com/us/app/laudate-1-catholic-app/id499428207',
         image: '/laudate.png',
         display: 'app',
+        category: 'App',
+        description:
+          'A free, all-in-one Catholic app covering daily Mass readings, Liturgy of the Hours, the rosary, Divine Mercy chaplet, morning and evening prayer, lives of the saints, and more. No subscription required.',
+        details: [
+          'Completely free — no in-app purchases or subscription',
+          'Available on iOS and Android',
+          'Includes Scripture, the Catechism, and hundreds of prayers',
+        ],
       },
       {
         name: 'Magisterium AI',
@@ -537,6 +606,14 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://www.magisterium.com/',
         image: 'https://www.google.com/s2/favicons?domain=magisterium.com&sz=256',
         display: 'app',
+        category: 'App',
+        description:
+          'An AI assistant trained exclusively on the body of Catholic teaching — Scripture, the Catechism, papal encyclicals, council documents, and the Church Fathers. Every response includes citations so you can read the source yourself.',
+        details: [
+          'Grounded in primary Church documents with citations',
+          'Available on web and mobile',
+          'Useful for exploring theology, doctrine, and moral questions',
+        ],
       },
       {
         name: 'The Pillar Podcast',
@@ -544,6 +621,14 @@ export const resourceGroups: ResourceGroup[] = [
         href: 'https://www.pillarcatholic.com/s/the-pillar-podcast',
         image: 'https://www.google.com/s2/favicons?domain=pillarcatholic.com&sz=256',
         display: 'app',
+        category: 'Podcast',
+        description:
+          'A weekly podcast from The Pillar, a Catholic journalism outlet known for serious, independent reporting. Hosts J.D. Flynn and Ed Condon offer candid, informed conversation on Church news, Vatican affairs, and Catholic life.',
+        details: [
+          'New episodes released weekly',
+          'Hosted by veteran Catholic journalists',
+          'Available on Apple Podcasts, Spotify, and wherever you listen',
+        ],
       },
     ],
   },
