@@ -45,30 +45,13 @@ function HeroCard({ item }: { item: ResourceItem }) {
 }
 
 function AppIcon({ item }: { item: ResourceItem }) {
-  return item.href ? (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 text-center transition-colors hover:border-primary/40"
-    >
-      <AppIconInner item={item} />
-    </a>
-  ) : (
-    <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 text-center">
-      <AppIconInner item={item} />
-    </div>
-  )
-}
-
-function AppIconInner({ item }: { item: ResourceItem }) {
-  return (
-    <>
+  const inner = (
+    <div className="flex items-center gap-3 px-4 py-3.5">
       {item.image ? (
         <img
           src={item.image}
           alt={item.name}
-          className="h-16 w-16 rounded-2xl object-cover shadow-sm"
+          className="h-12 w-12 rounded-2xl object-cover shadow-sm flex-shrink-0"
           onError={(e) => {
             const el = e.currentTarget
             el.style.display = 'none'
@@ -78,16 +61,30 @@ function AppIconInner({ item }: { item: ResourceItem }) {
         />
       ) : null}
       <div
-        className="h-16 w-16 items-center justify-center rounded-2xl bg-secondary text-xl font-bold text-foreground"
+        className="h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-base font-bold text-foreground flex-shrink-0"
         style={{ display: item.image ? 'none' : 'flex' }}
       >
         {item.name[0]}
       </div>
-      <div>
+      <div className="flex-1 min-w-0">
         <p className="text-sm font-semibold text-foreground leading-tight">{item.name}</p>
         <p className="mt-0.5 text-xs text-muted-foreground leading-snug line-clamp-2">{item.note}</p>
       </div>
-    </>
+      {item.href && <ArrowUpRight className="h-4 w-4 text-muted-foreground flex-shrink-0" aria-hidden />}
+    </div>
+  )
+
+  return item.href ? (
+    <a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block rounded-2xl border border-border bg-card transition-colors hover:border-primary/40"
+    >
+      {inner}
+    </a>
+  ) : (
+    <div className="rounded-2xl border border-border bg-card">{inner}</div>
   )
 }
 
@@ -190,9 +187,9 @@ export function ResourcesTab() {
               </div>
             )}
 
-            {/* App icon grid — watch, listen, learn */}
+            {/* App list — icon left, title + subcopy right */}
             {appItems.length > 0 && (
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="flex flex-col gap-2">
                 {appItems.map(item => <AppIcon key={item.name} item={item} />)}
               </div>
             )}
