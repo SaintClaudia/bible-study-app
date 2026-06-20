@@ -223,13 +223,15 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
 function HeroCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void }) {
   return (
     <button type="button" onClick={onSelect} className="block w-full text-left">
-      <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '16/9' }}>
-        <img
-          src={item.image}
-          alt={item.name}
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: 'center' }}
-        />
+      <div className="relative w-full overflow-hidden rounded-2xl bg-secondary" style={{ aspectRatio: '16/9' }}>
+        {item.image && (
+          <img
+            src={item.image}
+            alt={item.name}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: 'center' }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="font-heading text-xl font-semibold text-white leading-tight">{item.name}</p>
@@ -368,11 +370,21 @@ export function ResourcesTab() {
               <h2 className="text-xs font-semibold uppercase tracking-wide">{group.label}</h2>
             </div>
 
-            {heroItems.length > 0 && (
-              <div className="flex flex-col gap-2.5">
-                {heroItems.map(item => (
-                  <HeroCard key={item.name} item={item} onSelect={() => openItem(item)} />
-                ))}
+            {heroItems.length === 1 && (
+              <HeroCard item={heroItems[0]} onSelect={() => openItem(heroItems[0])} />
+            )}
+
+            {heroItems.length > 1 && (
+              <div className="-mx-5 overflow-x-auto">
+                <div className="flex gap-3 px-5 pb-1" style={{ width: 'max-content' }}>
+                  {heroItems.map(item => (
+                    <div key={item.name} className="w-[82vw] max-w-[520px] flex-shrink-0">
+                      <HeroCard item={item} onSelect={() => openItem(item)} />
+                    </div>
+                  ))}
+                  {/* trailing space so last card doesn't sit flush against edge */}
+                  <div className="w-3 flex-shrink-0" />
+                </div>
               </div>
             )}
 

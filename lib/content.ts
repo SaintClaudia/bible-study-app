@@ -478,6 +478,21 @@ export const resourceGroups: ResourceGroup[] = [
           'Also available on Netflix, Amazon Prime, and more',
         ],
       },
+      {
+        name: 'King of Kings',
+        note: 'An animated film on the life and ministry of Jesus — now on Amazon Prime Video.',
+        href: 'https://www.amazon.com/gp/video/detail/B0H34TG19G',
+        image: '/king-of-kings.jpg',
+        display: 'hero',
+        category: 'Film',
+        description:
+          'King of Kings is an animated feature film that brings the life, ministry, and Sermon on the Mount of Jesus Christ to the screen with a rich and distinctive visual style. Accessible to viewers of all ages, it draws directly from the Gospels.',
+        details: [
+          'Available on Amazon Prime Video',
+          'Animated feature film',
+          'Suitable for all ages',
+        ],
+      },
     ],
   },
   {
