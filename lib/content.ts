@@ -375,13 +375,15 @@ export const journeyTopics: JourneyTopic[] = [
     intro:
       'Marriage is one of the seven sacraments, and the Church takes it seriously as a lifelong, faithful, life-giving bond. Questions about past marriages come up often for people entering the Church.',
     body: [
-      'The Church understands a valid marriage as permanent — "until death." Because of that, it does not recognize civil divorce as ending a sacramental marriage on its own.',
-      'An annulment (more precisely, a "declaration of nullity") is not a "Catholic divorce." It is a finding by a Church tribunal that, despite everyone\'s good intentions, something essential was missing at the very beginning that prevented a binding marriage from forming.',
-      'A declaration of nullity does not make children illegitimate, and it is not a judgment that the relationship had no value. It is a careful look back at what was — and wasn\'t — present on the wedding day.',
-      'If you are divorced and wondering how it affects coming into the Church or receiving the sacraments, this is exactly the kind of thing your parish helps with. Many people are surprised by how workable their situation turns out to be.',
+      'Marriage is one of the most common topics discussed during OCIA because every person\'s story is unique.',
+      'You may be single, married, divorced, remarried, widowed, or married outside of the Catholic Church. Depending on your circumstances, your parish may need to have additional conversations with you as part of your sacramental preparation.',
+      'An annulment, sometimes called a declaration of nullity, is not the same as a civil divorce. It is a process the Church uses to better understand the circumstances surrounding a marriage and determine whether a valid marriage existed from the beginning.',
+      'If an annulment is needed before receiving certain sacraments, your parish will guide you through the process. Depending on your situation, you may be asked to provide documents such as marriage records, divorce decrees, baptismal records, or other supporting information.',
+      'The process is typically handled through your parish and submitted to the diocese for review. While every case is unique, your parish can explain the requirements, help gather the necessary paperwork, and answer questions along the way.',
+      'Many people entering OCIA discover that they are not the only ones navigating questions about marriage. Your parish is there to help you understand your situation and guide you through the next steps.',
     ],
     note:
-      'These situations are personal and specific. A priest or deacon can walk you through your own case confidentially — please don\'t let uncertainty here keep you away.',
+      'These situations are personal and specific. A priest or deacon can walk you through your own case confidentially and explain any next steps.',
   },
   {
     id: 'what-happens-at-easter',
