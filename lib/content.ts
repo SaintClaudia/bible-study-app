@@ -380,7 +380,6 @@ export const journeyTopics: JourneyTopic[] = [
       'An annulment, sometimes called a declaration of nullity, is not the same as a civil divorce. It is a process the Church uses to better understand the circumstances surrounding a marriage and determine whether a valid marriage existed from the beginning.',
       'If an annulment is needed before receiving certain sacraments, your parish will guide you through the process. Depending on your situation, you may be asked to provide documents such as marriage records, divorce decrees, baptismal records, or other supporting information.',
       'The process is typically handled through your parish and submitted to the diocese for review. While every case is unique, your parish can explain the requirements, help gather the necessary paperwork, and answer questions along the way.',
-      'Many people entering OCIA discover that they are not the only ones navigating questions about marriage. Your parish is there to help you understand your situation and guide you through the next steps.',
     ],
     note:
       'These situations are personal and specific. A priest or deacon can walk you through your own case confidentially and explain any next steps.',
