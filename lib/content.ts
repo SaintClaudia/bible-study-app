@@ -680,6 +680,21 @@ export const resourceGroups: ResourceGroup[] = [
         ],
         spotifyEmbedSrc: 'https://open.spotify.com/embed/album/0zGDFDQoP4LAmkoDtRKj1P?utm_source=generator&theme=0&si=748500268e20487c',
       },
+      {
+        name: 'Catholic Mass Music',
+        note: 'A Spotify playlist of music for Mass — hymns, choral pieces, and sacred song.',
+        image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da846efc0f30d39248f801a1c3f1',
+        display: 'app',
+        category: 'Playlist',
+        description:
+          'A curated playlist of music for the Catholic Mass — drawing from traditional hymns, choral settings, and sacred song spanning centuries of worship. Well suited for listening before Mass, during Adoration, or any moment of quiet prayer.',
+        details: [
+          'Available on Spotify',
+          'Includes traditional hymns and choral pieces',
+          'Ideal for preparation before Mass or quiet prayer',
+        ],
+        spotifyEmbedSrc: 'https://open.spotify.com/embed/playlist/691JeYVWPilNVgJ5I9CHh4?utm_source=generator&theme=0&si=1f4d007a29864817',
+      },
     ],
   },
 ]
