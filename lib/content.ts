@@ -500,15 +500,22 @@ export const resourceGroups: ResourceGroup[] = [
     kind: 'read',
     items: [
       {
-        name: 'Why We\'re Catholic',
-        note: 'Trent Horn\'s warm, accessible case for the core of the Catholic faith.',
-        image: 'https://covers.openlibrary.org/b/isbn/1683570400-L.jpg',
+        name: 'Catechism of the Catholic Church',
+        note: 'The official summary of Catholic belief — a reference for the whole faith.',
+        image: '/catechism.jpg',
         display: 'book',
       },
       {
-        name: 'The Case for Jesus',
-        note: 'Brant Pitre on the reliability of the Gospels and the identity of Christ.',
-        image: 'https://covers.openlibrary.org/b/isbn/0385346504-L.jpg',
+        name: 'Compendium of the Catechism',
+        note: 'A shorter, question-and-answer companion to the full Catechism.',
+        image: '/compendium.jpg',
+        display: 'book',
+      },
+      {
+        name: 'Theology of Home',
+        note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
+        href: 'https://theologyofhome.com/',
+        image: '/theology-of-home.jpg',
         display: 'book',
       },
       {
@@ -516,12 +523,6 @@ export const resourceGroups: ResourceGroup[] = [
         note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
         href: 'https://www.usccb.org/',
         image: 'https://www.google.com/s2/favicons?domain=usccb.org&sz=256',
-      },
-      {
-        name: 'Theology of Home',
-        note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
-        href: 'https://theologyofhome.com/',
-        image: 'https://www.google.com/s2/favicons?domain=theologyofhome.com&sz=256',
       },
     ],
   },
