@@ -445,6 +445,7 @@ export type ResourceItem = {
   category?: string
   description?: string
   details?: string[]
+  pageNote?: string
 }
 
 export type ResourceGroup = {
@@ -498,7 +499,7 @@ export const resourceGroups: ResourceGroup[] = [
         ],
       },
       {
-        name: 'YouVersion Bible App',
+        name: 'Bible App',
         note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
         href: 'https://www.youversion.com/bible-app',
         image: 'https://www.google.com/s2/favicons?domain=youversion.com&sz=256',
@@ -511,6 +512,8 @@ export const resourceGroups: ResourceGroup[] = [
           'Available on iOS and Android',
           'Thousands of reading plans for every level',
         ],
+        pageNote:
+          'When selecting a Bible version, choose the NABRE (New American Bible, Revised Edition) — it is the translation used at Catholic Mass in the United States.',
       },
     ],
   },

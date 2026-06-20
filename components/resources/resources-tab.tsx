@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, BookOpen, Check, ExternalLink, Headphones, Play, ScrollText, type LucideIcon } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ExternalLink, Headphones, Info, Play, ScrollText, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
@@ -97,6 +97,16 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {/* Page note */}
+      {item.pageNote && (
+        <section className="rounded-2xl border border-border bg-secondary/60 p-5">
+          <div className="flex items-start gap-2.5">
+            <Info className="mt-0.5 h-4 w-4 shrink-0 text-foreground" aria-hidden />
+            <p className="text-sm leading-relaxed text-foreground/90">{item.pageNote}</p>
+          </div>
         </section>
       )}
 
