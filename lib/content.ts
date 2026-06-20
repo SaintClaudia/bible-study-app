@@ -350,6 +350,7 @@ export type JourneyTopic = {
   body?: string[]
   faqs?: JourneyFaq[]
   note?: string
+  noteLink?: { text: string; href: string }
 }
 
 export const journeyTopics: JourneyTopic[] = [
@@ -426,7 +427,8 @@ export const journeyTopics: JourneyTopic[] = [
       },
     ],
     note:
-      'Have a question that isn\'t covered here? Send it our way. This guide was built from real questions asked during OCIA, and your question may help someone else on the same journey.',
+      'Have a question that isn\'t covered here? This guide was built from real questions asked during OCIA, and your question may help someone else on the same journey.',
+    noteLink: { text: 'Send it our way.', href: 'https://biblestudylovesyou.com/contact.html' },
   },
 ]
 

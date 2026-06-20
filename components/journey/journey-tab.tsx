@@ -71,7 +71,17 @@ export function JourneyTab() {
             <div className="flex items-start gap-2.5">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-foreground" aria-hidden />
               <p className="text-sm leading-relaxed text-foreground/90">
-                {activeTopic.note}
+                {activeTopic.note}{' '}
+                {activeTopic.noteLink && (
+                  <a
+                    href={activeTopic.noteLink.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+                  >
+                    {activeTopic.noteLink.text}
+                  </a>
+                )}
               </p>
             </div>
           </section>
