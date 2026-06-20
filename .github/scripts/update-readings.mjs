@@ -30,9 +30,11 @@ function getTargetSunday() {
     return d
   }
   const now = new Date()
-  const day = now.getUTCDay()
+  const day = now.getUTCDay() // 0 = Sunday
+  // Stay on today if it's Sunday, otherwise advance to the next Sunday
+  const daysUntilSunday = day === 0 ? 0 : 7 - day
   const sunday = new Date(now)
-  sunday.setUTCDate(now.getUTCDate() - day)
+  sunday.setUTCDate(now.getUTCDate() + daysUntilSunday)
   sunday.setUTCHours(12, 0, 0, 0)
   return sunday
 }
