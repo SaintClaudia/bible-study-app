@@ -56,9 +56,11 @@ export function JourneyTab() {
                     {faq.q}
                   </h2>
                 </div>
-                <p className="mt-2 pl-[26px] text-sm leading-relaxed text-foreground/90">
-                  {faq.a}
-                </p>
+                <div className="mt-2 pl-[26px] flex flex-col gap-2">
+                  {faq.a.split('\n\n').map((para, j) => (
+                    <p key={j} className="text-sm leading-relaxed text-foreground/90">{para}</p>
+                  ))}
+                </div>
               </section>
             ))}
           </div>

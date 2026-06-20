@@ -414,7 +414,7 @@ export const journeyTopics: JourneyTopic[] = [
       },
       {
         q: 'How long does becoming Catholic take?',
-        a: 'It varies. Many parishes follow a roughly year-long rhythm pointing toward Easter, but the timeline flexes to where you actually are. There is no single deadline.',
+        a: 'Many parishes follow a yearly OCIA schedule that leads to the Easter Vigil. Depending on your background and circumstances, additional preparation may be needed before receiving certain sacraments.\n\nWhile the program has a schedule, faith is a lifelong journey.',
       },
       {
         q: 'Do I need to go to Confession before I\'m received?',
