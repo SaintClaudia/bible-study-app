@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, ArrowUpRight, BookOpen, Check, ExternalLink, Headphones, Play, ScrollText, type LucideIcon } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ExternalLink, Headphones, Play, ScrollText, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
@@ -135,9 +135,6 @@ function HeroCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void
           <p className="font-heading text-xl font-semibold text-white leading-tight">{item.name}</p>
           <p className="mt-1 text-sm text-white/80 leading-snug">{item.note}</p>
         </div>
-        <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm">
-          <ArrowUpRight className="h-4 w-4 text-white" aria-hidden />
-        </div>
       </div>
     </button>
   )
@@ -174,7 +171,6 @@ function AppIcon({ item, onSelect }: { item: ResourceItem; onSelect: () => void 
           <p className="text-sm font-semibold text-foreground leading-tight">{item.name}</p>
           <p className="mt-0.5 text-xs text-muted-foreground leading-snug line-clamp-2">{item.note}</p>
         </div>
-        <ArrowUpRight className="h-4 w-4 text-muted-foreground flex-shrink-0" aria-hidden />
       </div>
     </button>
   )
@@ -220,7 +216,6 @@ function SiteCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void
         <span className="flex-1 min-w-0">
           <span className="flex items-center gap-1 font-heading text-base font-semibold text-foreground">
             {item.name}
-            <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
           </span>
           <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">{item.note}</span>
         </span>
