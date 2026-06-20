@@ -162,7 +162,7 @@ export function ResourcesTab() {
           Resources
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          A few trusted things to watch, listen to, read, and explore as you grow in the faith.
+          A few recommendations to watch, read, and explore as you grow in the faith.
         </p>
       </section>
 
