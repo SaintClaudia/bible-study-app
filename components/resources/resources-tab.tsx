@@ -17,6 +17,7 @@ function HeroCard({ item }: { item: ResourceItem }) {
         src={item.image}
         alt={item.name}
         className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: '65% center' }}
       />
       {/* gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
