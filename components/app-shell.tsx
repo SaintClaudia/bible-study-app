@@ -72,10 +72,10 @@ function IconLibrary({ className }: { className?: string }) {
 }
 
 const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => React.ReactNode }[] = [
+  { id: 'journey', label: 'Journey', icon: IconCompass },
+  { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'mass', label: 'Mass', icon: IconChurch },
-  { id: 'formation', label: 'Formation', icon: IconDove },
-  { id: 'journey', label: 'Journey', icon: IconCompass },
   { id: 'resources', label: 'Resources', icon: IconLibrary },
 ]
 
