@@ -451,7 +451,7 @@ export type ResourceItem = {
 export type ResourceGroup = {
   id: string
   label: string
-  kind: 'watch' | 'listen' | 'read' | 'learn'
+  kind: 'watch' | 'listen' | 'read' | 'explore'
   items: ResourceItem[]
 }
 
@@ -475,45 +475,6 @@ export const resourceGroups: ResourceGroup[] = [
           'Free to watch on The Chosen app',
           'Also available on Netflix, Amazon Prime, and more',
         ],
-      },
-    ],
-  },
-  {
-    id: 'listen',
-    label: 'Listen',
-    kind: 'listen',
-    items: [
-      {
-        name: 'Hallow',
-        note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
-        href: 'https://hallow.com/',
-        image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
-        display: 'app',
-        category: 'App',
-        description:
-          'A Catholic prayer and meditation app with thousands of hours of content — guided rosaries, examens, Lectio Divina, morning and evening prayer, novenas, and sleep meditations. Used by millions of Catholics around the world.',
-        details: [
-          'Available on iOS and Android',
-          'Free tier available with premium subscription options',
-          'Audio narrated by Catholic speakers including Fr. Mike Schmitz',
-        ],
-      },
-      {
-        name: 'Bible App',
-        note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
-        href: 'https://www.youversion.com/bible-app',
-        image: 'https://www.google.com/s2/favicons?domain=youversion.com&sz=256',
-        display: 'app',
-        category: 'App',
-        description:
-          'The world\'s most-downloaded Bible app, with over 2,000 Bible versions in 1,500+ languages. Includes audio Bible, reading plans, devotionals, and a verse of the day — all free to use.',
-        details: [
-          'Free to download and use',
-          'Available on iOS and Android',
-          'Thousands of reading plans for every level',
-        ],
-        pageNote:
-          'When selecting a Bible version, choose the NABRE (New American Bible, Revised Edition) — it is the translation used at Catholic Mass in the United States.',
       },
     ],
   },
@@ -584,10 +545,42 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
-    id: 'learn',
-    label: 'Learn',
-    kind: 'learn',
+    id: 'explore',
+    label: 'Explore',
+    kind: 'explore',
     items: [
+      {
+        name: 'Hallow',
+        note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
+        href: 'https://hallow.com/',
+        image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
+        display: 'app',
+        category: 'App',
+        description:
+          'A Catholic prayer and meditation app with thousands of hours of content — guided rosaries, examens, Lectio Divina, morning and evening prayer, novenas, and sleep meditations. Used by millions of Catholics around the world.',
+        details: [
+          'Available on iOS and Android',
+          'Free tier available with premium subscription options',
+          'Audio narrated by Catholic speakers including Fr. Mike Schmitz',
+        ],
+      },
+      {
+        name: 'Bible App',
+        note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
+        href: 'https://www.youversion.com/bible-app',
+        image: 'https://www.google.com/s2/favicons?domain=youversion.com&sz=256',
+        display: 'app',
+        category: 'App',
+        description:
+          'The world\'s most-downloaded Bible app, with over 2,000 Bible versions in 1,500+ languages. Includes audio Bible, reading plans, devotionals, and a verse of the day — all free to use.',
+        details: [
+          'Free to download and use',
+          'Available on iOS and Android',
+          'Thousands of reading plans for every level',
+        ],
+        pageNote:
+          'When selecting a Bible version, choose the NABRE (New American Bible, Revised Edition) — it is the translation used at Catholic Mass in the United States.',
+      },
       {
         name: 'Laudate',
         note: 'A free, all-in-one Catholic app — prayers, readings, rosary, and more.',
@@ -616,6 +609,54 @@ export const resourceGroups: ResourceGroup[] = [
           'Grounded in primary Church documents with citations',
           'Available on web and mobile',
           'Useful for exploring theology, doctrine, and moral questions',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'listen',
+    label: 'Listen',
+    kind: 'listen',
+    items: [
+      {
+        name: 'Gregorian Chant',
+        note: 'Ancient sacred music of the Church — meditative, prayerful, and timeless.',
+        display: 'app',
+        category: 'Music',
+        description:
+          'Gregorian chant is the ancient liturgical music of the Western Church, developed over centuries of monastic prayer. Its unaccompanied, melodic character creates a contemplative atmosphere unlike anything in modern music. The Benedictine Monks of Santo Domingo de Silos — whose 1994 album became an unexpected worldwide sensation — are one of the finest places to start.',
+        details: [
+          'Available on Spotify, Apple Music, and YouTube',
+          'Search for Benedictine Monks of Santo Domingo de Silos',
+          'Ideal for prayer, Adoration, and quiet reflection',
+        ],
+      },
+      {
+        name: 'Taizé',
+        note: 'Simple, repetitive chants widely used in Catholic prayer and youth ministry.',
+        href: 'https://www.taize.fr/en',
+        display: 'app',
+        category: 'Music',
+        description:
+          'The Taizé Community is an ecumenical Christian monastic community in Burgundy, France. Their chants — short, repeated phrases sung meditatively — have become central to Catholic prayer services, evening prayer, and youth gatherings around the world.',
+        details: [
+          'Available on Spotify, Apple Music, and YouTube',
+          'Often used in Adoration and evening prayer',
+          'Search "Taizé" on any streaming platform',
+        ],
+      },
+      {
+        name: 'Matt Maher',
+        note: 'Contemporary Catholic worship music rooted in Scripture and the sacraments.',
+        href: 'https://www.mattmahermusic.com/',
+        display: 'app',
+        category: 'Music',
+        description:
+          'Matt Maher is one of the most prominent contemporary Catholic musician-songwriters, known for songs like "Lord, I Need You," "Christ Is Risen," and "Your Grace Is Enough." His music is accessible, Scripture-rooted, and widely sung in Catholic parishes.',
+        details: [
+          'Available on Spotify, Apple Music, and more',
+          'Songs are widely used in Catholic Masses and youth ministry',
+          'Albums include All the People Said Amen and Alive Again',
         ],
       },
       {
