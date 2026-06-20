@@ -18,7 +18,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Bible Study — Catholic Pocket Companion',
+  title: 'Bible Study — OCIA Catholic Companion',
   description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
   metadataBase: new URL('https://app.biblestudylovesyou.com'),
   alternates: {
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://app.biblestudylovesyou.com',
-    title: 'Bible Study — Catholic Pocket Companion',
+    title: 'Bible Study — OCIA Catholic Companion',
     description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
     images: [{ url: '/apple-touch-icon.png' }],
   },
   twitter: {
     card: 'summary',
-    title: 'Bible Study — Catholic Pocket Companion',
+    title: 'Bible Study — OCIA Catholic Companion',
     description: 'Sunday readings, Mass guidance, and faith formation — thoughtfully designed for anyone drawn to the Catholic tradition.',
     images: ['/apple-touch-icon.png'],
   },
