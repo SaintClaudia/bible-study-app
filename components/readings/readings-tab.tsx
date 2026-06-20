@@ -1,14 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useLocalStorage } from '@/hooks/use-local-storage'
 import { fetchSundayReadings, type DailyReadings } from '@/lib/readings'
 
 export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => void }) {
   const [data, setData] = useState<DailyReadings | null>(null)
   const [loading, setLoading] = useState(true)
   const [openReading, setOpenReading] = useState<number | null>(null)
+  const [introDismissed, setIntroDismissed, hydrated] = useLocalStorage(
+    'bs.readingsIntroDismissed',
+    false,
+  )
 
   const sunday = (() => {
     const today = new Date()
@@ -67,6 +72,27 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
           {data.season}
         </span>
       </section>
+
+      {/* Intro context card — dismissible, stays gone once closed */}
+      {hydrated && !introDismissed && (
+        <section className="relative rounded-2xl bg-secondary px-5 py-4 pr-12">
+          <button
+            type="button"
+            onClick={() => setIntroDismissed(true)}
+            aria-label="Dismiss"
+            className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Why these readings
+          </p>
+          <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">
+            Catholics everywhere will hear these same Scriptures this Sunday. We share
+            them here so you can carry them with you through the week.
+          </p>
+        </section>
+      )}
 
       {/* Readings */}
       <section className="flex flex-col gap-3">
