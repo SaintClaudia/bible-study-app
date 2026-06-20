@@ -61,13 +61,12 @@ function IconCompass({ className }: { className?: string }) {
   )
 }
 
-function IconScrollText({ className }: { className?: string }) {
+function IconLibrary({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H3V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v8"/>
-      <line x1="13" y1="8" x2="18" y2="8"/>
-      <line x1="13" y1="12" x2="18" y2="12"/>
-      <line x1="13" y1="16" x2="15" y2="16"/>
+      <rect x="4" y="3" width="5" height="18" rx="1"/>
+      <rect x="11" y="3" width="5" height="18" rx="1"/>
+      <path d="M18 5.5l2.6.7a1 1 0 01.7 1.2L18 21"/>
     </svg>
   )
 }
@@ -77,7 +76,7 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'mass', label: 'Mass', icon: IconChurch },
-  { id: 'resources', label: 'Resources', icon: IconScrollText },
+  { id: 'resources', label: 'Resources', icon: IconLibrary },
 ]
 
 export function AppShell() {
