@@ -1,18 +1,28 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { ArrowLeft, ChevronRight, CircleHelp, Info } from 'lucide-react'
 import { journeyTopics, type JourneyTopic } from '@/lib/content'
 
 export function JourneyTab() {
   const [activeTopic, setActiveTopic] = useState<JourneyTopic | null>(null)
 
+  const openTopic = useCallback((topic: JourneyTopic) => {
+    setActiveTopic(topic)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
+  const closeTopic = useCallback(() => {
+    setActiveTopic(null)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
   if (activeTopic) {
     return (
       <article className="flex flex-col gap-5">
         <button
           type="button"
-          onClick={() => setActiveTopic(null)}
+          onClick={closeTopic}
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden />
@@ -106,7 +116,7 @@ export function JourneyTab() {
           <button
             key={topic.id}
             type="button"
-            onClick={() => setActiveTopic(topic)}
+            onClick={() => openTopic(topic)}
             className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:border-primary/40"
           >
             <span className="flex-1">
