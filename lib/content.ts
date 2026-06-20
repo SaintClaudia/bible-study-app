@@ -697,10 +697,11 @@ export const resourceGroups: ResourceGroup[] = [
       },
       {
         name: 'Catholic Mass Music',
-        note: 'A Spotify playlist of music for Mass — hymns, choral pieces, and sacred song.',
+        note: 'Curated by Saint Claudia — hymns, choral pieces, and sacred song for Mass.',
         image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da846efc0f30d39248f801a1c3f1',
         display: 'app',
         category: 'Playlist',
+        creator: 'Saint Claudia',
         description:
           'A curated playlist of music for the Catholic Mass — drawing from traditional hymns, choral settings, and sacred song spanning centuries of worship. Well suited for listening before Mass, during Adoration, or any moment of quiet prayer.',
         details: [
