@@ -3,20 +3,9 @@
 import { useState, useEffect } from 'react'
 import { ChevronDown, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-function seasonPillClass(season: string): string {
-  const s = season.toLowerCase()
-  if (s.includes('advent') || s.includes('lent'))
-    return 'border-purple-200 bg-purple-100 text-purple-800 dark:border-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
-  if (s.includes('christmas') || s.includes('easter'))
-    return 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300'
-  if (s.includes('holy week') || s.includes('pentecost') || s.includes('triduum'))
-    return 'border-red-200 bg-red-100 text-red-800 dark:border-red-800 dark:bg-red-900/30 dark:text-red-300'
-  // Ordinary Time
-  return 'border-green-200 bg-green-100 text-green-800 dark:border-green-800 dark:bg-green-900/30 dark:text-green-300'
-}
 import { useLocalStorage } from '@/hooks/use-local-storage'
 import { fetchSundayReadings, type DailyReadings } from '@/lib/readings'
+import { getLiturgicalColor, LITURGICAL_COLOR_HEX } from '@/lib/liturgical-color'
 
 export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => void }) {
   const [data, setData] = useState<DailyReadings | null>(null)
@@ -80,7 +69,12 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
         <h1 className="mt-1 font-heading text-3xl font-semibold leading-tight text-foreground">
           {data.liturgicalDay.replace(/\s+in\s+Ordinary\s+Time/i, '')}
         </h1>
-        <span className={cn('mt-2 inline-block rounded-full border px-3 py-1 text-xs font-medium', seasonPillClass(data.season))}>
+        <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+          <span
+            className="h-2 w-2 shrink-0 rounded-full"
+            style={{ backgroundColor: LITURGICAL_COLOR_HEX[getLiturgicalColor(data)] }}
+            aria-hidden="true"
+          />
           {data.season}
         </span>
       </section>
