@@ -418,7 +418,7 @@ export const journeyTopics: JourneyTopic[] = [
       },
       {
         q: 'Do I need to go to Confession before I\'m received?',
-        a: 'Those being baptized do not — Baptism washes away all sin. Those already baptized and coming into full communion usually make their first Confession before being received.',
+        a: 'During OCIA, you\'ll learn about the Sacrament of Reconciliation, how to prepare for it, and when it is received as part of your journey into the Church. If you feel called to go to Confession, most parishes offer regular times for Reconciliation throughout the week.\n\nIn the Catholic faith, priests serve in the person of Christ and have been entrusted by the Church to hear confessions and offer God\'s forgiveness through this sacrament.',
       },
       {
         q: 'What if I\'m not sure I believe in God yet?',
