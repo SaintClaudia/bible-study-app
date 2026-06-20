@@ -1,13 +1,13 @@
 'use client'
 
-import { ArrowUpRight, BookOpen, GraduationCap, Headphones, Play, type LucideIcon } from 'lucide-react'
+import { ArrowUpRight, BookOpen, ScrollText, Headphones, Play, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   watch: Play,
   listen: Headphones,
   read: BookOpen,
-  learn: GraduationCap,
+  learn: ScrollText,
 }
 
 function HeroCard({ item }: { item: ResourceItem }) {
