@@ -480,7 +480,7 @@ export const resourceGroups: ResourceGroup[] = [
       },
       {
         name: 'King of Kings',
-        note: 'An animated film on the life and ministry of Jesus — now on Amazon Prime Video.',
+        note: 'An animated film on the life and ministry of Jesus.',
         href: 'https://www.amazon.com/gp/video/detail/B0H34TG19G',
         image: '/king-of-kings.jpg',
         display: 'hero',
