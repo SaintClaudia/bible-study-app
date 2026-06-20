@@ -113,56 +113,51 @@ export function AppShell() {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background md:shadow-[0_0_60px_rgba(0,0,0,0.07)]">
+    <>
+      {/* ── MOBILE layout (< md) — unchanged ── */}
+      <div className="md:hidden mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 
-      {/* Fixed header — full width border, content max-width constrained */}
-      <header className={cn(
-        'fixed top-0 left-0 right-0 z-20 bg-background border-b border-border transition-transform duration-300',
-        !barsVisible && '-translate-y-full'
-      )}>
-        {/* Status bar safe area fill */}
-        <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
-        {/* Nav content constrained to max-width */}
-        <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
-                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
-                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
-              </svg>
+        <header className={cn(
+          'fixed top-0 left-0 right-0 z-20 bg-background border-b border-border transition-transform duration-300',
+          !barsVisible && '-translate-y-full'
+        )}>
+          <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
+          <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
+                  <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
+                  <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
+                </svg>
+              </div>
+              <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
+                Bible Study
+              </span>
             </div>
-            <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
-              Bible Study
-            </span>
+            <ThemeToggle />
           </div>
-          <ThemeToggle />
-        </div>
-      </header>
+        </header>
 
-      {/* Spacer so content starts below the fixed header */}
-      <div
-        className="flex-shrink-0 bg-background"
-        style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }}
-      />
+        <div className="flex-shrink-0 bg-background" style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }} />
 
-      <main id="main-content" className="flex-1 px-5 pb-32 pt-4">
-        {activeTab === 'readings' && <ReadingsTab />}
-        {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
-        {activeTab === 'formation' && <FormationTab />}
-        {activeTab === 'journey' && <JourneyTab />}
-        {activeTab === 'resources' && <ResourcesTab />}
-      </main>
+        <main id="main-content" className="flex-1 px-5 pb-32 pt-4">
+          {activeTab === 'readings' && <ReadingsTab />}
+          {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
+          {activeTab === 'formation' && <FormationTab />}
+          {activeTab === 'journey' && <JourneyTab />}
+          {activeTab === 'resources' && <ResourcesTab />}
+        </main>
 
-      <nav
-        aria-label="Primary"
-        className={cn(
-          'fixed inset-x-0 bottom-0 z-20 bg-background border-t border-border transition-transform duration-300',
-          !barsVisible && 'translate-y-full'
-        )}
-      >
-        <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 pt-2"
-          style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
+        <nav
+          aria-label="Primary"
+          className={cn(
+            'fixed inset-x-0 bottom-0 z-20 bg-background border-t border-border transition-transform duration-300',
+            !barsVisible && 'translate-y-full'
+          )}
         >
+          <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 pt-2"
+            style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
+          >
             {tabs.map((tab) => {
               const Icon = tab.icon
               const active = activeTab === tab.id
@@ -183,8 +178,68 @@ export function AppShell() {
               )
             })}
           </div>
-      </nav>
+        </nav>
+      </div>
 
-    </div>
+      {/* ── DESKTOP layout (md+) — sidebar + content ── */}
+      <div className="desktop-shell hidden md:flex min-h-screen w-full">
+        {/* Sidebar */}
+        <aside className="sticky top-0 h-screen w-56 flex flex-col bg-background border-r border-border flex-shrink-0">
+          {/* Logo */}
+          <div className="flex items-center gap-2.5 px-5 py-6 border-b border-border">
+            <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
+                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
+                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
+              </svg>
+            </div>
+            <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
+              Bible Study
+            </span>
+          </div>
+
+          {/* Nav */}
+          <nav aria-label="Primary" className="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+            {tabs.map((tab) => {
+              const Icon = tab.icon
+              const active = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  aria-current={active ? 'page' : undefined}
+                  className={cn(
+                    'flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors text-left',
+                    active
+                      ? 'bg-secondary text-foreground'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60'
+                  )}
+                >
+                  <Icon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                  {tab.label}
+                </button>
+              )
+            })}
+          </nav>
+
+          {/* Theme toggle */}
+          <div className="px-5 py-4 border-t border-border">
+            <ThemeToggle />
+          </div>
+        </aside>
+
+        {/* Content */}
+        <main id="main-content" className="flex-1 overflow-y-auto">
+          <div className="max-w-2xl mx-auto px-8 py-8">
+            {activeTab === 'readings' && <ReadingsTab />}
+            {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
+            {activeTab === 'formation' && <FormationTab />}
+            {activeTab === 'journey' && <JourneyTab />}
+            {activeTab === 'resources' && <ResourcesTab />}
+          </div>
+        </main>
+      </div>
+    </>
   )
 }
