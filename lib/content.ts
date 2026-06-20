@@ -331,3 +331,200 @@ export const learningPaths: LearningPath[] = [
     ],
   },
 ]
+
+/* ----------------------------------------------------------------
+   Journey — orientation topics for those exploring or entering
+   the Catholic faith. Read-through articles + an FAQ.
+------------------------------------------------------------------*/
+
+export type JourneyFaq = {
+  q: string
+  a: string
+}
+
+export type JourneyTopic = {
+  id: string
+  title: string
+  summary: string
+  intro: string
+  body?: string[]
+  faqs?: JourneyFaq[]
+  note?: string
+}
+
+export const journeyTopics: JourneyTopic[] = [
+  {
+    id: 'do-i-need-ocia',
+    title: 'Do I Need OCIA?',
+    summary: 'How adults come into the Church — and who the process is for.',
+    intro:
+      'OCIA (the Order of Christian Initiation of Adults, formerly called RCIA) is the Church's process for welcoming adults into full communion. Whether you need it depends on where you are starting from.',
+    body: [
+      'OCIA is the usual path if you have never been baptized. Over a season of formation you prepare to receive Baptism, Confirmation, and First Communion — the three Sacraments of Initiation — typically at the Easter Vigil.',
+      'If you were baptized in another Christian tradition (for example Protestant or Orthodox), you are already a Christian. You would not be re-baptized; instead you make a Profession of Faith and are received into full communion, usually with Confirmation and First Communion. Many parishes still walk you through OCIA-style formation first.',
+      'If you were baptized Catholic as a child but never confirmed or never received First Communion, you do not need the full OCIA process either. Parishes often have a shorter track to complete the sacraments you are missing.',
+      'The honest answer for most people is: talk to your parish. They will ask a few questions about your background and point you to the right path — which may be full OCIA, a shorter track, or simply meeting with a priest.',
+    ],
+    note:
+      'Every diocese and parish runs this a little differently. Your local parish office is the best place to start.',
+  },
+  {
+    id: 'marriage-and-annulments',
+    title: 'Marriage & Annulments',
+    summary: 'What the Church believes about marriage, and what an annulment actually is.',
+    intro:
+      'Marriage is one of the seven sacraments, and the Church takes it seriously as a lifelong, faithful, life-giving bond. Questions about past marriages come up often for people entering the Church.',
+    body: [
+      'The Church understands a valid marriage as permanent — "until death." Because of that, it does not recognize civil divorce as ending a sacramental marriage on its own.',
+      'An annulment (more precisely, a "declaration of nullity") is not a "Catholic divorce." It is a finding by a Church tribunal that, despite everyone\'s good intentions, something essential was missing at the very beginning that prevented a binding marriage from forming.',
+      'A declaration of nullity does not make children illegitimate, and it is not a judgment that the relationship had no value. It is a careful look back at what was — and wasn\'t — present on the wedding day.',
+      'If you are divorced and wondering how it affects coming into the Church or receiving the sacraments, this is exactly the kind of thing your parish helps with. Many people are surprised by how workable their situation turns out to be.',
+    ],
+    note:
+      'These situations are personal and specific. A priest or deacon can walk you through your own case confidentially — please don\'t let uncertainty here keep you away.',
+  },
+  {
+    id: 'what-happens-at-easter',
+    title: 'What Happens at Easter?',
+    summary: 'The Easter Vigil and the sacraments that bring new members into the Church.',
+    intro:
+      'For those in OCIA, the journey points toward Easter. Understanding the Triduum — the three holiest days of the year — helps the whole season make sense.',
+    body: [
+      'The Easter Triduum begins on Holy Thursday evening, continues through Good Friday and Holy Saturday, and culminates at the Easter Vigil. It is a single great celebration of Christ\'s passion, death, and resurrection.',
+      'The Easter Vigil, held on Saturday night, is the high point. It opens in darkness with the lighting of the Paschal candle, moves through a series of Scripture readings that retell salvation history, and then erupts into the joy of the Resurrection.',
+      'It is at this Vigil that those preparing through OCIA are usually baptized, confirmed, and receive the Eucharist for the first time. Those already baptized make their Profession of Faith and are received into full communion.',
+      'If you are preparing now, this is the destination — but there is no pressure to rush. People are welcomed at the Vigil when they and their parish discern they are ready, whether that is this Easter or a later one.',
+    ],
+  },
+  {
+    id: 'common-questions',
+    title: 'Common Questions',
+    summary: 'Quick answers to the things people most often wonder about.',
+    intro:
+      'A few of the questions that come up again and again when someone is exploring the Catholic faith.',
+    faqs: [
+      {
+        q: 'Do I have to believe everything right away?',
+        a: 'No. Formation is a journey. You are invited to keep learning and asking questions — sincere wrestling with the faith is welcomed, not penalized.',
+      },
+      {
+        q: 'Can I attend Mass before I\'m Catholic?',
+        a: 'Absolutely. Anyone is welcome at Mass. You simply don\'t receive Communion yet — you can come forward for a blessing or remain in your pew, and no one will think twice.',
+      },
+      {
+        q: 'How long does becoming Catholic take?',
+        a: 'It varies. Many parishes follow a roughly year-long rhythm pointing toward Easter, but the timeline flexes to where you actually are. There is no single deadline.',
+      },
+      {
+        q: 'Do I need to go to Confession before I\'m received?',
+        a: 'Those being baptized do not — Baptism washes away all sin. Those already baptized and coming into full communion usually make their first Confession before being received.',
+      },
+      {
+        q: 'What if I\'m not sure I believe in God yet?',
+        a: 'That\'s okay, and you\'re not alone. Plenty of people begin by exploring honestly. Talk with a priest or someone in your parish — curiosity is a fine place to start.',
+      },
+    ],
+    note:
+      'Have a question that isn\'t here? Bring it to your parish — they would much rather you ask than wonder.',
+  },
+]
+
+/* ----------------------------------------------------------------
+   Resources — curated things to watch, listen to, read, and learn.
+------------------------------------------------------------------*/
+
+export type ResourceItem = {
+  name: string
+  note: string
+  href?: string
+}
+
+export type ResourceGroup = {
+  id: string
+  label: string
+  kind: 'watch' | 'listen' | 'read' | 'learn'
+  items: ResourceItem[]
+}
+
+export const resourceGroups: ResourceGroup[] = [
+  {
+    id: 'watch',
+    label: 'Watch',
+    kind: 'watch',
+    items: [
+      {
+        name: 'The Chosen',
+        note: 'A beautifully made series on the life of Christ and those who followed him.',
+        href: 'https://www.thechosen.tv/',
+      },
+    ],
+  },
+  {
+    id: 'listen',
+    label: 'Listen',
+    kind: 'listen',
+    items: [
+      {
+        name: 'Hallow',
+        note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
+        href: 'https://hallow.com/',
+      },
+      {
+        name: 'Bible in a Year',
+        note: 'Fr. Mike Schmitz reads and unpacks all of Scripture across a year of episodes.',
+        href: 'https://ascensionpress.com/pages/biy-registration',
+      },
+      {
+        name: 'Catechism in a Year',
+        note: 'A companion podcast walking through the entire Catechism, day by day.',
+        href: 'https://ascensionpress.com/pages/ciy-registration',
+      },
+    ],
+  },
+  {
+    id: 'read',
+    label: 'Read',
+    kind: 'read',
+    items: [
+      {
+        name: 'Why We\'re Catholic',
+        note: 'Trent Horn\'s warm, accessible case for the core of the Catholic faith.',
+      },
+      {
+        name: 'The Case for Jesus',
+        note: 'Brant Pitre on the reliability of the Gospels and the identity of Christ.',
+      },
+      {
+        name: 'USCCB',
+        note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
+        href: 'https://www.usccb.org/',
+      },
+      {
+        name: 'Theology of Home',
+        note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
+        href: 'https://theologyofhome.com/',
+      },
+    ],
+  },
+  {
+    id: 'learn',
+    label: 'Learn',
+    kind: 'learn',
+    items: [
+      {
+        name: 'Laudate',
+        note: 'A free, all-in-one Catholic app — prayers, readings, rosary, and more.',
+      },
+      {
+        name: 'Magisterium AI',
+        note: 'Ask questions and get answers grounded in Church teaching, with citations.',
+        href: 'https://www.magisterium.com/',
+      },
+      {
+        name: 'The Pillar Podcast',
+        note: 'Smart, candid conversation on news and life in the Catholic Church.',
+        href: 'https://www.pillarcatholic.com/',
+      },
+    ],
+  },
+]

@@ -6,9 +6,11 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
 import { MassTab } from '@/components/mass/mass-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
+import { JourneyTab } from '@/components/journey/journey-tab'
+import { ResourcesTab } from '@/components/resources/resources-tab'
 import { ChurchMode } from '@/components/mass/church-mode'
 
-type Tab = 'readings' | 'mass' | 'formation'
+type Tab = 'readings' | 'mass' | 'formation' | 'journey' | 'resources'
 
 function IconBible({ className }: { className?: string }) {
   return (
@@ -50,10 +52,31 @@ function IconDove({ className }: { className?: string }) {
   )
 }
 
+function IconCompass({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <circle cx="12" cy="12" r="9"/>
+      <polygon points="16.5,7.5 13.5,13.5 7.5,16.5 10.5,10.5"/>
+    </svg>
+  )
+}
+
+function IconLibrary({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="4" y="3" width="5" height="18" rx="1"/>
+      <rect x="11" y="3" width="5" height="18" rx="1"/>
+      <path d="M18 5.5l2.6.7a1 1 0 01.7 1.2L18 21"/>
+    </svg>
+  )
+}
+
 const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => React.ReactNode }[] = [
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'mass', label: 'Mass', icon: IconChurch },
   { id: 'formation', label: 'Formation', icon: IconDove },
+  { id: 'journey', label: 'Journey', icon: IconCompass },
+  { id: 'resources', label: 'Resources', icon: IconLibrary },
 ]
 
 export function AppShell() {
@@ -65,7 +88,7 @@ export function AppShell() {
   // Read #tab hash from URL on load
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as Tab
-    if (hash && ['readings', 'mass', 'formation'].includes(hash)) {
+    if (hash && ['readings', 'mass', 'formation', 'journey', 'resources'].includes(hash)) {
       setActiveTab(hash)
     }
   }, [])
@@ -126,6 +149,8 @@ export function AppShell() {
         {activeTab === 'readings' && <ReadingsTab />}
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}
+        {activeTab === 'journey' && <JourneyTab />}
+        {activeTab === 'resources' && <ResourcesTab />}
       </main>
 
       <nav
@@ -148,7 +173,7 @@ export function AppShell() {
                   onClick={() => setActiveTab(tab.id)}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
-                    'flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-colors',
+                    'flex flex-1 flex-col items-center gap-1 rounded-xl px-1 py-2 text-[11px] font-medium leading-tight transition-colors',
                     active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
