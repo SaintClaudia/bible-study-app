@@ -100,6 +100,20 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         </section>
       )}
 
+      {/* Spotify embed */}
+      {item.spotifyEmbedSrc && (
+        <iframe
+          src={item.spotifyEmbedSrc}
+          width="100%"
+          height="152"
+          frameBorder={0}
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          allowFullScreen
+          style={{ borderRadius: '12px' }}
+        />
+      )}
+
       {/* Page note */}
       {item.pageNote && (
         <section className="rounded-2xl border border-border bg-secondary/60 p-5">

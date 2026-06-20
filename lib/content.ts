@@ -446,6 +446,7 @@ export type ResourceItem = {
   description?: string
   details?: string[]
   pageNote?: string
+  spotifyEmbedSrc?: string
 }
 
 export type ResourceGroup = {
@@ -550,21 +551,6 @@ export const resourceGroups: ResourceGroup[] = [
     kind: 'explore',
     items: [
       {
-        name: 'Hallow',
-        note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
-        href: 'https://hallow.com/',
-        image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
-        display: 'app',
-        category: 'App',
-        description:
-          'A Catholic prayer and meditation app with thousands of hours of content — guided rosaries, examens, Lectio Divina, morning and evening prayer, novenas, and sleep meditations. Used by millions of Catholics around the world.',
-        details: [
-          'Available on iOS and Android',
-          'Free tier available with premium subscription options',
-          'Audio narrated by Catholic speakers including Fr. Mike Schmitz',
-        ],
-      },
-      {
         name: 'Bible App',
         note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
         href: 'https://www.youversion.com/bible-app',
@@ -580,6 +566,21 @@ export const resourceGroups: ResourceGroup[] = [
         ],
         pageNote:
           'When selecting a Bible version, choose the NABRE (New American Bible, Revised Edition) — it is the translation used at Catholic Mass in the United States.',
+      },
+      {
+        name: 'Hallow',
+        note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
+        href: 'https://hallow.com/',
+        image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
+        display: 'app',
+        category: 'App',
+        description:
+          'A Catholic prayer and meditation app with thousands of hours of content — guided rosaries, examens, Lectio Divina, morning and evening prayer, novenas, and sleep meditations. Used by millions of Catholics around the world.',
+        details: [
+          'Available on iOS and Android',
+          'Free tier available with premium subscription options',
+          'Audio narrated by Catholic speakers including Fr. Mike Schmitz',
+        ],
       },
       {
         name: 'Laudate',
@@ -611,54 +612,6 @@ export const resourceGroups: ResourceGroup[] = [
           'Useful for exploring theology, doctrine, and moral questions',
         ],
       },
-    ],
-  },
-  {
-    id: 'listen',
-    label: 'Listen',
-    kind: 'listen',
-    items: [
-      {
-        name: 'Gregorian Chant',
-        note: 'Ancient sacred music of the Church — meditative, prayerful, and timeless.',
-        display: 'app',
-        category: 'Music',
-        description:
-          'Gregorian chant is the ancient liturgical music of the Western Church, developed over centuries of monastic prayer. Its unaccompanied, melodic character creates a contemplative atmosphere unlike anything in modern music. The Benedictine Monks of Santo Domingo de Silos — whose 1994 album became an unexpected worldwide sensation — are one of the finest places to start.',
-        details: [
-          'Available on Spotify, Apple Music, and YouTube',
-          'Search for Benedictine Monks of Santo Domingo de Silos',
-          'Ideal for prayer, Adoration, and quiet reflection',
-        ],
-      },
-      {
-        name: 'Taizé',
-        note: 'Simple, repetitive chants widely used in Catholic prayer and youth ministry.',
-        href: 'https://www.taize.fr/en',
-        display: 'app',
-        category: 'Music',
-        description:
-          'The Taizé Community is an ecumenical Christian monastic community in Burgundy, France. Their chants — short, repeated phrases sung meditatively — have become central to Catholic prayer services, evening prayer, and youth gatherings around the world.',
-        details: [
-          'Available on Spotify, Apple Music, and YouTube',
-          'Often used in Adoration and evening prayer',
-          'Search "Taizé" on any streaming platform',
-        ],
-      },
-      {
-        name: 'Matt Maher',
-        note: 'Contemporary Catholic worship music rooted in Scripture and the sacraments.',
-        href: 'https://www.mattmahermusic.com/',
-        display: 'app',
-        category: 'Music',
-        description:
-          'Matt Maher is one of the most prominent contemporary Catholic musician-songwriters, known for songs like "Lord, I Need You," "Christ Is Risen," and "Your Grace Is Enough." His music is accessible, Scripture-rooted, and widely sung in Catholic parishes.',
-        details: [
-          'Available on Spotify, Apple Music, and more',
-          'Songs are widely used in Catholic Masses and youth ministry',
-          'Albums include All the People Said Amen and Alive Again',
-        ],
-      },
       {
         name: 'The Pillar Podcast',
         note: 'Smart, candid conversation on news and life in the Catholic Church.',
@@ -673,6 +626,54 @@ export const resourceGroups: ResourceGroup[] = [
           'Hosted by veteran Catholic journalists',
           'Available on Apple Podcasts, Spotify, and wherever you listen',
         ],
+      },
+    ],
+  },
+  {
+    id: 'listen',
+    label: 'Listen',
+    kind: 'listen',
+    items: [
+      {
+        name: 'Catholic Instrumental Music',
+        note: 'A curated Spotify playlist — perfect for prayer, study, or quiet reflection.',
+        display: 'app',
+        category: 'Playlist',
+        description:
+          'A curated playlist of instrumental Catholic music — gentle, reverent, and suited for prayer, reading, or any moment that calls for peaceful background music. No lyrics, just music that creates space for God.',
+        details: [
+          'Available on Spotify',
+          'No lyrics — ideal for focused prayer or study',
+          'Curated from classical and contemporary Catholic composers',
+        ],
+        spotifyEmbedSrc: 'https://open.spotify.com/embed/playlist/6BgguFfzqSlE8FJ2SmvdPv?utm_source=generator&theme=0&si=2d10c99ea1f44b64',
+      },
+      {
+        name: 'Gregorian Chant',
+        note: 'Ancient sacred music of the Church — meditative, prayerful, and timeless.',
+        display: 'app',
+        category: 'Music',
+        description:
+          'Gregorian chant is the ancient liturgical music of the Western Church, developed over centuries of monastic prayer. Its unaccompanied, melodic character creates a contemplative atmosphere unlike anything in modern music. The Benedictine Monks of Santo Domingo de Silos — whose 1994 album became an unexpected worldwide sensation — are one of the finest places to start.',
+        details: [
+          'Available on Spotify, Apple Music, and YouTube',
+          'Ideal for prayer, Adoration, and quiet reflection',
+        ],
+        spotifyEmbedSrc: 'https://open.spotify.com/embed/album/3z2Bf8Ao1OXneiqQzX8acG?utm_source=generator&theme=0&si=3bf486790b444ad4',
+      },
+      {
+        name: 'The Chosen Soundtrack',
+        note: 'The official score from the series — cinematic, moving, and deeply prayerful.',
+        display: 'app',
+        category: 'Music',
+        description:
+          'The official soundtrack from The Chosen series, composed to match the emotional and spiritual depth of the show. Moving and cinematic, it works just as well as a companion to prayer or quiet reflection as it does to the series itself.',
+        details: [
+          'Available on Spotify and Apple Music',
+          'Multiple volumes available as the series grows',
+          'A natural companion to watching the series',
+        ],
+        spotifyEmbedSrc: 'https://open.spotify.com/embed/album/0zGDFDQoP4LAmkoDtRKj1P?utm_source=generator&theme=0&si=748500268e20487c',
       },
     ],
   },
