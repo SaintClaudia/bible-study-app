@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
-import { MassTab } from '@/components/mass/mass-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
 import { ResourcesTab } from '@/components/resources/resources-tab'
@@ -14,7 +13,7 @@ import { MiniPlayer } from '@/components/music-player'
 import { useSpotifySDK } from '@/hooks/use-spotify-sdk'
 import type { ResourceItem } from '@/lib/content'
 
-type Tab = 'readings' | 'mass' | 'formation' | 'journey' | 'resources'
+type Tab = 'readings' | 'formation' | 'journey' | 'resources'
 
 function IconBible({ className }: { className?: string }) {
   return (
@@ -28,20 +27,6 @@ function IconBible({ className }: { className?: string }) {
   )
 }
 
-function IconChurch({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <line x1="12" y1="1" x2="12" y2="5"/>
-      <line x1="10" y1="3" x2="14" y2="3"/>
-      <polyline points="3,11 12,5 21,11"/>
-      <line x1="3" y1="11" x2="3" y2="21"/>
-      <line x1="21" y1="11" x2="21" y2="21"/>
-      <line x1="3" y1="21" x2="21" y2="21"/>
-      <path d="M9 21v-6a3 3 0 016 0v6"/>
-      <circle cx="12" cy="13" r="2"/>
-    </svg>
-  )
-}
 
 function IconDove({ className }: { className?: string }) {
   return (
@@ -79,7 +64,6 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'journey', label: 'Journey', icon: IconCompass },
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
-  { id: 'mass', label: 'Mass', icon: IconChurch },
   { id: 'resources', label: 'Resources', icon: IconLibrary },
 ]
 
@@ -87,7 +71,7 @@ export function AppShell() {
   // Tab / UI state
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
-    journey: 0, formation: 0, readings: 0, mass: 0, resources: 0,
+    journey: 0, formation: 0, readings: 0, resources: 0,
   })
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
@@ -181,8 +165,7 @@ export function AppShell() {
 
         <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-56' : 'pb-32')}>
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
-          {activeTab === 'mass' && <MassTab key={tabKeys.mass} onEnterChurchMode={() => setChurchMode(true)} />}
-          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} />}
+          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onEnterChurchMode={() => setChurchMode(true)} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} />}
           {activeTab === 'resources' && <ResourcesTab key={tabKeys.resources} />}
         </main>
