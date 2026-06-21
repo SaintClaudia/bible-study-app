@@ -1,9 +1,9 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, BookOpen, Check, ChevronUp, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
-import { useMusicPlayer } from '@/components/music-player-context'
+import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   watch: Play,
@@ -66,8 +66,13 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
   const isBook = item.display === 'book'
   const isHero = item.display === 'hero'
   const isApp = item.display === 'app'
-  const { nowPlaying, setPlayerExpanded } = useMusicPlayer()
-  const isNowPlaying = !!item.spotifyEmbedSrc && item.spotifyEmbedSrc === nowPlaying?.spotifyEmbedSrc
+  const { setNowPlaying, isSpotifyReady, isPremium, playSpotify } = useMusicPlayer()
+
+  const handleSDKPlay = () => {
+    setNowPlaying(item)
+    const uri = item.spotifyEmbedSrc ? embedUrlToUri(item.spotifyEmbedSrc) : null
+    if (uri) playSpotify(uri)
+  }
 
   return (
     <article className="flex flex-col gap-5">
@@ -176,16 +181,29 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         </section>
       )}
 
-      {/* Spotify player — shown in the persistent mini-player at the bottom */}
-      {isNowPlaying && (
+      {/* Spotify — SDK play button (Premium) or inline embed (everyone else) */}
+      {item.spotifyEmbedSrc && isSpotifyReady && isPremium === true && (
         <button
           type="button"
-          onClick={() => setPlayerExpanded(true)}
+          onClick={handleSDKPlay}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
         >
-          <ChevronUp className="h-4 w-4" aria-hidden />
-          Open Player
+          <Play className="h-4 w-4" fill="currentColor" aria-hidden />
+          Play
         </button>
+      )}
+
+      {item.spotifyEmbedSrc && !(isSpotifyReady && isPremium === true) && (
+        <iframe
+          src={item.spotifyEmbedSrc}
+          width="100%"
+          height="352"
+          frameBorder={0}
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          allowFullScreen
+          style={{ borderRadius: '12px' }}
+        />
       )}
 
       {/* Page note */}
@@ -335,14 +353,15 @@ export function ResourcesTab() {
 
   const openItem = useCallback((item: ResourceItem) => {
     setActiveItem(item)
-    if (item.spotifyEmbedSrc) setNowPlaying(item)
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [setNowPlaying])
-
-  const closeItem = useCallback(() => {
-    setActiveItem(null)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
+
+  // When leaving a listen item's detail page, hand it off to the mini-player
+  const closeItem = useCallback(() => {
+    if (activeItem?.spotifyEmbedSrc) setNowPlaying(activeItem)
+    setActiveItem(null)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [activeItem, setNowPlaying])
 
   if (activeItem) {
     return <ResourceDetail item={activeItem} onBack={closeItem} />
