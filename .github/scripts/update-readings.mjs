@@ -12,7 +12,7 @@
 
 import { chromium } from 'playwright'
 import Anthropic from '@anthropic-ai/sdk'
-import { USCCB, SectionType } from 'catholic-mass-readings'
+import { USCCB, SectionType, readingHeader } from 'catholic-mass-readings'
 import { writeFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
@@ -108,7 +108,7 @@ async function main() {
     const r = section.readings?.[0]
     if (!r) continue
 
-    readings.push({ label, reference: r.citation ?? '', fullText: r.text ?? '', summary: '' })
+    readings.push({ label, reference: readingHeader(r), fullText: r.text ?? '', summary: '' })
     if (section.type === SectionType.READING) readingIndex++
   }
 
