@@ -16,17 +16,6 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
     false,
   )
 
-  const sunday = (() => {
-    const today = new Date()
-    const day = today.getDay()
-    const s = new Date(today)
-    s.setDate(today.getDate() + (day === 0 ? 0 : 7 - day))
-    return s
-  })()
-
-  const dateStr = sunday.toLocaleDateString('en-US', {
-    weekday: 'long', month: 'long', day: 'numeric',
-  })
 
   useEffect(() => {
     fetchSundayReadings().then((d) => {
@@ -65,7 +54,11 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
 
       {/* Date + Title */}
       <section>
-        <p className="text-sm text-muted-foreground">{dateStr}</p>
+        <p className="text-sm text-muted-foreground">
+          {new Date(data.date + 'T12:00:00Z').toLocaleDateString('en-US', {
+            weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC',
+          })}
+        </p>
         <h1 className="mt-1 font-heading text-3xl font-semibold leading-tight text-foreground">
           {data.liturgicalDay.replace(/\s+in\s+Ordinary\s+Time/i, '')}
         </h1>
