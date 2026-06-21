@@ -12,7 +12,8 @@
 
 import { chromium } from 'playwright'
 import Anthropic from '@anthropic-ai/sdk'
-import { USCCB, SectionType, readingHeader } from 'catholic-mass-readings'
+import { USCCB, SectionType, readingHeader, sectionTypeFromHeader } from 'catholic-mass-readings'
+import { load as cheerioLoad } from 'cheerio'
 import { writeFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
@@ -49,6 +50,21 @@ function toUSCCBDateStr(date) {
 
 function toISODateStr(date) {
   return date.toISOString().split('T')[0]
+}
+
+// ── Text extraction with preserved line breaks ────────────────────────────────
+
+function extractFormattedText($, container) {
+  const contentBody = $(container).find('.content-body').first()
+  if (!contentBody.length) return ''
+  const clone = contentBody.clone()
+  clone.find('br').replaceWith('\n')
+  return clone.text()
+    .split('\n')
+    .map(line => line.replace(/[ \t]+/g, ' ').trim())
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 }
 
 // ── Section → label mapping ───────────────────────────────────────────────────
@@ -99,16 +115,39 @@ async function main() {
   console.log(`  Sections: ${mass.sections.map(s => `${s.header}(${s.type})`).join(', ')}`)
 
   // 3. Build readings array, skipping ALLELUIA / SEQUENCE / ALTERNATIVE
+  // Use cheerio directly to extract text with USCCB line breaks preserved —
+  // the package's cleanText() collapses all whitespace which destroys formatting.
+  const $ = cheerioLoad(html)
   const readings = []
   let readingIndex = 0
+  let containerIndex = 0
+  const containers = $('.container').toArray()
+
   for (const section of mass.sections) {
     const label = sectionToLabel(section.type, readingIndex)
-    if (!label) continue
+
+    // Advance containerIndex to the matching container for this section
+    while (containerIndex < containers.length) {
+      const headerText = $(containers[containerIndex]).find('.name').first().text().trim()
+      if (sectionTypeFromHeader(headerText) === section.type) break
+      containerIndex++
+    }
+
+    if (!label) {
+      containerIndex++
+      if (section.type === SectionType.READING) readingIndex++
+      continue
+    }
 
     const r = section.readings?.[0]
-    if (!r) continue
+    if (!r) { containerIndex++; if (section.type === SectionType.READING) readingIndex++; continue }
 
-    readings.push({ label, reference: readingHeader(r), fullText: r.text ?? '', summary: '' })
+    const fullText = containerIndex < containers.length
+      ? extractFormattedText($, containers[containerIndex])
+      : r.text ?? ''
+
+    readings.push({ label, reference: readingHeader(r), fullText, summary: '' })
+    containerIndex++
     if (section.type === SectionType.READING) readingIndex++
   }
 
