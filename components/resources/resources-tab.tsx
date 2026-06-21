@@ -194,16 +194,18 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
       )}
 
       {item.spotifyEmbedSrc && !(isSpotifyReady && isPremium === true) && (
-        <iframe
-          src={item.spotifyEmbedSrc}
-          width="100%"
-          height="352"
-          frameBorder={0}
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          allowFullScreen
-          style={{ borderRadius: '12px' }}
-        />
+        <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
+          <iframe
+            src={item.spotifyEmbedSrc}
+            width="100%"
+            height="352"
+            frameBorder={0}
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            allowFullScreen
+            style={{ display: 'block', width: '100%' }}
+          />
+        </div>
       )}
 
       {/* Page note */}
