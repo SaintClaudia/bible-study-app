@@ -3,6 +3,7 @@
 import { useCallback, useState } from 'react'
 import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
+import { useMusicPlayer } from '@/components/music-player-context'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   watch: Play,
@@ -178,7 +179,7 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         <iframe
           src={item.spotifyEmbedSrc}
           width="100%"
-          height="152"
+          height="352"
           frameBorder={0}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
@@ -330,11 +331,13 @@ function SiteCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void
 
 export function ResourcesTab() {
   const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
+  const { setNowPlaying } = useMusicPlayer()
 
   const openItem = useCallback((item: ResourceItem) => {
     setActiveItem(item)
+    if (item.spotifyEmbedSrc) setNowPlaying(item)
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [])
+  }, [setNowPlaying])
 
   const closeItem = useCallback(() => {
     setActiveItem(null)

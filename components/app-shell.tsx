@@ -9,6 +9,8 @@ import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
 import { ResourcesTab } from '@/components/resources/resources-tab'
 import { ChurchMode } from '@/components/mass/church-mode'
+import { MusicPlayerProvider, useMusicPlayer } from '@/components/music-player-context'
+import { MiniPlayer } from '@/components/music-player'
 
 type Tab = 'readings' | 'mass' | 'formation' | 'journey' | 'resources'
 
@@ -79,12 +81,13 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'resources', label: 'Resources', icon: IconLibrary },
 ]
 
-export function AppShell() {
+function AppShellInner() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [resourcesKey, setResourcesKey] = useState(0)
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
   const lastScrollY = useRef(0)
+  const { nowPlaying } = useMusicPlayer()
 
   // Read #tab hash from URL on load
   useEffect(() => {
@@ -146,13 +149,15 @@ export function AppShell() {
         style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }}
       />
 
-      <main id="main-content" className="flex-1 px-5 pb-32 pt-4">
+      <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32')}>
         {activeTab === 'readings' && <ReadingsTab />}
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}
         {activeTab === 'journey' && <JourneyTab />}
         {activeTab === 'resources' && <ResourcesTab key={resourcesKey} />}
       </main>
+
+      <MiniPlayer />
 
       <nav
         aria-label="Primary"
@@ -193,5 +198,13 @@ export function AppShell() {
       </nav>
 
     </div>
+  )
+}
+
+export function AppShell() {
+  return (
+    <MusicPlayerProvider>
+      <AppShellInner />
+    </MusicPlayerProvider>
   )
 }
