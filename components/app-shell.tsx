@@ -86,7 +86,9 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
 export function AppShell() {
   // Tab / UI state
   const [activeTab, setActiveTab] = useState<Tab>('readings')
-  const [resourcesKey, setResourcesKey] = useState(0)
+  const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
+    journey: 0, formation: 0, readings: 0, mass: 0, resources: 0,
+  })
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
   const lastScrollY = useRef(0)
@@ -178,11 +180,11 @@ export function AppShell() {
         <div className="flex-shrink-0 bg-background" style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }} />
 
         <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-56' : 'pb-32')}>
-          {activeTab === 'readings' && <ReadingsTab />}
-          {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
-          {activeTab === 'formation' && <FormationTab />}
-          {activeTab === 'journey' && <JourneyTab />}
-          {activeTab === 'resources' && <ResourcesTab key={resourcesKey} />}
+          {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
+          {activeTab === 'mass' && <MassTab key={tabKeys.mass} onEnterChurchMode={() => setChurchMode(true)} />}
+          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} />}
+          {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} />}
+          {activeTab === 'resources' && <ResourcesTab key={tabKeys.resources} />}
         </main>
 
         <MiniPlayer />
@@ -206,8 +208,9 @@ export function AppShell() {
                   key={tab.id}
                   type="button"
                   onClick={() => {
-                    if (tab.id === 'resources' && activeTab === 'resources') {
-                      setResourcesKey(k => k + 1)
+                    if (tab.id === activeTab) {
+                      // Re-tapping the active tab resets it to the list view
+                      setTabKeys(k => ({ ...k, [tab.id]: k[tab.id] + 1 }))
                     } else {
                       setActiveTab(tab.id)
                     }
