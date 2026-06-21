@@ -9,7 +9,7 @@ import { JourneyTab } from '@/components/journey/journey-tab'
 import { ResourcesTab } from '@/components/resources/resources-tab'
 import { ChurchMode } from '@/components/mass/church-mode'
 import { MusicPlayerContext, embedUrlToUri } from '@/components/music-player-context'
-import { MiniPlayer } from '@/components/music-player'
+import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
 import { useSpotifySDK } from '@/hooks/use-spotify-sdk'
 import type { ResourceItem } from '@/lib/content'
@@ -175,7 +175,8 @@ export function AppShell() {
         {/* Spacer below fixed header */}
         <div className="flex-shrink-0 bg-background" style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }} />
 
-        <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-56' : 'pb-32')}>
+        {/* pb accounts for: nav (~70px) + mini-player bar (~65px) when active + safe-area buffer */}
+        <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32')}>
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onEnterChurchMode={() => setChurchMode(true)} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} />}
@@ -183,6 +184,7 @@ export function AppShell() {
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>
 
+        {/* Expanded player overlay — rendered outside nav so it covers the full screen */}
         <MiniPlayer />
 
         <nav
@@ -192,6 +194,9 @@ export function AppShell() {
             !barsVisible && 'translate-y-full'
           )}
         >
+          {/* Collapsed mini-player bar — inside nav so it hides with it on scroll */}
+          <MiniPlayerBar />
+
           <div
             className="mx-auto flex max-w-2xl items-stretch justify-around px-2 pt-2"
             style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
@@ -205,7 +210,6 @@ export function AppShell() {
                   type="button"
                   onClick={() => {
                     if (tab.id === activeTab) {
-                      // Re-tapping the active tab resets it to the list view
                       setTabKeys(k => ({ ...k, [tab.id]: k[tab.id] + 1 }))
                     } else {
                       setActiveTab(tab.id)
@@ -213,7 +217,7 @@ export function AppShell() {
                   }}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
-                    'flex flex-1 flex-col items-center gap-1 rounded-xl px-1 py-2 text-[11px] font-medium leading-tight transition-colors',
+                    'flex flex-1 flex-col items-center gap-1 rounded-xl px-1 py-2 text-[11px] font-medium leading-tight transition-colors active:opacity-60',
                     active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
