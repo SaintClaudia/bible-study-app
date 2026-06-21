@@ -395,11 +395,11 @@ export function ResourcesTab() {
           Resources
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          A few recommendations to watch, read, and explore as you grow in the faith.
+          A few recommendations to watch, read, and explore as you grow in the faith. For music, see the Listen tab.
         </p>
       </section>
 
-      {resourceGroups.map((group) => {
+      {resourceGroups.filter(g => g.kind !== 'listen').map((group) => {
         const Icon = groupIcons[group.kind]
         const heroItems = group.items.filter(i => i.display === 'hero')
         const appItems = group.items.filter(i => i.display === 'app')

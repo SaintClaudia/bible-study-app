@@ -10,10 +10,11 @@ import { ResourcesTab } from '@/components/resources/resources-tab'
 import { ChurchMode } from '@/components/mass/church-mode'
 import { MusicPlayerContext, embedUrlToUri } from '@/components/music-player-context'
 import { MiniPlayer } from '@/components/music-player'
+import { ListenTab } from '@/components/listen/listen-tab'
 import { useSpotifySDK } from '@/hooks/use-spotify-sdk'
 import type { ResourceItem } from '@/lib/content'
 
-type Tab = 'readings' | 'formation' | 'journey' | 'resources'
+type Tab = 'readings' | 'formation' | 'journey' | 'resources' | 'listen'
 
 function IconBible({ className }: { className?: string }) {
   return (
@@ -60,18 +61,29 @@ function IconLibrary({ className }: { className?: string }) {
   )
 }
 
+function IconHeadphones({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+      <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
+      <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+    </svg>
+  )
+}
+
 const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => React.ReactNode }[] = [
   { id: 'journey', label: 'Journey', icon: IconCompass },
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'resources', label: 'Resources', icon: IconLibrary },
+  { id: 'listen', label: 'Listen', icon: IconHeadphones },
 ]
 
 export function AppShell() {
   // Tab / UI state
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
-    journey: 0, formation: 0, readings: 0, resources: 0,
+    journey: 0, formation: 0, readings: 0, resources: 0, listen: 0,
   })
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
@@ -168,6 +180,7 @@ export function AppShell() {
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onEnterChurchMode={() => setChurchMode(true)} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} />}
           {activeTab === 'resources' && <ResourcesTab key={tabKeys.resources} />}
+          {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>
 
         <MiniPlayer />
