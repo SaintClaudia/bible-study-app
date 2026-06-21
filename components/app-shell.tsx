@@ -72,11 +72,11 @@ function IconHeadphones({ className }: { className?: string }) {
 }
 
 const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string }) => React.ReactNode }[] = [
-  { id: 'journey', label: 'Journey', icon: IconCompass },
+  { id: 'journey', label: 'Guide', icon: IconCompass },
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
-  { id: 'resources', label: 'Resources', icon: IconLibrary },
-  { id: 'listen', label: 'Listen', icon: IconHeadphones },
+  { id: 'resources', label: 'Discover', icon: IconLibrary },
+  { id: 'listen', label: 'Music', icon: IconHeadphones },
 ]
 
 export function AppShell() {
