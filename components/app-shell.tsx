@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
@@ -9,8 +9,10 @@ import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
 import { ResourcesTab } from '@/components/resources/resources-tab'
 import { ChurchMode } from '@/components/mass/church-mode'
-import { MusicPlayerProvider, useMusicPlayer } from '@/components/music-player-context'
+import { MusicPlayerContext, embedUrlToUri } from '@/components/music-player-context'
 import { MiniPlayer } from '@/components/music-player'
+import { useSpotifySDK } from '@/hooks/use-spotify-sdk'
+import type { ResourceItem } from '@/lib/content'
 
 type Tab = 'readings' | 'mass' | 'formation' | 'journey' | 'resources'
 
@@ -81,13 +83,29 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'resources', label: 'Resources', icon: IconLibrary },
 ]
 
-function AppShellInner() {
+export function AppShell() {
+  // Tab / UI state
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [resourcesKey, setResourcesKey] = useState(0)
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
   const lastScrollY = useRef(0)
-  const { nowPlaying } = useMusicPlayer()
+
+  // Music player state
+  const [nowPlaying, setNowPlayingRaw] = useState<ResourceItem | null>(null)
+  const [playerExpanded, setPlayerExpanded] = useState(false)
+
+  // Spotify SDK
+  const sdk = useSpotifySDK()
+
+  const setNowPlaying = useCallback((item: ResourceItem | null) => {
+    setNowPlayingRaw(item)
+    setPlayerExpanded(false)
+    if (item?.spotifyEmbedSrc && sdk.isReady && sdk.isPremium) {
+      const uri = embedUrlToUri(item.spotifyEmbedSrc)
+      if (uri) sdk.play(uri)
+    }
+  }, [sdk])
 
   // Read #tab hash from URL on load
   useEffect(() => {
@@ -117,58 +135,69 @@ function AppShellInner() {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
+    <MusicPlayerContext.Provider value={{
+      nowPlaying,
+      setNowPlaying,
+      playerExpanded,
+      setPlayerExpanded,
+      isSpotifyAuthenticated: sdk.isAuthenticated,
+      isSpotifyReady: sdk.isReady,
+      isPremium: sdk.isPremium,
+      currentTrack: sdk.currentTrack,
+      isPaused: sdk.isPaused,
+      playSpotify: sdk.play,
+      togglePlay: sdk.togglePlay,
+      nextTrack: sdk.nextTrack,
+      prevTrack: sdk.prevTrack,
+    }}>
+      <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 
-      {/* Fixed header — full width border, content max-width constrained */}
-      <header className={cn(
-        'fixed top-0 left-0 right-0 z-20 bg-background border-b border-border transition-transform duration-300',
-        !barsVisible && '-translate-y-full'
-      )}>
-        {/* Status bar safe area fill */}
-        <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
-        {/* Nav content constrained to max-width */}
-        <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
-                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
-                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
-              </svg>
+        {/* Fixed header */}
+        <header className={cn(
+          'fixed top-0 left-0 right-0 z-20 bg-background border-b border-border transition-transform duration-300',
+          !barsVisible && '-translate-y-full'
+        )}>
+          <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
+          <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
+                  <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
+                  <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
+                </svg>
+              </div>
+              <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
+                Bible Study
+              </span>
             </div>
-            <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
-              Bible Study
-            </span>
+            <ThemeToggle />
           </div>
-          <ThemeToggle />
-        </div>
-      </header>
+        </header>
 
-      {/* Spacer so content starts below the fixed header */}
-      <div
-        className="flex-shrink-0 bg-background"
-        style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }}
-      />
+        {/* Spacer below fixed header */}
+        <div className="flex-shrink-0 bg-background" style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }} />
 
-      <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-56' : 'pb-32')}>
-        {activeTab === 'readings' && <ReadingsTab />}
-        {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
-        {activeTab === 'formation' && <FormationTab />}
-        {activeTab === 'journey' && <JourneyTab />}
-        {activeTab === 'resources' && <ResourcesTab key={resourcesKey} />}
-      </main>
+        <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-56' : 'pb-32')}>
+          {activeTab === 'readings' && <ReadingsTab />}
+          {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
+          {activeTab === 'formation' && <FormationTab />}
+          {activeTab === 'journey' && <JourneyTab />}
+          {activeTab === 'resources' && <ResourcesTab key={resourcesKey} />}
+        </main>
 
-      <MiniPlayer />
+        <MiniPlayer />
 
-      <nav
-        aria-label="Primary"
-        className={cn(
-          'fixed inset-x-0 bottom-0 z-20 bg-background border-t border-border transition-transform duration-300',
-          !barsVisible && 'translate-y-full'
-        )}
-      >
-        <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 pt-2"
-          style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
+        <nav
+          aria-label="Primary"
+          className={cn(
+            'fixed inset-x-0 bottom-0 z-20 bg-background border-t border-border transition-transform duration-300',
+            !barsVisible && 'translate-y-full'
+          )}
         >
+          <div
+            className="mx-auto flex max-w-2xl items-stretch justify-around px-2 pt-2"
+            style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 8px)' }}
+          >
             {tabs.map((tab) => {
               const Icon = tab.icon
               const active = activeTab === tab.id
@@ -195,16 +224,9 @@ function AppShellInner() {
               )
             })}
           </div>
-      </nav>
+        </nav>
 
-    </div>
-  )
-}
-
-export function AppShell() {
-  return (
-    <MusicPlayerProvider>
-      <AppShellInner />
-    </MusicPlayerProvider>
+      </div>
+    </MusicPlayerContext.Provider>
   )
 }
