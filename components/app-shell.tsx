@@ -149,7 +149,7 @@ function AppShellInner() {
         style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }}
       />
 
-      <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32')}>
+      <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-56' : 'pb-32')}>
         {activeTab === 'readings' && <ReadingsTab />}
         {activeTab === 'mass' && <MassTab onEnterChurchMode={() => setChurchMode(true)} />}
         {activeTab === 'formation' && <FormationTab />}

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronUp, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer } from '@/components/music-player-context'
 
@@ -66,6 +66,8 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
   const isBook = item.display === 'book'
   const isHero = item.display === 'hero'
   const isApp = item.display === 'app'
+  const { nowPlaying, setPlayerExpanded } = useMusicPlayer()
+  const isNowPlaying = !!item.spotifyEmbedSrc && item.spotifyEmbedSrc === nowPlaying?.spotifyEmbedSrc
 
   return (
     <article className="flex flex-col gap-5">
@@ -174,18 +176,16 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         </section>
       )}
 
-      {/* Spotify embed */}
-      {item.spotifyEmbedSrc && (
-        <iframe
-          src={item.spotifyEmbedSrc}
-          width="100%"
-          height="352"
-          frameBorder={0}
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          allowFullScreen
-          style={{ borderRadius: '12px' }}
-        />
+      {/* Spotify player — shown in the persistent mini-player at the bottom */}
+      {isNowPlaying && (
+        <button
+          type="button"
+          onClick={() => setPlayerExpanded(true)}
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
+        >
+          <ChevronUp className="h-4 w-4" aria-hidden />
+          Open Player
+        </button>
       )}
 
       {/* Page note */}
