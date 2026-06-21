@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
@@ -351,12 +351,31 @@ export function ResourcesTab() {
   const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
   const { setNowPlaying } = useMusicPlayer()
 
-  const openItem = useCallback((item: ResourceItem) => {
-    setActiveItem(item)
-    window.scrollTo({ top: 0, behavior: 'instant' })
+  // Refs so the unmount cleanup always sees the latest values without
+  // re-registering the effect (which would miss the final render before unmount)
+  const activeItemRef = useRef(activeItem)
+  const setNowPlayingRef = useRef(setNowPlaying)
+  useEffect(() => { activeItemRef.current = activeItem }, [activeItem])
+  useEffect(() => { setNowPlayingRef.current = setNowPlaying }, [setNowPlaying])
+
+  // Hand off to mini-player whenever this component is torn down —
+  // covers both "tap another tab" and "re-tap Resources tab" (key reset)
+  useEffect(() => {
+    return () => {
+      if (activeItemRef.current?.spotifyEmbedSrc) {
+        setNowPlayingRef.current(activeItemRef.current)
+      }
+    }
   }, [])
 
-  // When leaving a listen item's detail page, hand it off to the mini-player
+  const openItem = useCallback((item: ResourceItem) => {
+    // Clear any previous mini-player so it doesn't bleed into the new detail page
+    if (item.spotifyEmbedSrc) setNowPlaying(null)
+    setActiveItem(item)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [setNowPlaying])
+
+  // When leaving a listen item's detail via the back link, hand it to mini-player
   const closeItem = useCallback(() => {
     if (activeItem?.spotifyEmbedSrc) setNowPlaying(activeItem)
     setActiveItem(null)
