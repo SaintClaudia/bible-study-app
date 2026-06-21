@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowLeft, Check, Play, Share2 } from 'lucide-react'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
+import { Music2 } from 'lucide-react'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
@@ -41,12 +42,18 @@ function ShareButton({ item }: { item: ResourceItem }) {
 // ── Detail view ────────────────────────────────────────────────
 
 function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void }) {
-  const { setNowPlaying, isSpotifyReady, isPremium, playSpotify } = useMusicPlayer()
+  const { setNowPlaying, setPlayerExpanded, isSpotifyReady, isPremium, playSpotify } = useMusicPlayer()
 
-  const handleSDKPlay = () => {
+  // One tap plays: set mini-player + expand it full-screen.
+  // The mini-player iframe lives in AppShell and never unmounts, so
+  // navigating to other tabs won't restart the music.
+  const handlePlay = () => {
     setNowPlaying(item)
-    const uri = item.spotifyEmbedSrc ? embedUrlToUri(item.spotifyEmbedSrc) : null
-    if (uri) playSpotify(uri)
+    setPlayerExpanded(true)
+    if (isSpotifyReady && isPremium === true) {
+      const uri = item.spotifyEmbedSrc ? embedUrlToUri(item.spotifyEmbedSrc) : null
+      if (uri) playSpotify(uri)
+    }
   }
 
   return (
@@ -61,7 +68,7 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
       </button>
 
       {/* Album art */}
-      {item.image && (
+      {item.image ? (
         <div className="flex justify-center">
           <img
             src={item.image}
@@ -69,6 +76,12 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
             className="w-56 h-56 rounded-2xl object-cover"
             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.14)' }}
           />
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          <div className="w-56 h-56 rounded-2xl bg-secondary flex items-center justify-center">
+            <Music2 className="h-16 w-16 text-muted-foreground" />
+          </div>
         </div>
       )}
 
@@ -112,31 +125,16 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
         </section>
       )}
 
-      {/* Player — SDK button or inline embed */}
-      {item.spotifyEmbedSrc && isSpotifyReady && isPremium === true && (
+      {/* Single play button — opens the persistent mini-player full-screen */}
+      {item.spotifyEmbedSrc && (
         <button
           type="button"
-          onClick={handleSDKPlay}
+          onClick={handlePlay}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
         >
           <Play className="h-4 w-4" fill="currentColor" aria-hidden />
           Play
         </button>
-      )}
-
-      {item.spotifyEmbedSrc && !(isSpotifyReady && isPremium === true) && (
-        <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-          <iframe
-            src={item.spotifyEmbedSrc}
-            width="100%"
-            height="352"
-            frameBorder={0}
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            allowFullScreen
-            style={{ display: 'block', width: '100%' }}
-          />
-        </div>
       )}
 
       <ShareButton item={item} />
@@ -164,10 +162,9 @@ export function ListenTab() {
   }, [])
 
   const openItem = useCallback((item: ResourceItem) => {
-    if (item.spotifyEmbedSrc) setNowPlaying(null)
     setActiveItem(item)
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [setNowPlaying])
+  }, [])
 
   const closeItem = useCallback(() => {
     if (activeItem?.spotifyEmbedSrc) setNowPlaying(activeItem)
