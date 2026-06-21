@@ -2,10 +2,8 @@ name: Update Sunday Readings
 
 on:
   schedule:
-    # 5:00 pm CDT (UTC-5, Mar–Nov): 22:00 UTC
+    # 5:00 pm CDT (summer) / 4:00 pm CST (winter)
     - cron: '0 22 * * 0'
-    # 5:00 pm CST (UTC-6, Nov–Mar): 23:00 UTC
-    - cron: '0 23 * * 0'
   workflow_dispatch:
     inputs:
       date:
