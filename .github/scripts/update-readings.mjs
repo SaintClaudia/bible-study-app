@@ -31,8 +31,9 @@ function getTargetSunday() {
   }
   const now = new Date()
   const day = now.getUTCDay() // 0 = Sunday
-  // Stay on today if it's Sunday, otherwise advance to the next Sunday
-  const daysUntilSunday = day === 0 ? 0 : 7 - day
+  // Always advance to the upcoming Sunday (next week when today is Sunday,
+  // since the action fires Sunday afternoon after Mass)
+  const daysUntilSunday = day === 0 ? 7 : 7 - day
   const sunday = new Date(now)
   sunday.setUTCDate(now.getUTCDate() + daysUntilSunday)
   sunday.setUTCHours(12, 0, 0, 0)
