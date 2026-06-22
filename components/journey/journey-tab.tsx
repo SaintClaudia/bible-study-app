@@ -49,7 +49,9 @@ export function JourneyTab() {
     return (
       <div className="-mx-5 -mt-4">
         {/* Hero */}
-        <div className="relative h-52 bg-gradient-to-b from-[#1e3a5f] via-[#2a4f82] to-[#162040]">
+        <div className="relative h-52 overflow-hidden bg-neutral-900">
+          <Image src={qa.image} alt="" fill className="object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50" />
           <button
             type="button"
             onClick={back}
@@ -170,7 +172,9 @@ export function JourneyTab() {
     if (!item) return null
     return (
       <div className="-mx-5 -mt-4">
-        <div className="relative h-44 bg-gradient-to-b from-neutral-700 via-neutral-800 to-neutral-900">
+        <div className="relative h-44 overflow-hidden bg-neutral-900">
+          <Image src={item.image} alt="" fill className="object-cover object-center" />
+          <div className="absolute inset-0 bg-black/30" />
           <button
             type="button"
             onClick={back}
@@ -216,39 +220,53 @@ export function JourneyTab() {
     const item = goodToKnowItems.find((g) => g.id === view.id)
     if (!item) return null
     return (
-      <div className="flex flex-col gap-5 pt-2">
-        <button
-          type="button"
-          onClick={back}
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
-          Guide
-        </button>
-        {item.icon && (
-          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-secondary p-2">
-            <Image
-              src={item.icon}
-              alt=""
-              width={48}
-              height={48}
-              className="h-full w-full object-contain dark:invert"
-            />
-          </div>
-        )}
-        <div>
-          <h1 className="font-heading text-3xl font-semibold leading-tight text-foreground">
-            {item.title}
-          </h1>
-          <p className="mt-1.5 text-base text-muted-foreground">{item.subtitle}</p>
+      <div className="-mx-5 -mt-4">
+        <div className="relative h-44 overflow-hidden bg-neutral-900">
+          <Image src={item.image} alt="" fill className="object-cover object-center" />
+          <div className="absolute inset-0 bg-black/30" />
+          <button
+            type="button"
+            onClick={back}
+            className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-black/40 px-3 py-1.5 text-white backdrop-blur-sm"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            <span className="text-[10px] tracking-[0.2em] opacity-60">···</span>
+          </button>
         </div>
-        <div className="flex flex-col gap-4">
-          {item.body.map((para, i) => (
-            <p key={i} className="text-base leading-relaxed text-foreground/80">
-              {para}
-            </p>
-          ))}
+        <div className="flex flex-col gap-5 px-5 py-6">
+          {item.icon && (
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-secondary p-2">
+              <Image
+                src={item.icon}
+                alt=""
+                width={36}
+                height={36}
+                className="h-full w-full object-contain dark:invert"
+              />
+            </div>
+          )}
+          <div>
+            <h1 className="font-heading text-3xl font-semibold leading-tight text-foreground">
+              {item.title}
+            </h1>
+            <p className="mt-1.5 text-base text-muted-foreground">{item.subtitle}</p>
+          </div>
+          <div className="flex flex-col gap-4">
+            {item.body.map((para, i) => (
+              <p key={i} className="text-base leading-relaxed text-foreground/80">
+                {para}
+              </p>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={back}
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
+            Back to all topics
+          </button>
         </div>
       </div>
     )
