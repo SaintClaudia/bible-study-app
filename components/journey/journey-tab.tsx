@@ -64,7 +64,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
             <span className="text-[10px] tracking-[0.2em] opacity-60">···</span>
           </button>
           <div
-            className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/40 px-3.5 py-1.5 text-xs text-white backdrop-blur-sm"
+            className="absolute right-4 whitespace-nowrap rounded-full bg-black/40 px-3.5 py-1.5 text-xs text-white backdrop-blur-sm"
             style={{ top: 'calc(env(safe-area-inset-top) + 16px)' }}
           >
             {exploredCount} of {quickAnswers.length} explored
