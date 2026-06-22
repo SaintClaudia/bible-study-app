@@ -27,7 +27,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
         setExplored((prev) => (prev.includes(v.id) ? prev : [...prev, v.id]))
       }
       setView(v)
-      onDetailChange?.(v.kind !== 'list')
+      onDetailChange?.(v.kind === 'qa' || v.kind === 'sh')
       window.scrollTo({ top: 0, behavior: 'instant' })
     },
     [setExplored, onDetailChange],
@@ -227,54 +227,39 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     const item = goodToKnowItems.find((g) => g.id === view.id)
     if (!item) return null
     return (
-      <div className="-mx-5 -mt-4">
-        <div className="relative h-56 overflow-hidden bg-neutral-900">
-          <Image src={item.image} alt="" fill className="object-cover object-center" />
-          <div className="absolute inset-0 bg-black/30" />
-          <button
-            type="button"
-            onClick={back}
-            className="absolute left-4 flex items-center gap-1 rounded-full bg-black/40 px-3 py-1.5 text-white backdrop-blur-sm"
-            style={{ top: 'calc(env(safe-area-inset-top) + 16px)' }}
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span className="text-[10px] tracking-[0.2em] opacity-60">···</span>
-          </button>
+      <div className="flex flex-col gap-5 pt-2">
+        <button
+          type="button"
+          onClick={back}
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
+          Guide
+        </button>
+        {item.icon && (
+          <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-secondary p-2">
+            <Image
+              src={item.icon}
+              alt=""
+              width={36}
+              height={36}
+              className="h-full w-full object-contain dark:invert"
+            />
+          </div>
+        )}
+        <div>
+          <h1 className="font-heading text-3xl font-semibold leading-tight text-foreground">
+            {item.title}
+          </h1>
+          <p className="mt-1.5 text-base text-muted-foreground">{item.subtitle}</p>
         </div>
-        <div className="flex flex-col gap-5 px-5 py-6">
-          {item.icon && (
-            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-secondary p-2">
-              <Image
-                src={item.icon}
-                alt=""
-                width={36}
-                height={36}
-                className="h-full w-full object-contain dark:invert"
-              />
-            </div>
-          )}
-          <div>
-            <h1 className="font-heading text-3xl font-semibold leading-tight text-foreground">
-              {item.title}
-            </h1>
-            <p className="mt-1.5 text-base text-muted-foreground">{item.subtitle}</p>
-          </div>
-          <div className="flex flex-col gap-4">
-            {item.body.map((para, i) => (
-              <p key={i} className="text-base leading-relaxed text-foreground/80">
-                {para}
-              </p>
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={back}
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
-            Back to all topics
-          </button>
+        <div className="flex flex-col gap-4">
+          {item.body.map((para, i) => (
+            <p key={i} className="text-base leading-relaxed text-foreground/80">
+              {para}
+            </p>
+          ))}
         </div>
       </div>
     )
