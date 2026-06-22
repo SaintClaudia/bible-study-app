@@ -202,8 +202,8 @@ export const goodToKnowItems: GoodToKnowItem[] = [
   {
     id: 'which-bible',
     icon: '/bible.png',
-    title: 'Which Bible should I use?',
-    subtitle: "NABRE — but it's not required.",
+    title: 'Which Bible to use?',
+    subtitle: "(NABRE) — but it's not required.",
     body: [
       "The Catholic Church in the United States uses the New American Bible, Revised Edition (NABRE) for Mass readings. If you want to follow along with what's proclaimed at Mass, NABRE is the version to reach for.",
       "If you already have a Bible — or if someone gives you one — use it. Any Bible is better than no Bible. You can always compare translations later.",
