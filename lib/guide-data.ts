@@ -157,7 +157,7 @@ export const startHereItems: StartHereItem[] = [
     title: 'What actually happens at OCIA?',
     subtitle: 'A weekly conversation, not a test.',
     isHero: true,
-    image: '/holy-spirit.png',
+    image: '/holy-bible.png',
     body: [
       "OCIA sessions are typically held once a week and last about an hour or two. You'll sit with a small group, hear a talk or a discussion, and have space to ask questions.",
       "There's no homework, no memorization required, and no performance expected. Sessions feel more like a guided conversation about faith than a lecture or a class.",
