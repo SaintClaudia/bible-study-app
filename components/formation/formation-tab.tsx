@@ -274,10 +274,10 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
   // ── Path list (overview) ───────────────────────────────────
 
   return (
-    <div className="flex flex-col gap-6">
-      <section>
-        <h1 className="font-heading text-3xl font-semibold text-balance text-foreground">Formation</h1>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+    <div className="flex flex-col gap-8">
+      <section className="pt-12">
+        <h1 className="font-heading text-[3.25rem] font-normal leading-[1.05] tracking-[-0.01em] text-balance text-foreground">Formation</h1>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
           Learn the Catholic faith before or while you're on your journey towards your sacraments. Short lessons, one step at a time.
         </p>
       </section>
