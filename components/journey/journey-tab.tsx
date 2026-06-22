@@ -338,7 +338,7 @@ export function JourneyTab() {
                   src={i === 0 ? '/communion.png' : '/christ.png'}
                   alt=""
                   fill
-                  className="object-cover object-top"
+                  className={i === 0 ? 'object-cover object-top' : 'object-cover object-center'}
                 />
               </div>
               <div className="p-3">
