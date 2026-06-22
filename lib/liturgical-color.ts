@@ -13,7 +13,7 @@ export type LiturgicalColor = 'green' | 'violet' | 'white' | 'red' | 'rose'
 // Mid-tone values chosen to stay visible on both light and dark surfaces.
 // `white` shows as gold, since a white dot would vanish on a light pill.
 export const LITURGICAL_COLOR_HEX: Record<LiturgicalColor, string> = {
-  green: '#2E7D52', // Ordinary Time
+  green: '#00BD5A', // Ordinary Time
   violet: '#7C6BB0', // Advent, Lent
   white: '#C8A951', // Christmas, Easter, feasts of the Lord
   red: '#C0473C', // Pentecost, Palm Sunday, Good Friday, martyrs
