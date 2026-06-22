@@ -46,7 +46,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Do I have to become Catholic?',
     shortAnswer: 'No commitment',
     boldAnswer: 'No. Come to learn and do what feels right.',
-    image: '/sacred-heart.png',
+    image: '/glass.png',
     body: [
       "OCIA is an open process. You are never required to become Catholic. Many people explore the faith, ask their questions, and decide what feels right for them.",
       "Some go on to receive the sacraments at Easter. Others take more time, or simply keep learning. Either path is welcomed.",
