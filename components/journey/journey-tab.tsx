@@ -357,7 +357,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
               key={item.id}
               type="button"
               onClick={() => go({ kind: 'sh', id: item.id })}
-              className="w-full overflow-hidden rounded-2xl border border-border bg-card text-left active:opacity-60"
+              className="flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card text-left active:opacity-60"
             >
               <div className="relative h-36 w-full overflow-hidden sm:h-48">
                 <Image
