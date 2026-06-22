@@ -94,14 +94,14 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
           {/* Progress bar */}
           <div className="h-1 w-full overflow-hidden rounded-full bg-border">
             <div
-              className="h-full rounded-full bg-orange-600 transition-all duration-500"
+              className="h-full rounded-full transition-all duration-500" style={{ backgroundColor: '#FEAE86' }}
               style={{ width: `${(exploredCount / quickAnswers.length) * 100}%` }}
             />
           </div>
 
           {/* UP NEXT card */}
           <div className="rounded-2xl bg-neutral-900 p-5 dark:bg-neutral-800">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-orange-500">
+            <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
               Up Next · Quick Answer
             </p>
             <div className="mt-2.5 flex items-start justify-between gap-3">
@@ -129,7 +129,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
             <button
               type="button"
               onClick={() => go({ kind: 'qa', id: nextQa.id })}
-              className="text-sm font-medium text-orange-600 transition-opacity hover:opacity-70"
+              className="text-sm font-medium transition-opacity hover:opacity-70" style={{ color: '#FEAE86' }}
             >
               keep going →
             </button>
