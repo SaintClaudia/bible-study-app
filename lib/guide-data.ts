@@ -154,7 +154,7 @@ export const startHereItems: StartHereItem[] = [
     id: 'typical-session',
     label: 'WHAT TO EXPECT',
     title: "What's a typical session like?",
-    subtitle: 'A welcome, a topic, a conversation.',
+    subtitle: 'Welcome, topic, conversation.',
     isHero: false,
     body: [
       "Most sessions begin with a prayer or a brief moment of quiet. A leader or priest introduces a topic — it might be a sacrament, part of the Creed, a Scripture passage, or something from the liturgy.",
