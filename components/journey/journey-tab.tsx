@@ -27,7 +27,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
         setExplored((prev) => (prev.includes(v.id) ? prev : [...prev, v.id]))
       }
       setView(v)
-      onDetailChange?.(v.kind === 'qa' || v.kind === 'sh')
+      onDetailChange?.(v.kind !== 'list')
       window.scrollTo({ top: 0, behavior: 'instant' })
     },
     [setExplored, onDetailChange],
@@ -227,15 +227,14 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     const item = goodToKnowItems.find((g) => g.id === view.id)
     if (!item) return null
     return (
-      <div className="flex flex-col gap-5 pt-2">
+      <div className="flex flex-col gap-5" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 16px)' }}>
         <button
           type="button"
           onClick={back}
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex self-start items-center gap-1 rounded-full bg-secondary px-3 py-1.5 text-foreground"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
-          Guide
         </button>
         {item.icon && (
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-secondary p-2">
