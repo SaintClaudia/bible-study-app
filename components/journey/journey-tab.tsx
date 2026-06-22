@@ -262,11 +262,11 @@ export function JourneyTab() {
     <div className="flex flex-col gap-8 pb-4">
 
       {/* Title */}
-      <section>
-        <h1 className="font-heading text-4xl font-semibold leading-[1.1] text-foreground">
+      <section className="pt-6">
+        <h1 className="font-heading text-[3.25rem] font-semibold leading-[1.05] tracking-[-0.01em] text-foreground">
           Your guide<br />to OCIA
         </h1>
-        <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
           From what to expect to what you need to know about OCIA.
         </p>
       </section>
