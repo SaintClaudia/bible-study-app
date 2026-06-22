@@ -333,14 +333,14 @@ export function JourneyTab() {
               onClick={() => go({ kind: 'sh', id: item.id })}
               className="overflow-hidden rounded-2xl border border-border bg-card text-left active:opacity-60"
             >
-              <div
-                className={cn(
-                  'h-24',
-                  i === 0
-                    ? 'bg-gradient-to-br from-amber-700 via-amber-800 to-amber-950'
-                    : 'bg-gradient-to-br from-indigo-700 via-indigo-900 to-indigo-950',
-                )}
-              />
+              <div className="relative h-24 w-full overflow-hidden">
+                <Image
+                  src={i === 0 ? '/communion.png' : '/christ.png'}
+                  alt=""
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="p-3">
                 <p className="font-heading text-sm font-semibold leading-snug text-foreground">
                   {item.title}
