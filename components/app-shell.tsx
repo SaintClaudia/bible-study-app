@@ -152,7 +152,7 @@ export function AppShell() {
 
         {/* Fixed header */}
         <header className={cn(
-          'fixed top-0 left-0 right-0 z-20 bg-background border-b border-border transition-transform duration-300',
+          'fixed top-0 left-0 right-0 z-20 bg-background transition-transform duration-300',
           !barsVisible && '-translate-y-full'
         )}>
           <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />

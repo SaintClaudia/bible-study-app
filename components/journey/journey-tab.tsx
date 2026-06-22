@@ -314,8 +314,8 @@ export function JourneyTab() {
             <p className="text-[10px] font-semibold uppercase tracking-widest text-white/50">
               {heroItem.label}
             </p>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
-              <ArrowRight className="h-4 w-4 text-white" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
+              <ArrowRight className="h-4 w-4 text-neutral-900" />
             </div>
           </div>
           <h2 className="mt-3 font-heading text-2xl font-semibold leading-snug text-white">
