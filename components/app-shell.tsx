@@ -87,7 +87,13 @@ export function AppShell() {
   })
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
+  const [guideDetailOpen, setGuideDetailOpen] = useState(false)
   const lastScrollY = useRef(0)
+
+  // Reset detail mode whenever the active tab changes
+  useEffect(() => {
+    setGuideDetailOpen(false)
+  }, [activeTab])
 
   // Music player state
   const [nowPlaying, setNowPlayingRaw] = useState<ResourceItem | null>(null)
@@ -150,10 +156,10 @@ export function AppShell() {
     }}>
       <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 
-        {/* Fixed header */}
+        {/* Fixed header — hidden in guide detail views */}
         <header className={cn(
           'fixed top-0 left-0 right-0 z-20 bg-background transition-transform duration-300',
-          !barsVisible && '-translate-y-full'
+          (!barsVisible || guideDetailOpen) && '-translate-y-full'
         )}>
           <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
           <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
@@ -167,14 +173,21 @@ export function AppShell() {
           </div>
         </header>
 
-        {/* Spacer below fixed header */}
-        <div className="flex-shrink-0 bg-background" style={{ height: 'calc(env(safe-area-inset-top) + 72px)' }} />
+        {/* Spacer below fixed header — collapses when guide detail is open */}
+        <div
+          className="flex-shrink-0 bg-background transition-[height] duration-300"
+          style={{ height: guideDetailOpen ? '0px' : 'calc(env(safe-area-inset-top) + 72px)' }}
+        />
 
         {/* pb accounts for: nav (~70px) + mini-player bar (~65px) when active + safe-area buffer */}
-        <main id="main-content" className={cn('flex-1 px-5 pt-4', nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32')}>
+        <main id="main-content" className={cn(
+          'flex-1 px-5',
+          guideDetailOpen ? 'pt-0' : 'pt-4',
+          nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32'
+        )}>
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onEnterChurchMode={() => setChurchMode(true)} />}
-          {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} />}
+          {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} onDetailChange={setGuideDetailOpen} />}
           {activeTab === 'resources' && <ResourcesTab key={tabKeys.resources} />}
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>
