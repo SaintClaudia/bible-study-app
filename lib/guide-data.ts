@@ -40,7 +40,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'commitment',
     category: 'COMMITMENT',
     question: 'Do I have to become Catholic?',
-    shortAnswer: 'No, commitment-free',
+    shortAnswer: 'No commitment',
     boldAnswer: 'No. Come to learn and do what feels right.',
     body: [
       "OCIA is an open process. You are never required to become Catholic. Many people explore the faith, ask their questions, and decide what feels right for them.",
@@ -62,7 +62,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'baptism',
     category: 'BAPTISM',
     question: 'Do I need to be baptized?',
-    shortAnswer: 'Depends on your background',
+    shortAnswer: 'Depends on you',
     boldAnswer: 'It depends on where you are starting.',
     body: [
       "If you were never baptized, baptism will be the first sacrament you receive — usually at the Easter Vigil.",
@@ -73,7 +73,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'attendance',
     category: 'ATTENDANCE',
     question: 'Do I have to come every week?',
-    shortAnswer: 'Try to — but life happens',
+    shortAnswer: 'Come as you can',
     boldAnswer: 'Try to come regularly, but it is flexible.',
     body: [
       "Regular attendance helps you follow the formation arc and build relationships with others on the same journey. Most programs ask that you come as consistently as you can.",
@@ -84,7 +84,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'family',
     category: 'FAMILY',
     question: 'Can I bring my family?',
-    shortAnswer: "Yes, they're welcome",
+    shortAnswer: 'Yes, bring them',
     boldAnswer: 'Yes. They are always welcome.',
     body: [
       "OCIA is not a private journey. Your spouse, partner, family member, or friend can sit with you at sessions.",
@@ -106,7 +106,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'confession',
     category: 'CONFESSION',
     question: 'Do I need to go to Confession?',
-    shortAnswer: "You'll be guided through it",
+    shortAnswer: "You'll be guided",
     boldAnswer: "You'll be prepared for it during OCIA.",
     body: [
       "The Sacrament of Reconciliation is part of Catholic life, and you'll learn about it during formation. For those being baptized, baptism itself forgives all sins — Confession comes later.",
@@ -128,7 +128,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'readiness',
     category: 'READINESS',
     question: "What if I'm not ready by Easter?",
-    shortAnswer: 'You wait — and that is okay',
+    shortAnswer: 'You can wait',
     boldAnswer: 'You wait — and that is perfectly fine.',
     body: [
       "Easter is the traditional time for receiving the sacraments, but it is not the only time. If you need more time, you continue in formation and receive the sacraments when you and your parish discern you are ready.",

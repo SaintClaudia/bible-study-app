@@ -182,7 +182,7 @@ export function JourneyTab() {
         </div>
         <div className="flex flex-col gap-5 px-5 py-6">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-orange-600">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
               {item.label}
             </p>
             <h1 className="mt-2 font-heading text-3xl font-semibold leading-tight text-foreground">
@@ -311,7 +311,7 @@ export function JourneyTab() {
           className="relative w-full overflow-hidden rounded-2xl bg-neutral-900 p-5 text-left dark:bg-neutral-800"
         >
           <div className="flex items-start justify-between">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-orange-500">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-white/50">
               {heroItem.label}
             </p>
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
