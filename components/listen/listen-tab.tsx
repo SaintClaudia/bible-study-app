@@ -177,10 +177,10 @@ export function ListenTab() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <section>
-        <h1 className="font-heading text-3xl font-semibold text-balance text-foreground">Listen</h1>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+    <div className="flex flex-col gap-8">
+      <section className="pt-12">
+        <h1 className="font-heading text-[3.25rem] font-normal leading-[1.05] tracking-[-0.01em] text-balance text-foreground">He who sings prays twice</h1>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
           Sacred music for prayer, study, and quiet reflection.
         </p>
       </section>
