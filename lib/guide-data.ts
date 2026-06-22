@@ -142,7 +142,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: "What if I'm not ready by Easter?",
     shortAnswer: 'You can wait',
     boldAnswer: 'You wait — and that is perfectly fine.',
-    image: '/angel.png',
+    image: '/saint-vincent-de-paul.png',
     body: [
       "Easter is the traditional time for receiving the sacraments, but it is not the only time. If you need more time, you continue in formation and receive the sacraments when you and your parish discern you are ready.",
       "Faith cannot be rushed. The Church has been welcoming people for two thousand years and is in no hurry.",
