@@ -118,7 +118,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Do I need to go to Confession?',
     shortAnswer: "You'll be guided",
     boldAnswer: "You'll be prepared for it during OCIA.",
-    image: '/sacred-heart.png',
+    image: '/saint-benedict.png',
     body: [
       "The Sacrament of Reconciliation is part of Catholic life, and you'll learn about it during formation. For those being baptized, baptism itself forgives all sins — Confession comes later.",
       "Those already baptized who are entering full communion will receive the sacrament as part of their preparation. Your parish will guide you through the process.",
