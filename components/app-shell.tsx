@@ -157,16 +157,11 @@ export function AppShell() {
         )}>
           <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
           <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
-                <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
-                  <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
-                  <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
-                </svg>
-              </div>
-              <span className="font-sans text-[15px] font-medium tracking-[0.01em] text-foreground">
-                Bible Study
-              </span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-foreground flex-shrink-0">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-background" aria-hidden>
+                <rect x="10.5" y="2" width="3" height="20" rx="0.75" fill="currentColor"/>
+                <rect x="3" y="7.5" width="18" height="3" rx="0.75" fill="currentColor"/>
+              </svg>
             </div>
             <ThemeToggle />
           </div>
