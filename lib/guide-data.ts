@@ -130,7 +130,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Is there a test?',
     shortAnswer: 'No test, no grade',
     boldAnswer: 'No. There is no test, quiz, or grade.',
-    image: '/holy-cross.png',
+    image: '/saint-therese-of-lisieux.png',
     body: [
       "OCIA is not an academic program. There's no quiz at the end of each session and no final exam.",
       "What matters is that you come, ask questions, and engage honestly. You and your parish discern together when you feel ready to take the next step.",
