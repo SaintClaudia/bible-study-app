@@ -333,12 +333,12 @@ export function JourneyTab() {
               onClick={() => go({ kind: 'sh', id: item.id })}
               className="overflow-hidden rounded-2xl border border-border bg-card text-left active:opacity-60"
             >
-              <div className="relative h-24 w-full overflow-hidden">
+              <div className="relative h-36 w-full overflow-hidden sm:h-48">
                 <Image
                   src={i === 0 ? '/communion.png' : '/christ.png'}
                   alt=""
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <div className="p-3">
