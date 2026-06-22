@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -38,6 +38,13 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     onDetailChange?.(false)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [onDetailChange])
+
+  // Ensure masthead is restored whenever this component unmounts
+  // (covers both tab-switch and tab-key-reset remounts)
+  useEffect(() => {
+    return () => { onDetailChange?.(false) }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // ── Quick Answer Detail ────────────────────────────────────────────────────
   if (view.kind === 'qa') {
