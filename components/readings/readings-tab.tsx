@@ -62,7 +62,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
         <h1 className="mt-1 font-heading text-3xl font-semibold leading-tight text-foreground">
           {data.liturgicalDay.replace(/\s+in\s+Ordinary\s+Time/i, '')}
         </h1>
-        <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+        <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
           <span
             className="h-2 w-2 shrink-0 rounded-full"
             style={{ backgroundColor: LITURGICAL_COLOR_HEX[getLiturgicalColor(data)] }}
