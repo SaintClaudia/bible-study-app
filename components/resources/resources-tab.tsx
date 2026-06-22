@@ -4,6 +4,9 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Headphones, Info, Play, Share2, type LucideIcon } from 'lucide-react'
 import { resourceGroups, type ResourceGroup, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
+import { FilterChips, type FilterChip } from '@/components/discover/filter-chips'
+import { FullBleedSeriesCard } from '@/components/discover/full-bleed-series-card'
+import { EditorialCard } from '@/components/discover/editorial-card'
 
 const groupIcons: Record<ResourceGroup['kind'], LucideIcon> = {
   watch: Play,
@@ -347,21 +350,76 @@ function SiteCard({ item, onSelect }: { item: ResourceItem; onSelect: () => void
   )
 }
 
+// ── Discover list item (recommended section) ──────────────────
+
+function DiscoverListItem({
+  item,
+  groupLabel,
+  onSelect,
+}: {
+  item: ResourceItem
+  groupLabel?: string
+  onSelect: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className="flex w-full items-center gap-3 py-3 text-left transition-opacity active:opacity-60"
+    >
+      {item.image ? (
+        <img
+          src={item.image}
+          alt={item.name}
+          className="h-12 w-12 flex-shrink-0 rounded-lg object-cover shadow-sm"
+          onError={(e) => {
+            const el = e.currentTarget
+            el.style.display = 'none'
+            const fallback = el.nextElementSibling as HTMLElement | null
+            if (fallback) fallback.style.display = 'flex'
+          }}
+        />
+      ) : null}
+      <div
+        className="h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-secondary text-base font-bold text-foreground"
+        style={{ display: item.image ? 'none' : 'flex' }}
+      >
+        {item.name[0]}
+      </div>
+      <div className="min-w-0 flex-1">
+        {groupLabel && (
+          <span className="mb-1 inline-flex items-center rounded-full border border-border bg-secondary px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            {groupLabel}
+          </span>
+        )}
+        <p className="text-sm font-semibold leading-tight text-foreground">{item.name}</p>
+        <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-muted-foreground">{item.note}</p>
+      </div>
+    </button>
+  )
+}
+
 // ── Main tab ───────────────────────────────────────────────────
+
+type FilterId = 'all' | 'watch' | 'explore' | 'read'
+
+const FILTER_CHIPS: FilterChip[] = [
+  { id: 'all', label: 'All' },
+  { id: 'watch', label: 'Watch', icon: <Play className="h-3.5 w-3.5" aria-hidden /> },
+  { id: 'explore', label: 'Explore', icon: <Compass className="h-3.5 w-3.5" aria-hidden /> },
+  { id: 'read', label: 'Read', icon: <BookOpen className="h-3.5 w-3.5" aria-hidden /> },
+]
 
 export function ResourcesTab() {
   const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
+  const [filter, setFilter] = useState<FilterId>('all')
   const { setNowPlaying } = useMusicPlayer()
 
-  // Refs so the unmount cleanup always sees the latest values without
-  // re-registering the effect (which would miss the final render before unmount)
   const activeItemRef = useRef(activeItem)
   const setNowPlayingRef = useRef(setNowPlaying)
   useEffect(() => { activeItemRef.current = activeItem }, [activeItem])
   useEffect(() => { setNowPlayingRef.current = setNowPlaying }, [setNowPlaying])
 
-  // Hand off to mini-player whenever this component is torn down —
-  // covers both "tap another tab" and "re-tap Resources tab" (key reset)
   useEffect(() => {
     return () => {
       if (activeItemRef.current?.spotifyEmbedSrc) {
@@ -371,13 +429,11 @@ export function ResourcesTab() {
   }, [])
 
   const openItem = useCallback((item: ResourceItem) => {
-    // Clear any previous mini-player so it doesn't bleed into the new detail page
     if (item.spotifyEmbedSrc) setNowPlaying(null)
     setActiveItem(item)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [setNowPlaying])
 
-  // When leaving a listen item's detail via the back link, hand it to mini-player
   const closeItem = useCallback(() => {
     if (activeItem?.spotifyEmbedSrc) setNowPlaying(activeItem)
     setActiveItem(null)
@@ -388,75 +444,101 @@ export function ResourcesTab() {
     return <ResourceDetail item={activeItem} onBack={closeItem} />
   }
 
+  // Derive filtered item sets from existing data
+  const nonListenGroups = resourceGroups.filter(g => g.kind !== 'listen')
+  const watchGroup = resourceGroups.find(g => g.kind === 'watch')
+  const exploreGroup = resourceGroups.find(g => g.kind === 'explore')
+  const readGroup = resourceGroups.find(g => g.kind === 'read')
+
+  // Featured: first hero item from watch group (The Chosen)
+  const featuredItem = watchGroup?.items.find(i => i.display === 'hero') ?? null
+
+  // Editorial: first book item from read group with editorial treatment (Theology of Home)
+  const editorialItem = readGroup?.items.find(i => i.name === 'Theology of Home') ?? null
+
+  // Recommended: all explore apps + USCCB from read group
+  const usccb = readGroup?.items.find(i => i.name === 'USCCB') ?? null
+  const recommendedItems: ResourceItem[] = filter === 'all'
+    ? [
+        ...(exploreGroup?.items.filter(i => i.display === 'app') ?? []),
+        ...(usccb ? [usccb] : []),
+      ]
+    : filter === 'watch'
+      ? (watchGroup?.items ?? [])
+      : filter === 'explore'
+        ? (exploreGroup?.items ?? [])
+        : (readGroup?.items ?? [])
+
+  const totalItems = nonListenGroups.reduce((acc, g) => acc + g.items.length, 0)
+
   return (
-    <div className="flex flex-col gap-6">
-      <section>
-        <h1 className="font-heading text-3xl font-semibold text-balance text-foreground">
-          Resources
+    <div className="flex flex-col gap-8">
+      {/* Heading — matches Guide tab pattern exactly */}
+      <section className="flex flex-col gap-4 pt-12">
+        <h1 className="font-heading text-[3.25rem] font-normal leading-[1.05] tracking-[-0.01em] text-foreground">
+          Beyond the classroom
         </h1>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          A few recommendations to watch, read, and explore as you grow in the faith. For music, see the Listen tab.
-        </p>
+        <FilterChips
+          chips={FILTER_CHIPS}
+          active={filter}
+          onChange={(id) => setFilter(id as FilterId)}
+        />
       </section>
 
-      {resourceGroups.filter(g => g.kind !== 'listen').map((group) => {
-        const Icon = groupIcons[group.kind]
-        const heroItems = group.items.filter(i => i.display === 'hero')
-        const appItems = group.items.filter(i => i.display === 'app')
-        const bookItems = group.items.filter(i => i.display === 'book')
-        const siteItems = group.items.filter(i => !i.display)
+      {/* Featured series card */}
+      {featuredItem && (filter === 'all' || filter === 'watch') && (
+        <FullBleedSeriesCard item={featuredItem} categoryLabel="Watch" onSelect={() => openItem(featuredItem)} />
+      )}
 
-        return (
-          <section key={group.id} className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 text-foreground">
-              <Icon className="h-4 w-4" aria-hidden />
-              <h2 className="text-xs font-semibold uppercase tracking-wide">{group.label}</h2>
+      {/* Recommended section */}
+      <section className="flex flex-col gap-1">
+        <div className="flex items-baseline justify-between">
+          <h2 className="font-heading text-2xl font-semibold text-foreground">
+            {filter === 'all' ? 'Recommended' : FILTER_CHIPS.find(c => c.id === filter)?.label ?? 'Recommended'}
+          </h2>
+          <span className="text-sm text-muted-foreground">
+            {filter === 'all' ? `${totalItems} items` : `${recommendedItems.length} items`}
+          </span>
+        </div>
+        <div className="divide-y divide-border">
+          {recommendedItems.map(item => {
+            const group = resourceGroups.find(g => g.items.some(i => i.name === item.name))
+            return (
+              <DiscoverListItem
+                key={item.name}
+                item={item}
+                groupLabel={group?.label}
+                onSelect={() => openItem(item)}
+              />
+            )
+          })}
+        </div>
+      </section>
+
+      {/* Editorial card */}
+      {editorialItem && (filter === 'all' || filter === 'read') && (
+        <EditorialCard
+          item={editorialItem}
+          onSelect={() => openItem(editorialItem)}
+          bgGradient="linear-gradient(160deg, #1e3a8a 0%, #2563eb 100%)"
+        />
+      )}
+
+      {/* Remaining read items (non-editorial) when filter is read */}
+      {filter === 'read' && (
+        <>
+          {(readGroup?.items.filter(i => i.display === 'book' && i.name !== 'Theology of Home') ?? []).length > 0 && (
+            <div className="grid grid-cols-3 gap-3">
+              {(readGroup?.items.filter(i => i.display === 'book' && i.name !== 'Theology of Home') ?? []).map(item => (
+                <BookCard key={item.name} item={item} onSelect={() => openItem(item)} />
+              ))}
             </div>
-
-            {heroItems.length === 1 && (
-              <HeroCard item={heroItems[0]} onSelect={() => openItem(heroItems[0])} />
-            )}
-
-            {heroItems.length > 1 && (
-              <div className="-mx-5 overflow-x-auto">
-                <div className="flex gap-3 px-5 pb-1" style={{ width: 'max-content' }}>
-                  {heroItems.map(item => (
-                    <div key={item.name} className="w-[82vw] max-w-[520px] flex-shrink-0">
-                      <HeroCard item={item} onSelect={() => openItem(item)} />
-                    </div>
-                  ))}
-                  {/* trailing space so last card doesn't sit flush against edge */}
-                  <div className="w-3 flex-shrink-0" />
-                </div>
-              </div>
-            )}
-
-            {appItems.length > 0 && (
-              <div className="flex flex-col gap-2">
-                {appItems.map(item => (
-                  <AppIcon key={item.name} item={item} onSelect={() => openItem(item)} />
-                ))}
-              </div>
-            )}
-
-            {bookItems.length > 0 && (
-              <div className="grid grid-cols-3 gap-3">
-                {bookItems.map(item => (
-                  <BookCard key={item.name} item={item} onSelect={() => openItem(item)} />
-                ))}
-              </div>
-            )}
-
-            {siteItems.length > 0 && (
-              <div className={`flex flex-col gap-2.5 ${bookItems.length > 0 ? 'mt-1' : ''}`}>
-                {siteItems.map(item => (
-                  <SiteCard key={item.name} item={item} onSelect={() => openItem(item)} />
-                ))}
-              </div>
-            )}
-          </section>
-        )
-      })}
+          )}
+          {(readGroup?.items.filter(i => !i.display) ?? []).map(item => (
+            <SiteCard key={item.name} item={item} onSelect={() => openItem(item)} />
+          ))}
+        </>
+      )}
     </div>
   )
 }
