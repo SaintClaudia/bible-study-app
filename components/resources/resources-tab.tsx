@@ -476,7 +476,7 @@ export function ResourcesTab() {
       {/* Heading — matches Guide tab pattern exactly */}
       <section className="flex flex-col gap-4 pt-12">
         <h1 className="font-heading text-[3.25rem] font-normal leading-[1.05] tracking-[-0.01em] text-foreground">
-          Beyond the classroom
+          Deepen your faith
         </h1>
         <FilterChips
           chips={FILTER_CHIPS}
