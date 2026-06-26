@@ -49,7 +49,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'What should I bring?',
     shortAnswer: 'Just yourself',
     boldAnswer: 'Just yourself. Everything else is provided.',
-    image: '/pray.png',
+    image: '/glass.png',
     body: [
       "You do not need to bring anything to your first session. No materials, no Bible, no prior knowledge — just show up.",
       "As you continue, your parish may suggest a notebook or a specific book used in your program. If so, they can usually provide it. When in doubt, ask your coordinator.",
