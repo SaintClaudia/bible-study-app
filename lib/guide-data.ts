@@ -161,14 +161,14 @@ export const startHereItems: StartHereItem[] = [
   {
     id: 'what-happens',
     label: 'WHAT TO EXPECT',
-    title: 'What actually happens at OCIA?',
-    subtitle: 'A weekly conversation, not a test.',
+    title: 'What actually is OCIA?',
+    subtitle: 'A place to learn about the Catholic faith.',
     isHero: true,
     image: '/holy-bible.png',
     body: [
-      "OCIA sessions are typically held once a week and last about an hour or two. You'll sit with a small group, hear a talk or a discussion, and have space to ask questions.",
-      "There's no homework, no memorization required, and no performance expected. Sessions feel more like a guided conversation about faith than a lecture or a class.",
-      "Different parishes run OCIA differently, but the spirit is the same everywhere: you are welcome to come and see.",
+      "OCIA is a series of weekly classes for anyone interested in learning about the Catholic Church. Whether you're thinking about becoming Catholic or returning to the Church after being away, OCIA is where that journey begins.",
+      "Classes typically meet once a week and last about an hour. You'll learn about Scripture, Catholic beliefs, prayer, the sacraments, and what it means to live the Catholic faith. There is plenty of time to ask questions, listen, and learn alongside others who are on a similar journey.",
+      "Every parish is a little different, but one thing remains the same: you don't need to know anything before you begin. Just come with an open heart and a thirst for God.",
     ],
   },
   {
