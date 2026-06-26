@@ -589,7 +589,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Bible App',
         note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
         href: 'https://www.youversion.com/bible-app',
-        image: 'https://www.google.com/s2/favicons?domain=youversion.com&sz=256',
+        image: '/bible-app.png',
         display: 'app',
         category: 'App',
         description:
@@ -606,7 +606,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Hallow',
         note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
         href: 'https://hallow.com/',
-        image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
+        image: '/hallow.png',
         display: 'app',
         category: 'App',
         description:
@@ -636,7 +636,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Magisterium AI',
         note: 'Ask questions and get answers grounded in Church teaching, with citations.',
         href: 'https://www.magisterium.com/',
-        image: 'https://www.google.com/s2/favicons?domain=magisterium.com&sz=256',
+        image: '/magisterium-ai.png',
         display: 'app',
         category: 'App',
         description:
@@ -651,7 +651,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Pillar Podcast',
         note: 'Smart, candid conversation on news and life in the Catholic Church.',
         href: 'https://www.pillarcatholic.com/s/the-pillar-podcast',
-        image: 'https://www.google.com/s2/favicons?domain=pillarcatholic.com&sz=256',
+        image: '/pillar-podcast.png',
         display: 'app',
         category: 'Podcast',
         description:
