@@ -38,21 +38,9 @@ export const quickAnswers: QuickAnswer[] = [
     image: '/holy-cross.png',
     imagePosition: 'center calc(50% + 80px)',
     body: [
-      "There's no tuition, no fee, and no expectation to give anything. Parishes offer OCIA as part of their mission to welcome people and accompany them in their journey of faith.",
-      "If a book or Bible is suggested, the parish can usually provide one. Many parishes also offer light refreshments before or during class—coffee, water, or a simple meal—making it a little easier to come straight from work or school.",
+      "There is no fee and no expectation to give anything. Parishes offer OCIA as part of their mission to welcome anyone who wants to learn about the Catholic faith.",
+      "If a book or Bible is recommended, your parish can usually provide one. Many parishes also offer coffee, water, light snacks, or even a simple meal before class. It's a small way they help make the evening a little easier for those coming straight from work, school, or home.",
       "Never let cost be the reason you stay home.",
-    ],
-  },
-  {
-    id: 'commitment',
-    category: 'COMMITMENT',
-    question: 'Do I have to become Catholic?',
-    shortAnswer: 'No commitment',
-    boldAnswer: 'No. Come to learn and do what feels right.',
-    image: '/glass.png',
-    body: [
-      "OCIA is an open process. You are never required to become Catholic. Many people explore the faith, ask their questions, and decide what feels right for them.",
-      "Some go on to receive the sacraments at Easter. Others take more time, or simply keep learning. Either path is welcomed.",
     ],
   },
   {
