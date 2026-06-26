@@ -251,13 +251,54 @@ function DiscoverListItem({
   item,
   groupLabel,
   onSelect,
+  layout = 'row',
 }: {
   item: ResourceItem
   groupLabel?: string
   onSelect: () => void
+  layout?: 'row' | 'card'
 }) {
   const isHero = item.display === 'hero'
   const isBook = item.display === 'book'
+
+  if (layout === 'card') {
+    return (
+      <button
+        type="button"
+        onClick={onSelect}
+        className="w-full overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
+      >
+        {/* Square image area */}
+        <div className="relative w-full bg-secondary" style={{ aspectRatio: '1/1' }}>
+          {item.image ? (
+            <img
+              src={item.image}
+              alt={item.name}
+              className={cn(
+                'absolute inset-0 h-full w-full',
+                isBook ? 'object-contain p-5' : 'object-contain p-4',
+              )}
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-3xl font-bold text-foreground/20">{item.name[0]}</span>
+            </div>
+          )}
+        </div>
+        {/* Content */}
+        <div className="p-3">
+          {groupLabel && (
+            <p className="mb-1 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground">
+              {groupLabel}
+            </p>
+          )}
+          <p className="font-heading text-sm font-semibold leading-snug text-foreground">{item.name}</p>
+          <p className="mt-1 line-clamp-3 text-xs leading-relaxed text-muted-foreground">{item.note}</p>
+        </div>
+      </button>
+    )
+  }
 
   return (
     <button
@@ -273,7 +314,6 @@ function DiscoverListItem({
       )}
 
       <div className="flex items-center gap-3.5 p-4">
-        {/* Thumbnail for non-hero items */}
         {item.image && !isHero && (
           <img
             src={item.image}
@@ -391,22 +431,44 @@ export function DiscoverTab() {
         count={visibleItems.length}
       />
 
-      <section>
-        <div className="flex flex-col gap-3">
-          {visibleItems.map(item => {
-            const group = filter === 'all'
-              ? resourceGroups.find(g => g.items.some(i => i.name === item.name))
-              : undefined
-            return (
-              <DiscoverListItem
-                key={item.name}
-                item={item}
-                groupLabel={group?.label}
-                onSelect={() => openItem(item)}
-              />
-            )
-          })}
-        </div>
+      <section className="flex flex-col gap-3">
+        {(() => {
+          const getGroup = (item: ResourceItem) => resourceGroups.find(g => g.items.some(i => i.name === item.name))
+          const rowItems = visibleItems.filter(i => getGroup(i)?.kind === 'watch')
+          const gridItems = visibleItems.filter(i => getGroup(i)?.kind !== 'watch')
+          return (
+            <>
+              {rowItems.map(item => {
+                const group = filter === 'all' ? getGroup(item) : undefined
+                return (
+                  <DiscoverListItem
+                    key={item.name}
+                    item={item}
+                    groupLabel={group?.label}
+                    onSelect={() => openItem(item)}
+                    layout="row"
+                  />
+                )
+              })}
+              {gridItems.length > 0 && (
+                <div className="grid grid-cols-2 gap-3">
+                  {gridItems.map(item => {
+                    const group = filter === 'all' ? getGroup(item) : undefined
+                    return (
+                      <DiscoverListItem
+                        key={item.name}
+                        item={item}
+                        groupLabel={group?.label}
+                        onSelect={() => openItem(item)}
+                        layout="card"
+                      />
+                    )
+                  })}
+                </div>
+              )}
+            </>
+          )
+        })()}
       </section>
     </div>
   )
