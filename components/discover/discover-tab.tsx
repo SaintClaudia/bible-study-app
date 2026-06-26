@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ArrowLeft, BookOpen, Check, ChevronRight, Compass, ExternalLink, Info, Play, Share2, TrendingUp } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronRight, Compass, ExternalLink, Info, Play, Share2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
@@ -352,13 +352,10 @@ function DiscoverListItem({
 
 // ── Main tab ───────────────────────────────────────────────────
 
-type FilterId = 'all' | 'trending' | 'watch' | 'explore' | 'read'
-
-const TRENDING_NAMES = ['The Chosen', 'Theology of Home']
+type FilterId = 'all' | 'watch' | 'explore' | 'read'
 
 const FILTER_CHIPS: FilterChip[] = [
   { id: 'all', label: 'All' },
-  { id: 'trending', label: 'Trending', icon: <TrendingUp className="h-3.5 w-3.5" aria-hidden /> },
   { id: 'watch', label: 'Watch', icon: <Play className="h-3.5 w-3.5" aria-hidden /> },
   { id: 'explore', label: 'Explore', icon: <Compass className="h-3.5 w-3.5" aria-hidden /> },
   { id: 'read', label: 'Read', icon: <BookOpen className="h-3.5 w-3.5" aria-hidden /> },
@@ -407,13 +404,11 @@ export function DiscoverTab() {
 
   const visibleItems: ResourceItem[] = filter === 'all'
     ? allItems
-    : filter === 'trending'
-      ? allItems.filter(i => TRENDING_NAMES.includes(i.name))
-      : filter === 'watch'
-        ? (watchGroup?.items ?? [])
-        : filter === 'explore'
-          ? (exploreGroup?.items ?? [])
-          : (readGroup?.items ?? [])
+    : filter === 'watch'
+      ? (watchGroup?.items ?? [])
+      : filter === 'explore'
+        ? (exploreGroup?.items ?? [])
+        : (readGroup?.items ?? [])
 
   return (
     <div className="flex flex-col gap-8">
