@@ -27,10 +27,10 @@ export function FilterChips({ chips, active, onChange, count }: FilterChipsProps
               type="button"
               onClick={() => onChange(chip.id)}
               className={cn(
-                'inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors active:opacity-60',
+                'inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors active:opacity-60',
                 active === chip.id
-                  ? 'bg-foreground text-background'
-                  : 'border border-border bg-secondary text-muted-foreground hover:border-primary/40',
+                  ? 'border border-foreground/40 bg-card text-foreground'
+                  : 'border border-border bg-secondary text-muted-foreground hover:bg-secondary/80',
               )}
             >
               {chip.icon}
