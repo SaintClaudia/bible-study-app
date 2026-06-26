@@ -666,7 +666,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Catholic Channel',
         note: 'Catholic talk, news, and conversation — available on SiriusXM.',
         href: 'https://www.siriusxm.com/channels/the-catholic-channel',
-        image: 'https://www.google.com/s2/favicons?domain=siriusxm.com&sz=256',
+        image: '/catholic-channel.png',
         display: 'app',
         category: 'Radio',
         description:
