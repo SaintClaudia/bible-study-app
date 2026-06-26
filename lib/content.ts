@@ -492,9 +492,9 @@ export const resourceGroups: ResourceGroup[] = [
           'While the series includes creative storytelling, it is best experienced alongside Scripture. Let it spark your curiosity, then return to the Gospels and encounter the story for yourself.',
         ],
         details: [
-          'Seasons 1–4 available now',
+          'Seasons 1–5 available now',
+          'Season 6 starting November 15, 2026',
           'Free to watch on The Chosen app',
-          'Also available on Netflix, Amazon Prime, and more',
         ],
       },
       {
