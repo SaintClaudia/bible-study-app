@@ -38,8 +38,9 @@ export const quickAnswers: QuickAnswer[] = [
     image: '/holy-cross.png',
     imagePosition: 'center calc(50% + 80px)',
     body: [
-      "There's no tuition, no fee, and no expectation to give anything. Parishes offer OCIA as part of their mission to welcome people.",
-      "If a book or a Bible is suggested, the parish can usually provide one. Never let cost be the reason you stay home.",
+      "There's no tuition, no fee, and no expectation to give anything. Parishes offer OCIA as part of their mission to welcome people and accompany them in their journey of faith.",
+      "If a book or Bible is suggested, the parish can usually provide one. Many parishes also offer light refreshments before or during class—coffee, water, or a simple meal—making it a little easier to come straight from work or school.",
+      "Never let cost be the reason you stay home.",
     ],
   },
   {
