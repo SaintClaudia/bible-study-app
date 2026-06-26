@@ -185,7 +185,7 @@ export function ListenTab() {
         </p>
       </section>
 
-      <section className="grid grid-cols-2 items-start gap-3">
+      <section className="grid grid-cols-2 gap-3">
         {listenItems.map(item => (
           <div
             key={item.name}

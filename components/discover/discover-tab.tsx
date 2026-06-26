@@ -453,7 +453,7 @@ export function DiscoverTab() {
                 )
               })}
               {gridItems.length > 0 && (
-                <div className="grid grid-cols-2 items-start gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   {gridItems.map(item => {
                     const group = filter === 'all' ? getGroup(item) : undefined
                     return (
