@@ -4,7 +4,6 @@ import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useLocalStorage } from '@/hooks/use-local-storage'
 import {
   quickAnswers,
   startHereItems,
@@ -19,18 +18,14 @@ type View =
 
 export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean) => void }) {
   const [view, setView] = useState<View>({ kind: 'list' })
-  const [explored, setExplored] = useLocalStorage<string[]>('bs.guideExplored', [])
 
   const go = useCallback(
     (v: View) => {
-      if (v.kind === 'qa') {
-        setExplored((prev) => (prev.includes(v.id) ? prev : [...prev, v.id]))
-      }
       setView(v)
       onDetailChange?.(v.kind !== 'list')
       window.scrollTo({ top: 0, behavior: 'instant' })
     },
-    [setExplored, onDetailChange],
+    [onDetailChange],
   )
 
   const back = useCallback(() => {
@@ -51,12 +46,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     const qa = quickAnswers.find((q) => q.id === view.id)
     if (!qa) return null
     const idx = quickAnswers.indexOf(qa)
-    const exploredCount = explored.filter(id => quickAnswers.some(q => q.id === id)).length
-    const allExplored = exploredCount >= quickAnswers.length
-    const unexplored = quickAnswers.filter((q) => q.id !== qa.id && !explored.includes(q.id))
-    const nextQa = unexplored.length > 0
-      ? unexplored[0]
-      : quickAnswers[(idx + 1) % quickAnswers.length]
+    const nextQa = quickAnswers[(idx + 1) % quickAnswers.length]
     const othersQa = quickAnswers.filter((q) => q.id !== qa.id && q.id !== nextQa.id).slice(0, 3)
 
     return (
@@ -74,12 +64,6 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
             <ArrowLeft className="h-3.5 w-3.5" />
             <span className="text-[10px] tracking-[0.2em] opacity-60">···</span>
           </button>
-          <div
-            className="absolute right-4 whitespace-nowrap rounded-full bg-black/40 px-3.5 py-1.5 text-xs text-white backdrop-blur-sm"
-            style={{ top: 'calc(env(safe-area-inset-top) + 28px)' }}
-          >
-            {exploredCount} of {quickAnswers.length} explored
-          </div>
         </div>
 
         {/* Content */}
@@ -102,64 +86,27 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
             ))}
           </div>
 
-          {/* Progress bar */}
-          <div className="h-1 w-full overflow-hidden rounded-full bg-border">
-            <div
-              className="h-full rounded-full transition-all duration-500"
-              style={{ backgroundColor: '#FEAE86', width: `${(exploredCount / quickAnswers.length) * 100}%` }}
-            />
-          </div>
-
-          {/* UP NEXT card / Completed state */}
-          {allExplored ? (
-            <div className="rounded-2xl bg-neutral-900 p-5 dark:bg-neutral-800">
-              <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
-                All explored
-              </p>
-              <p className="mt-2.5 font-heading text-xl font-semibold leading-snug text-white">
-                You've read every Quick Answer.
-              </p>
-              <p className="mt-1 text-sm text-white/50">
-                Head back to explore Start Here or Good to Know.
-              </p>
+          {/* UP NEXT card */}
+          <div className="rounded-2xl bg-neutral-900 p-5 dark:bg-neutral-800">
+            <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
+              Up Next · Quick Answer
+            </p>
+            <div className="mt-2.5 flex items-start justify-between gap-3">
+              <div className="flex-1">
+                <p className="font-heading text-xl font-semibold leading-snug text-white">
+                  {nextQa.question}
+                </p>
+                <p className="mt-1 text-sm text-white/50">{nextQa.shortAnswer}.</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => go({ kind: 'qa', id: nextQa.id })}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 active:opacity-60"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
-          ) : (
-            <>
-              <div className="rounded-2xl bg-neutral-900 p-5 dark:bg-neutral-800">
-                <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
-                  Up Next · Quick Answer
-                </p>
-                <div className="mt-2.5 flex items-start justify-between gap-3">
-                  <div className="flex-1">
-                    <p className="font-heading text-xl font-semibold leading-snug text-white">
-                      {nextQa.question}
-                    </p>
-                    <p className="mt-1 text-sm text-white/50">{nextQa.shortAnswer}.</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => go({ kind: 'qa', id: nextQa.id })}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 active:opacity-60"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-muted-foreground">
-                  You&apos;ve explored {exploredCount} of {quickAnswers.length}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => go({ kind: 'qa', id: nextQa.id })}
-                  className="text-sm font-medium transition-opacity hover:opacity-70" style={{ color: '#FEAE86' }}
-                >
-                  keep going →
-                </button>
-              </div>
-            </>
-          )}
+          </div>
 
           <div className="h-px bg-border" />
 
