@@ -154,6 +154,12 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
               {item.description}
             </p>
           </blockquote>
+        ) : Array.isArray(item.description) ? (
+          <div className="flex flex-col gap-4">
+            {item.description.map((para, i) => (
+              <p key={i} className="text-base leading-relaxed text-foreground/90">{para}</p>
+            ))}
+          </div>
         ) : (
           <p className="text-base leading-relaxed text-foreground/90">
             {item.description}

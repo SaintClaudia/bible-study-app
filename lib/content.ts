@@ -458,7 +458,7 @@ export type ResourceItem = {
   image?: string
   display?: 'app' | 'book' | 'hero'
   category?: string
-  description?: string
+  description?: string | string[]
   details?: string[]
   pageNote?: string
   spotifyEmbedSrc?: string
@@ -485,8 +485,12 @@ export const resourceGroups: ResourceGroup[] = [
         image: '/the-chosen.jpg',
         display: 'hero',
         category: 'Series',
-        description:
-          'An acclaimed multi-season drama that follows the life and ministry of Jesus Christ through the eyes of those who walked with him — disciples, strangers, and those on the margins. Created by Dallas Jenkins, it became the highest crowd-funded media project in history.',
+        description: [
+          'A place to start.',
+          'For many people, The Chosen is where the Gospels begin to feel a little more familiar. By imagining the everyday lives of Jesus, his disciples, and those they encountered, the series invites viewers to see Scripture through a more human lens—one that encourages empathy, curiosity, and reflection.',
+          'For those beginning their faith journey, it can provide meaningful context that makes returning to the Bible feel both familiar and inviting. As new names, places, and events unfold throughout Scripture, the series offers a visual framework that helps connect them together. Seeing the people behind the pages can make the story feel less overwhelming and easier to follow, especially when so much is new.',
+          'While the series includes creative storytelling, it is best experienced alongside Scripture. Let it spark your curiosity, then return to the Gospels and encounter the story for yourself.',
+        ],
         details: [
           'Seasons 1–4 available now',
           'Free to watch on The Chosen app',
