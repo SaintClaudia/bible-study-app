@@ -662,6 +662,21 @@ export const resourceGroups: ResourceGroup[] = [
           'Available on Apple Podcasts, Spotify, and wherever you listen',
         ],
       },
+      {
+        name: 'The Catholic Channel',
+        note: 'Catholic talk, news, and conversation — available on SiriusXM.',
+        href: 'https://www.siriusxm.com/channels/the-catholic-channel',
+        image: 'https://www.google.com/s2/favicons?domain=siriusxm.com&sz=256',
+        display: 'app',
+        category: 'Radio',
+        description:
+          'SiriusXM\'s dedicated Catholic channel featuring talk shows, news, call-ins, and programming from a range of Catholic voices. A good way to stay connected to Catholic conversation throughout the day.',
+        details: [
+          'Available on SiriusXM and the SiriusXM app',
+          'Requires SiriusXM subscription',
+          'Mix of live programming and on-demand shows',
+        ],
+      },
     ],
   },
   {
