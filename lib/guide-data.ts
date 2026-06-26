@@ -61,7 +61,7 @@ export const quickAnswers: QuickAnswer[] = [
     category: 'ATTENDANCE',
     question: 'Do I have to come every week?',
     shortAnswer: 'Come as you can',
-    boldAnswer: 'Try to come regularly, but don't worry if you miss one.',
+    boldAnswer: "Try to come regularly, but don't worry if you miss one.",
     image: '/angel.png',
     body: [
       "OCIA is designed to build on what you learn each week, so attending regularly will help you get the most from the experience and build relationships with others on the same journey.",
