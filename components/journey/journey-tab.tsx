@@ -299,7 +299,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
               key={qa.id}
               type="button"
               onClick={() => go({ kind: 'qa', id: qa.id })}
-              className="flex w-40 shrink-0 flex-col justify-between rounded-2xl border border-border bg-card p-4 text-left transition-colors hover:bg-secondary/40 active:opacity-60"
+              className="flex w-52 shrink-0 flex-col justify-between rounded-2xl border border-border bg-card p-4 text-left transition-colors hover:bg-secondary/40 active:opacity-60"
             >
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
