@@ -362,15 +362,10 @@ export function ResourcesTab() {
         chips={FILTER_CHIPS}
         active={filter}
         onChange={(id) => setFilter(id as FilterId)}
+        count={visibleItems.length}
       />
 
-      <section className="flex flex-col gap-3">
-        <div className="flex items-baseline justify-between">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-            {FILTER_CHIPS.find(c => c.id === filter)?.label ?? 'All'}
-          </p>
-          <span className="text-xs text-muted-foreground">{visibleItems.length} items</span>
-        </div>
+      <section>
         <div className="overflow-hidden rounded-2xl border border-border bg-card divide-y divide-border">
           {visibleItems.map(item => {
             const group = filter === 'all'
