@@ -359,7 +359,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
                 />
               </div>
               <div className="flex flex-1 flex-col p-5">
-                <p className="font-heading text-2xl font-normal leading-tight text-foreground">
+                <p className="font-heading text-xl font-normal leading-tight text-foreground">
                   {item.title}
                 </p>
                 <p className="mt-auto pt-3 text-sm leading-relaxed text-muted-foreground">{item.subtitle}</p>
