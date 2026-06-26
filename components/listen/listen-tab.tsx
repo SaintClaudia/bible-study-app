@@ -193,7 +193,7 @@ export function ListenTab() {
             tabIndex={0}
             onClick={() => openItem(item)}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openItem(item) }}
-            className="w-full cursor-pointer overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
+            className="flex w-full flex-col cursor-pointer overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
           >
             <div className="relative w-full bg-secondary" style={{ aspectRatio: '4/3' }}>
               {item.image ? (
@@ -209,9 +209,9 @@ export function ListenTab() {
                 </div>
               )}
             </div>
-            <div className="flex flex-col gap-3 p-5">
+            <div className="flex flex-1 flex-col p-5">
               <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
-              <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
+              <p className="mt-auto pt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
             </div>
           </div>
         ))}
