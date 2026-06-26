@@ -51,7 +51,10 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     const qa = quickAnswers.find((q) => q.id === view.id)
     if (!qa) return null
     const idx = quickAnswers.indexOf(qa)
-    const nextQa = quickAnswers[(idx + 1) % quickAnswers.length]
+    const unexplored = quickAnswers.filter((q) => q.id !== qa.id && !explored.includes(q.id))
+    const nextQa = unexplored.length > 0
+      ? unexplored[0]
+      : quickAnswers[(idx + 1) % quickAnswers.length]
     const othersQa = quickAnswers.filter((q) => q.id !== qa.id && q.id !== nextQa.id).slice(0, 3)
     const exploredCount = explored.length
 
@@ -101,8 +104,8 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
           {/* Progress bar */}
           <div className="h-1 w-full overflow-hidden rounded-full bg-border">
             <div
-              className="h-full rounded-full transition-all duration-500" style={{ backgroundColor: '#FEAE86' }}
-              style={{ width: `${(exploredCount / quickAnswers.length) * 100}%` }}
+              className="h-full rounded-full transition-all duration-500"
+              style={{ backgroundColor: '#FEAE86', width: `${(exploredCount / quickAnswers.length) * 100}%` }}
             />
           </div>
 
