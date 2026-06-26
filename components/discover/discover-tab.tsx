@@ -263,20 +263,22 @@ function DiscoverListItem({
 
   if (layout === 'card') {
     return (
-      <button
-        type="button"
+      <div
+        role="button"
+        tabIndex={0}
         onClick={onSelect}
-        className="w-full overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect() }}
+        className="w-full cursor-pointer overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
       >
-        {/* Square image area */}
-        <div className="relative w-full bg-secondary" style={{ aspectRatio: '1/1' }}>
+        {/* Image area */}
+        <div className="relative w-full bg-secondary" style={{ aspectRatio: '4/3' }}>
           {item.image ? (
             <img
               src={item.image}
               alt={item.name}
               className={cn(
                 'absolute inset-0 h-full w-full',
-                isBook ? 'object-contain p-5' : 'object-contain p-4',
+                isBook ? 'object-contain p-3' : 'object-cover',
               )}
               onError={(e) => { e.currentTarget.style.display = 'none' }}
             />
@@ -286,17 +288,20 @@ function DiscoverListItem({
             </div>
           )}
         </div>
-        {/* Content */}
-        <div className="p-3">
+        {/* Content — overlaps image for books, stacks normally for others */}
+        <div className={cn(
+          'flex flex-col gap-3 p-5',
+          isBook && 'relative z-10 -mt-16 bg-card',
+        )}>
           {groupLabel && (
-            <p className="mb-1 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               {groupLabel}
             </p>
           )}
-          <p className="font-heading text-sm font-semibold leading-snug text-foreground">{item.name}</p>
-          <p className="mt-1 line-clamp-3 text-xs leading-relaxed text-muted-foreground">{item.note}</p>
+          <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
+          <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
         </div>
-      </button>
+      </div>
     )
   }
 
@@ -334,12 +339,12 @@ function DiscoverListItem({
 
         <div className="min-w-0 flex-1">
           {groupLabel && (
-            <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               {groupLabel}
             </p>
           )}
-          <p className="font-heading text-base font-semibold leading-snug text-foreground">{item.name}</p>
-          <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-muted-foreground">{item.note}</p>
+          <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
+          <p className="mt-0.5 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
         </div>
 
         <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
@@ -451,7 +456,7 @@ export function DiscoverTab() {
                 )
               })}
               {gridItems.length > 0 && (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 items-start gap-3">
                   {gridItems.map(item => {
                     const group = filter === 'all' ? getGroup(item) : undefined
                     return (

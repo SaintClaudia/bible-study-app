@@ -568,7 +568,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'USCCB',
         note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
         href: 'https://www.usccb.org/',
-        image: 'https://www.google.com/s2/favicons?domain=usccb.org&sz=256',
+        image: '/usccb.png',
         category: 'Website',
         description:
           'The official site of the United States Conference of Catholic Bishops — the central hub for daily Mass readings, the text of Church documents and encyclicals, pastoral letters, and guidance on Catholic social teaching and moral theology.',
