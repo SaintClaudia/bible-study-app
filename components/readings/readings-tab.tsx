@@ -58,7 +58,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
 
       {/* Title — matches Guide / Discover heading pattern */}
       <section className="pt-12">
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
           {new Date(data.date + 'T12:00:00Z').toLocaleDateString('en-US', {
             weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC',
           })}
@@ -87,7 +87,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Why these readings
           </p>
           <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">
@@ -104,7 +104,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
           </svg>
-          <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+          <h2 className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             This Sunday&apos;s readings
           </h2>
         </div>
@@ -120,10 +120,10 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
                 className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left"
               >
                 <span>
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                  <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                     {reading.label}
                   </span>
-                  <span className="block font-heading text-lg font-medium text-foreground">
+                  <span className="block font-heading text-xl font-normal text-foreground">
                     {reading.reference}
                   </span>
                 </span>
@@ -150,7 +150,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
                   )}
 
                   <div className="mx-4 mb-4 rounded-xl bg-secondary/60 px-4 py-3">
-                    <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                       In plain language
                     </p>
                     <p className="text-sm leading-relaxed text-muted-foreground">
