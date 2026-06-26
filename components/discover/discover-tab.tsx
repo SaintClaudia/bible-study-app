@@ -296,7 +296,7 @@ const FILTER_CHIPS: FilterChip[] = [
   { id: 'read', label: 'Read', icon: <BookOpen className="h-3.5 w-3.5" aria-hidden /> },
 ]
 
-export function ResourcesTab() {
+export function DiscoverTab() {
   const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
   const [filter, setFilter] = useState<FilterId>('all')
   const { setNowPlaying } = useMusicPlayer()
