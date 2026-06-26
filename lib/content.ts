@@ -523,7 +523,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Catechism of the Catholic Church',
         note: 'The official summary of Catholic belief — a reference for the whole faith.',
         href: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
-        image: '/catechism.jpg',
+        image: '/catechism.png',
         display: 'book',
         category: 'Book',
         description:
@@ -538,7 +538,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Compendium of the Catechism',
         note: 'A shorter, question-and-answer companion to the full Catechism.',
         href: 'https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html',
-        image: '/compendium.jpg',
+        image: '/compendium.png',
         display: 'book',
         category: 'Book',
         description:
@@ -553,7 +553,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Theology of Home',
         note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
         href: 'https://theologyofhome.com/',
-        image: '/theology-of-home.jpg',
+        image: '/theology-of-home.png',
         display: 'book',
         category: 'Book',
         description:
