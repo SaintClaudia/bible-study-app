@@ -295,7 +295,7 @@ function DiscoverListItem({
               {groupLabel}
             </p>
           )}
-          <p className={cn('font-heading text-2xl font-normal leading-tight text-foreground', groupLabel && 'mt-2')}>{item.name}</p>
+          <p className={cn('font-heading text-xl font-normal leading-tight text-foreground', groupLabel && 'mt-2')}>{item.name}</p>
           <p className="mt-auto pt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
         </div>
       </div>
@@ -340,7 +340,7 @@ function DiscoverListItem({
               {groupLabel}
             </p>
           )}
-          <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
+          <p className="font-heading text-xl font-normal leading-tight text-foreground">{item.name}</p>
           <p className="mt-0.5 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
         </div>
 

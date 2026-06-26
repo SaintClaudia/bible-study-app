@@ -210,7 +210,7 @@ export function ListenTab() {
               )}
             </div>
             <div className="flex flex-1 flex-col p-5">
-              <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
+              <p className="font-heading text-xl font-normal leading-tight text-foreground">{item.name}</p>
               <p className="mt-auto pt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
             </div>
           </div>
