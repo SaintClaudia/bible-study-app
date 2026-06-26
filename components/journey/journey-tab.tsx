@@ -402,8 +402,8 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
                 <div className="h-9 w-9 shrink-0 rounded-xl bg-secondary" />
               )}
               <div className="flex-1">
-                <p className="font-heading text-lg font-normal text-foreground">{item.title}</p>
-                <p className="text-xs leading-relaxed text-muted-foreground">{item.subtitle}</p>
+                <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.subtitle}</p>
               </div>
               <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
             </button>
