@@ -365,7 +365,7 @@ function DiscoverListItem({
     <button
       type="button"
       onClick={onSelect}
-      className="flex w-full items-center gap-3 py-3 text-left transition-opacity active:opacity-60"
+      className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-secondary/40 active:opacity-60"
     >
       {item.image ? (
         <img
@@ -492,16 +492,16 @@ export function ResourcesTab() {
       />
 
       {/* Recommended section */}
-      <section className="flex flex-col gap-1">
+      <section className="flex flex-col gap-3">
         <div className="flex items-baseline justify-between">
-          <h2 className="font-heading text-2xl font-semibold text-foreground">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
             {filter === 'all' ? 'Recommended' : FILTER_CHIPS.find(c => c.id === filter)?.label ?? 'Recommended'}
-          </h2>
-          <span className="text-sm text-muted-foreground">
+          </p>
+          <span className="text-xs text-muted-foreground">
             {filter === 'all' ? `${totalItems} items` : `${recommendedItems.length} items`}
           </span>
         </div>
-        <div className="divide-y divide-border">
+        <div className="overflow-hidden rounded-2xl border border-border bg-card divide-y divide-border">
           {recommendedItems.map(item => {
             const group = resourceGroups.find(g => g.items.some(i => i.name === item.name))
             return (
