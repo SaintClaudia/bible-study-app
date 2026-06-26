@@ -478,17 +478,18 @@ export function ResourcesTab() {
         <h1 className="font-heading text-[3.25rem] font-normal leading-[1.05] tracking-[-0.01em] text-foreground">
           Deepen your faith
         </h1>
-        <FilterChips
-          chips={FILTER_CHIPS}
-          active={filter}
-          onChange={(id) => setFilter(id as FilterId)}
-        />
       </section>
 
       {/* Featured series card */}
       {featuredItem && (filter === 'all' || filter === 'watch') && (
         <FullBleedSeriesCard item={featuredItem} categoryLabel="Watch" onSelect={() => openItem(featuredItem)} />
       )}
+
+      <FilterChips
+        chips={FILTER_CHIPS}
+        active={filter}
+        onChange={(id) => setFilter(id as FilterId)}
+      />
 
       {/* Recommended section */}
       <section className="flex flex-col gap-1">
