@@ -422,7 +422,7 @@ export function DiscoverTab() {
           Deepen your faith
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          See what Catholics are reading, watching, listening to, and talking about.
+          See what Catholics are watching, reading, and talking about.
         </p>
       </section>
 
