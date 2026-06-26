@@ -524,7 +524,6 @@ export const resourceGroups: ResourceGroup[] = [
         note: 'The official summary of Catholic belief — a reference for the whole faith.',
         href: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
         image: '/catechism.png',
-        display: 'book',
         category: 'Book',
         description:
           'The official summary of Catholic doctrine, promulgated by Pope John Paul II in 1992. Organized around four pillars — the Creed, the Sacraments, the Moral Life, and Prayer — it is the definitive reference for the whole of the faith.',
@@ -539,7 +538,6 @@ export const resourceGroups: ResourceGroup[] = [
         note: 'A shorter, question-and-answer companion to the full Catechism.',
         href: 'https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html',
         image: '/compendium.png',
-        display: 'book',
         category: 'Book',
         description:
           'A question-and-answer format companion to the full Catechism, prepared under Pope Benedict XVI in 2005. Covering the same four pillars in 598 concise questions, it is a practical starting point for anyone exploring Catholic teaching.',
@@ -554,7 +552,6 @@ export const resourceGroups: ResourceGroup[] = [
         note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
         href: 'https://theologyofhome.com/',
         image: '/theology-of-home.png',
-        display: 'book',
         category: 'Book',
         description:
           'Written by Carrie Gress and Noelle Mering, this book explores how Catholic life in the home — beauty, order, hospitality, and the rhythms of the domestic church — reflects eternal truths. The first in a series that has grown into a broader community and resource hub.',
