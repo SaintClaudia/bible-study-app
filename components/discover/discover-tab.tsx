@@ -54,6 +54,11 @@ function ShareButton({ item }: { item: ResourceItem }) {
   )
 }
 
+function renderInline(text: string) {
+  const parts = text.split(/\*([^*]+)\*/)
+  return parts.map((part, i) => i % 2 === 1 ? <em key={i}>{part}</em> : part)
+}
+
 // ── Detail view ────────────────────────────────────────────────
 
 function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => void }) {
@@ -157,7 +162,7 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         ) : Array.isArray(item.description) ? (
           <div className="flex flex-col gap-4">
             {item.description.map((para, i) => (
-              <p key={i} className="text-base leading-relaxed text-foreground/90">{para}</p>
+              <p key={i} className="text-base leading-relaxed text-foreground/90">{renderInline(para)}</p>
             ))}
           </div>
         ) : (
