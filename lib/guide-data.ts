@@ -61,11 +61,11 @@ export const quickAnswers: QuickAnswer[] = [
     category: 'ATTENDANCE',
     question: 'Do I have to come every week?',
     shortAnswer: 'Come as you can',
-    boldAnswer: 'Try to come regularly, but it is flexible.',
+    boldAnswer: 'Try to come regularly, but don't worry if you miss one.',
     image: '/angel.png',
     body: [
-      "Regular attendance helps you follow the formation arc and build relationships with others on the same journey. Most programs ask that you come as consistently as you can.",
-      "If you miss a session, just come back. No one is keeping score.",
+      "OCIA is designed to build on what you learn each week, so attending regularly will help you get the most from the experience and build relationships with others on the same journey.",
+      "Life happens. If you miss a session because of work, travel, illness, or family commitments, just come back the following week. Your parish will help you catch up if there is anything important you missed.",
     ],
   },
   {
