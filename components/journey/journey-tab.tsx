@@ -51,7 +51,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     const qa = quickAnswers.find((q) => q.id === view.id)
     if (!qa) return null
     const idx = quickAnswers.indexOf(qa)
-    const exploredCount = explored.length
+    const exploredCount = explored.filter(id => quickAnswers.some(q => q.id === id)).length
     const allExplored = exploredCount >= quickAnswers.length
     const unexplored = quickAnswers.filter((q) => q.id !== qa.id && !explored.includes(q.id))
     const nextQa = unexplored.length > 0
