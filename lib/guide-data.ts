@@ -108,8 +108,11 @@ export const quickAnswers: QuickAnswer[] = [
     boldAnswer: "It's more common than you think.",
     image: '/michael.png',
     body: [
-      "Situations involving previous marriages come up often in OCIA. Depending on your circumstances, there may be additional steps before receiving certain sacraments.",
-      "This is not a barrier — it's a process. Your parish priest or deacon will walk through your situation with you, privately and without judgment.",
+      "Many people entering OCIA have been married before. Depending on your circumstances, there may be additional steps before receiving certain sacraments, but this is not a barrier to becoming Catholic—it's simply part of the process.",
+      "If you've been divorced or previously married, your parish will help determine what documentation is needed. This often includes copies of your baptism certificate (if you were baptized), marriage certificate, and divorce decree. These documents are reviewed by your parish and, when necessary, submitted to the diocesan tribunal for evaluation.",
+      "Every situation is unique. Some cases are straightforward and can be resolved relatively quickly, while others require additional review and may take longer. Your parish will explain which process applies to your circumstances and guide you through each step.",
+      "The good news is that you do not need to have everything resolved before beginning OCIA. You can attend classes, grow in your faith, and move forward in your formation while any required paperwork is being completed.",
+      "Above all, remember that this process exists to help the Church understand your individual circumstances—not to judge your past. Your priest or deacon will discuss your situation privately, answer your questions, and walk with you every step of the way.",
     ],
   },
   {
