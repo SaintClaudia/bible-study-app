@@ -153,14 +153,14 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
     if (!item) return null
     return (
       <div className="-mx-5 -mt-4">
-        <div className="relative h-56 overflow-hidden bg-neutral-900">
+        <div className="relative h-64 overflow-hidden bg-neutral-900">
           <Image src={item.image} alt="" fill className="object-cover object-center" />
           <div className="absolute inset-0 bg-black/30" />
           <button
             type="button"
             onClick={back}
             className="absolute left-4 flex items-center gap-1 rounded-full bg-black/40 px-3 py-1.5 text-white backdrop-blur-sm"
-            style={{ top: 'calc(env(safe-area-inset-top) + 16px)' }}
+            style={{ top: 'calc(env(safe-area-inset-top) + 28px)' }}
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span className="text-[10px] tracking-[0.2em] opacity-60">···</span>
