@@ -289,14 +289,14 @@ function DiscoverListItem({
           )}
         </div>
         {/* Content — overlaps image for books, stacks below for others */}
-        <div className={cn('flex flex-1 flex-col p-4', isBook && 'relative z-10 -mt-16 bg-card')}>
+        <div className={cn('flex flex-1 flex-col p-5', isBook && 'relative z-10 -mt-16 bg-card')}>
           {groupLabel && (
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               {groupLabel}
             </p>
           )}
-          <p className={cn('font-heading text-[15px] font-medium leading-snug text-foreground', groupLabel && 'mt-2')}>{item.name}</p>
-          <p className="mt-auto pt-2 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{item.note}</p>
+          <p className={cn('font-heading text-2xl font-normal leading-tight text-foreground', groupLabel && 'mt-2')}>{item.name}</p>
+          <p className="mt-auto pt-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
         </div>
       </div>
     )
@@ -336,12 +336,12 @@ function DiscoverListItem({
 
         <div className="min-w-0 flex-1">
           {groupLabel && (
-            <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               {groupLabel}
             </p>
           )}
-          <p className="font-heading text-base font-medium leading-snug text-foreground">{item.name}</p>
-          <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{item.note}</p>
+          <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
+          <p className="mt-0.5 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
         </div>
 
         <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />

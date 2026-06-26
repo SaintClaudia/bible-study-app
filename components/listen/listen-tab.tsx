@@ -193,7 +193,7 @@ export function ListenTab() {
             tabIndex={0}
             onClick={() => openItem(item)}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openItem(item) }}
-            className="flex w-full flex-col cursor-pointer overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
+            className="flex w-full flex-col cursor-pointer overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:bg-secondary/40 active:opacity-60"
           >
             <div className="relative w-full bg-secondary" style={{ aspectRatio: '4/3' }}>
               {item.image ? (
