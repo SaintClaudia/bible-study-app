@@ -185,32 +185,35 @@ export function ListenTab() {
         </p>
       </section>
 
-      <section className="flex flex-col gap-2.5">
+      <section className="grid grid-cols-2 items-start gap-3">
         {listenItems.map(item => (
-          <button
+          <div
             key={item.name}
-            type="button"
+            role="button"
+            tabIndex={0}
             onClick={() => openItem(item)}
-            className="block w-full rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openItem(item) }}
+            className="w-full cursor-pointer overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
           >
-            <div className="flex items-center gap-3 px-4 py-3.5">
+            <div className="relative w-full bg-secondary" style={{ aspectRatio: '4/3' }}>
               {item.image ? (
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="h-12 w-12 rounded-lg object-cover shadow-sm flex-shrink-0"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
                 />
               ) : (
-                <div className="h-12 w-12 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0 text-base font-bold text-foreground">
-                  {item.name[0]}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Music2 className="h-10 w-10 text-muted-foreground" aria-hidden />
                 </div>
               )}
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">{item.name}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground leading-snug line-clamp-2">{item.note}</p>
-              </div>
             </div>
-          </button>
+            <div className="flex flex-col gap-3 p-5">
+              <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.name}</p>
+              <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
+            </div>
+          </div>
         ))}
       </section>
     </div>
