@@ -12,6 +12,7 @@ export interface QuickAnswer {
 export interface StartHerePath {
   label: string
   steps: string[]
+  note?: string
 }
 
 export interface StartHereItem {
@@ -211,11 +212,11 @@ export const startHereItems: StartHereItem[] = [
         label: 'Never baptized',
         steps: [
           'Inquiry',
-          'Catechumen',
           'Rite of Acceptance',
+          'Formation',
           'Rite of Election',
-          'Easter Vigil',
-          'Baptism · Confirmation · First Eucharist',
+          'Final preparation during Lent',
+          'Easter Vigil: Baptism · Confirmation · First Eucharist',
           'Mystagogy',
         ],
       },
@@ -225,9 +226,10 @@ export const startHereItems: StartHereItem[] = [
           'Inquiry',
           'Formation',
           'Profession of Faith',
-          'Confirmation · First Eucharist',
+          'Reception into full communion: Confirmation · First Eucharist',
           'Mystagogy',
         ],
+        note: 'This usually takes place at the Easter Vigil or another Mass, depending on your parish and your readiness.',
       },
       {
         label: 'Already Catholic',

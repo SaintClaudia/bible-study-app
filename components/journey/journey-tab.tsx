@@ -224,6 +224,11 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
                   </div>
                 ))}
               </div>
+              {item.paths[activePathIdx].note && (
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {item.paths[activePathIdx].note}
+                </p>
+              )}
             </div>
           )}
 
