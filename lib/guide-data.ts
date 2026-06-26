@@ -6,6 +6,7 @@ export interface QuickAnswer {
   boldAnswer: string
   body: string[]
   image: string
+  imagePosition?: string
 }
 
 export interface StartHereItem {
@@ -35,6 +36,7 @@ export const quickAnswers: QuickAnswer[] = [
     shortAnswer: "No, it's free",
     boldAnswer: 'No. OCIA is completely free.',
     image: '/holy-cross.png',
+    imagePosition: 'center 40px',
     body: [
       "There's no tuition, no fee, and no expectation to give anything. Parishes offer OCIA as part of their mission to welcome people.",
       "If a book or a Bible is suggested, the parish can usually provide one. Never let cost be the reason you stay home.",

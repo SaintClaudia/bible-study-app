@@ -59,7 +59,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
       <div className="-mx-5 -mt-4">
         {/* Hero */}
         <div className="relative h-64 overflow-hidden bg-neutral-900">
-          <Image src={qa.image} alt="" fill className="object-cover object-center" />
+          <Image src={qa.image} alt="" fill className="object-cover" style={{ objectPosition: qa.imagePosition ?? 'center' }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50" />
           <button
             type="button"
