@@ -1,7 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ArrowLeft, BookOpen, Check, Compass, ExternalLink, Info, Play, Share2, TrendingUp } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronRight, Compass, ExternalLink, Info, Play, Share2, TrendingUp } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
 import { FilterChips, type FilterChip } from '@/components/discover/filter-chips'
@@ -244,7 +245,7 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
   )
 }
 
-// ── Discover list item ────────────────────────────────────────
+// ── Discover card ─────────────────────────────────────────────
 
 function DiscoverListItem({
   item,
@@ -255,39 +256,53 @@ function DiscoverListItem({
   groupLabel?: string
   onSelect: () => void
 }) {
+  const isHero = item.display === 'hero'
+  const isBook = item.display === 'book'
+
   return (
     <button
       type="button"
       onClick={onSelect}
-      className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-secondary/40 active:opacity-60"
+      className="w-full overflow-hidden rounded-2xl border border-border bg-card text-left transition-colors hover:border-primary/40 active:opacity-60"
     >
-      {item.image ? (
-        <img
-          src={item.image}
-          alt={item.name}
-          className="h-12 w-12 flex-shrink-0 rounded-lg object-cover shadow-sm"
-          onError={(e) => {
-            const el = e.currentTarget
-            el.style.display = 'none'
-            const fallback = el.nextElementSibling as HTMLElement | null
-            if (fallback) fallback.style.display = 'flex'
-          }}
-        />
-      ) : null}
-      <div
-        className="h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-secondary text-base font-bold text-foreground"
-        style={{ display: item.image ? 'none' : 'flex' }}
-      >
-        {item.name[0]}
-      </div>
-      <div className="min-w-0 flex-1">
-        {groupLabel && (
-          <span className="mb-1 inline-flex items-center rounded-full border border-border bg-secondary px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-            {groupLabel}
-          </span>
+      {/* Full-width image for hero items */}
+      {item.image && isHero && (
+        <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+        </div>
+      )}
+
+      <div className="flex items-center gap-3.5 p-4">
+        {/* Thumbnail for non-hero items */}
+        {item.image && !isHero && (
+          <img
+            src={item.image}
+            alt={item.name}
+            className={cn(
+              'flex-shrink-0 object-cover',
+              isBook ? 'h-16 w-11 rounded-md' : 'h-14 w-14 rounded-xl',
+            )}
+            style={isBook ? { boxShadow: '0 2px 8px rgba(0,0,0,0.15)' } : undefined}
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
         )}
-        <p className="text-sm font-semibold leading-tight text-foreground">{item.name}</p>
-        <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-muted-foreground">{item.note}</p>
+        {!item.image && (
+          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-secondary text-base font-bold text-foreground">
+            {item.name[0]}
+          </div>
+        )}
+
+        <div className="min-w-0 flex-1">
+          {groupLabel && (
+            <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+              {groupLabel}
+            </p>
+          )}
+          <p className="font-heading text-base font-semibold leading-snug text-foreground">{item.name}</p>
+          <p className="mt-0.5 line-clamp-2 text-sm leading-snug text-muted-foreground">{item.note}</p>
+        </div>
+
+        <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
       </div>
     </button>
   )
@@ -377,7 +392,7 @@ export function DiscoverTab() {
       />
 
       <section>
-        <div className="overflow-hidden rounded-2xl border border-border bg-card divide-y divide-border">
+        <div className="flex flex-col gap-3">
           {visibleItems.map(item => {
             const group = filter === 'all'
               ? resourceGroups.find(g => g.items.some(i => i.name === item.name))
