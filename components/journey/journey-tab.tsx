@@ -88,7 +88,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
 
           {/* UP NEXT card */}
           <div className="rounded-2xl bg-neutral-900 p-5 dark:bg-neutral-800">
-            <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-white/50">
               Up Next · Quick Answer
             </p>
             <div className="mt-2.5 flex items-start justify-between gap-3">
