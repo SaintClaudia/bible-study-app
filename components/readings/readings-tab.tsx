@@ -137,7 +137,7 @@ export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => v
                 <div className="border-t border-border">
                   {reading.fullText ? (
                     <div className="px-5 pb-4 pt-5">
-                      <div className="font-heading text-[17px] leading-[1.85] text-foreground whitespace-pre-wrap">
+                      <div className="text-base leading-[1.85] text-foreground/90 whitespace-pre-wrap">
                         {reading.fullText}
                       </div>
                     </div>
