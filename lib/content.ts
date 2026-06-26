@@ -458,7 +458,7 @@ export type ResourceItem = {
   image?: string
   display?: 'app' | 'book' | 'hero'
   category?: string
-  description?: string
+  description?: string | string[]
   details?: string[]
   pageNote?: string
   spotifyEmbedSrc?: string
@@ -481,16 +481,20 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'The Chosen',
         note: 'A beautifully made series on the life of Christ and those who followed him.',
-        href: 'https://www.thechosen.tv/',
+        href: 'https://watch.thechosen.tv/',
         image: '/the-chosen.jpg',
         display: 'hero',
         category: 'Series',
-        description:
-          'An acclaimed multi-season drama that follows the life and ministry of Jesus Christ through the eyes of those who walked with him — disciples, strangers, and those on the margins. Created by Dallas Jenkins, it became the highest crowd-funded media project in history.',
+        description: [
+          'A place to start.',
+          'For many people, *The Chosen* is where the Gospels begin to feel a little more familiar. By imagining the everyday lives of Jesus, his disciples, and those they encountered, the series invites viewers to see Scripture through a more human lens—one that encourages empathy, curiosity, and reflection.',
+          'For those beginning their faith journey, it can provide meaningful context that makes returning to the Bible feel both familiar and inviting. As new names, places, and events unfold throughout Scripture, the series offers a visual framework that helps connect them together. Seeing the people behind the pages can make the story feel less overwhelming and easier to follow, especially when so much is new.',
+          'While the series includes creative storytelling, it is best experienced alongside Scripture. Let it spark your curiosity, then return to the Gospels and encounter the story for yourself.',
+        ],
         details: [
-          'Seasons 1–4 available now',
+          'Seasons 1–5 available now',
+          'Season 6 starting November 15, 2026',
           'Free to watch on The Chosen app',
-          'Also available on Netflix, Amazon Prime, and more',
         ],
       },
       {
@@ -519,8 +523,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Catechism of the Catholic Church',
         note: 'The official summary of Catholic belief — a reference for the whole faith.',
         href: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
-        image: '/catechism.jpg',
-        display: 'book',
+        image: '/catechism.png',
         category: 'Book',
         description:
           'The official summary of Catholic doctrine, promulgated by Pope John Paul II in 1992. Organized around four pillars — the Creed, the Sacraments, the Moral Life, and Prayer — it is the definitive reference for the whole of the faith.',
@@ -534,8 +537,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Compendium of the Catechism',
         note: 'A shorter, question-and-answer companion to the full Catechism.',
         href: 'https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html',
-        image: '/compendium.jpg',
-        display: 'book',
+        image: '/compendium.png',
         category: 'Book',
         description:
           'A question-and-answer format companion to the full Catechism, prepared under Pope Benedict XVI in 2005. Covering the same four pillars in 598 concise questions, it is a practical starting point for anyone exploring Catholic teaching.',
@@ -549,8 +551,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Theology of Home',
         note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
         href: 'https://theologyofhome.com/',
-        image: '/theology-of-home.jpg',
-        display: 'book',
+        image: '/theology-of-home.png',
         category: 'Book',
         description:
           'Written by Carrie Gress and Noelle Mering, this book explores how Catholic life in the home — beauty, order, hospitality, and the rhythms of the domestic church — reflects eternal truths. The first in a series that has grown into a broader community and resource hub.',
@@ -564,7 +565,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'USCCB',
         note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
         href: 'https://www.usccb.org/',
-        image: 'https://www.google.com/s2/favicons?domain=usccb.org&sz=256',
+        image: '/usccb.png',
         category: 'Website',
         description:
           'The official site of the United States Conference of Catholic Bishops — the central hub for daily Mass readings, the text of Church documents and encyclicals, pastoral letters, and guidance on Catholic social teaching and moral theology.',
@@ -585,7 +586,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Bible App',
         note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
         href: 'https://www.youversion.com/bible-app',
-        image: 'https://www.google.com/s2/favicons?domain=youversion.com&sz=256',
+        image: '/bible-app.png',
         display: 'app',
         category: 'App',
         description:
@@ -602,7 +603,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Hallow',
         note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
         href: 'https://hallow.com/',
-        image: 'https://www.google.com/s2/favicons?domain=hallow.com&sz=256',
+        image: '/hallow.png',
         display: 'app',
         category: 'App',
         description:
@@ -632,7 +633,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Magisterium AI',
         note: 'Ask questions and get answers grounded in Church teaching, with citations.',
         href: 'https://www.magisterium.com/',
-        image: 'https://www.google.com/s2/favicons?domain=magisterium.com&sz=256',
+        image: '/magisterium-ai.png',
         display: 'app',
         category: 'App',
         description:
@@ -647,7 +648,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Pillar Podcast',
         note: 'Smart, candid conversation on news and life in the Catholic Church.',
         href: 'https://www.pillarcatholic.com/s/the-pillar-podcast',
-        image: 'https://www.google.com/s2/favicons?domain=pillarcatholic.com&sz=256',
+        image: '/pillar-podcast.png',
         display: 'app',
         category: 'Podcast',
         description:
@@ -656,6 +657,21 @@ export const resourceGroups: ResourceGroup[] = [
           'New episodes released weekly',
           'Hosted by veteran Catholic journalists',
           'Available on Apple Podcasts, Spotify, and wherever you listen',
+        ],
+      },
+      {
+        name: 'The Catholic Channel',
+        note: 'Catholic talk, news, and conversation — available on SiriusXM.',
+        href: 'https://www.siriusxm.com/channels/the-catholic-channel',
+        image: '/catholic-channel.png',
+        display: 'app',
+        category: 'Radio',
+        description:
+          'SiriusXM\'s dedicated Catholic channel featuring talk shows, news, call-ins, and programming from a range of Catholic voices. A good way to stay connected to Catholic conversation throughout the day.',
+        details: [
+          'Available on SiriusXM and the SiriusXM app',
+          'Requires SiriusXM subscription',
+          'Mix of live programming and on-demand shows',
         ],
       },
     ],

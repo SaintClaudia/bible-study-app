@@ -82,10 +82,10 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
         </button>
 
         <header>
-          <p className="text-xs font-semibold uppercase tracking-wide text-foreground">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             {activeLesson.minutes} min read
           </p>
-          <h1 className="mt-1.5 font-heading text-3xl font-semibold text-balance text-foreground">
+          <h1 className="mt-1.5 font-heading text-3xl font-normal text-balance text-foreground">
             {activeLesson.title}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -102,7 +102,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
         <section className="rounded-2xl border border-border bg-card p-5">
           <div className="flex items-center gap-2 text-foreground">
             <ListChecks className="h-4 w-4 text-foreground" aria-hidden />
-            <h2 className="font-heading text-lg font-semibold">Key takeaways</h2>
+            <h2 className="font-heading text-xl font-normal">Key takeaways</h2>
           </div>
           <ul className="mt-3 flex flex-col gap-2.5">
             {activeLesson.takeaways.map((t, i) => (
@@ -117,7 +117,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
         <section className="rounded-2xl border border-border bg-secondary/60 p-5">
           <div className="flex items-center gap-2 text-foreground">
             <CircleHelp className="h-4 w-4" aria-hidden />
-            <h2 className="text-xs font-semibold uppercase tracking-wide">Reflect</h2>
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Reflect</h2>
           </div>
           <p className="mt-2 text-sm leading-relaxed text-foreground/90">{activeLesson.reflection}</p>
         </section>
@@ -154,7 +154,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
         </button>
 
         <header>
-          <h1 className="font-heading text-3xl font-semibold text-balance text-foreground">
+          <h1 className="font-heading text-3xl font-normal text-balance text-foreground">
             {activePath.title}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -171,17 +171,17 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
                 key={lesson.id}
                 type="button"
                 onClick={() => setActiveLesson(lesson)}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:border-primary/40"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
               >
                 <span className={cn(
-                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold',
+                  'flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-normal',
                   isDone ? 'bg-primary text-foreground-foreground' : 'bg-secondary text-secondary-foreground',
                 )}>
                   {isDone ? <Check className="h-4 w-4" aria-hidden /> : i + 1}
                 </span>
                 <span className="flex-1">
-                  <span className="block font-medium text-foreground">{lesson.title}</span>
-                  <span className="block text-xs text-muted-foreground">{lesson.minutes} min read</span>
+                  <span className="block font-heading text-xl font-normal text-foreground">{lesson.title}</span>
+                  <span className="block text-sm text-muted-foreground">{lesson.minutes} min read</span>
                 </span>
                 <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
               </button>
@@ -193,7 +193,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
         {activePath.id === 'attending-mass' && (
           <>
             <div className="pt-2">
-              <h2 className="font-heading text-xl font-semibold text-foreground">Order of Mass</h2>
+              <h2 className="font-heading text-2xl font-normal text-foreground">Order of Mass</h2>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                 A simple guide to what happens during Mass and why. Tap any section to learn more.
               </p>
@@ -208,7 +208,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
                   aria-expanded={openMassSection === 'arriving'}
                   className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left"
                 >
-                  <span className="font-heading text-base font-semibold text-foreground">Arriving at Mass</span>
+                  <span className="font-heading text-xl font-normal text-foreground">Arriving at Mass</span>
                   <ChevronDown className={cn('h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200', openMassSection === 'arriving' && 'rotate-180')} aria-hidden />
                 </button>
                 {openMassSection === 'arriving' && (
@@ -231,8 +231,8 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
                     >
                       <div className="flex flex-col gap-1.5">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-semibold text-muted-foreground">{i + 1}</span>
-                          <span className="font-heading text-base font-semibold text-foreground">{section.title}</span>
+                          <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">{i + 1}</span>
+                          <span className="font-heading text-xl font-normal text-foreground">{section.title}</span>
                         </div>
                         <span className="inline-flex items-center self-start rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-foreground">
                           {section.posture}
@@ -244,7 +244,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
                       <div className="border-t border-border px-4 py-4 flex flex-col gap-4">
                         <p className="text-sm leading-relaxed text-foreground/80">{section.description}</p>
                         <div className="rounded-xl bg-secondary/50 px-4 py-3">
-                          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1.5">Why do Catholics do this?</p>
+                          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground mb-1.5">Why do Catholics do this?</p>
                           <p className="text-sm leading-relaxed text-muted-foreground">{section.why}</p>
                         </div>
                       </div>
@@ -284,7 +284,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
 
       <section className="rounded-2xl border border-border bg-card p-5">
         <div className="flex items-center justify-between">
-          <p className="font-heading text-lg font-semibold text-foreground">Your progress</p>
+          <p className="font-heading text-xl font-normal text-foreground">Your progress</p>
           <p className="text-sm font-medium text-muted-foreground">{doneCount} / {totalLessons}</p>
         </div>
         <div
@@ -309,15 +309,15 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
               key={path.id}
               type="button"
               onClick={() => setActivePath(path)}
-              className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:border-primary/40"
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-secondary font-heading text-lg font-semibold text-foreground">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary font-heading text-xl font-normal text-foreground">
                 {i + 1}
               </span>
               <span className="flex-1">
-                <span className="block font-heading text-base font-semibold text-foreground">{path.title}</span>
-                <span className="block text-xs text-muted-foreground">{path.description}</span>
-                <span className="mt-1 block text-xs font-medium text-foreground">{done} of {path.lessons.length} complete</span>
+                <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
+                <span className="block text-sm leading-relaxed text-muted-foreground">{path.description}</span>
+                <span className="mt-1 block text-xs font-medium text-muted-foreground">{done} of {path.lessons.length} complete</span>
               </span>
               <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
             </button>

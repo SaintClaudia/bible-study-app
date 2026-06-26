@@ -6,7 +6,7 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
-import { ResourcesTab } from '@/components/resources/resources-tab'
+import { DiscoverTab } from '@/components/discover/discover-tab'
 import { ChurchMode } from '@/components/mass/church-mode'
 import { MusicPlayerContext, embedUrlToUri } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
@@ -14,7 +14,7 @@ import { ListenTab } from '@/components/listen/listen-tab'
 import { useSpotifySDK } from '@/hooks/use-spotify-sdk'
 import type { ResourceItem } from '@/lib/content'
 
-type Tab = 'readings' | 'formation' | 'journey' | 'resources' | 'listen'
+type Tab = 'readings' | 'formation' | 'journey' | 'discover' | 'listen'
 
 function IconBible({ className }: { className?: string }) {
   return (
@@ -75,7 +75,7 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'journey', label: 'Guide', icon: IconCompass },
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
-  { id: 'resources', label: 'Discover', icon: IconLibrary },
+  { id: 'discover', label: 'Discover', icon: IconLibrary },
   { id: 'listen', label: 'Music', icon: IconHeadphones },
 ]
 
@@ -83,7 +83,7 @@ export function AppShell() {
   // Tab / UI state
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
-    journey: 0, formation: 0, readings: 0, resources: 0, listen: 0,
+    journey: 0, formation: 0, readings: 0, discover: 0, listen: 0,
   })
   const [churchMode, setChurchMode] = useState(false)
   const [barsVisible, setBarsVisible] = useState(true)
@@ -114,7 +114,7 @@ export function AppShell() {
   // Read #tab hash from URL on load
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as Tab
-    if (hash && ['readings', 'mass', 'formation', 'journey', 'resources'].includes(hash)) {
+    if (hash && ['readings', 'mass', 'formation', 'journey', 'discover'].includes(hash)) {
       setActiveTab(hash)
     }
   }, [])
@@ -188,7 +188,7 @@ export function AppShell() {
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onEnterChurchMode={() => setChurchMode(true)} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} onDetailChange={setGuideDetailOpen} />}
-          {activeTab === 'resources' && <ResourcesTab key={tabKeys.resources} />}
+          {activeTab === 'discover' && <DiscoverTab key={tabKeys.discover} />}
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>
 

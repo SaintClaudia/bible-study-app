@@ -81,7 +81,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
         {/* Content */}
         <div className="flex flex-col gap-5 px-5 py-6">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               Quick Answer
             </p>
             <h1 className="mt-2 font-heading text-3xl font-semibold leading-tight text-foreground">
@@ -108,7 +108,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
 
           {/* UP NEXT card */}
           <div className="rounded-2xl bg-neutral-900 p-5 dark:bg-neutral-800">
-            <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
+            <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#EF8960' }}>
               Up Next · Quick Answer
             </p>
             <div className="mt-2.5 flex items-start justify-between gap-3">
@@ -146,7 +146,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
 
           {/* More questions */}
           <div>
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               More Questions
             </p>
             <div className="flex flex-col gap-2">
@@ -200,7 +200,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
         </div>
         <div className="flex flex-col gap-5 px-5 py-6">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               {item.label}
             </p>
             <h1 className="mt-2 font-heading text-3xl font-semibold leading-tight text-foreground">
@@ -290,7 +290,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
 
       {/* Quick Answers */}
       <section>
-        <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
           Quick Answers
         </p>
         <div className="-mx-5 flex gap-3 overflow-x-auto px-5 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -299,17 +299,17 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
               key={qa.id}
               type="button"
               onClick={() => go({ kind: 'qa', id: qa.id })}
-              className="flex w-40 shrink-0 flex-col justify-between rounded-2xl border border-border bg-card p-4 text-left transition-colors hover:bg-secondary/40 active:opacity-60"
+              className="flex w-52 shrink-0 flex-col justify-between rounded-2xl border border-border bg-card p-4 text-left transition-colors hover:bg-secondary/40 active:opacity-60"
             >
               <div>
-                <p className="text-[9px] font-semibold uppercase tracking-widest text-muted-foreground">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                   {qa.category}
                 </p>
-                <p className="mt-2 font-heading text-[15px] leading-snug text-foreground">
+                <p className="mt-2 font-heading text-lg font-normal leading-snug text-foreground">
                   {qa.question}
                 </p>
               </div>
-              <p className="mt-3 text-[11px] text-muted-foreground">{qa.shortAnswer} →</p>
+              <p className="mt-3 text-sm text-muted-foreground">{qa.shortAnswer} →</p>
             </button>
           ))}
         </div>
@@ -317,7 +317,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
 
       {/* Start Here */}
       <section>
-        <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
           Start Here
         </p>
 
@@ -328,14 +328,14 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
           className="relative w-full overflow-hidden rounded-2xl bg-neutral-900 p-5 text-left dark:bg-neutral-800"
         >
           <div className="flex items-start justify-between">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-white/50">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-white/50">
               {heroItem.label}
             </p>
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
               <ArrowRight className="h-4 w-4 text-neutral-900" />
             </div>
           </div>
-          <h2 className="mt-3 font-heading text-2xl font-semibold leading-snug text-white">
+          <h2 className="mt-3 font-heading text-2xl font-normal leading-snug text-white">
             {heroItem.title}
           </h2>
           <p className="mt-1.5 text-sm text-white/55">{heroItem.subtitle}</p>
@@ -358,11 +358,11 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
                   className="object-cover object-center"
                 />
               </div>
-              <div className="p-3">
-                <p className="font-heading text-sm font-semibold leading-snug text-foreground">
+              <div className="flex flex-1 flex-col p-5">
+                <p className="font-heading text-xl font-normal leading-tight text-foreground">
                   {item.title}
                 </p>
-                <p className="mt-0.5 text-xs text-muted-foreground">{item.subtitle}</p>
+                <p className="mt-auto pt-3 text-sm leading-relaxed text-muted-foreground">{item.subtitle}</p>
               </div>
             </button>
           ))}
@@ -371,7 +371,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
 
       {/* Good to Know */}
       <section>
-        <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+        <p className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
           Good to Know
         </p>
         <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
@@ -389,21 +389,21 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
               )}
             >
               {item.icon ? (
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-secondary p-1.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-secondary p-2">
                   <Image
                     src={item.icon}
                     alt=""
-                    width={28}
-                    height={28}
+                    width={40}
+                    height={40}
                     className="h-full w-full object-contain dark:invert"
                   />
                 </div>
               ) : (
-                <div className="h-9 w-9 shrink-0 rounded-xl bg-secondary" />
+                <div className="h-12 w-12 shrink-0 rounded-2xl bg-secondary" />
               )}
               <div className="flex-1">
-                <p className="font-heading text-base font-medium text-foreground">{item.title}</p>
-                <p className="text-xs text-muted-foreground">{item.subtitle}</p>
+                <p className="font-heading text-xl font-normal leading-tight text-foreground">{item.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.subtitle}</p>
               </div>
               <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
             </button>
