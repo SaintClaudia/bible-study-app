@@ -294,7 +294,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
           className="relative w-full overflow-hidden rounded-2xl bg-neutral-900 p-5 text-left dark:bg-neutral-800"
         >
           <div className="flex items-start justify-between">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-white/50">
+            <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: '#89877E' }}>
               {heroItem.label}
             </p>
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
@@ -304,7 +304,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
           <h2 className="mt-3 font-heading text-2xl font-normal leading-snug text-white">
             {heroItem.title}
           </h2>
-          <p className="mt-1.5 text-sm text-white/55">{heroItem.subtitle}</p>
+          <p className="mt-1.5 text-sm" style={{ color: '#89877E' }}>{heroItem.subtitle}</p>
         </button>
 
         {/* Sub cards */}
