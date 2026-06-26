@@ -481,7 +481,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'The Chosen',
         note: 'A beautifully made series on the life of Christ and those who followed him.',
-        href: 'https://www.thechosen.tv/',
+        href: 'https://watch.thechosen.tv/',
         image: '/the-chosen.jpg',
         display: 'hero',
         category: 'Series',
