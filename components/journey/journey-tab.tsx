@@ -358,11 +358,11 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
                   className="object-cover object-center"
                 />
               </div>
-              <div className="p-3">
-                <p className="font-heading text-base font-normal leading-snug text-foreground">
+              <div className="p-5">
+                <p className="font-heading text-2xl font-normal leading-tight text-foreground">
                   {item.title}
                 </p>
-                <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{item.subtitle}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.subtitle}</p>
               </div>
             </button>
           ))}
