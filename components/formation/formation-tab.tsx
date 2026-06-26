@@ -315,7 +315,7 @@ export function FormationTab({ onEnterChurchMode }: { onEnterChurchMode?: () => 
                 {i + 1}
               </span>
               <span className="flex-1">
-                <span className="block font-heading text-2xl font-normal text-foreground">{path.title}</span>
+                <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
                 <span className="block text-sm leading-relaxed text-muted-foreground">{path.description}</span>
                 <span className="mt-1 block text-xs font-medium text-muted-foreground">{done} of {path.lessons.length} complete</span>
               </span>
