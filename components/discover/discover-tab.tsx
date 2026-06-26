@@ -288,11 +288,8 @@ function DiscoverListItem({
             </div>
           )}
         </div>
-        {/* Content — overlaps image for books, stacks normally for others */}
-        <div className={cn(
-          'flex flex-col gap-3 p-5',
-          isBook && 'relative z-10 -mt-16 bg-card',
-        )}>
+        {/* Content */}
+        <div className="flex flex-col gap-3 p-5">
           {groupLabel && (
             <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               {groupLabel}
