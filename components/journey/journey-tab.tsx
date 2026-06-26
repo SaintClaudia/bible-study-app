@@ -18,10 +18,12 @@ type View =
 
 export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean) => void }) {
   const [view, setView] = useState<View>({ kind: 'list' })
+  const [activePathIdx, setActivePathIdx] = useState(0)
 
   const go = useCallback(
     (v: View) => {
       setView(v)
+      setActivePathIdx(0)
       onDetailChange?.(v.kind !== 'list')
       window.scrollTo({ top: 0, behavior: 'instant' })
     },
@@ -181,6 +183,50 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
               </p>
             ))}
           </div>
+
+          {item.paths && (
+            <div className="flex flex-col gap-4">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                Which path applies to me?
+              </p>
+              {/* Tab buttons */}
+              <div className="flex gap-2">
+                {item.paths.map((path, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setActivePathIdx(i)}
+                    className={cn(
+                      'rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors',
+                      activePathIdx === i
+                        ? 'bg-foreground text-background'
+                        : 'bg-secondary text-muted-foreground hover:bg-secondary/70'
+                    )}
+                  >
+                    {path.label}
+                  </button>
+                ))}
+              </div>
+              {/* Steps list */}
+              <div className="flex flex-col rounded-2xl border border-border bg-card overflow-hidden">
+                {item.paths[activePathIdx].steps.map((step, i) => (
+                  <div
+                    key={i}
+                    className={cn(
+                      'flex items-center gap-3 px-4 py-3',
+                      i < item.paths![activePathIdx].steps.length - 1 && 'border-b border-border'
+                    )}
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-[10px] font-semibold text-muted-foreground">
+                      {i + 1}
+                    </span>
+                    <span className="text-sm text-foreground">{step}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <button
             type="button"
             onClick={back}

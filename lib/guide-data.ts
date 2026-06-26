@@ -9,6 +9,11 @@ export interface QuickAnswer {
   imagePosition?: string
 }
 
+export interface StartHerePath {
+  label: string
+  steps: string[]
+}
+
 export interface StartHereItem {
   id: string
   label: string
@@ -17,6 +22,7 @@ export interface StartHereItem {
   body: string[]
   isHero: boolean
   image: string
+  paths?: StartHerePath[]
 }
 
 export interface GoodToKnowItem {
@@ -190,13 +196,49 @@ export const startHereItems: StartHereItem[] = [
     id: 'journey-steps',
     label: 'THE PATH',
     title: 'The journey, step by step',
-    subtitle: 'From curiosity to the sacraments.',
+    subtitle: 'Your path depends on where you begin.',
     isHero: false,
     image: '/christ.png',
     body: [
-      "The OCIA journey has a natural rhythm. It begins with a period of inquiry — you come, ask questions, and learn what the process involves.",
-      "The Rite of Acceptance marks the point at which you formally join the catechumenate — the group preparing for the sacraments. From there, you move through periods of formation, purification, and finally, the Easter Vigil.",
-      "After receiving the sacraments, there is a final period called mystagogy — a time to reflect on the experience and deepen your understanding of the life you have entered.",
+      "OCIA is not the exact same for everyone. Your journey depends on whether you have never been baptized, were baptized in another Christian tradition, or are already Catholic but still need to receive Confirmation or First Communion.",
+      "If you have never been baptized, you usually enter as a catechumen. This means you are preparing for Baptism, Confirmation, and First Eucharist. This path often leads to the Easter Vigil, where adults are baptized and receive the Sacraments of Initiation.",
+      "If you were already baptized in another Christian tradition, you are not baptized again. Instead, you are prepared to make a Profession of Faith and be received into full communion with the Catholic Church. This usually includes Confirmation and First Eucharist.",
+      "If you are already Catholic but have not received Confirmation or First Communion, your path may look a little different. You may attend OCIA classes or adult faith formation, but your sacrament may happen at another time, such as when the bishop visits the parish or during the Easter season.",
+      "Along the way, you may hear words like inquiry, catechumenate, Rite of Acceptance, Rite of Election, Easter Vigil, and mystagogy. These are simply the stages and moments that help guide the journey.",
+    ],
+    paths: [
+      {
+        label: 'Never baptized',
+        steps: [
+          'Inquiry',
+          'Catechumen',
+          'Rite of Acceptance',
+          'Rite of Election',
+          'Easter Vigil',
+          'Baptism · Confirmation · First Eucharist',
+          'Mystagogy',
+        ],
+      },
+      {
+        label: 'Baptized Christian',
+        steps: [
+          'Inquiry',
+          'Formation',
+          'Profession of Faith',
+          'Confirmation · First Eucharist',
+          'Mystagogy',
+        ],
+      },
+      {
+        label: 'Already Catholic',
+        steps: [
+          'Conversation with your parish',
+          'Formation',
+          'Reconciliation (if needed)',
+          'Confirmation and/or First Eucharist',
+          'Continued formation',
+        ],
+      },
     ],
   },
 ]
