@@ -68,7 +68,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'baptism',
     category: 'BAPTISM',
     question: 'Do I need to be baptized?',
-    shortAnswer: 'Depends on you',
+    shortAnswer: 'It depends',
     boldAnswer: 'It depends on where you are starting.',
     image: '/holy-spirit.png',
     body: [
@@ -104,7 +104,7 @@ export const quickAnswers: QuickAnswer[] = [
     id: 'marriage',
     category: 'MARRIAGE',
     question: "What if I've been married before?",
-    shortAnswer: 'Talk to your parish',
+    shortAnswer: 'Get guidance',
     boldAnswer: "It's more common than you think.",
     image: '/michael.png',
     body: [
