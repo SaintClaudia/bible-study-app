@@ -44,27 +44,15 @@ export const quickAnswers: QuickAnswer[] = [
     ],
   },
   {
-    id: 'time',
-    category: 'TIME',
-    question: 'How long does it take?',
-    shortAnswer: 'About a year',
-    boldAnswer: 'About nine months — but it varies.',
-    image: '/mary.png',
+    id: 'bring',
+    category: 'PREPARATION',
+    question: 'What should I bring?',
+    shortAnswer: 'Just yourself',
+    boldAnswer: 'Just yourself. Everything else is provided.',
+    image: '/pray.png',
     body: [
-      "Most parishes follow the liturgical year, beginning in fall and leading to the Easter Vigil. The full journey is typically nine months to a year.",
-      "Some people take longer, and that's perfectly fine. There is no pressure to match anyone else's timeline.",
-    ],
-  },
-  {
-    id: 'baptism',
-    category: 'BAPTISM',
-    question: 'Do I need to be baptized?',
-    shortAnswer: 'It depends',
-    boldAnswer: 'It depends on where you are starting.',
-    image: '/holy-spirit.png',
-    body: [
-      "If you were never baptized, baptism will be the first sacrament you receive — usually at the Easter Vigil.",
-      "If you were already baptized in another Christian tradition, that baptism is valid and won't be repeated. You'll make a Profession of Faith and be received into full communion.",
+      "You do not need to bring anything to your first session. No materials, no Bible, no prior knowledge — just show up.",
+      "As you continue, your parish may suggest a notebook or a specific book used in your program. If so, they can usually provide it. When in doubt, ask your coordinator.",
     ],
   },
   {
@@ -80,6 +68,30 @@ export const quickAnswers: QuickAnswer[] = [
     ],
   },
   {
+    id: 'time',
+    category: 'TIME',
+    question: 'How long does it take?',
+    shortAnswer: 'About a year',
+    boldAnswer: 'About nine months — but it varies.',
+    image: '/mary.png',
+    body: [
+      "Most parishes follow the liturgical year, beginning in fall and leading to the Easter Vigil. The full journey is typically nine months to a year.",
+      "Some people take longer, and that's perfectly fine. There is no pressure to match anyone else's timeline.",
+    ],
+  },
+  {
+    id: 'test',
+    category: 'EXAMS',
+    question: 'Is there a test?',
+    shortAnswer: 'No test, no grade',
+    boldAnswer: 'No. There is no test, quiz, or grade.',
+    image: '/saint-therese-of-lisieux.png',
+    body: [
+      "OCIA is not an academic program. There's no quiz at the end of each session and no final exam.",
+      "What matters is that you come, ask questions, and engage honestly. You and your parish discern together when you feel ready to take the next step.",
+    ],
+  },
+  {
     id: 'family',
     category: 'FAMILY',
     question: 'Can I bring my family?',
@@ -89,6 +101,18 @@ export const quickAnswers: QuickAnswer[] = [
     body: [
       "OCIA is not a private journey. Your spouse, partner, family member, or friend can sit with you at sessions.",
       "Many participants find it helpful to have someone they trust alongside them. Supporting family members often find their own faith deepened by simply being there.",
+    ],
+  },
+  {
+    id: 'baptism',
+    category: 'BAPTISM',
+    question: 'Do I need to be baptized?',
+    shortAnswer: 'It depends',
+    boldAnswer: 'It depends on where you are starting.',
+    image: '/holy-spirit.png',
+    body: [
+      "If you were never baptized, baptism will be the first sacrament you receive — usually at the Easter Vigil.",
+      "If you were already baptized in another Christian tradition, that baptism is valid and won't be repeated. You'll make a Profession of Faith and be received into full communion.",
     ],
   },
   {
@@ -116,18 +140,6 @@ export const quickAnswers: QuickAnswer[] = [
     body: [
       "The Sacrament of Reconciliation is part of Catholic life, and you'll learn about it during formation. For those being baptized, baptism itself forgives all sins — Confession comes later.",
       "Those already baptized who are entering full communion will receive the sacrament as part of their preparation. Your parish will guide you through the process.",
-    ],
-  },
-  {
-    id: 'test',
-    category: 'EXAMS',
-    question: 'Is there a test?',
-    shortAnswer: 'No test, no grade',
-    boldAnswer: 'No. There is no test, quiz, or grade.',
-    image: '/saint-therese-of-lisieux.png',
-    body: [
-      "OCIA is not an academic program. There's no quiz at the end of each session and no final exam.",
-      "What matters is that you come, ask questions, and engage honestly. You and your parish discern together when you feel ready to take the next step.",
     ],
   },
   {
