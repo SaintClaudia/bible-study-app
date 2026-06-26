@@ -48,11 +48,12 @@ export const quickAnswers: QuickAnswer[] = [
     category: 'PREPARATION',
     question: 'What should I bring?',
     shortAnswer: 'Just yourself',
-    boldAnswer: 'Just yourself. Everything else is provided.',
+    boldAnswer: 'Just yourself and whatever helps you feel comfortable.',
     image: '/glass.png',
     body: [
-      "You do not need to bring anything to your first session. No materials, no Bible, no prior knowledge — just show up.",
-      "As you continue, your parish may suggest a notebook or a specific book used in your program. If so, they can usually provide it. When in doubt, ask your coordinator.",
+      "You do not need to bring anything to your first session. No materials, no Bible, and no prior knowledge. Just showing up is all you need.",
+      "As you continue, you may want to bring a notebook to take notes or a water bottle to stay hydrated. Many parishes also offer coffee, water, light snacks, or even a simple meal to make it a little easier for those coming straight from work, school, or home.",
+      "If your parish uses a specific book or Bible, they will let you know. When in doubt, ask your coordinator.",
     ],
   },
   {
