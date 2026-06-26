@@ -389,17 +389,17 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
               )}
             >
               {item.icon ? (
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-secondary p-1.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-secondary p-2">
                   <Image
                     src={item.icon}
                     alt=""
-                    width={28}
-                    height={28}
+                    width={40}
+                    height={40}
                     className="h-full w-full object-contain dark:invert"
                   />
                 </div>
               ) : (
-                <div className="h-9 w-9 shrink-0 rounded-xl bg-secondary" />
+                <div className="h-12 w-12 shrink-0 rounded-2xl bg-secondary" />
               )}
               <div className="flex-1">
                 <p className="font-heading text-2xl font-normal leading-tight text-foreground">{item.title}</p>
