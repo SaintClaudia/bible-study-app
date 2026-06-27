@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown, Heart, Music2, Pause, Play, SkipBack, SkipForward, X } from 'lucide-react'
+import { CheckCircle, ChevronDown, Music2, Pause, Play, PlusCircle, SkipBack, SkipForward, X } from 'lucide-react'
 import { useMusicPlayer } from '@/components/music-player-context'
 import { cn } from '@/lib/utils'
 
@@ -83,7 +83,7 @@ export function MiniPlayerBar() {
             className="p-2 text-muted-foreground hover:text-foreground active:opacity-60"
             aria-label={isLiked ? 'Unlike' : 'Like'}
           >
-            <Heart className={cn('h-4 w-4', isLiked && 'fill-foreground text-foreground')} />
+            {isLiked ? <CheckCircle className="h-4 w-4 fill-foreground text-background" /> : <PlusCircle className="h-4 w-4" />}
           </button>
 
           <button
@@ -182,7 +182,7 @@ export function MiniPlayer() {
             className="mt-0.5 p-1.5 text-muted-foreground hover:text-foreground active:scale-90 transition-transform flex-shrink-0"
             aria-label={isLiked ? 'Unlike' : 'Add to Liked Songs'}
           >
-            <Heart className={cn('h-5 w-5 transition-all', isLiked && 'fill-foreground text-foreground scale-110')} />
+            {isLiked ? <CheckCircle className="h-5 w-5 fill-foreground text-background transition-all scale-110" /> : <PlusCircle className="h-5 w-5 transition-all" />}
           </button>
         </div>
 
