@@ -683,7 +683,7 @@ export const learningPaths: LearningPath[] = [
   {
     id: 'core-beliefs',
     title: 'Core Beliefs',
-    description: 'The heart of what Catholics believe, explained plainly.',
+    description: 'Every journey begins with understanding the essentials. These lessons explore the beliefs that shape the Catholic faith, answering some of the most common questions people ask as they begin discovering God, the Church, and the life He invites us to live.',
     icon: '/core-beliefs.png',
     iconPad: 12,
     lessonCount: 15,
