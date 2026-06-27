@@ -7,7 +7,7 @@ import { useLocalStorage } from '@/hooks/use-local-storage'
 import { fetchSundayReadings, type DailyReadings } from '@/lib/readings'
 import { getLiturgicalColor, LITURGICAL_COLOR_HEX } from '@/lib/liturgical-color'
 
-export function ReadingsTab({ onEnterChurchMode }: { onEnterChurchMode?: () => void }) {
+export function ReadingsTab() {
   const [data, setData] = useState<DailyReadings | null>(null)
   const [loading, setLoading] = useState(true)
   const [openReading, setOpenReading] = useState<number | null>(null)

@@ -7,7 +7,6 @@ import { ReadingsTab } from '@/components/readings/readings-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
 import { DiscoverTab } from '@/components/discover/discover-tab'
-import { ChurchMode } from '@/components/mass/church-mode'
 import { MusicPlayerContext, embedUrlToUri } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
@@ -85,8 +84,7 @@ export function AppShell() {
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
     journey: 0, formation: 0, readings: 0, discover: 0, listen: 0,
   })
-  const [churchMode, setChurchMode] = useState(false)
-  const [barsVisible, setBarsVisible] = useState(true)
+const [barsVisible, setBarsVisible] = useState(true)
   const [guideDetailOpen, setGuideDetailOpen] = useState(false)
   const lastScrollY = useRef(0)
 
@@ -134,11 +132,7 @@ export function AppShell() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  if (churchMode) {
-    return <ChurchMode onExit={() => setChurchMode(false)} />
-  }
-
-  return (
+return (
     <MusicPlayerContext.Provider value={{
       nowPlaying,
       setNowPlaying,
@@ -186,7 +180,7 @@ export function AppShell() {
           nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32'
         )}>
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
-          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onEnterChurchMode={() => setChurchMode(true)} />}
+          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} onDetailChange={setGuideDetailOpen} />}
           {activeTab === 'discover' && <DiscoverTab key={tabKeys.discover} />}
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}

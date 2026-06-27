@@ -40,7 +40,7 @@ const massOrder = [
   { id: 'concluding', title: 'Concluding Rites', posture: 'Stand', description: 'The priest blesses us and sends us out into the world. Mass ends not as a goodbye, but as a commissioning — go and live what you have received.', why: 'The word "Mass" comes from the Latin missa — meaning "sent." Every Mass ends with a sending. We are not meant to keep what we have received; we are meant to give it away.' },
 ]
 
-export function MassTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }) {
+export function MassTab() {
   const [openSection, setOpenSection] = useState<string | null>(null)
 
   return (
@@ -140,24 +140,6 @@ export function MassTab({ onEnterChurchMode }: { onEnterChurchMode: () => void }
         })}
       </section>
 
-      {/* Enter Church Mode */}
-      <button
-        type="button"
-        onClick={onEnterChurchMode}
-        className="flex items-center justify-center gap-2.5 rounded-2xl bg-foreground px-6 py-4 text-base font-semibold text-background shadow-sm transition-opacity hover:opacity-80 active:scale-[0.99]"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-          <line x1="12" y1="1" x2="12" y2="5"/>
-          <line x1="10" y1="3" x2="14" y2="3"/>
-          <polyline points="3,11 12,5 21,11"/>
-          <line x1="3" y1="11" x2="3" y2="21"/>
-          <line x1="21" y1="11" x2="21" y2="21"/>
-          <line x1="3" y1="21" x2="21" y2="21"/>
-          <path d="M9 21v-6a3 3 0 016 0v6"/>
-          <circle cx="12" cy="13" r="2"/>
-        </svg>
-        Enter Church Mode
-      </button>
 
     </div>
   )
