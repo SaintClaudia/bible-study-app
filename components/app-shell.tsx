@@ -10,7 +10,9 @@ import { DiscoverTab } from '@/components/discover/discover-tab'
 import { MusicPlayerContext } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
-import type { ResourceItem } from '@/lib/content'
+import { resourceGroups, type ResourceItem } from '@/lib/content'
+
+const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
 type Tab = 'readings' | 'formation' | 'journey' | 'discover' | 'listen'
 
@@ -98,7 +100,16 @@ export function AppShell() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [likedTracks, setLikedTracks] = useState<Set<string>>(new Set())
   const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  // Load liked tracks from localStorage
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('likedTracks')
+      if (stored) setLikedTracks(new Set(JSON.parse(stored)))
+    } catch {}
+  }, [])
 
   // Create audio element once
   useEffect(() => {
@@ -129,17 +140,23 @@ export function AppShell() {
     }
   }, [])
 
+  const loadAndPlay = useCallback((item: ResourceItem) => {
+    const el = audioRef.current
+    if (!el) return
+    el.src = item.audioSrc!
+    el.currentTime = 0
+    setCurrentTime(0)
+    setDuration(0)
+    el.play().catch(() => {})
+  }, [])
+
   const setNowPlaying = useCallback((item: ResourceItem | null) => {
     setNowPlayingRaw(item)
     setPlayerExpanded(false)
     const el = audioRef.current
     if (!el) return
     if (item?.audioSrc) {
-      el.src = item.audioSrc
-      el.currentTime = 0
-      setCurrentTime(0)
-      setDuration(0)
-      el.play().catch(() => {})
+      loadAndPlay(item)
     } else {
       el.pause()
       el.src = ''
@@ -147,7 +164,7 @@ export function AppShell() {
       setCurrentTime(0)
       setDuration(0)
     }
-  }, [])
+  }, [loadAndPlay])
 
   const togglePlay = useCallback(() => {
     const el = audioRef.current
@@ -161,6 +178,42 @@ export function AppShell() {
     if (!el) return
     el.currentTime = time
     setCurrentTime(time)
+  }, [])
+
+  const skipBack = useCallback(() => {
+    const el = audioRef.current
+    if (!el) return
+    el.currentTime = Math.max(0, el.currentTime - 15)
+  }, [])
+
+  const skipForward = useCallback(() => {
+    const el = audioRef.current
+    if (!el) return
+    el.currentTime = Math.min(el.duration || 0, el.currentTime + 15)
+  }, [])
+
+  const nextTrack = useCallback(() => {
+    if (!nowPlaying || listenItems.length < 2) return
+    const idx = listenItems.findIndex(i => i.name === nowPlaying.name)
+    const next = listenItems[(idx + 1) % listenItems.length]
+    if (next) { setNowPlayingRaw(next); loadAndPlay(next) }
+  }, [nowPlaying, loadAndPlay])
+
+  const prevTrack = useCallback(() => {
+    if (!nowPlaying || listenItems.length < 2) return
+    const idx = listenItems.findIndex(i => i.name === nowPlaying.name)
+    const prev = listenItems[(idx - 1 + listenItems.length) % listenItems.length]
+    if (prev) { setNowPlayingRaw(prev); loadAndPlay(prev) }
+  }, [nowPlaying, loadAndPlay])
+
+  const toggleLike = useCallback((trackName: string) => {
+    setLikedTracks(prev => {
+      const next = new Set(prev)
+      if (next.has(trackName)) next.delete(trackName)
+      else next.add(trackName)
+      try { localStorage.setItem('likedTracks', JSON.stringify([...next])) } catch {}
+      return next
+    })
   }, [])
 
   // Read #tab hash from URL on load
@@ -197,6 +250,12 @@ export function AppShell() {
       duration,
       togglePlay,
       seek,
+      skipBack,
+      skipForward,
+      nextTrack,
+      prevTrack,
+      likedTracks,
+      toggleLike,
     }}>
       <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 

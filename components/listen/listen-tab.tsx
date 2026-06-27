@@ -1,9 +1,10 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, Check, Music2, Pause, Play } from 'lucide-react'
+import { ArrowLeft, Check, Heart, Music2, Pause, Play } from 'lucide-react'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer } from '@/components/music-player-context'
+import { cn } from '@/lib/utils'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
@@ -14,21 +15,42 @@ function fmt(secs: number) {
   return `${m}:${s}`
 }
 
+// ── Custom seek bar ─────────────────────────────────────────────
+
+function SeekBar({ currentTime, duration, seek }: { currentTime: number; duration: number; seek: (t: number) => void }) {
+  const pct = duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0
+  return (
+    <div className="relative w-full py-2">
+      <div className="relative h-1 rounded-full bg-border">
+        <div className="absolute left-0 top-0 h-full rounded-full bg-foreground" style={{ width: `${pct}%` }} />
+        <div className="absolute top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full bg-foreground shadow" style={{ left: `calc(${pct}% - 7px)` }} />
+      </div>
+      <input
+        type="range"
+        min={0}
+        max={duration || 1}
+        step={0.1}
+        value={currentTime}
+        onChange={(e) => seek(Number(e.target.value))}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+        aria-label="Seek"
+      />
+    </div>
+  )
+}
+
 // ── Inline audio player (shown in detail view) ─────────────────
 
 function InlineAudioPlayer({ item }: { item: ResourceItem }) {
-  const { nowPlaying, setNowPlaying, isPlaying, togglePlay, currentTime, duration, seek } = useMusicPlayer()
+  const { nowPlaying, setNowPlaying, isPlaying, togglePlay, currentTime, duration, seek, likedTracks, toggleLike } = useMusicPlayer()
   const isThis = nowPlaying?.name === item.name
+  const playing = isThis && isPlaying
+  const isLiked = likedTracks.has(item.name)
 
   const handlePlay = () => {
-    if (isThis) {
-      togglePlay()
-    } else {
-      setNowPlaying(item)
-    }
+    if (isThis) togglePlay()
+    else setNowPlaying(item)
   }
-
-  const playing = isThis && isPlaying
 
   return (
     <div className="rounded-2xl border border-border bg-card p-5 flex flex-col gap-4">
@@ -36,34 +58,33 @@ function InlineAudioPlayer({ item }: { item: ResourceItem }) {
         <button
           type="button"
           onClick={handlePlay}
-          className="h-12 w-12 rounded-full bg-foreground flex items-center justify-center text-background hover:opacity-80 active:opacity-60 flex-shrink-0"
+          className="h-12 w-12 rounded-full bg-foreground flex items-center justify-center text-background hover:opacity-80 active:scale-95 transition-transform flex-shrink-0 shadow"
           aria-label={playing ? 'Pause' : 'Play'}
         >
           {playing
             ? <Pause className="h-5 w-5" fill="currentColor" />
             : <Play className="h-5 w-5 translate-x-px" fill="currentColor" />}
         </button>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-foreground truncate">{item.name}</p>
           <p className="text-xs text-muted-foreground truncate">
             {item.creator ?? item.category}
           </p>
         </div>
+        <button
+          type="button"
+          onClick={() => toggleLike(item.name)}
+          className="p-2 text-muted-foreground hover:text-foreground active:scale-90 transition-transform flex-shrink-0"
+          aria-label={isLiked ? 'Unlike' : 'Add to Liked Songs'}
+        >
+          <Heart className={cn('h-5 w-5 transition-all', isLiked && 'fill-foreground text-foreground')} />
+        </button>
       </div>
 
       {isThis && (
-        <div className="flex flex-col gap-1.5">
-          <input
-            type="range"
-            min={0}
-            max={duration || 1}
-            step={0.1}
-            value={currentTime}
-            onChange={(e) => seek(Number(e.target.value))}
-            className="w-full accent-foreground cursor-pointer"
-            aria-label="Seek"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="flex flex-col gap-0.5">
+          <SeekBar currentTime={currentTime} duration={duration} seek={seek} />
+          <div className="flex justify-between text-xs text-muted-foreground px-0.5">
             <span>{fmt(currentTime)}</span>
             <span>{fmt(duration)}</span>
           </div>
@@ -87,7 +108,6 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
         <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
       </button>
 
-      {/* Header */}
       <header>
         {item.category && (
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -106,7 +126,6 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
         )}
       </header>
 
-      {/* Album art or placeholder */}
       {item.image ? (
         <div className="flex justify-center">
           <img
@@ -121,10 +140,8 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
         </div>
       )}
 
-      {/* Inline audio player */}
       {item.audioSrc && <InlineAudioPlayer item={item} />}
 
-      {/* Description */}
       {item.description && (
         <blockquote className="border-l-2 border-border pl-4">
           <p className="text-sm italic leading-relaxed text-foreground/80">
@@ -133,7 +150,6 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
         </blockquote>
       )}
 
-      {/* Details */}
       {item.details && item.details.length > 0 && (
         <section className="rounded-2xl border border-border bg-card p-5">
           <ul className="flex flex-col gap-2.5">
@@ -154,6 +170,7 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
 
 export function ListenTab() {
   const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
+  const { likedTracks } = useMusicPlayer()
 
   const openItem = useCallback((item: ResourceItem) => {
     setActiveItem(item)
@@ -199,6 +216,12 @@ export function ListenTab() {
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Music2 className="h-10 w-10 text-muted-foreground" aria-hidden />
+                </div>
+              )}
+              {/* Liked badge */}
+              {likedTracks.has(item.name) && (
+                <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-background/80 backdrop-blur flex items-center justify-center">
+                  <Heart className="h-3.5 w-3.5 fill-foreground text-foreground" />
                 </div>
               )}
             </div>
