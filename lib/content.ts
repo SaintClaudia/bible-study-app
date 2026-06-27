@@ -711,6 +711,7 @@ export const learningPaths: LearningPath[] = [
     title: 'Catholic Life',
     description: 'Practices, seasons, and rhythms of the Catholic year.',
     icon: '/catholic-life.png',
+    iconPad: 8,
     lessonCount: 12,
     lessons: [],
   },

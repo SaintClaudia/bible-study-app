@@ -144,7 +144,7 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
 
         <header className="flex items-start gap-4">
           <span className="relative h-14 w-14 shrink-0 rounded-2xl bg-secondary overflow-hidden">
-            <Image src={activePath.icon} alt="" fill sizes="56px" className="dark:invert object-contain" style={{ padding: activePath.iconPad ?? 10 }} />
+            <Image src={activePath.icon} alt="" fill sizes="56px" className="dark:invert object-contain mix-blend-multiply dark:mix-blend-normal" style={{ padding: activePath.iconPad ?? 10 }} />
           </span>
           <div>
             <h1 className="font-heading text-3xl font-normal text-balance text-foreground">
@@ -207,7 +207,7 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
             className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
           >
             <span className="relative h-12 w-12 shrink-0 rounded-2xl bg-secondary overflow-hidden">
-              <Image src={path.icon} alt="" fill sizes="48px" className="dark:invert object-contain" style={{ padding: path.iconPad ?? 10 }} />
+              <Image src={path.icon} alt="" fill sizes="48px" className="dark:invert object-contain mix-blend-multiply dark:mix-blend-normal" style={{ padding: path.iconPad ?? 10 }} />
             </span>
             <span className="flex-1">
               <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
