@@ -183,6 +183,7 @@ export type LearningPath = {
   title: string
   description: string
   icon: string
+  iconSize?: number
   lessonCount: number
   lessons: Lesson[]
 }
@@ -193,6 +194,7 @@ export const learningPaths: LearningPath[] = [
     title: 'Getting Started',
     description: 'Begin your journey with the essentials of the Catholic faith.',
     icon: '/getting-started.png',
+    iconSize: 32,
     lessonCount: 8,
     lessons: [],
   },

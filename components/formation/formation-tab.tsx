@@ -175,7 +175,7 @@ export function FormationTab() {
             className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary text-foreground">
-              <Image src={path.icon} alt="" width={28} height={28} className="dark:invert" />
+              <Image src={path.icon} alt="" width={path.iconSize ?? 28} height={path.iconSize ?? 28} className="dark:invert" />
             </span>
             <span className="flex-1">
               <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
