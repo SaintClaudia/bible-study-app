@@ -394,6 +394,7 @@ export function AppShell() {
                   key={tab.id}
                   type="button"
                   onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' })
                     if (tab.id === activeTab) {
                       setTabKeys(k => ({ ...k, [tab.id]: k[tab.id] + 1 }))
                     } else {
