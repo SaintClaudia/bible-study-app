@@ -214,29 +214,24 @@ export function AppShell() {
       if (adding) {
         next.add(trackName)
         toast.custom(() => (
-          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-background border border-border shadow-lg px-4 py-3">
+          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-white border border-gray-200 shadow-lg px-4 py-3">
             <img
               src="/toast-icon.png"
               alt=""
               className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
             />
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-foreground leading-snug">Added to your collection.</p>
-              <p className="text-sm text-muted-foreground leading-snug">Find it under Liked Songs in the Music tab.</p>
+              <p className="text-sm font-semibold text-gray-900 leading-snug">Added to your collection.</p>
+              <p className="text-sm text-gray-500 leading-snug">Find it under Liked Songs in the Music tab.</p>
             </div>
           </div>
         ), { duration: 3000 })
       } else {
         next.delete(trackName)
         toast.custom(() => (
-          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-background border border-border shadow-lg px-4 py-3">
-            <img
-              src="/toast-icon.png"
-              alt=""
-              className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
-            />
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-foreground leading-snug">Removed from your collection.</p>
+          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-white border border-gray-200 shadow-lg px-4 py-3">
+            <div className="min-w-0 pl-1">
+              <p className="text-sm font-semibold text-gray-900 leading-snug">Removed from your collection.</p>
             </div>
           </div>
         ), { duration: 2000 })
