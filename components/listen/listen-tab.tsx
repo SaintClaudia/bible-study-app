@@ -59,7 +59,7 @@ function InlineAudioPlayer({ item, queue }: { item: ResourceItem; queue?: Resour
         <button
           type="button"
           onClick={handlePlay}
-          className="h-12 w-12 rounded-full bg-foreground flex items-center justify-center text-background hover:opacity-80 active:scale-95 transition-transform flex-shrink-0 shadow"
+          className="h-12 w-12 rounded-full bg-foreground/65 flex items-center justify-center text-background hover:opacity-80 active:scale-95 transition-transform flex-shrink-0 shadow"
           aria-label={playing ? 'Pause' : 'Play'}
         >
           {playing
