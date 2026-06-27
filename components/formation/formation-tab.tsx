@@ -4,33 +4,17 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import {
   ArrowLeft,
-  BookOpen,
   Check,
   ChevronRight,
   CircleHelp,
-  Droplets,
-  Heart,
-  Home,
-  Landmark,
   Leaf,
   ListChecks,
-  Shield,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { learningPaths, type Lesson, type LearningPath } from '@/lib/content'
 import { useLocalStorage } from '@/hooks/use-local-storage'
 
 // ── Path icon map ──────────────────────────────────────────────
-
-const PATH_ICONS: Record<string, React.ReactNode> = {
-  BookOpen: <BookOpen className="h-5 w-5" />,
-  Heart: <Heart className="h-5 w-5" />,
-  Shield: <Shield className="h-5 w-5" />,
-  Droplets: <Droplets className="h-5 w-5" />,
-  Leaf: <Leaf className="h-5 w-5" />,
-  Landmark: <Landmark className="h-5 w-5" />,
-  Home: <Home className="h-5 w-5" />,
-}
 
 // ── Formation tab ──────────────────────────────────────────────
 
@@ -194,7 +178,7 @@ export function FormationTab() {
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary text-foreground">
               {path.icon.startsWith('/')
                 ? <Image src={path.icon} alt="" width={28} height={28} className="dark:invert" />
-                : PATH_ICONS[path.icon] ?? null}
+                : <Leaf className="h-5 w-5" />}
             </span>
             <span className="flex-1">
               <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
