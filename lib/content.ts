@@ -1975,6 +1975,21 @@ export const resourceGroups: ResourceGroup[] = [
         ],
         audioSrc: '/audio/sicut-cervus-part-1.mp3',
       },
+      {
+        name: 'Ave Maria',
+        note: 'Schubert\'s timeless prayer for intercession — arranged for cello and piano.',
+        image: '/ave-maria-cover.png',
+        category: 'Sacred Instrumental',
+        creator: 'Franz Schubert',
+        description:
+          '"Hail Mary, full of grace, the Lord is with thee." Schubert\'s Ave Maria, written in 1825, has become one of the most recognized and beloved sacred melodies in the world. This cello and piano arrangement brings a contemplative warmth that invites stillness and prayer.',
+        details: [
+          'Originally composed as a song (D. 839)',
+          'Text drawn from the Hail Mary prayer',
+          'Arranged for cello and piano',
+        ],
+        audioSrc: '/audio/ave-maria-cello-piano.mp3',
+      },
     ],
   },
 ]
