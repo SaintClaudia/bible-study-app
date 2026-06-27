@@ -369,7 +369,7 @@ export function JourneyTab({ onDetailChange }: { onDetailChange?: (open: boolean
             >
               <div className="relative h-36 w-full overflow-hidden sm:h-48">
                 <Image
-                  src={i === 0 ? '/communion.png' : '/christ.png'}
+                  src={i === 0 ? '/communion.webp' : '/christ.webp'}
                   alt=""
                   fill
                   className="object-cover object-center"

@@ -42,7 +42,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Does it cost anything?',
     shortAnswer: "No, it's free",
     boldAnswer: 'No. OCIA is completely free.',
-    image: '/holy-cross.png',
+    image: '/holy-cross.webp',
     imagePosition: 'center calc(50% + 80px)',
     body: [
       "There is no fee and no expectation to give anything. Parishes offer OCIA as part of their mission to welcome anyone who wants to learn about the Catholic faith.",
@@ -56,7 +56,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'What should I bring?',
     shortAnswer: 'Just yourself',
     boldAnswer: 'Just yourself and whatever helps you feel comfortable.',
-    image: '/glass.png',
+    image: '/glass.webp',
     body: [
       "You do not need to bring anything to your first session. No materials, no Bible, and no prior knowledge. Just showing up is all you need.",
       "As you continue, you may want to bring a notebook to take notes or a water bottle to stay hydrated. Many parishes also offer coffee, water, light snacks, or even a simple meal to make it a little easier for those coming straight from work, school, or home.",
@@ -69,7 +69,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Do I have to come every week?',
     shortAnswer: 'Come as you can',
     boldAnswer: "Try to come regularly, but don't worry if you miss one.",
-    image: '/angel.png',
+    image: '/angel.webp',
     body: [
       "OCIA is designed to build on what you learn each week, so attending regularly will help you get the most from the experience and build relationships with others on the same journey.",
       "Life happens. If you miss a session because of work, travel, illness, or family commitments, just come back the following week. Your parish will help you catch up if there is anything important you missed.",
@@ -81,7 +81,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'How long does it take?',
     shortAnswer: 'About a year',
     boldAnswer: 'About nine months — but it varies.',
-    image: '/mary.png',
+    image: '/mary.webp',
     body: [
       "Most parishes follow the liturgical year, beginning in fall and leading to the Easter Vigil. The full journey is typically nine months to a year.",
       "Some people take longer, and that's perfectly fine. There is no pressure to match anyone else's timeline.",
@@ -93,7 +93,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Is there a test?',
     shortAnswer: 'No test, no grade',
     boldAnswer: 'No. There is no test, quiz, or grade.',
-    image: '/saint-therese-of-lisieux.png',
+    image: '/saint-therese-of-lisieux.webp',
     body: [
       "OCIA is not an academic program. There's no quiz at the end of each session and no final exam.",
       "What matters is that you come, ask questions, and engage honestly. You and your parish discern together when you feel ready to take the next step.",
@@ -105,7 +105,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Can I bring my family?',
     shortAnswer: 'Yes, bring them',
     boldAnswer: 'Yes. They are always welcome.',
-    image: '/joseph.png',
+    image: '/joseph.webp',
     body: [
       "OCIA is not a private journey. Your spouse, partner, family member, or friend can sit with you at sessions.",
       "Many participants find it helpful to have someone they trust alongside them. Supporting family members often find their own faith deepened by simply being there.",
@@ -117,7 +117,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Do I need to be baptized?',
     shortAnswer: 'It depends',
     boldAnswer: 'It depends on where you are starting.',
-    image: '/holy-spirit.png',
+    image: '/holy-spirit.webp',
     body: [
       "If you were never baptized, baptism will be the first sacrament you receive — usually at the Easter Vigil.",
       "If you were already baptized in another Christian tradition, that baptism is valid and won't be repeated. You'll make a Profession of Faith and be received into full communion.",
@@ -129,7 +129,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: "What if I've been married before?",
     shortAnswer: 'Get guidance',
     boldAnswer: "It's more common than you think.",
-    image: '/michael.png',
+    image: '/michael.webp',
     body: [
       "Many people entering OCIA have been married before. Depending on your circumstances, there may be additional steps before receiving certain sacraments, but this is not a barrier to becoming Catholic—it's simply part of the process.",
       "If you've been divorced or previously married, your parish will help determine what documentation is needed. This often includes copies of your baptism certificate (if you were baptized), marriage certificate, and divorce decree. These documents are reviewed by your parish and, when necessary, submitted to the diocesan tribunal for evaluation.",
@@ -144,7 +144,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: 'Do I need to go to Confession?',
     shortAnswer: "You'll be guided",
     boldAnswer: "You'll be prepared for it during OCIA.",
-    image: '/saint-benedict.png',
+    image: '/saint-benedict.webp',
     body: [
       "The Sacrament of Reconciliation is part of Catholic life, and you'll learn about it during formation. For those being baptized, baptism itself forgives all sins — Confession comes later.",
       "Those already baptized who are entering full communion will receive the sacrament as part of their preparation. Your parish will guide you through the process.",
@@ -156,7 +156,7 @@ export const quickAnswers: QuickAnswer[] = [
     question: "What if I'm not ready by Easter?",
     shortAnswer: 'You can wait',
     boldAnswer: 'You wait — and that is perfectly fine.',
-    image: '/saint-vincent-de-paul.png',
+    image: '/saint-vincent-de-paul.webp',
     body: [
       "Easter is the traditional time for receiving the sacraments, but it is not the only time. If you need more time, you continue in formation and receive the sacraments when you and your parish discern you are ready.",
       "Faith cannot be rushed. The Church has been welcoming people for two thousand years and is in no hurry.",
@@ -171,7 +171,7 @@ export const startHereItems: StartHereItem[] = [
     title: 'What actually is OCIA?',
     subtitle: 'A place to learn about the Catholic faith.',
     isHero: true,
-    image: '/holy-bible.png',
+    image: '/holy-bible.webp',
     body: [
       "OCIA is a series of weekly classes for anyone interested in learning about the Catholic Church. Whether you're thinking about becoming Catholic or returning to the Church after being away, OCIA is where that journey begins.",
       "Classes typically meet once a week and last about an hour. You'll learn about Scripture, Catholic beliefs, prayer, the sacraments, and what it means to live the Catholic faith. There is plenty of time to ask questions, listen, and learn alongside others who are on a similar journey.",
@@ -184,7 +184,7 @@ export const startHereItems: StartHereItem[] = [
     title: "What's a typical session like?",
     subtitle: 'Prayer, learning, and conversation.',
     isHero: false,
-    image: '/communion.png',
+    image: '/communion.webp',
     body: [
       "Every parish is a little different, but most OCIA sessions follow a similar rhythm.",
       "Many sessions begin with a prayer led by a priest, deacon, or another member of the parish team. Some parishes also introduce the Saint of the day before beginning the evening's topic.",
@@ -199,7 +199,7 @@ export const startHereItems: StartHereItem[] = [
     title: 'The journey, step by step',
     subtitle: 'Your path depends on where you begin.',
     isHero: false,
-    image: '/christ.png',
+    image: '/christ.webp',
     body: [
       "OCIA is not the exact same for everyone. Your journey depends on whether you have never been baptized, were baptized in another Christian tradition, or are already Catholic but still need to receive Confirmation or First Communion.",
       "If you have never been baptized, you usually enter as a catechumen. This means you are preparing for Baptism, Confirmation, and First Eucharist. This path often leads to the Easter Vigil, where adults are baptized and receive the Sacraments of Initiation.",
@@ -248,10 +248,10 @@ export const startHereItems: StartHereItem[] = [
 export const goodToKnowItems: GoodToKnowItem[] = [
   {
     id: 'sign-of-cross',
-    icon: '/sun.png',
+    icon: '/sun.webp',
     title: 'The Sign of the Cross',
     subtitle: "The gesture you'll come to know.",
-    image: '/holy-cross.png',
+    image: '/holy-cross.webp',
     body: [
       "The Sign of the Cross is one of the most fundamental gestures in Catholic prayer. Catholics make it at the beginning and end of prayer, when entering a church, and at the start and close of Mass.",
       'To make it, touch your forehead, then your chest, then your left shoulder, then your right, saying: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen."',
@@ -260,10 +260,10 @@ export const goodToKnowItems: GoodToKnowItem[] = [
   },
   {
     id: 'our-father',
-    icon: '/pray.png',
+    icon: '/pray.webp',
     title: 'The Our Father',
     subtitle: 'The prayer said at every class.',
-    image: '/mary.png',
+    image: '/mary.webp',
     body: [
       "The Our Father — also called the Lord's Prayer — is the prayer Jesus taught his disciples. It is prayed at every Mass and at most Catholic gatherings.",
       '"Our Father, who art in heaven, hallowed be thy name; thy kingdom come, thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil."',
@@ -272,10 +272,10 @@ export const goodToKnowItems: GoodToKnowItem[] = [
   },
   {
     id: 'which-bible',
-    icon: '/bible.png',
+    icon: '/bible.webp',
     title: 'Which Bible to use?',
     subtitle: "(NABRE) — but it's not required.",
-    image: '/joseph.png',
+    image: '/joseph.webp',
     body: [
       "The Catholic Church in the United States uses the New American Bible, Revised Edition (NABRE) for Mass readings. If you want to follow along with what's proclaimed at Mass, NABRE is the version to reach for.",
       "If you already have a Bible — or if someone gives you one — use it. Any Bible is better than no Bible. You can always compare translations later.",

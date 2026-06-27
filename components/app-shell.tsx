@@ -265,7 +265,7 @@ export function AppShell() {
         toast.custom(() => (
           <div className="flex items-center gap-3 w-full rounded-[10px] bg-white border border-gray-200 shadow-lg p-5">
             <img
-              src="/toast-icon.png"
+              src="/toast-icon.webp"
               alt=""
               className="h-16 w-16 rounded-[10px] flex-shrink-0 object-cover"
             />

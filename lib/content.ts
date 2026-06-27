@@ -193,7 +193,7 @@ export const learningPaths: LearningPath[] = [
     id: 'getting-started',
     title: 'Getting Started',
     description: 'A gentle introduction to the Catholic faith for those beginning or exploring their journey.',
-    icon: '/getting-started.png',
+    icon: '/getting-started.webp',
     iconPad: 12,
     lessonCount: 8,
     lessons: [
@@ -327,7 +327,7 @@ export const learningPaths: LearningPath[] = [
     id: 'scripture',
     title: 'Scripture',
     description: 'Discover how the Bible came to be, why Catholics read it the way they do, and how Scripture continues to guide the life of the Church.',
-    icon: '/scripture.png',
+    icon: '/scripture.webp',
     lessonCount: 10,
     lessons: [
       {
@@ -492,7 +492,7 @@ export const learningPaths: LearningPath[] = [
     id: 'prayer',
     title: 'Prayer',
     description: 'Prayer is the heart of a relationship with God. These lessons introduce the Catholic tradition of prayer, helping you discover different ways to pray, grow through every season, and build a lifelong conversation with God.',
-    icon: '/pray-icon.png',
+    icon: '/pray-icon.webp',
     lessonCount: 12,
     lessons: [
       {
@@ -684,7 +684,7 @@ export const learningPaths: LearningPath[] = [
     id: 'core-beliefs',
     title: 'Core Beliefs',
     description: 'Every journey begins with understanding the essentials. These lessons explore the beliefs that shape the Catholic faith, answering some of the most common questions people ask as they begin discovering God, the Church, and the life He invites us to live.',
-    icon: '/core-beliefs.png',
+    icon: '/core-beliefs.webp',
     iconPad: 12,
     lessonCount: 15,
     lessons: [
@@ -919,7 +919,7 @@ export const learningPaths: LearningPath[] = [
     id: 'sacraments',
     title: 'Sacraments',
     description: 'God meets us through ordinary things — water, bread, wine, oil, words, and the people around us. The sacraments are visible signs of God\'s grace, accompanying us through every stage of life and drawing us closer to Him.',
-    icon: '/sacraments.png',
+    icon: '/sacraments.webp',
     iconPad: 6,
     lessonCount: 10,
     lessons: [
@@ -1078,7 +1078,7 @@ export const learningPaths: LearningPath[] = [
     id: 'christian-living',
     title: 'Christian Living',
     description: 'Faith isn\'t meant to stay in the classroom or only on Sunday. It becomes part of the way we think, love, forgive, serve, and live each day. These lessons explore what it looks like to follow Christ in everyday life.',
-    icon: '/christian-living.png',
+    icon: '/christian-living.webp',
     iconPad: 8,
     lessonCount: 12,
     lessons: [
@@ -1268,7 +1268,7 @@ export const learningPaths: LearningPath[] = [
     id: 'church-history',
     title: 'Church History',
     description: 'The Catholic Church has a history that spans more than two thousand years. These lessons highlight the moments that shaped the Church, helping you understand not only where we\'ve been, but how those moments continue to influence the faith today.',
-    icon: '/church-history.png',
+    icon: '/church-history.webp',
     iconPad: 12,
     lessonCount: 10,
     lessons: [
@@ -1423,7 +1423,7 @@ export const learningPaths: LearningPath[] = [
     id: 'catholic-life',
     title: 'Catholic Life',
     description: 'From holy water to the liturgical seasons, the Catholic faith is filled with visible signs that point us toward God. These lessons explain the traditions, symbols, and practices you\'ll encounter throughout the life of the Church.',
-    icon: '/catholic-life.png',
+    icon: '/catholic-life.webp',
     iconPad: 8,
     lessonCount: 12,
     lessons: [
@@ -1761,7 +1761,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Chosen',
         note: 'A beautifully made series on the life of Christ and those who followed him.',
         href: 'https://watch.thechosen.tv/',
-        image: '/the-chosen.jpg',
+        image: '/the-chosen.webp',
         display: 'hero',
         category: 'Series',
         description: [
@@ -1780,7 +1780,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'King of Kings',
         note: 'An animated film on the life and ministry of Jesus.',
         href: 'https://www.amazon.com/gp/video/detail/B0H34TG19G',
-        image: '/king-of-kings.jpg',
+        image: '/king-of-kings.webp',
         display: 'hero',
         category: 'Film',
         description:
@@ -1802,7 +1802,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Catechism of the Catholic Church',
         note: 'The official summary of Catholic belief — a reference for the whole faith.',
         href: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
-        image: '/catechism.png',
+        image: '/catechism.webp',
         category: 'Book',
         description:
           'The official summary of Catholic doctrine, promulgated by Pope John Paul II in 1992. Organized around four pillars — the Creed, the Sacraments, the Moral Life, and Prayer — it is the definitive reference for the whole of the faith.',
@@ -1816,7 +1816,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Compendium of the Catechism',
         note: 'A shorter, question-and-answer companion to the full Catechism.',
         href: 'https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html',
-        image: '/compendium.png',
+        image: '/compendium.webp',
         category: 'Book',
         description:
           'A question-and-answer format companion to the full Catechism, prepared under Pope Benedict XVI in 2005. Covering the same four pillars in 598 concise questions, it is a practical starting point for anyone exploring Catholic teaching.',
@@ -1830,7 +1830,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Theology of Home',
         note: 'On finding the sacred in ordinary domestic life and the rhythms of the home.',
         href: 'https://theologyofhome.com/',
-        image: '/theology-of-home.png',
+        image: '/theology-of-home.webp',
         category: 'Book',
         description:
           'Written by Carrie Gress and Noelle Mering, this book explores how Catholic life in the home — beauty, order, hospitality, and the rhythms of the domestic church — reflects eternal truths. The first in a series that has grown into a broader community and resource hub.',
@@ -1844,7 +1844,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'USCCB',
         note: 'The U.S. bishops\' site — daily readings, Church teaching, and official documents.',
         href: 'https://www.usccb.org/',
-        image: '/usccb.png',
+        image: '/usccb.webp',
         category: 'Website',
         description:
           'The official site of the United States Conference of Catholic Bishops — the central hub for daily Mass readings, the text of Church documents and encyclicals, pastoral letters, and guidance on Catholic social teaching and moral theology.',
@@ -1865,7 +1865,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Bible App',
         note: 'Read, listen to, and study the Bible — with reading plans, devotionals, and audio.',
         href: 'https://www.youversion.com/bible-app',
-        image: '/bible-app.png',
+        image: '/bible-app.webp',
         display: 'app',
         category: 'App',
         description:
@@ -1882,7 +1882,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Hallow',
         note: 'A Catholic prayer and meditation app — rosaries, examens, and sleep prayers.',
         href: 'https://hallow.com/',
-        image: '/hallow.png',
+        image: '/hallow.webp',
         display: 'app',
         category: 'App',
         description:
@@ -1897,7 +1897,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Laudate',
         note: 'A free, all-in-one Catholic app — prayers, readings, rosary, and more.',
         href: 'https://apps.apple.com/us/app/laudate-1-catholic-app/id499428207',
-        image: '/laudate.png',
+        image: '/laudate.webp',
         display: 'app',
         category: 'App',
         description:
@@ -1912,7 +1912,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'Magisterium AI',
         note: 'Ask questions and get answers grounded in Church teaching, with citations.',
         href: 'https://www.magisterium.com/',
-        image: '/magisterium-ai.png',
+        image: '/magisterium-ai.webp',
         display: 'app',
         category: 'App',
         description:
@@ -1927,7 +1927,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Pillar Podcast',
         note: 'Smart, candid conversation on news and life in the Catholic Church.',
         href: 'https://www.pillarcatholic.com/s/the-pillar-podcast',
-        image: '/pillar-podcast.png',
+        image: '/pillar-podcast.webp',
         display: 'app',
         category: 'Podcast',
         description:
@@ -1942,7 +1942,7 @@ export const resourceGroups: ResourceGroup[] = [
         name: 'The Catholic Channel',
         note: 'Catholic talk, news, and conversation — available on SiriusXM.',
         href: 'https://www.siriusxm.com/channels/the-catholic-channel',
-        image: '/catholic-channel.png',
+        image: '/catholic-channel.webp',
         display: 'app',
         category: 'Radio',
         description:
@@ -1963,7 +1963,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Sicut Cervus',
         note: "Palestrina's setting of Psalm 42 — timeless Renaissance polyphony for prayer and reflection.",
-        image: '/sicut-cervus-cover.png',
+        image: '/sicut-cervus-cover.webp',
         category: 'Sacred Choral',
         creator: 'Giovanni Pierluigi da Palestrina',
         description:
@@ -1978,7 +1978,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Ave Maria',
         note: 'Schubert\'s timeless prayer for intercession — arranged for cello and piano.',
-        image: '/ave-maria-cover.png',
+        image: '/ave-maria-cover.webp',
         category: 'Sacred Instrumental',
         creator: 'Franz Schubert',
         description:
@@ -1993,7 +1993,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Christus Factus Est',
         note: 'A sacred motet of profound humility — Christ made obedient unto death.',
-        image: '/jesus.png',
+        image: '/jesus.webp',
         category: 'Sacred Choral',
         creator: 'Orquestra Sinfônica de Minas Gerais',
         description:
@@ -2007,7 +2007,7 @@ export const resourceGroups: ResourceGroup[] = [
       {
         name: 'Dona Nobis Pacem',
         note: "Bach's plea for peace from the Mass in B minor — one of the great choral endings in Western music.",
-        image: '/dona-nobis-pacem-cover.png',
+        image: '/dona-nobis-pacem-cover.webp',
         category: 'Sacred Choral',
         creator: 'Johann Sebastian Bach',
         description:

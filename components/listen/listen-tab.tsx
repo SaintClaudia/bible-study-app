@@ -110,7 +110,7 @@ function LikedSongsView({ onBack }: { onBack: () => void }) {
       </button>
 
       <header className="flex items-center gap-3">
-        <img src="/toast-icon.png" alt="" className="h-14 w-14 rounded-[10px] object-cover flex-shrink-0" />
+        <img src="/toast-icon.webp" alt="" className="h-14 w-14 rounded-[10px] object-cover flex-shrink-0" />
         <div>
           <h1 className="font-heading text-2xl font-semibold text-foreground">Liked Songs</h1>
           <p className="text-sm text-muted-foreground">
@@ -250,7 +250,7 @@ export function ListenTab() {
           onClick={openLiked}
           className="w-full flex items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left hover:bg-secondary/40 active:opacity-60 transition-colors"
         >
-          <img src="/toast-icon.png" alt="" className="h-12 w-12 rounded-[10px] object-cover flex-shrink-0" />
+          <img src="/toast-icon.webp" alt="" className="h-12 w-12 rounded-[10px] object-cover flex-shrink-0" />
           <div className="min-w-0 flex-1">
             <p className="font-semibold text-foreground">Liked Songs</p>
             <p className="text-sm text-muted-foreground">{likedCount} {likedCount === 1 ? 'song' : 'songs'}</p>

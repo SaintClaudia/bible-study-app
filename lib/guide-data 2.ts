@@ -179,7 +179,7 @@ export const startHereItems: StartHereItem[] = [
 export const goodToKnowItems: GoodToKnowItem[] = [
   {
     id: 'sign-of-cross',
-    icon: '/sun.png',
+    icon: '/sun.webp',
     title: 'The Sign of the Cross',
     subtitle: "The gesture you'll come to know.",
     body: [
@@ -190,7 +190,7 @@ export const goodToKnowItems: GoodToKnowItem[] = [
   },
   {
     id: 'our-father',
-    icon: '/pray.png',
+    icon: '/pray.webp',
     title: 'The Our Father',
     subtitle: 'The prayer said at every class.',
     body: [
@@ -201,7 +201,7 @@ export const goodToKnowItems: GoodToKnowItem[] = [
   },
   {
     id: 'which-bible',
-    icon: '/bible.png',
+    icon: '/bible.webp',
     title: 'Which Bible should I use?',
     subtitle: "NABRE — but it's not required.",
     body: [
