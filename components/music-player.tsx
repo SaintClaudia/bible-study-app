@@ -160,7 +160,7 @@ export function MiniPlayer() {
           className="text-muted-foreground hover:text-foreground active:opacity-60"
           aria-label="Minimize"
         >
-          <IconDownArrow className="h-9 w-9" />
+          <IconDownArrow className="h-7 w-7" />
         </button>
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Now Playing</p>
         <div className="w-9" />
@@ -206,35 +206,38 @@ export function MiniPlayer() {
         {/* Playback controls */}
         <div className="w-full max-w-[280px] flex items-center justify-between">
           <button type="button" onClick={skipBack}
-            className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground active:opacity-60"
+            className="flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground active:opacity-60"
             aria-label="Skip back 15 seconds">
-            <IconRewind className="h-8 w-8" />
-            <span className="text-[9px] font-medium tracking-wide">15</span>
+            <IconRewind className="h-7 w-7" />
+            <span className="text-[9px] font-medium tracking-widest text-muted-foreground">15</span>
           </button>
 
           <button type="button" onClick={prevTrack} disabled={!hasMultipleTracks}
             className="text-muted-foreground hover:text-foreground active:opacity-60 disabled:opacity-25 disabled:cursor-not-allowed"
             aria-label="Previous track">
-            <IconPrevTrack className="h-10 w-10" />
+            <IconPrevTrack className="h-9 w-9" />
           </button>
 
+          {/* Main play/pause — circular container for visual anchor */}
           <button type="button" onClick={togglePlay}
-            className="text-foreground hover:opacity-80 active:scale-95 transition-transform"
+            className="h-16 w-16 rounded-full bg-foreground text-background flex items-center justify-center hover:opacity-80 active:scale-95 transition-transform shadow-md"
             aria-label={isPlaying ? 'Pause' : 'Play'}>
-            {isPlaying ? <IconPause className="h-16 w-16" /> : <IconPlay className="h-16 w-16" />}
+            {isPlaying
+              ? <IconPause className="h-7 w-7" />
+              : <IconPlay className="h-7 w-7 translate-x-0.5" />}
           </button>
 
           <button type="button" onClick={nextTrack} disabled={!hasMultipleTracks}
             className="text-muted-foreground hover:text-foreground active:opacity-60 disabled:opacity-25 disabled:cursor-not-allowed"
             aria-label="Next track">
-            <IconNextTrack className="h-10 w-10" />
+            <IconNextTrack className="h-9 w-9" />
           </button>
 
           <button type="button" onClick={skipForward}
-            className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground active:opacity-60"
+            className="flex flex-col items-center gap-1.5 text-muted-foreground hover:text-foreground active:opacity-60"
             aria-label="Skip forward 15 seconds">
-            <IconFastForward className="h-8 w-8" />
-            <span className="text-[9px] font-medium tracking-wide">15</span>
+            <IconFastForward className="h-7 w-7" />
+            <span className="text-[9px] font-medium tracking-widest text-muted-foreground">15</span>
           </button>
         </div>
 
