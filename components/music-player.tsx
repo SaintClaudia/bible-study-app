@@ -73,12 +73,12 @@ export function MiniPlayerBar() {
 
 export function MiniPlayer() {
   const {
-    nowPlaying, setPlayerExpanded,
+    nowPlaying, playerExpanded, setPlayerExpanded,
     isPlaying, togglePlay,
     currentTime, duration, seek,
   } = useMusicPlayer()
 
-  if (!nowPlaying?.audioSrc) return null
+  if (!nowPlaying?.audioSrc || !playerExpanded) return null
 
   return (
     <div className="fixed inset-0 z-40 flex flex-col bg-background">
