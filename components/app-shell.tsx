@@ -213,13 +213,33 @@ export function AppShell() {
       const adding = !next.has(trackName)
       if (adding) {
         next.add(trackName)
-        toast(`Added to your collection`, {
-          description: 'Find it under Liked Songs in the Music tab.',
-          duration: 3000,
-        })
+        toast.custom(() => (
+          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-background border border-border shadow-lg px-4 py-3">
+            <img
+              src="/apple-touch-icon.png"
+              alt=""
+              className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
+            />
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-foreground leading-snug">Added to your collection.</p>
+              <p className="text-sm text-muted-foreground leading-snug">Find it under Liked Songs in the Music tab.</p>
+            </div>
+          </div>
+        ), { duration: 3000 })
       } else {
         next.delete(trackName)
-        toast(`Removed from your collection`, { duration: 2000 })
+        toast.custom(() => (
+          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-background border border-border shadow-lg px-4 py-3">
+            <img
+              src="/apple-touch-icon.png"
+              alt=""
+              className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
+            />
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-foreground leading-snug">Removed from your collection.</p>
+            </div>
+          </div>
+        ), { duration: 2000 })
       }
       try { localStorage.setItem('likedTracks', JSON.stringify([...next])) } catch {}
       return next
@@ -350,7 +370,10 @@ export function AppShell() {
       <Toaster
         position="bottom-center"
         offset={nowPlaying?.audioSrc && !playerExpanded ? 148 : 96}
-        toastOptions={{ style: { fontFamily: 'var(--font-sans)' } }}
+        toastOptions={{
+          unstyled: true,
+          style: { width: '100%', fontFamily: 'var(--font-sans)' },
+        }}
       />
     </MusicPlayerContext.Provider>
   )
