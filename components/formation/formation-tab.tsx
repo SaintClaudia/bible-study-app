@@ -52,9 +52,10 @@ export function FormationTab() {
         <button
           type="button"
           onClick={() => setActiveLesson(null)}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
-          <ArrowLeft className="h-4 w-4" aria-hidden />
+          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+          <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
           {activePath.title}
         </button>
 
@@ -124,9 +125,10 @@ export function FormationTab() {
         <button
           type="button"
           onClick={() => setActivePath(null)}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
-          <ArrowLeft className="h-4 w-4" aria-hidden />
+          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+          <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
           All paths
         </button>
 
