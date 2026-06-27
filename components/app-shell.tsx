@@ -11,7 +11,7 @@ import { MusicPlayerContext } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
-import { toast } from 'sonner'
+import { toast, Toaster } from 'sonner'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
@@ -347,6 +347,11 @@ export function AppShell() {
         </nav>
 
       </div>
+      <Toaster
+        position="bottom-center"
+        offset={nowPlaying?.audioSrc && !playerExpanded ? 148 : 96}
+        toastOptions={{ style: { fontFamily: 'var(--font-sans)' } }}
+      />
     </MusicPlayerContext.Provider>
   )
 }

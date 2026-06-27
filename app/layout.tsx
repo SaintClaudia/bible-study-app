@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from 'sonner'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -108,12 +107,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Toaster
-            position="bottom-center"
-            toastOptions={{
-              style: { fontFamily: 'var(--font-sans)' },
-            }}
-          />
         </ThemeProvider>
       </body>
     </html>
