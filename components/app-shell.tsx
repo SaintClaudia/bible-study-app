@@ -11,6 +11,7 @@ import { MusicPlayerContext } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
+import { toast } from 'sonner'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
@@ -209,8 +210,17 @@ export function AppShell() {
   const toggleLike = useCallback((trackName: string) => {
     setLikedTracks(prev => {
       const next = new Set(prev)
-      if (next.has(trackName)) next.delete(trackName)
-      else next.add(trackName)
+      const adding = !next.has(trackName)
+      if (adding) {
+        next.add(trackName)
+        toast(`Added to your collection`, {
+          description: 'Find it under Liked Songs in the Music tab.',
+          duration: 3000,
+        })
+      } else {
+        next.delete(trackName)
+        toast(`Removed from your collection`, { duration: 2000 })
+      }
       try { localStorage.setItem('likedTracks', JSON.stringify([...next])) } catch {}
       return next
     })
