@@ -104,7 +104,7 @@ export function MiniPlayerBar() {
             className="text-foreground active:opacity-60"
             aria-label="Go to track"
           >
-            <IconList className="h-8 w-8" />
+            <IconList className="h-6 w-6" />
           </button>
 
           <button
@@ -113,16 +113,16 @@ export function MiniPlayerBar() {
             className="text-foreground active:opacity-60"
             aria-label={isLiked ? 'Remove from collection' : 'Add to collection'}
           >
-            {isLiked ? <IconChecked className="h-8 w-8" /> : <IconPlus className="h-8 w-8" />}
+            {isLiked ? <IconChecked className="h-6 w-6" /> : <IconPlus className="h-6 w-6" />}
           </button>
 
           <button
             type="button"
             onClick={togglePlay}
-            className="h-9 w-9 rounded-full bg-foreground text-background flex items-center justify-center active:opacity-60 flex-shrink-0"
+            className="h-8 w-8 rounded-full bg-foreground text-background flex items-center justify-center active:opacity-60 flex-shrink-0"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
-            {isPlaying ? <IconPause className="h-4 w-4" /> : <IconPlay className="h-4 w-4 translate-x-px" />}
+            {isPlaying ? <IconPause className="h-3.5 w-3.5" /> : <IconPlay className="h-3.5 w-3.5 translate-x-px" />}
           </button>
         </div>
       </div>
