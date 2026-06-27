@@ -1,52 +1,44 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import {
   ArrowLeft,
+  BookOpen,
   Check,
-  ChevronDown,
   ChevronRight,
   CircleHelp,
+  Droplets,
+  Heart,
+  Home,
+  Landmark,
+  Leaf,
   ListChecks,
+  Shield,
+  Sparkles,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { learningPaths, type Lesson, type LearningPath } from '@/lib/content'
 import { useLocalStorage } from '@/hooks/use-local-storage'
-import { GlossaryTerm } from '@/components/shared/glossary-term'
 
-// ── Order of Mass data (previously in mass-tab.tsx) ────────────
+// ── Path icon map ──────────────────────────────────────────────
 
-const arrivingContent = [
-  'As Catholics, we joyfully welcome people of all faiths and backgrounds to the Mass. You are not a guest on the outside looking in — you are a welcome part of what happens here.',
-  <>As you enter, you will find a small font of holy water near the doors. Dip your fingers and make the <GlossaryTerm id="sign-of-the-cross">Sign of the Cross</GlossaryTerm> — a reminder of baptism.</>,
-  <>Before entering your <GlossaryTerm id="pew">pew</GlossaryTerm>, look toward the front of the church. If you see a red lamp burning near the <GlossaryTerm id="altar">altar</GlossaryTerm>, Jesus is present in the <GlossaryTerm id="tabernacle">tabernacle</GlossaryTerm>. Catholics <GlossaryTerm id="genuflect">genuflect</GlossaryTerm> — briefly kneel on one knee — as a sign of reverence before sitting.</>,
-  'Once seated, pull down the kneeler and take a moment in quiet prayer. There is no required prayer — simply be present and open.',
-]
-
-const massOrder = [
-  { id: 'intro', title: 'Introductory Rites', posture: 'Stand', description: 'Mass begins as the priest and ministers process in. We make the Sign of the Cross together, greet one another, and ask God for mercy before praising him in the Gloria.', why: 'We begin Mass by acknowledging who we are — people in need of mercy — before we do anything else. The Gloria is our first great act of praise, setting the tone for everything that follows.' },
-  { id: 'word', title: 'Liturgy of the Word', posture: 'Sit', description: 'We listen to readings from Scripture — usually from the Old Testament, a Psalm sung in response, a New Testament letter, and then the Gospel. We sit and simply receive God\'s word.', why: 'God speaks first. Before we offer anything, we listen. The readings are not chosen randomly — they follow a three-year cycle that takes us through the whole of Scripture.' },
-  { id: 'homily', title: 'Homily', posture: 'Sit', description: 'The priest or deacon reflects on the readings and connects them to daily life. This is a time to listen and let the message settle in.', why: 'The homily is not a lecture or a performance — it is an invitation to let Scripture speak into your actual life, right now, this week.' },
-  { id: 'creed', title: 'The Creed', posture: 'Stand', description: 'Together we profess what we believe using the Nicene Creed — a summary of the Christian faith that Catholics around the world have prayed for almost 1,700 years.', why: 'After hearing God\'s word, we respond with our own. The Creed is not a checklist — it is a personal declaration of faith made together as a community.' },
-  { id: 'faithful', title: 'Prayers of the Faithful', posture: 'Stand', description: 'We pray for the Church, the world, those in need, and our local community. After each intention, the congregation responds together.', why: 'This is one of the most human moments of Mass — we bring our real needs and the needs of the world before God. Nothing is too small or too large to bring here.' },
-  { id: 'eucharist', title: 'Liturgy of the Eucharist', posture: 'Stand, then Kneel', description: 'Bread and wine are brought forward and the priest offers the great prayer of thanksgiving. At the Consecration — the most sacred moment of Mass — we kneel as the bread and wine become the body and blood of Christ.', why: 'This is why Catholics come to Mass. Everything before this moment has been preparation. The Eucharist is not a symbol — it is Christ himself, truly present.' },
-  { id: 'communion', title: 'Communion Rite', posture: 'Stand', description: 'We pray the Our Father together, offer a sign of peace to those around us, and those who are prepared come forward to receive Communion. If you are not receiving, you are warmly welcome to come forward for a blessing — simply cross your arms over your chest.', why: 'Communion is the most intimate moment of Mass — receiving Christ himself into our bodies. If you are not yet Catholic or not in a state of grace, coming forward for a blessing is a beautiful and welcome participation.' },
-  { id: 'concluding', title: 'Concluding Rites', posture: 'Stand', description: 'The priest blesses us and sends us out into the world. Mass ends not as a goodbye, but as a commissioning — go and live what you have received.', why: 'The word "Mass" comes from the Latin missa — meaning "sent." Every Mass ends with a sending. We are not meant to keep what we have received; we are meant to give it away.' },
-]
-
-// ── Church icon (previously only in app-shell) ─────────────────
-
+const PATH_ICONS: Record<string, React.ReactNode> = {
+  Sparkles: <Sparkles className="h-5 w-5" />,
+  BookOpen: <BookOpen className="h-5 w-5" />,
+  Heart: <Heart className="h-5 w-5" />,
+  Shield: <Shield className="h-5 w-5" />,
+  Droplets: <Droplets className="h-5 w-5" />,
+  Leaf: <Leaf className="h-5 w-5" />,
+  Landmark: <Landmark className="h-5 w-5" />,
+  Home: <Home className="h-5 w-5" />,
+}
 
 // ── Formation tab ──────────────────────────────────────────────
 
 export function FormationTab() {
-  const [completed, setCompleted, hydrated] = useLocalStorage<string[]>('bs.completedLessons', [])
+  const [completed, setCompleted] = useLocalStorage<string[]>('bs.completedLessons', [])
   const [activePath, setActivePath] = useState<LearningPath | null>(null)
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
-  const [openMassSection, setOpenMassSection] = useState<string | null>(null)
-
-  const totalLessons = useMemo(() => learningPaths.reduce((sum, p) => sum + p.lessons.length, 0), [])
-  const doneCount = hydrated ? completed.length : 0
 
   function toggleComplete(id: string) {
     setCompleted(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
@@ -175,73 +167,6 @@ export function FormationTab() {
           })}
         </div>
 
-        {/* Order of Mass — shown only inside the Attending Mass path */}
-        {activePath.id === 'attending-mass' && (
-          <>
-            <div className="pt-2">
-              <h2 className="font-heading text-2xl font-normal text-foreground">Order of Mass</h2>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                A simple guide to what happens during Mass and why. Tap any section to learn more.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-2.5">
-              {/* Arriving at Mass */}
-              <div className="overflow-hidden rounded-2xl border border-border bg-card">
-                <button
-                  type="button"
-                  onClick={() => setOpenMassSection(openMassSection === 'arriving' ? null : 'arriving')}
-                  aria-expanded={openMassSection === 'arriving'}
-                  className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left"
-                >
-                  <span className="font-heading text-xl font-normal text-foreground">Arriving at Mass</span>
-                  <ChevronDown className={cn('h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200', openMassSection === 'arriving' && 'rotate-180')} aria-hidden />
-                </button>
-                {openMassSection === 'arriving' && (
-                  <div className="border-t border-border px-4 py-4 flex flex-col gap-3 text-sm leading-relaxed text-foreground/80">
-                    {arrivingContent.map((para, i) => <p key={i}>{para}</p>)}
-                  </div>
-                )}
-              </div>
-
-              {/* Ordered Mass sections */}
-              {massOrder.map((section, i) => {
-                const open = openMassSection === section.id
-                return (
-                  <div key={section.id} className="overflow-hidden rounded-2xl border border-border bg-card">
-                    <button
-                      type="button"
-                      onClick={() => setOpenMassSection(open ? null : section.id)}
-                      aria-expanded={open}
-                      className="flex w-full items-start justify-between gap-3 px-4 py-4 text-left"
-                    >
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">{i + 1}</span>
-                          <span className="font-heading text-xl font-normal text-foreground">{section.title}</span>
-                        </div>
-                        <span className="inline-flex items-center self-start rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-foreground">
-                          {section.posture}
-                        </span>
-                      </div>
-                      <ChevronDown className={cn('h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 mt-1', open && 'rotate-180')} aria-hidden />
-                    </button>
-                    {open && (
-                      <div className="border-t border-border px-4 py-4 flex flex-col gap-4">
-                        <p className="text-sm leading-relaxed text-foreground/80">{section.description}</p>
-                        <div className="rounded-xl bg-secondary/50 px-4 py-3">
-                          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground mb-1.5">Why do Catholics do this?</p>
-                          <p className="text-sm leading-relaxed text-muted-foreground">{section.why}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
-
-          </>
-        )}
       </div>
     )
   }
@@ -257,47 +182,24 @@ export function FormationTab() {
         </p>
       </section>
 
-      <section className="rounded-2xl border border-border bg-card p-5">
-        <div className="flex items-center justify-between">
-          <p className="font-heading text-xl font-normal text-foreground">Your progress</p>
-          <p className="text-sm font-medium text-muted-foreground">{doneCount} / {totalLessons}</p>
-        </div>
-        <div
-          className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-secondary"
-          role="progressbar"
-          aria-valuenow={doneCount}
-          aria-valuemin={0}
-          aria-valuemax={totalLessons}
-        >
-          <div
-            className="h-full rounded-full bg-primary transition-all"
-            style={{ width: `${(doneCount / totalLessons) * 100}%` }}
-          />
-        </div>
-      </section>
-
       <section className="flex flex-col gap-2.5">
-        {learningPaths.map((path, i) => {
-          const done = path.lessons.filter(l => completed.includes(l.id)).length
-          return (
-            <button
-              key={path.id}
-              type="button"
-              onClick={() => setActivePath(path)}
-              className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary font-heading text-xl font-normal text-foreground">
-                {i + 1}
-              </span>
-              <span className="flex-1">
-                <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
-                <span className="block text-sm leading-relaxed text-muted-foreground">{path.description}</span>
-                <span className="mt-1 block text-xs font-medium text-muted-foreground">{done} of {path.lessons.length} complete</span>
-              </span>
-              <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
-            </button>
-          )
-        })}
+        {learningPaths.map((path) => (
+          <button
+            key={path.id}
+            type="button"
+            onClick={() => setActivePath(path)}
+            className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
+          >
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary text-foreground">
+              {PATH_ICONS[path.icon] ?? null}
+            </span>
+            <span className="flex-1">
+              <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
+              <span className="block text-sm leading-relaxed text-muted-foreground">{path.lessonCount} essential lessons</span>
+            </span>
+            <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
+          </button>
+        ))}
       </section>
     </div>
   )
