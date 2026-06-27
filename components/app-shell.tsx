@@ -96,7 +96,7 @@ export function AppShell() {
   }, [activeTab])
 
   // Music player state
-  const [nowPlaying, setNowPlayingRaw] = useState<ResourceItem | null>(null)
+  const [nowPlaying, _setNowPlayingRaw] = useState<ResourceItem | null>(null)
   const [playerExpanded, setPlayerExpanded] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
@@ -104,6 +104,14 @@ export function AppShell() {
   const [volume, setVolumeState] = useState(1)
   const [likedTracks, setLikedTracks] = useState<Set<string>>(new Set())
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  // Refs so audio event handlers always see current values without stale closures
+  const nowPlayingRef = useRef<ResourceItem | null>(null)
+  const playQueueRef = useRef<ResourceItem[]>([])
+
+  const setNowPlayingRaw = useCallback((item: ResourceItem | null) => {
+    nowPlayingRef.current = item
+    _setNowPlayingRaw(item)
+  }, [])
 
   const setVolume = useCallback((v: number) => {
     setVolumeState(v)
@@ -126,7 +134,25 @@ export function AppShell() {
 
     const onTimeUpdate = () => setCurrentTime(el.currentTime)
     const onDurationChange = () => setDuration(isFinite(el.duration) ? el.duration : 0)
-    const onEnded = () => { setIsPlaying(false); setCurrentTime(0) }
+    const onEnded = () => {
+      setIsPlaying(false)
+      setCurrentTime(0)
+      // Auto-advance through active queue (e.g. Liked Songs playlist)
+      const queue = playQueueRef.current
+      const current = nowPlayingRef.current
+      if (queue.length > 0 && current) {
+        const idx = queue.findIndex(i => i.name === current.name)
+        const next = idx >= 0 && idx < queue.length - 1 ? queue[idx + 1] : null
+        if (next?.audioSrc) {
+          setNowPlayingRaw(next)
+          el.src = next.audioSrc
+          el.currentTime = 0
+          setCurrentTime(0)
+          setDuration(0)
+          el.play().catch(() => {})
+        }
+      }
+    }
     const onPlay = () => setIsPlaying(true)
     const onPause = () => setIsPlaying(false)
 
@@ -158,6 +184,7 @@ export function AppShell() {
   }, [])
 
   const setNowPlaying = useCallback((item: ResourceItem | null) => {
+    playQueueRef.current = [] // clear queue — not playing from a playlist
     setNowPlayingRaw(item)
     setPlayerExpanded(false)
     const el = audioRef.current
@@ -171,7 +198,21 @@ export function AppShell() {
       setCurrentTime(0)
       setDuration(0)
     }
-  }, [loadAndPlay])
+  }, [loadAndPlay, setNowPlayingRaw])
+
+  // Play an item within an explicit ordered queue (enables auto-advance on end)
+  const playFromQueue = useCallback((item: ResourceItem, queue: ResourceItem[]) => {
+    playQueueRef.current = queue
+    setNowPlayingRaw(item)
+    setPlayerExpanded(false)
+    const el = audioRef.current
+    if (!el || !item.audioSrc) return
+    el.src = item.audioSrc
+    el.currentTime = 0
+    setCurrentTime(0)
+    setDuration(0)
+    el.play().catch(() => {})
+  }, [setNowPlayingRaw])
 
   const togglePlay = useCallback(() => {
     const el = audioRef.current
@@ -200,18 +241,20 @@ export function AppShell() {
   }, [])
 
   const nextTrack = useCallback(() => {
-    if (!nowPlaying || listenItems.length < 2) return
-    const idx = listenItems.findIndex(i => i.name === nowPlaying.name)
-    const next = listenItems[(idx + 1) % listenItems.length]
+    const queue = playQueueRef.current.length > 0 ? playQueueRef.current : listenItems
+    if (!nowPlaying || queue.length < 2) return
+    const idx = queue.findIndex(i => i.name === nowPlaying.name)
+    const next = queue[(idx + 1) % queue.length]
     if (next) { setNowPlayingRaw(next); loadAndPlay(next) }
-  }, [nowPlaying, loadAndPlay])
+  }, [nowPlaying, loadAndPlay, setNowPlayingRaw])
 
   const prevTrack = useCallback(() => {
-    if (!nowPlaying || listenItems.length < 2) return
-    const idx = listenItems.findIndex(i => i.name === nowPlaying.name)
-    const prev = listenItems[(idx - 1 + listenItems.length) % listenItems.length]
+    const queue = playQueueRef.current.length > 0 ? playQueueRef.current : listenItems
+    if (!nowPlaying || queue.length < 2) return
+    const idx = queue.findIndex(i => i.name === nowPlaying.name)
+    const prev = queue[(idx - 1 + queue.length) % queue.length]
     if (prev) { setNowPlayingRaw(prev); loadAndPlay(prev) }
-  }, [nowPlaying, loadAndPlay])
+  }, [nowPlaying, loadAndPlay, setNowPlayingRaw])
 
   const toggleLike = useCallback((trackName: string) => {
     setLikedTracks(prev => {
@@ -287,6 +330,7 @@ export function AppShell() {
       prevTrack,
       likedTracks,
       toggleLike,
+      playFromQueue,
       volume,
       setVolume,
       navigateToListen: () => setActiveTab('listen'),

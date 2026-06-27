@@ -21,6 +21,7 @@ export type MusicPlayerCtx = {
   prevTrack: () => void
   likedTracks: Set<string>
   toggleLike: (trackName: string) => void
+  playFromQueue: (item: ResourceItem, queue: ResourceItem[]) => void
   navigateToListen: () => void
 }
 
@@ -42,6 +43,7 @@ export const MusicPlayerContext = createContext<MusicPlayerCtx>({
   prevTrack: () => {},
   likedTracks: new Set(),
   toggleLike: () => {},
+  playFromQueue: () => {},
   navigateToListen: () => {},
 })
 

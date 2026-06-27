@@ -41,14 +41,15 @@ function SeekBar({ currentTime, duration, seek }: { currentTime: number; duratio
 
 // ── Inline audio player ─────────────────────────────────────────
 
-function InlineAudioPlayer({ item }: { item: ResourceItem }) {
-  const { nowPlaying, setNowPlaying, isPlaying, togglePlay, currentTime, duration, seek, likedTracks, toggleLike } = useMusicPlayer()
+function InlineAudioPlayer({ item, queue }: { item: ResourceItem; queue?: ResourceItem[] }) {
+  const { nowPlaying, setNowPlaying, playFromQueue, isPlaying, togglePlay, currentTime, duration, seek, likedTracks, toggleLike } = useMusicPlayer()
   const isThis = nowPlaying?.name === item.name
   const playing = isThis && isPlaying
   const isLiked = likedTracks.has(item.name)
 
   const handlePlay = () => {
     if (isThis) togglePlay()
+    else if (queue) playFromQueue(item, queue)
     else setNowPlaying(item)
   }
 
@@ -125,7 +126,7 @@ function LikedSongsView({ onBack }: { onBack: () => void }) {
             <p className="text-sm text-muted-foreground">Songs you like will appear here.</p>
           </div>
         ) : (
-          liked.map(item => <InlineAudioPlayer key={item.name} item={item} />)
+          liked.map(item => <InlineAudioPlayer key={item.name} item={item} queue={liked} />)
         )}
       </div>
     </div>
