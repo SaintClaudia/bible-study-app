@@ -101,8 +101,14 @@ export function AppShell() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [volume, setVolumeState] = useState(1)
   const [likedTracks, setLikedTracks] = useState<Set<string>>(new Set())
   const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  const setVolume = useCallback((v: number) => {
+    setVolumeState(v)
+    if (audioRef.current) audioRef.current.volume = v
+  }, [])
 
   // Load liked tracks from localStorage
   useEffect(() => {
@@ -281,6 +287,9 @@ export function AppShell() {
       prevTrack,
       likedTracks,
       toggleLike,
+      volume,
+      setVolume,
+      navigateToListen: () => setActiveTab('listen'),
     }}>
       <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 

@@ -11,6 +11,8 @@ export type MusicPlayerCtx = {
   isPlaying: boolean
   currentTime: number
   duration: number
+  volume: number
+  setVolume: (v: number) => void
   togglePlay: () => void
   seek: (time: number) => void
   skipBack: () => void
@@ -19,6 +21,7 @@ export type MusicPlayerCtx = {
   prevTrack: () => void
   likedTracks: Set<string>
   toggleLike: (trackName: string) => void
+  navigateToListen: () => void
 }
 
 export const MusicPlayerContext = createContext<MusicPlayerCtx>({
@@ -29,6 +32,8 @@ export const MusicPlayerContext = createContext<MusicPlayerCtx>({
   isPlaying: false,
   currentTime: 0,
   duration: 0,
+  volume: 1,
+  setVolume: () => {},
   togglePlay: () => {},
   seek: () => {},
   skipBack: () => {},
@@ -37,6 +42,7 @@ export const MusicPlayerContext = createContext<MusicPlayerCtx>({
   prevTrack: () => {},
   likedTracks: new Set(),
   toggleLike: () => {},
+  navigateToListen: () => {},
 })
 
 export function useMusicPlayer() {

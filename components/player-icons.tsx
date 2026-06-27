@@ -3,6 +3,15 @@
 
 type IconProps = { className?: string }
 
+// List / queue icon — circle with three horizontal lines punched through (evenodd)
+export function IconList({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 300 300" fill="currentColor" className={className} aria-hidden>
+      <path fillRule="evenodd" d="M150,0C67.157,0,0,67.162,0,150c0,82.841,67.157,150,150,150s150-67.159,150-150C300,67.162,232.843,0,150,0z M90,108H210V126H90Z M90,141H210V159H90Z M90,174H210V192H90Z"/>
+    </svg>
+  )
+}
+
 export function IconPlay({ className }: IconProps) {
   return (
     <svg viewBox="0 0 300 300" fill="currentColor" className={className} aria-hidden>
