@@ -216,7 +216,7 @@ export function AppShell() {
         toast.custom(() => (
           <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-background border border-border shadow-lg px-4 py-3">
             <img
-              src="/apple-touch-icon.png"
+              src="/toast-icon.png"
               alt=""
               className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
             />
@@ -231,7 +231,7 @@ export function AppShell() {
         toast.custom(() => (
           <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-background border border-border shadow-lg px-4 py-3">
             <img
-              src="/apple-touch-icon.png"
+              src="/toast-icon.png"
               alt=""
               className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
             />
