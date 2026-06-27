@@ -7,10 +7,9 @@ import { ReadingsTab } from '@/components/readings/readings-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
 import { DiscoverTab } from '@/components/discover/discover-tab'
-import { MusicPlayerContext, embedUrlToUri } from '@/components/music-player-context'
+import { MusicPlayerContext } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
-import { useSpotifySDK } from '@/hooks/use-spotify-sdk'
 import type { ResourceItem } from '@/lib/content'
 
 type Tab = 'readings' | 'formation' | 'journey' | 'discover' | 'listen'
@@ -79,17 +78,15 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
 ]
 
 export function AppShell() {
-  // Tab / UI state
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
     journey: 0, formation: 0, readings: 0, discover: 0, listen: 0,
   })
-const [barsVisible, setBarsVisible] = useState(true)
+  const [barsVisible, setBarsVisible] = useState(true)
   const [guideDetailOpen, setGuideDetailOpen] = useState(false)
   const [formationLessonOpen, setFormationLessonOpen] = useState(false)
   const lastScrollY = useRef(0)
 
-  // Reset detail mode whenever the active tab changes
   useEffect(() => {
     setGuideDetailOpen(false)
     setFormationLessonOpen(false)
@@ -98,18 +95,73 @@ const [barsVisible, setBarsVisible] = useState(true)
   // Music player state
   const [nowPlaying, setNowPlayingRaw] = useState<ResourceItem | null>(null)
   const [playerExpanded, setPlayerExpanded] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  // Spotify SDK
-  const sdk = useSpotifySDK()
+  // Create audio element once
+  useEffect(() => {
+    const el = new Audio()
+    el.preload = 'metadata'
+    audioRef.current = el
+
+    const onTimeUpdate = () => setCurrentTime(el.currentTime)
+    const onDurationChange = () => setDuration(isFinite(el.duration) ? el.duration : 0)
+    const onEnded = () => { setIsPlaying(false); setCurrentTime(0) }
+    const onPlay = () => setIsPlaying(true)
+    const onPause = () => setIsPlaying(false)
+
+    el.addEventListener('timeupdate', onTimeUpdate)
+    el.addEventListener('durationchange', onDurationChange)
+    el.addEventListener('ended', onEnded)
+    el.addEventListener('play', onPlay)
+    el.addEventListener('pause', onPause)
+
+    return () => {
+      el.pause()
+      el.src = ''
+      el.removeEventListener('timeupdate', onTimeUpdate)
+      el.removeEventListener('durationchange', onDurationChange)
+      el.removeEventListener('ended', onEnded)
+      el.removeEventListener('play', onPlay)
+      el.removeEventListener('pause', onPause)
+    }
+  }, [])
 
   const setNowPlaying = useCallback((item: ResourceItem | null) => {
     setNowPlayingRaw(item)
     setPlayerExpanded(false)
-    if (item?.spotifyEmbedSrc && sdk.isReady && sdk.isPremium) {
-      const uri = embedUrlToUri(item.spotifyEmbedSrc)
-      if (uri) sdk.play(uri)
+    const el = audioRef.current
+    if (!el) return
+    if (item?.audioSrc) {
+      el.src = item.audioSrc
+      el.currentTime = 0
+      setCurrentTime(0)
+      setDuration(0)
+      el.play().catch(() => {})
+    } else {
+      el.pause()
+      el.src = ''
+      setIsPlaying(false)
+      setCurrentTime(0)
+      setDuration(0)
     }
-  }, [sdk])
+  }, [])
+
+  const togglePlay = useCallback(() => {
+    const el = audioRef.current
+    if (!el || !nowPlaying?.audioSrc) return
+    if (isPlaying) el.pause()
+    else el.play().catch(() => {})
+  }, [isPlaying, nowPlaying])
+
+  const seek = useCallback((time: number) => {
+    const el = audioRef.current
+    if (!el) return
+    el.currentTime = time
+    setCurrentTime(time)
+  }, [])
 
   // Read #tab hash from URL on load
   useEffect(() => {
@@ -134,25 +186,20 @@ const [barsVisible, setBarsVisible] = useState(true)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-return (
+  return (
     <MusicPlayerContext.Provider value={{
       nowPlaying,
       setNowPlaying,
       playerExpanded,
       setPlayerExpanded,
-      isSpotifyAuthenticated: sdk.isAuthenticated,
-      isSpotifyReady: sdk.isReady,
-      isPremium: sdk.isPremium,
-      currentTrack: sdk.currentTrack,
-      isPaused: sdk.isPaused,
-      playSpotify: sdk.play,
-      togglePlay: sdk.togglePlay,
-      nextTrack: sdk.nextTrack,
-      prevTrack: sdk.prevTrack,
+      isPlaying,
+      currentTime,
+      duration,
+      togglePlay,
+      seek,
     }}>
       <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 
-        {/* Fixed header — hidden in guide/formation detail views */}
         <header className={cn(
           'fixed top-0 left-0 right-0 z-20 bg-background transition-transform duration-300',
           (!barsVisible || guideDetailOpen || formationLessonOpen) && '-translate-y-full'
@@ -169,18 +216,16 @@ return (
           </div>
         </header>
 
-        {/* Spacer below fixed header — collapses when guide/formation detail is open */}
         <div
           className="flex-shrink-0 bg-background transition-[height] duration-300"
           style={{ height: (guideDetailOpen || formationLessonOpen) ? '0px' : 'calc(env(safe-area-inset-top) + 72px)' }}
         />
 
-        {/* pb accounts for: nav (~70px) + mini-player bar (~65px) when active + safe-area buffer */}
         <main id="main-content" className={cn(
           'flex-1',
           formationLessonOpen ? 'px-0 pt-0 pb-0' : 'px-5',
           (!formationLessonOpen && guideDetailOpen) ? 'pt-0' : !formationLessonOpen ? 'pt-4' : '',
-          !formationLessonOpen && (nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32')
+          !formationLessonOpen && (nowPlaying?.audioSrc ? 'pb-48' : 'pb-32')
         )}>
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onLessonChange={setFormationLessonOpen} />}
@@ -189,7 +234,6 @@ return (
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>
 
-        {/* Expanded player overlay — rendered outside nav so it covers the full screen */}
         <MiniPlayer />
 
         <nav
@@ -199,7 +243,6 @@ return (
             (!barsVisible || formationLessonOpen) && 'translate-y-full'
           )}
         >
-          {/* Collapsed mini-player bar — inside nav so it hides with it on scroll */}
           <MiniPlayerBar />
 
           <div

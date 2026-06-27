@@ -1,10 +1,9 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ArrowLeft, BookOpen, Check, ChevronRight, Compass, ExternalLink, Info, Play, Share2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
-import { useMusicPlayer, embedUrlToUri } from '@/components/music-player-context'
 import { FilterChips, type FilterChip } from '@/components/discover/filter-chips'
 
 // ── Share button ───────────────────────────────────────────────
@@ -12,17 +11,8 @@ import { FilterChips, type FilterChip } from '@/components/discover/filter-chips
 function ShareButton({ item }: { item: ResourceItem }) {
   const [copied, setCopied] = useState(false)
 
-  const getShareUrl = (): string => {
-    if (item.href) return item.href
-    if (item.spotifyEmbedSrc) {
-      const m = item.spotifyEmbedSrc.match(/embed\/(album|playlist)\/([A-Za-z0-9]+)/)
-      if (m) return `https://open.spotify.com/${m[1]}/${m[2]}`
-    }
-    return typeof window !== 'undefined' ? window.location.href : ''
-  }
-
   const handleShare = async () => {
-    const url = getShareUrl()
+    const url = item.href ?? (typeof window !== 'undefined' ? window.location.href : '')
     if (!url) return
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
@@ -66,13 +56,6 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
   const isBook = item.display === 'book'
   const isHero = item.display === 'hero'
   const isApp = item.display === 'app'
-  const { setNowPlaying, isSpotifyReady, isPremium, playSpotify } = useMusicPlayer()
-
-  const handleSDKPlay = () => {
-    setNowPlaying(item)
-    const uri = item.spotifyEmbedSrc ? embedUrlToUri(item.spotifyEmbedSrc) : null
-    if (uri) playSpotify(uri)
-  }
 
   return (
     <article className="flex flex-col gap-5">
@@ -110,18 +93,7 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
         </div>
       )}
 
-      {item.image && isApp && item.spotifyEmbedSrc && (
-        <div className="flex justify-center">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-56 h-56 rounded-2xl object-cover"
-            style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.14)' }}
-          />
-        </div>
-      )}
-
-      {item.image && isApp && !item.spotifyEmbedSrc && (
+      {item.image && isApp && (
         <div className="flex justify-center">
           <img
             src={item.image}
@@ -185,33 +157,6 @@ function ResourceDetail({ item, onBack }: { item: ResourceItem; onBack: () => vo
             ))}
           </ul>
         </section>
-      )}
-
-      {/* Spotify — SDK play button (Premium) or inline embed (everyone else) */}
-      {item.spotifyEmbedSrc && isSpotifyReady && isPremium === true && (
-        <button
-          type="button"
-          onClick={handleSDKPlay}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-80"
-        >
-          <Play className="h-4 w-4" fill="currentColor" aria-hidden />
-          Play
-        </button>
-      )}
-
-      {item.spotifyEmbedSrc && !(isSpotifyReady && isPremium === true) && (
-        <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-          <iframe
-            src={item.spotifyEmbedSrc}
-            width="100%"
-            height="352"
-            frameBorder={0}
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            allowFullScreen
-            style={{ display: 'block', width: '100%' }}
-          />
-        </div>
       )}
 
       {/* Page note */}
@@ -364,32 +309,16 @@ const FILTER_CHIPS: FilterChip[] = [
 export function DiscoverTab() {
   const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
   const [filter, setFilter] = useState<FilterId>('all')
-  const { setNowPlaying } = useMusicPlayer()
-
-  const activeItemRef = useRef(activeItem)
-  const setNowPlayingRef = useRef(setNowPlaying)
-  useEffect(() => { activeItemRef.current = activeItem }, [activeItem])
-  useEffect(() => { setNowPlayingRef.current = setNowPlaying }, [setNowPlaying])
-
-  useEffect(() => {
-    return () => {
-      if (activeItemRef.current?.spotifyEmbedSrc) {
-        setNowPlayingRef.current(activeItemRef.current)
-      }
-    }
-  }, [])
 
   const openItem = useCallback((item: ResourceItem) => {
-    if (item.spotifyEmbedSrc) setNowPlaying(null)
     setActiveItem(item)
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [setNowPlaying])
+  }, [])
 
   const closeItem = useCallback(() => {
-    if (activeItem?.spotifyEmbedSrc) setNowPlaying(activeItem)
     setActiveItem(null)
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [activeItem, setNowPlaying])
+  }, [])
 
   if (activeItem) {
     return <ResourceDetail item={activeItem} onBack={closeItem} />

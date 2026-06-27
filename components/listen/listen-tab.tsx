@@ -1,39 +1,75 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, Check, Music2, Share2 } from 'lucide-react'
+import { ArrowLeft, Check, Music2, Pause, Play } from 'lucide-react'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
+import { useMusicPlayer } from '@/components/music-player-context'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
-// ── Share button ───────────────────────────────────────────────
+function fmt(secs: number) {
+  if (!isFinite(secs) || isNaN(secs)) return '0:00'
+  const m = Math.floor(secs / 60)
+  const s = Math.floor(secs % 60).toString().padStart(2, '0')
+  return `${m}:${s}`
+}
 
-function ShareButton({ item }: { item: ResourceItem }) {
-  const [copied, setCopied] = useState(false)
+// ── Inline audio player (shown in detail view) ─────────────────
 
-  const handleShare = async () => {
-    const m = item.spotifyEmbedSrc?.match(/embed\/(album|playlist)\/([A-Za-z0-9]+)/)
-    const url = m ? `https://open.spotify.com/${m[1]}/${m[2]}` : window.location.href
-    if (navigator.share) {
-      try { await navigator.share({ title: item.name, text: item.note, url }) } catch {}
+function InlineAudioPlayer({ item }: { item: ResourceItem }) {
+  const { nowPlaying, setNowPlaying, isPlaying, togglePlay, currentTime, duration, seek } = useMusicPlayer()
+  const isThis = nowPlaying?.name === item.name
+
+  const handlePlay = () => {
+    if (isThis) {
+      togglePlay()
     } else {
-      try {
-        await navigator.clipboard.writeText(url)
-        setCopied(true)
-        setTimeout(() => setCopied(false), 2000)
-      } catch {}
+      setNowPlaying(item)
     }
   }
 
+  const playing = isThis && isPlaying
+
   return (
-    <button
-      type="button"
-      onClick={handleShare}
-      className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-secondary px-6 py-3.5 text-sm font-semibold text-foreground transition-opacity hover:opacity-80"
-    >
-      {copied ? <Check className="h-4 w-4" aria-hidden /> : <Share2 className="h-4 w-4" aria-hidden />}
-      {copied ? 'Link copied' : 'Share'}
-    </button>
+    <div className="rounded-2xl border border-border bg-card p-5 flex flex-col gap-4">
+      <div className="flex items-center gap-4">
+        <button
+          type="button"
+          onClick={handlePlay}
+          className="h-12 w-12 rounded-full bg-foreground flex items-center justify-center text-background hover:opacity-80 active:opacity-60 flex-shrink-0"
+          aria-label={playing ? 'Pause' : 'Play'}
+        >
+          {playing
+            ? <Pause className="h-5 w-5" fill="currentColor" />
+            : <Play className="h-5 w-5 translate-x-px" fill="currentColor" />}
+        </button>
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-foreground truncate">{item.name}</p>
+          <p className="text-xs text-muted-foreground truncate">
+            {item.creator ?? item.category}
+          </p>
+        </div>
+      </div>
+
+      {isThis && (
+        <div className="flex flex-col gap-1.5">
+          <input
+            type="range"
+            min={0}
+            max={duration || 1}
+            step={0.1}
+            value={currentTime}
+            onChange={(e) => seek(Number(e.target.value))}
+            className="w-full accent-foreground cursor-pointer"
+            aria-label="Seek"
+          />
+          <div className="flex justify-between text-xs text-muted-foreground">
+            <span>{fmt(currentTime)}</span>
+            <span>{fmt(duration)}</span>
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -70,24 +106,23 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
         )}
       </header>
 
-      {/* Spotify embed — shows full track list so the user can browse and skip */}
-      {item.spotifyEmbedSrc ? (
-        <div style={{ borderRadius: 12, overflow: 'hidden' }}>
-          <iframe
-            src={item.spotifyEmbedSrc}
-            width="100%"
-            height={380}
-            frameBorder={0}
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-            style={{ display: 'block', width: '100%' }}
+      {/* Album art or placeholder */}
+      {item.image ? (
+        <div className="flex justify-center">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-56 h-56 rounded-2xl object-cover shadow-lg"
           />
         </div>
       ) : (
-        <div className="flex h-40 items-center justify-center rounded-2xl bg-secondary">
-          <Music2 className="h-10 w-10 text-muted-foreground" />
+        <div className="flex h-48 items-center justify-center rounded-2xl bg-secondary">
+          <Music2 className="h-12 w-12 text-muted-foreground" />
         </div>
       )}
+
+      {/* Inline audio player */}
+      {item.audioSrc && <InlineAudioPlayer item={item} />}
 
       {/* Description */}
       {item.description && (
@@ -111,8 +146,6 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
           </ul>
         </section>
       )}
-
-      <ShareButton item={item} />
     </article>
   )
 }

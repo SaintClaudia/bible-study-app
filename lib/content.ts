@@ -1740,7 +1740,7 @@ export type ResourceItem = {
   description?: string | string[]
   details?: string[]
   pageNote?: string
-  spotifyEmbedSrc?: string
+  audioSrc?: string
   creator?: string
 }
 
@@ -1961,65 +1961,19 @@ export const resourceGroups: ResourceGroup[] = [
     kind: 'listen',
     items: [
       {
-        name: 'Catholic Instrumental Music',
-        note: 'Curated by The O\'Neill Brothers — perfect for prayer, study, or quiet reflection.',
-        image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84364240bc1c6534574307c30d',
-        display: 'app',
-        category: 'Public Playlist',
-        creator: 'The O\'Neill Brothers',
+        name: 'Sicut Cervus',
+        note: "Palestrina's setting of Psalm 42 — timeless Renaissance polyphony for prayer and reflection.",
+        image: '/sicut-cervus-cover.png',
+        category: 'Sacred Choral',
+        creator: 'Giovanni Pierluigi da Palestrina',
         description:
-          '"The aim and final end of all music should be none other than the glory of God and the refreshment of the soul." — J.S. Bach',
+          '"As the deer longs for streams of water, so my soul longs for you, O God." — Psalm 42. Palestrina\'s four-voice setting of this psalm is among the most beloved pieces of sacred choral music ever written, a staple of Catholic liturgy for over four centuries.',
         details: [
-          'Available on Spotify',
-          'No lyrics — ideal for focused prayer or study',
-          '348 songs, over 20 hours of music',
+          'Part 1 of a two-part motet',
+          'Text from Psalm 42',
+          'Renaissance polyphony, c. 1604',
         ],
-        spotifyEmbedSrc: 'https://open.spotify.com/embed/playlist/6BgguFfzqSlE8FJ2SmvdPv?utm_source=generator&theme=0&si=2d10c99ea1f44b64',
-      },
-      {
-        name: 'Gregorian Chant',
-        note: 'Ancient sacred music of the Church — meditative, prayerful, and timeless.',
-        image: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02d4d27bdaead278e0ceb3cacd',
-        display: 'app',
-        category: 'Music',
-        description:
-          'Gregorian chant is the ancient liturgical music of the Western Church, developed over centuries of monastic prayer. Its unaccompanied, melodic character creates a contemplative atmosphere unlike anything in modern music. The Benedictine Monks of Santo Domingo de Silos — whose 1994 album became an unexpected worldwide sensation — are one of the finest places to start.',
-        details: [
-          'Available on Spotify, Apple Music, and YouTube',
-          'Ideal for prayer, Adoration, and quiet reflection',
-        ],
-        spotifyEmbedSrc: 'https://open.spotify.com/embed/album/3z2Bf8Ao1OXneiqQzX8acG?utm_source=generator&theme=0&si=3bf486790b444ad4',
-      },
-      {
-        name: 'The Chosen Soundtrack',
-        note: 'The official score from the series — cinematic, moving, and deeply prayerful.',
-        image: 'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ea7c6eb2e35030538177416d',
-        display: 'app',
-        category: 'Music',
-        description:
-          'The official soundtrack from The Chosen series, composed to match the emotional and spiritual depth of the show. Moving and cinematic, it works just as well as a companion to prayer or quiet reflection as it does to the series itself.',
-        details: [
-          'Available on Spotify and Apple Music',
-          'Multiple volumes available as the series grows',
-          'A natural companion to watching the series',
-        ],
-        spotifyEmbedSrc: 'https://open.spotify.com/embed/album/0zGDFDQoP4LAmkoDtRKj1P?utm_source=generator&theme=0&si=748500268e20487c',
-      },
-      {
-        name: 'Catholic Mass Music',
-        note: 'Curated by Saint Claudia — hymns, choral pieces, and sacred song for Mass.',
-        image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da846efc0f30d39248f801a1c3f1',
-        display: 'app',
-        category: 'Playlist',
-        creator: 'Saint Claudia',
-        description:
-          'A curated playlist of music for the Catholic Mass — drawing from traditional hymns, choral settings, and sacred song spanning centuries of worship. Well suited for listening before Mass, during Adoration, or any moment of quiet prayer.',
-        details: [
-          'Available on Spotify',
-          'Includes traditional hymns and choral pieces',
-          'Ideal for preparation before Mass or quiet prayer',
-        ],
-        spotifyEmbedSrc: 'https://open.spotify.com/embed/playlist/691JeYVWPilNVgJ5I9CHh4?utm_source=generator&theme=0&si=1f4d007a29864817',
+        audioSrc: '/audio/sicut-cervus-part-1.mp3',
       },
     ],
   },
