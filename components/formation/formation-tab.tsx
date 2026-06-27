@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { ArrowLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
 import { learningPaths, type Lesson, type LearningPath } from '@/lib/content'
 
 export function FormationTab() {
@@ -12,6 +12,10 @@ export function FormationTab() {
   // ── Lesson detail ──────────────────────────────────────────
 
   if (activeLesson && activePath) {
+    const lessonIdx = activePath.lessons.findIndex(l => l.id === activeLesson.id)
+    const prevLesson = lessonIdx > 0 ? activePath.lessons[lessonIdx - 1] : null
+    const nextLesson = lessonIdx < activePath.lessons.length - 1 ? activePath.lessons[lessonIdx + 1] : null
+
     return (
       <article className="flex flex-col gap-6 pt-12">
         <button
@@ -33,17 +37,46 @@ export function FormationTab() {
           </h1>
         </header>
 
-        <p className="text-base leading-relaxed text-foreground/80">
-          {activeLesson.intro}
-        </p>
+        <div className="flex flex-col gap-4">
+          {activeLesson.body.length > 0
+            ? activeLesson.body.map((para, i) => (
+                <p key={i} className="text-base leading-relaxed text-foreground/80">{para}</p>
+              ))
+            : <p className="text-base leading-relaxed text-foreground/80">{activeLesson.intro}</p>
+          }
+        </div>
 
-        {activeLesson.body.length > 0 && (
-          <div className="flex flex-col gap-4">
-            {activeLesson.body.map((para, i) => (
-              <p key={i} className="text-base leading-relaxed text-foreground/80">{para}</p>
-            ))}
-          </div>
-        )}
+        {/* Lesson navigation */}
+        <div className="flex flex-col gap-3 border-t border-border pt-6 mt-2">
+          {prevLesson && (
+            <button
+              type="button"
+              onClick={() => setActiveLesson(prevLesson)}
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+              <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
+              {prevLesson.title}
+            </button>
+          )}
+
+          {nextLesson && (
+            <button
+              type="button"
+              onClick={() => setActiveLesson(nextLesson)}
+              className="flex flex-col gap-2 rounded-2xl border border-border bg-card px-5 py-4 text-left transition-colors hover:bg-secondary/40"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                Next Lesson
+              </p>
+              <p className="font-heading text-xl font-normal text-foreground">{nextLesson.title}</p>
+              <p className="text-sm leading-relaxed text-muted-foreground">{nextLesson.intro}</p>
+              <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
+                Continue <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+              </span>
+            </button>
+          )}
+        </div>
       </article>
     )
   }
