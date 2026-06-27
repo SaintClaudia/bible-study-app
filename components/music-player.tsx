@@ -53,6 +53,17 @@ export function MiniPlayerBar() {
 
   return (
     <div className="bg-background">
+      {/* Progress bar — full width, sits above the controls row */}
+      <div className="relative h-1 bg-border/40">
+        <div className="absolute left-0 top-0 h-full bg-foreground/60 transition-none" style={{ width: `${pct}%` }} />
+        <input
+          type="range" min={0} max={duration || 1} step={0.1} value={currentTime}
+          onChange={(e) => seek(Number(e.target.value))}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          aria-label="Seek"
+        />
+      </div>
+
       {/* Main row */}
       <div className="mx-auto max-w-2xl flex items-center px-4 py-3 gap-3">
 
@@ -116,16 +127,6 @@ export function MiniPlayerBar() {
         </div>
       </div>
 
-      {/* Progress bar — full width, 10px, no side padding */}
-      <div className="relative h-[10px] bg-border/40">
-        <div className="absolute left-0 top-0 h-full bg-foreground/60 transition-none" style={{ width: `${pct}%` }} />
-        <input
-          type="range" min={0} max={duration || 1} step={0.1} value={currentTime}
-          onChange={(e) => seek(Number(e.target.value))}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-          aria-label="Seek"
-        />
-      </div>
     </div>
   )
 }
