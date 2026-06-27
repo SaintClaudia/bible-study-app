@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { ArrowLeft, Check, Heart, Music2, Pause, Play } from 'lucide-react'
+import { ArrowLeft, Check, ChevronRight, Heart, Music2, Pause, Play } from 'lucide-react'
 import { resourceGroups, type ResourceItem } from '@/lib/content'
 import { useMusicPlayer } from '@/components/music-player-context'
 import { cn } from '@/lib/utils'
@@ -39,7 +39,7 @@ function SeekBar({ currentTime, duration, seek }: { currentTime: number; duratio
   )
 }
 
-// ── Inline audio player (shown in detail view) ─────────────────
+// ── Inline audio player ─────────────────────────────────────────
 
 function InlineAudioPlayer({ item }: { item: ResourceItem }) {
   const { nowPlaying, setNowPlaying, isPlaying, togglePlay, currentTime, duration, seek, likedTracks, toggleLike } = useMusicPlayer()
@@ -67,9 +67,7 @@ function InlineAudioPlayer({ item }: { item: ResourceItem }) {
         </button>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-foreground truncate">{item.name}</p>
-          <p className="text-xs text-muted-foreground truncate">
-            {item.creator ?? item.category}
-          </p>
+          <p className="text-xs text-muted-foreground truncate">{item.creator ?? item.category}</p>
         </div>
         <button
           type="button"
@@ -80,7 +78,6 @@ function InlineAudioPlayer({ item }: { item: ResourceItem }) {
           <Heart className={cn('h-5 w-5 transition-all', isLiked && 'fill-foreground text-foreground')} />
         </button>
       </div>
-
       {isThis && (
         <div className="flex flex-col gap-0.5">
           <SeekBar currentTime={currentTime} duration={duration} seek={seek} />
@@ -94,7 +91,50 @@ function InlineAudioPlayer({ item }: { item: ResourceItem }) {
   )
 }
 
-// ── Detail view ────────────────────────────────────────────────
+// ── Liked Songs view ────────────────────────────────────────────
+
+function LikedSongsView({ onBack }: { onBack: () => void }) {
+  const { likedTracks } = useMusicPlayer()
+  const liked = listenItems.filter(i => likedTracks.has(i.name))
+
+  return (
+    <div className="flex flex-col gap-6">
+      <button
+        type="button"
+        onClick={onBack}
+        className="inline-flex self-start items-center gap-1 rounded-full bg-secondary px-3 py-1.5 text-foreground"
+      >
+        <ArrowLeft className="h-3.5 w-3.5" />
+        <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
+      </button>
+
+      <header className="flex items-center gap-3">
+        <div className="h-14 w-14 rounded-2xl bg-foreground flex items-center justify-center flex-shrink-0">
+          <Heart className="h-6 w-6 fill-background text-background" />
+        </div>
+        <div>
+          <h1 className="font-heading text-2xl font-semibold text-foreground">Liked Songs</h1>
+          <p className="text-sm text-muted-foreground">
+            {liked.length} {liked.length === 1 ? 'song' : 'songs'}
+          </p>
+        </div>
+      </header>
+
+      <div className="flex flex-col gap-3">
+        {liked.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-16 gap-3 text-center">
+            <Heart className="h-10 w-10 text-border" />
+            <p className="text-sm text-muted-foreground">Songs you like will appear here.</p>
+          </div>
+        ) : (
+          liked.map(item => <InlineAudioPlayer key={item.name} item={item} />)
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── Track detail view ───────────────────────────────────────────
 
 function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void }) {
   return (
@@ -128,11 +168,7 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
 
       {item.image ? (
         <div className="flex justify-center">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-56 h-56 rounded-2xl object-cover shadow-lg"
-          />
+          <img src={item.image} alt={item.name} className="w-56 h-56 rounded-2xl object-cover shadow-lg" />
         </div>
       ) : (
         <div className="flex h-48 items-center justify-center rounded-2xl bg-secondary">
@@ -168,23 +204,36 @@ function ListenDetail({ item, onBack }: { item: ResourceItem; onBack: () => void
 
 // ── Main tab ───────────────────────────────────────────────────
 
+type View = { kind: 'grid' } | { kind: 'liked' } | { kind: 'track'; item: ResourceItem }
+
 export function ListenTab() {
-  const [activeItem, setActiveItem] = useState<ResourceItem | null>(null)
+  const [view, setView] = useState<View>({ kind: 'grid' })
   const { likedTracks } = useMusicPlayer()
 
+  const goBack = useCallback(() => {
+    setView({ kind: 'grid' })
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
   const openItem = useCallback((item: ResourceItem) => {
-    setActiveItem(item)
+    setView({ kind: 'track', item })
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
 
-  const closeItem = useCallback(() => {
-    setActiveItem(null)
+  const openLiked = useCallback(() => {
+    setView({ kind: 'liked' })
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
 
-  if (activeItem) {
-    return <ListenDetail item={activeItem} onBack={closeItem} />
+  if (view.kind === 'track') {
+    return <ListenDetail item={view.item} onBack={goBack} />
   }
+
+  if (view.kind === 'liked') {
+    return <LikedSongsView onBack={goBack} />
+  }
+
+  const likedCount = listenItems.filter(i => likedTracks.has(i.name)).length
 
   return (
     <div className="flex flex-col gap-8">
@@ -195,6 +244,25 @@ export function ListenTab() {
         </p>
       </section>
 
+      {/* Liked Songs — only shown once at least one track is liked */}
+      {likedCount > 0 && (
+        <button
+          type="button"
+          onClick={openLiked}
+          className="w-full flex items-center gap-4 rounded-2xl border border-border bg-card p-4 text-left hover:bg-secondary/40 active:opacity-60 transition-colors"
+        >
+          <div className="h-12 w-12 rounded-xl bg-foreground flex items-center justify-center flex-shrink-0">
+            <Heart className="h-5 w-5 fill-background text-background" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold text-foreground">Liked Songs</p>
+            <p className="text-sm text-muted-foreground">{likedCount} {likedCount === 1 ? 'song' : 'songs'}</p>
+          </div>
+          <ChevronRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+        </button>
+      )}
+
+      {/* All tracks grid */}
       <section className="grid grid-cols-2 gap-3">
         {listenItems.map(item => (
           <div
@@ -218,7 +286,6 @@ export function ListenTab() {
                   <Music2 className="h-10 w-10 text-muted-foreground" aria-hidden />
                 </div>
               )}
-              {/* Liked badge */}
               {likedTracks.has(item.name) && (
                 <div className="absolute top-2 right-2 h-6 w-6 rounded-full bg-background/80 backdrop-blur flex items-center justify-center">
                   <Heart className="h-3.5 w-3.5 fill-foreground text-foreground" />
