@@ -1990,6 +1990,21 @@ export const resourceGroups: ResourceGroup[] = [
         ],
         audioSrc: '/audio/ave-maria-cello-piano.mp3',
       },
+      {
+        name: 'Dona Nobis Pacem',
+        note: "Bach's plea for peace from the Mass in B minor — one of the great choral endings in Western music.",
+        image: '/dona-nobis-pacem-cover.png',
+        category: 'Sacred Choral',
+        creator: 'Johann Sebastian Bach',
+        description:
+          '"Grant us peace." The closing movement of Bach\'s Mass in B minor (BWV 232) sets this ancient liturgical text as a prayer that builds from quiet supplication to radiant, full-throated praise. Composed in 1749, it is widely considered the pinnacle of Bach\'s sacred choral writing.',
+        details: [
+          'Final movement of the Mass in B minor (BWV 232)',
+          'Text: Dona nobis pacem — Grant us peace',
+          'Completed c. 1749, Bach\'s final major work',
+        ],
+        audioSrc: '/audio/dona-nobis-pacem.mp3',
+      },
     ],
   },
 ]
