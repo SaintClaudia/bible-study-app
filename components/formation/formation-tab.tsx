@@ -1,15 +1,33 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { learningPaths, type Lesson, type LearningPath } from '@/lib/content'
 
-export function FormationTab() {
+interface FormationTabProps {
+  onLessonChange?: (open: boolean) => void
+}
+
+export function FormationTab({ onLessonChange }: FormationTabProps) {
   const [activePath, setActivePath] = useState<LearningPath | null>(null)
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null)
 
-  // ── Lesson detail ──────────────────────────────────────────
+  useEffect(() => {
+    onLessonChange?.(activeLesson !== null)
+  }, [activeLesson, onLessonChange])
+
+  function openLesson(lesson: Lesson) {
+    setActiveLesson(lesson)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
+
+  function closeLesson() {
+    setActiveLesson(null)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
+
+  // ── Lesson detail (full-screen) ────────────────────────────
 
   if (activeLesson && activePath) {
     const lessonIdx = activePath.lessons.findIndex(l => l.id === activeLesson.id)
@@ -17,67 +35,95 @@ export function FormationTab() {
     const nextLesson = lessonIdx < activePath.lessons.length - 1 ? activePath.lessons[lessonIdx + 1] : null
 
     return (
-      <article className="flex flex-col gap-6 pt-12">
-        <button
-          type="button"
-          onClick={() => setActiveLesson(null)}
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      <>
+        {/* Fixed top header */}
+        <div
+          className="fixed inset-x-0 top-0 z-30 bg-background border-b border-border"
+          style={{ paddingTop: 'env(safe-area-inset-top)' }}
         >
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
-          {activePath.title}
-        </button>
-
-        <header className="flex flex-col gap-2">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-            {activeLesson.minutes} min read
-          </p>
-          <h1 className="font-heading text-[2.5rem] font-normal leading-[1.08] tracking-[-0.01em] text-balance text-foreground">
-            {activeLesson.title}
-          </h1>
-        </header>
-
-        <div className="flex flex-col gap-4">
-          {activeLesson.body.length > 0
-            ? activeLesson.body.map((para, i) => (
-                <p key={i} className="text-base leading-relaxed text-foreground/80">{para}</p>
-              ))
-            : <p className="text-base leading-relaxed text-foreground/80">{activeLesson.intro}</p>
-          }
-        </div>
-
-        {/* Lesson navigation */}
-        <div className="flex flex-col gap-3 border-t border-border pt-6 mt-2">
-          {prevLesson && (
-            <button
-              type="button"
-              onClick={() => setActiveLesson(prevLesson)}
-              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-              <span className="text-[10px] tracking-[0.2em] opacity-50">···</span>
-              {prevLesson.title}
-            </button>
-          )}
-
-          {nextLesson && (
-            <button
-              type="button"
-              onClick={() => setActiveLesson(nextLesson)}
-              className="flex flex-col gap-2 rounded-2xl border border-border bg-card px-5 py-4 text-left transition-colors hover:bg-secondary/40"
-            >
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                Next Lesson
+          <div className="mx-auto flex max-w-2xl items-start justify-between px-5 py-3">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                {activePath.title}
               </p>
-              <p className="font-heading text-xl font-normal text-foreground">{nextLesson.title}</p>
-              <p className="text-sm leading-relaxed text-muted-foreground">{nextLesson.intro}</p>
-              <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
-                Continue <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-              </span>
+              <p className="mt-0.5 text-[11px] text-muted-foreground">
+                {lessonIdx + 1} of {activePath.lessons.length}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={closeLesson}
+              aria-label="Close lesson"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <X className="h-4 w-4" aria-hidden />
             </button>
-          )}
+          </div>
         </div>
-      </article>
+
+        {/* Scrollable content */}
+        <article
+          className="mx-auto flex w-full max-w-2xl flex-col gap-5 px-5"
+          style={{
+            paddingTop: 'calc(env(safe-area-inset-top) + 72px)',
+            paddingBottom: 'calc(env(safe-area-inset-bottom) + 88px)',
+          }}
+        >
+          <header className="flex flex-col gap-2 pt-4">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+              {activeLesson.minutes} min read
+            </p>
+            <h1 className="font-heading text-[2.5rem] font-normal leading-[1.08] tracking-[-0.01em] text-balance text-foreground">
+              {activeLesson.title}
+            </h1>
+          </header>
+
+          <div className="flex flex-col gap-4">
+            {activeLesson.body.length > 0
+              ? activeLesson.body.map((para, i) => (
+                  <p key={i} className="text-base leading-relaxed text-foreground/80">{para}</p>
+                ))
+              : <p className="text-base leading-relaxed text-foreground/80">{activeLesson.intro}</p>
+            }
+          </div>
+        </article>
+
+        {/* Fixed bottom navigation */}
+        <div
+          className="fixed inset-x-0 bottom-0 z-30 bg-background border-t border-border"
+          style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 12px)' }}
+        >
+          <div className="mx-auto flex max-w-2xl items-center gap-3 px-5 pt-3">
+            <button
+              type="button"
+              onClick={() => prevLesson ? openLesson(prevLesson) : closeLesson()}
+              aria-label={prevLesson ? 'Previous lesson' : 'Back to collection'}
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-secondary"
+            >
+              <ChevronLeft className="h-5 w-5" aria-hidden />
+            </button>
+
+            {nextLesson ? (
+              <button
+                type="button"
+                onClick={() => openLesson(nextLesson)}
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+              >
+                Next
+                <ChevronRight className="h-4 w-4" aria-hidden />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={closeLesson}
+                className="flex flex-1 items-center justify-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+              >
+                Done
+              </button>
+            )}
+          </div>
+        </div>
+      </>
     )
   }
 
@@ -115,7 +161,7 @@ export function FormationTab() {
             <button
               key={lesson.id}
               type="button"
-              onClick={() => setActiveLesson(lesson)}
+              onClick={() => openLesson(lesson)}
               className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-medium text-muted-foreground">

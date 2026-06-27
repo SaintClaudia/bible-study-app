@@ -86,11 +86,13 @@ export function AppShell() {
   })
 const [barsVisible, setBarsVisible] = useState(true)
   const [guideDetailOpen, setGuideDetailOpen] = useState(false)
+  const [formationLessonOpen, setFormationLessonOpen] = useState(false)
   const lastScrollY = useRef(0)
 
   // Reset detail mode whenever the active tab changes
   useEffect(() => {
     setGuideDetailOpen(false)
+    setFormationLessonOpen(false)
   }, [activeTab])
 
   // Music player state
@@ -150,10 +152,10 @@ return (
     }}>
       <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col bg-background">
 
-        {/* Fixed header — hidden in guide detail views */}
+        {/* Fixed header — hidden in guide/formation detail views */}
         <header className={cn(
           'fixed top-0 left-0 right-0 z-20 bg-background transition-transform duration-300',
-          (!barsVisible || guideDetailOpen) && '-translate-y-full'
+          (!barsVisible || guideDetailOpen || formationLessonOpen) && '-translate-y-full'
         )}>
           <div style={{ height: 'env(safe-area-inset-top)' }} className="bg-background" />
           <div className="mx-auto flex max-w-2xl items-center justify-between px-5 py-[18px]">
@@ -167,20 +169,21 @@ return (
           </div>
         </header>
 
-        {/* Spacer below fixed header — collapses when guide detail is open */}
+        {/* Spacer below fixed header — collapses when guide/formation detail is open */}
         <div
           className="flex-shrink-0 bg-background transition-[height] duration-300"
-          style={{ height: guideDetailOpen ? '0px' : 'calc(env(safe-area-inset-top) + 72px)' }}
+          style={{ height: (guideDetailOpen || formationLessonOpen) ? '0px' : 'calc(env(safe-area-inset-top) + 72px)' }}
         />
 
         {/* pb accounts for: nav (~70px) + mini-player bar (~65px) when active + safe-area buffer */}
         <main id="main-content" className={cn(
-          'flex-1 px-5',
-          guideDetailOpen ? 'pt-0' : 'pt-4',
-          nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32'
+          'flex-1',
+          formationLessonOpen ? 'px-0 pt-0 pb-0' : 'px-5',
+          (!formationLessonOpen && guideDetailOpen) ? 'pt-0' : !formationLessonOpen ? 'pt-4' : '',
+          !formationLessonOpen && (nowPlaying?.spotifyEmbedSrc ? 'pb-48' : 'pb-32')
         )}>
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
-          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} />}
+          {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onLessonChange={setFormationLessonOpen} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} onDetailChange={setGuideDetailOpen} />}
           {activeTab === 'discover' && <DiscoverTab key={tabKeys.discover} />}
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
@@ -193,7 +196,7 @@ return (
           aria-label="Primary"
           className={cn(
             'fixed inset-x-0 bottom-0 z-20 bg-background border-t border-border transition-transform duration-300',
-            !barsVisible && 'translate-y-full'
+            (!barsVisible || formationLessonOpen) && 'translate-y-full'
           )}
         >
           {/* Collapsed mini-player bar — inside nav so it hides with it on scroll */}
