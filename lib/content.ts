@@ -232,7 +232,7 @@ export const learningPaths: LearningPath[] = [
     id: 'christian-living',
     title: 'Christian Living',
     description: 'How the faith shapes everyday life and relationships.',
-    icon: 'Leaf',
+    icon: '/christian-living.png',
     lessonCount: 12,
     lessons: [],
   },
