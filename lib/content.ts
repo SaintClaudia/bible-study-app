@@ -192,7 +192,7 @@ export const learningPaths: LearningPath[] = [
     id: 'getting-started',
     title: 'Getting Started',
     description: 'Begin your journey with the essentials of the Catholic faith.',
-    icon: 'Sparkles',
+    icon: '/getting-started.png',
     lessonCount: 8,
     lessons: [],
   },

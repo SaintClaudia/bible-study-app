@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import {
   ArrowLeft,
   BookOpen,
@@ -14,7 +15,6 @@ import {
   Leaf,
   ListChecks,
   Shield,
-  Sparkles,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { learningPaths, type Lesson, type LearningPath } from '@/lib/content'
@@ -23,7 +23,6 @@ import { useLocalStorage } from '@/hooks/use-local-storage'
 // ── Path icon map ──────────────────────────────────────────────
 
 const PATH_ICONS: Record<string, React.ReactNode> = {
-  Sparkles: <Sparkles className="h-5 w-5" />,
   BookOpen: <BookOpen className="h-5 w-5" />,
   Heart: <Heart className="h-5 w-5" />,
   Shield: <Shield className="h-5 w-5" />,
@@ -191,7 +190,9 @@ export function FormationTab() {
             className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-4 text-left transition-colors hover:bg-secondary/40"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary text-foreground">
-              {PATH_ICONS[path.icon] ?? null}
+              {path.icon.startsWith('/')
+                ? <Image src={path.icon} alt="" width={28} height={28} className="dark:invert" />
+                : PATH_ICONS[path.icon] ?? null}
             </span>
             <span className="flex-1">
               <span className="block font-heading text-xl font-normal text-foreground">{path.title}</span>
