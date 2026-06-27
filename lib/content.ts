@@ -675,6 +675,7 @@ export const learningPaths: LearningPath[] = [
     title: 'Core Beliefs',
     description: 'The heart of what Catholics believe, explained plainly.',
     icon: '/core-beliefs.png',
+    iconPad: 12,
     lessonCount: 15,
     lessons: [],
   },
