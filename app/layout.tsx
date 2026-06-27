@@ -109,7 +109,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster
-            position="top-center"
+            position="bottom-center"
             toastOptions={{
               style: { fontFamily: 'var(--font-sans)' },
             }}
