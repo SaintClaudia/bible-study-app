@@ -1991,6 +1991,20 @@ export const resourceGroups: ResourceGroup[] = [
         audioSrc: '/audio/ave-maria-cello-piano.mp3',
       },
       {
+        name: 'Christus Factus Est',
+        note: 'A sacred motet of profound humility — Christ made obedient unto death.',
+        image: '/jesus.png',
+        category: 'Sacred Choral',
+        creator: 'Orquestra Sinfônica de Minas Gerais',
+        description:
+          '"Christus factus est pro nobis obediens usque ad mortem." — Christ became obedient for us, even to death. This ancient Gradual text, set in C minor, is one of the most moving expressions of the Paschal mystery in the choral tradition.',
+        details: [
+          'Text from Philippians 2:8–9',
+          'Sung during Holy Week in the Roman Rite',
+          'Setting in C minor',
+        ],
+      },
+      {
         name: 'Dona Nobis Pacem',
         note: "Bach's plea for peace from the Mass in B minor — one of the great choral endings in Western music.",
         image: '/dona-nobis-pacem-cover.png',
@@ -2004,20 +2018,6 @@ export const resourceGroups: ResourceGroup[] = [
           'Completed c. 1749, Bach\'s final major work',
         ],
         audioSrc: '/audio/dona-nobis-pacem.mp3',
-      },
-      {
-        name: 'Christus Factus Est',
-        note: 'A sacred motet of profound humility — Christ made obedient unto death.',
-        image: '/jesus.png',
-        category: 'Sacred Choral',
-        creator: 'Orquestra Sinfônica de Minas Gerais',
-        description:
-          '"Christus factus est pro nobis obediens usque ad mortem." — Christ became obedient for us, even to death. This ancient Gradual text, set in C minor, is one of the most moving expressions of the Paschal mystery in the choral tradition.',
-        details: [
-          'Text from Philippians 2:8–9',
-          'Sung during Holy Week in the Roman Rite',
-          'Setting in C minor',
-        ],
       },
     ],
   },
