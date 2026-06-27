@@ -702,6 +702,7 @@ export const learningPaths: LearningPath[] = [
     title: 'Church History',
     description: 'Two thousand years of the Catholic Church, briefly told.',
     icon: '/church-history.png',
+    iconPad: 12,
     lessonCount: 8,
     lessons: [],
   },
