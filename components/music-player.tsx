@@ -119,10 +119,10 @@ export function MiniPlayerBar() {
           <button
             type="button"
             onClick={togglePlay}
-            className="text-foreground active:opacity-60"
+            className="h-9 w-9 rounded-full bg-foreground text-background flex items-center justify-center active:opacity-60 flex-shrink-0"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
-            {isPlaying ? <IconPause className="h-8 w-8" /> : <IconPlay className="h-8 w-8" />}
+            {isPlaying ? <IconPause className="h-4 w-4" /> : <IconPlay className="h-4 w-4 translate-x-px" />}
           </button>
         </div>
       </div>
