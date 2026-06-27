@@ -214,11 +214,11 @@ export function AppShell() {
       if (adding) {
         next.add(trackName)
         toast.custom(() => (
-          <div className="flex items-center gap-3 w-full max-w-sm rounded-2xl bg-white border border-gray-200 shadow-lg px-4 py-3">
+          <div className="flex items-center gap-3 w-full max-w-md rounded-2xl bg-white border border-gray-200 shadow-lg px-4 py-3">
             <img
               src="/toast-icon.png"
               alt=""
-              className="h-12 w-12 rounded-xl flex-shrink-0 object-cover"
+              className="h-12 w-12 rounded-lg flex-shrink-0 object-cover"
             />
             <div className="min-w-0">
               <p className="text-sm font-semibold text-gray-900 leading-snug">Added to your collection.</p>
@@ -369,6 +369,7 @@ export function AppShell() {
           unstyled: true,
           style: { width: '100%', fontFamily: 'var(--font-sans)' },
         }}
+        style={{ width: '448px' }}
       />
     </MusicPlayerContext.Provider>
   )
