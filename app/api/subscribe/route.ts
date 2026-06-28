@@ -71,54 +71,47 @@ function confirmationEmail(confirmUrl: string) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Confirm your subscription</title>
 </head>
-<body style="margin:0;padding:0;background:#f9f8f5;font-family:Georgia,'Times New Roman',serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9f8f5;">
+<body style="margin:0;padding:0;background:#e8e8e8;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#e8e8e8;">
     <tr>
-      <td align="center" style="padding:48px 20px;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+      <td align="center" style="padding:64px 24px 48px;">
 
-          <!-- Header -->
-          <tr>
-            <td style="background:#1a1a18;padding:40px;text-align:center;">
-              <p style="margin:0;font-family:Georgia,serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#a0997a;">Bible Study</p>
-              <p style="margin:12px 0 0;font-family:Georgia,serif;font-size:26px;font-weight:400;color:#ffffff;letter-spacing:-0.01em;">One step left.</p>
-            </td>
-          </tr>
+        <!-- Icon -->
+        <img src="https://app.biblestudylovesyou.com/apple-touch-icon.png"
+             width="80" height="80" alt="Bible Study"
+             style="display:block;margin:0 auto 52px;border-radius:20px;"/>
 
-          <!-- Body -->
+        <!-- Brand -->
+        <p style="margin:0 0 36px;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1a1a18;">Bible Study</p>
+
+        <!-- Heading -->
+        <h1 style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:48px;font-weight:400;line-height:1.15;color:#1a1a18;max-width:560px;">Thank you for signing up.</h1>
+
+        <!-- Subtext -->
+        <p style="margin:0 0 52px;font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.6;color:#555;max-width:480px;">Click the button below to confirm your subscription.</p>
+
+        <!-- Button -->
+        <table cellpadding="0" cellspacing="0" style="margin:0 auto;">
           <tr>
-            <td style="padding:48px 48px 40px;text-align:center;">
-              <p style="margin:0 0 24px;font-size:16px;line-height:1.8;color:#444;font-family:Georgia,serif;">
-                Thank you for signing up. Click the button below to confirm your subscription — we'll reach out for the moments that matter.
-              </p>
+            <td style="background:#1a1a18;border-radius:12px;">
               <a href="${confirmUrl}"
-                style="display:inline-block;background:#1a1a18;color:#ffffff;text-decoration:none;padding:15px 36px;border-radius:8px;font-family:Georgia,serif;font-size:15px;letter-spacing:0.01em;">
+                style="display:block;padding:20px 80px;font-family:Arial,Helvetica,sans-serif;font-size:17px;color:#ffffff;text-decoration:none;white-space:nowrap;">
                 Confirm your subscription
               </a>
             </td>
           </tr>
-
-          <!-- Divider -->
-          <tr>
-            <td style="padding:0 48px;">
-              <hr style="border:none;border-top:1px solid #eeece8;margin:0;"/>
-            </td>
-          </tr>
-
-          <!-- Footer -->
-          <tr>
-            <td style="padding:28px 48px;text-align:center;">
-              <p style="margin:0;font-size:12px;line-height:1.7;color:#aaa;font-family:Georgia,serif;">
-                If you didn't sign up for Bible Study, you can safely ignore this email.
-              </p>
-              <p style="margin:8px 0 0;font-size:12px;color:#aaa;font-family:Georgia,serif;">
-                © 2026 Bible Study &nbsp;·&nbsp;
-                <a href="https://biblestudylovesyou.com" style="color:#aaa;text-decoration:underline;">biblestudylovesyou.com</a>
-              </p>
-            </td>
-          </tr>
-
         </table>
+
+        <!-- Spacer -->
+        <div style="height:100px;"></div>
+
+        <!-- Footer -->
+        <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.8;color:#999;">
+          If you didn't sign up for Bible Study, you can safely ignore this email.<br/>
+          © 2026 Bible Study &nbsp;·&nbsp;
+          <a href="https://biblestudylovesyou.com" style="color:#999;text-decoration:underline;">biblestudylovesyou.com</a>
+        </p>
+
       </td>
     </tr>
   </table>
