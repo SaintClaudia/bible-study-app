@@ -83,7 +83,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c').replace(/>/g, '\\u003e') }}
         />
       </head>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-DD8L2T25FQ" strategy="afterInteractive" />

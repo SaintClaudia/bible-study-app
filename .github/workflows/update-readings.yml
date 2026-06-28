@@ -11,6 +11,8 @@ on:
         required: false
         type: string
 
+permissions: {}
+
 jobs:
   update:
     name: Fetch & update readings
@@ -42,6 +44,25 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OVERRIDE_DATE: ${{ inputs.date }}
         run: node .github/scripts/update-readings.mjs
+
+      - name: Validate readings JSON
+        run: |
+          node -e "
+            const data = JSON.parse(require('fs').readFileSync('lib/readings-data.json', 'utf8'));
+            const s = data.sunday;
+            if (!s?.date || !s?.liturgicalDay || !s?.season || !s?.theme || !s?.themeNote) {
+              throw new Error('Missing required top-level fields in readings-data.json');
+            }
+            if (!Array.isArray(s.readings) || s.readings.length < 4) {
+              throw new Error('Expected at least 4 readings, got: ' + (s.readings?.length ?? 0));
+            }
+            s.readings.forEach((r, i) => {
+              if (!r.label || !r.reference || !r.fullText || !r.summary) {
+                throw new Error('Reading ' + i + ' is missing required fields');
+              }
+            });
+            console.log('Schema OK — ' + s.readings.length + ' readings for ' + s.date);
+          "
 
       - name: Commit updated readings
         run: |
