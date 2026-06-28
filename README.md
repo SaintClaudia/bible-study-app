@@ -15,7 +15,7 @@ A mobile-first web app for anyone exploring or living the Catholic faith. Sunday
 | **Mass** | Step-by-step guidance through the Order of the Mass, including Church Mode for use during Mass |
 | **Formation** | Learning paths on attending Mass, prayer, Catholic beliefs, and living the faith |
 | **Journey** | Honest answers for those exploring or entering the Church — OCIA, marriage, the Easter Vigil, common questions |
-| **Resources** | Curated Watch, Read, Explore, and Listen picks with in-app detail pages and Spotify embeds |
+| **Resources** | Curated Watch, Read, Explore, and Listen picks with in-app detail pages and local royalty-free audio |
 
 - Dark mode (follows system preference)
 - WCAG 2.1 AA accessible
@@ -80,14 +80,10 @@ lib/
     update-readings.mjs    # Playwright + Claude script for readings
 
 public/
-  the-chosen.jpg
-  king-of-kings.jpg
-  catechism.jpg
-  compendium.jpg
-  theology-of-home.jpg
-  laudate.png
+  audio/                   # Local royalty-free sacred music (served as /audio/*.mp3)
   apple-touch-icon.png
   icon-32x32.png
+  *.webp                   # Cover images for resource cards
 ```
 
 ---
