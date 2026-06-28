@@ -78,8 +78,8 @@ function confirmationEmail(confirmUrl: string) {
 
         <!-- Icon -->
         <img src="https://app.biblestudylovesyou.com/apple-touch-icon.png"
-             width="80" height="80" alt="Bible Study"
-             style="display:block;margin:0 auto 52px;border-radius:20px;"/>
+             width="56" height="56" alt="Bible Study"
+             style="display:block;margin:0 auto 52px;border-radius:14px;"/>
 
         <!-- Brand -->
         <p style="margin:0 0 36px;font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1a1a18;">Bible Study</p>
