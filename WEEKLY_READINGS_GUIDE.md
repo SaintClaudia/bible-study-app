@@ -1,28 +1,35 @@
-# How to Update Sunday Readings Each Week
+# Sunday Readings — How It Works
 
-Every week, copy the new readings from USCCB and paste them into `lib/readings-data.json`.
-
----
-
-## Step 1 — Get the readings
-
-Go to: **https://bible.usccb.org/bible/readings/**
-Find the upcoming Sunday and note:
-- The Sunday name (e.g. "Twelfth Sunday in Ordinary Time")
-- The liturgical season (e.g. "Ordinary Time")
-- All four readings: First Reading, Psalm, Second Reading, Gospel
+Readings update automatically every Sunday at 5pm CST via a GitHub Action. No manual steps needed under normal circumstances.
 
 ---
 
-## Step 2 — Open the file
+## Automatic updates (normal flow)
 
-Open `lib/readings-data.json` in any text editor (TextEdit, VS Code, etc.)
+The GitHub Action runs every Sunday at 5pm CST and:
+
+1. Fetches readings from [bible.usccb.org](https://bible.usccb.org) using a real browser (Playwright)
+2. Generates plain-language summaries and liturgical metadata via Claude
+3. Commits the updated `lib/readings-data.json` to `main`
+4. Vercel redeploys automatically (~60 seconds)
+
+You can monitor runs under **Actions → Update Sunday Readings** in the GitHub repo.
 
 ---
 
-## Step 3 — Replace the content
+## Triggering manually
 
-Copy this template and fill in the blanks:
+If you need to run it outside the schedule (e.g. to preview a future Sunday's readings):
+
+1. Go to **Actions → Update Sunday Readings → Run workflow**
+2. Optionally enter a date override in `YYYY-MM-DD` format
+3. Leave blank to use the next upcoming Sunday
+
+---
+
+## Manual fallback (if automation fails)
+
+If the action fails and you need to update readings by hand, edit `lib/readings-data.json` directly:
 
 ```json
 {
@@ -62,26 +69,21 @@ Copy this template and fill in the blanks:
 }
 ```
 
----
-
-## Step 4 — Push to GitHub
+Copy readings from [bible.usccb.org](https://bible.usccb.org) — text is already NABRE. Then push:
 
 ```bash
-cd ~/Library/CloudStorage/OneDrive-Personal/04_Projects/bible-study-app
 git add lib/readings-data.json
 git commit -m "Update readings — [SUNDAY NAME]"
 git push
 ```
 
-Vercel will deploy automatically in about 60 seconds.
+Vercel deploys automatically in ~60 seconds.
 
 ---
 
 ## Tips
 
-- Copy text directly from USCCB — it's already NABRE
 - For the psalm, include the response (R.) before each verse group
 - The `theme` and `themeNote` are yours to write — make them feel warm and inviting
-- If there is no Second Reading (weekdays), just remove that object from the array
-- Keep `\n` for line breaks within the text — this preserves the poetic formatting of psalms and gospels
-
+- If there is no Second Reading, remove that object from the array
+- Use `\n` for line breaks within the text — preserves poetic formatting in psalms and gospels
