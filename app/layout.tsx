@@ -86,12 +86,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c').replace(/>/g, '\\u003e') }}
         />
       </head>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-DD8L2T25FQ" strategy="afterInteractive" />
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />
       <Script id="gtag-init" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-DD8L2T25FQ');
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
       `}</Script>
       <body className="bg-background font-sans antialiased">
         <a
