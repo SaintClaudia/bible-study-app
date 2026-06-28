@@ -2003,6 +2003,7 @@ export const resourceGroups: ResourceGroup[] = [
           'Sung during Holy Week in the Roman Rite',
           'Setting in C minor',
         ],
+        audioSrc: '/audio/christus-factus-est-c-minor.mp3',
       },
       {
         name: 'Dona Nobis Pacem',
