@@ -11,10 +11,10 @@ function ConfirmContent() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-background">
         <p className="text-xs tracking-widest uppercase text-muted-foreground mb-8">Bible Study</p>
-        <p className="font-heading text-3xl sm:text-5xl font-normal text-foreground max-w-xl">
+        <p className="font-heading text-3xl font-normal text-foreground max-w-2xl">
           You know who really loves you?
         </p>
-        <p className="font-heading text-3xl sm:text-5xl font-normal text-foreground max-w-xl mt-2 mb-6">
+        <p className="font-heading text-3xl font-normal text-foreground max-w-2xl mt-2 mb-6">
           Jesus.
         </p>
         <p className="text-muted-foreground text-base leading-relaxed max-w-sm mb-8">
