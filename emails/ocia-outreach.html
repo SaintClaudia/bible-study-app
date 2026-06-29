@@ -8,9 +8,12 @@
   <style>
     @media screen and (max-width: 600px) {
       .email-container { width: 100% !important; }
-      .content-pad { padding: 24px 20px 36px !important; }
-      .heading { font-size: 38px !important; }
-      .body-text { font-size: 17px !important; line-height: 1.8 !important; }
+      .icon-qr-pad { padding: 16px 16px 0 !important; }
+      .qr-img { width: 110px !important; height: 110px !important; }
+      .content-pad { padding: 20px 20px 36px !important; }
+      .label-text { font-size: 11px !important; letter-spacing: 0.1em !important; }
+      .heading { font-size: 34px !important; }
+      .body-text { font-size: 16px !important; line-height: 1.8 !important; }
     }
   </style>
 </head>
@@ -34,7 +37,7 @@
           <!-- Icon + QR row — slides up 60px over hero -->
           <tr>
             <td style="padding:0;background:#ffffff;">
-              <div style="background:#ffffff;border-radius:24px 24px 0 0;margin-top:-60px;padding:20px 28px 0;">
+              <div class="icon-qr-pad" style="background:#ffffff;border-radius:24px 24px 0 0;margin-top:-60px;padding:20px 28px 0;">
                 <table width="100%" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="vertical-align:bottom;">
@@ -45,7 +48,7 @@
                     <td style="text-align:right;vertical-align:top;">
                       <img src="https://app.biblestudylovesyou.com/QRcode.png"
                            width="160" height="160" alt="Scan to open Bible Study"
-                           style="display:block;margin-top:-70px;margin-left:auto;"/>
+                           class="qr-img" style="display:block;margin-top:-70px;margin-left:auto;"/>
                     </td>
                   </tr>
                 </table>
@@ -63,7 +66,7 @@
                   <td style="vertical-align:middle;padding-right:10px;">
                     <div style="width:32px;height:1px;background:#4a4a46;"></div>
                   </td>
-                  <td style="vertical-align:middle;font-family:'DM Mono','Courier New',monospace;font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:#222;">
+                  <td class="label-text" style="vertical-align:middle;font-family:'DM Mono','Courier New',monospace;font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:#222;">
                     OCIA Catholic Companion
                   </td>
                 </tr>
