@@ -79,7 +79,7 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
           </header>
 
           {activeLesson.image && (
-            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '3/2' }}>
+            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '1/1' }}>
               <Image
                 src={activeLesson.image}
                 alt={activeLesson.title}
