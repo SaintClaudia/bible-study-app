@@ -85,7 +85,7 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
                 alt={activeLesson.title}
                 fill
                 sizes="(max-width: 672px) 100vw, 672px"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           )}
