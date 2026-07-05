@@ -176,6 +176,7 @@ export type Lesson = {
   body: string[]
   takeaways: string[]
   reflection: string
+  image?: string
 }
 
 export type LearningPath = {
@@ -827,6 +828,7 @@ export const learningPaths: LearningPath[] = [
         id: 'why-is-the-pope-important',
         title: 'Why Is the Pope Important?',
         minutes: 4,
+        image: '/pope.webp',
         intro: 'The papacy is one of the features of Catholicism that most often surprises people from outside the tradition. Why does one person hold such a prominent role in a faith that spans more than a billion people?',
         body: [
           'The papacy is one of the features of Catholicism that most often surprises people from outside the tradition — and sometimes people inside it too. Why does one person hold such a prominent role in a faith that spans more than a billion people?',

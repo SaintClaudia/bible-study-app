@@ -78,6 +78,18 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
             </h1>
           </header>
 
+          {activeLesson.image && (
+            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: '3/2' }}>
+              <Image
+                src={activeLesson.image}
+                alt={activeLesson.title}
+                fill
+                sizes="(max-width: 672px) 100vw, 672px"
+                className="object-cover"
+              />
+            </div>
+          )}
+
           <div className="flex flex-col gap-4">
             {activeLesson.body.length > 0
               ? activeLesson.body.map((para, i) => (
