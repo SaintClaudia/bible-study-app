@@ -7,8 +7,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // ─── Add recipient emails here ───────────────────────────────────────────────
 const RECIPIENTS = [
-  // 'director@stmarys.org',
-  // 'formation@holyfamily.org',
+  'claudia.ochoa.product@gmail.com',
+  'claudiajochoa@icloud.com',
 ]
 // ─────────────────────────────────────────────────────────────────────────────
 
