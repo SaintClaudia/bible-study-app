@@ -16,7 +16,13 @@ export function PrayerTab() {
           Prayer
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          The prayers every Catholic carries with them — for the Rosary, the sacraments, and everyday life.
+          Learn the essential prayers of the Catholic faith—prayers you&rsquo;ll encounter in the Rosary, the sacraments, and everyday Catholic life.
+        </p>
+        <p className="mt-4 text-base font-semibold text-foreground">
+          A simple way to begin
+        </p>
+        <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+          Choose one prayer at a time and learn it in small sections. Repeat one or two lines each day until they feel familiar, then add the next section. Take your time&mdash;prayer is learned through faithful practice, not all at once.
         </p>
       </section>
 
