@@ -2054,7 +2054,7 @@ export const prayers: Prayer[] = [
     id: 'act-of-contrition',
     title: 'Act of Contrition',
     note: 'Prayed after confessing sins, expressing sorrow and a firm intention to change.',
-    text: 'O my God,\nI am heartily sorry for having offended you,\nand I detest all my sins\nbecause of your just punishments,\nbut most of all because they offend you, my God,\nwho are all good and deserving of all my love.\nI firmly resolve, with the help of your grace,\nto do penance,\nto sin no more,\nand to avoid the near occasion of sin.\nAmen.',
+    text: 'O my God,\nI am heartily sorry for having offended you,\nand I detest all my sins\nbecause of your just punishments,\nbut most of all because they offend you, my God,\nwho are all good and deserving of all my love.\nI firmly resolve, with the help of your grace,\nto sin no more,\nand to avoid the near occasion of sin.\nAmen.',
   },
   {
     id: 'confiteor',
