@@ -10,7 +10,7 @@ export function ThemeToggle() {
 
   useEffect(() => setMounted(true), [])
 
-  const isDark = resolvedTheme === 'dark'
+  const isDark = mounted && resolvedTheme === 'dark'
 
   return (
     <button
@@ -19,7 +19,7 @@ export function ThemeToggle() {
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
     >
-      {mounted && isDark ? (
+      {isDark ? (
         <Sun className="h-4.5 w-4.5" aria-hidden />
       ) : (
         <Moon className="h-4.5 w-4.5" aria-hidden />

@@ -7,6 +7,7 @@ import { ReadingsTab } from '@/components/readings/readings-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
 import { DiscoverTab } from '@/components/discover/discover-tab'
+import { PrayerTab } from '@/components/prayer/prayer-tab'
 import { MusicPlayerContext } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
@@ -15,7 +16,7 @@ import { toast, Toaster } from 'sonner'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
-type Tab = 'readings' | 'formation' | 'journey' | 'discover' | 'listen'
+type Tab = 'readings' | 'formation' | 'journey' | 'prayer' | 'discover' | 'listen'
 
 function IconBible({ className }: { className?: string }) {
   return (
@@ -62,6 +63,13 @@ function IconLibrary({ className }: { className?: string }) {
   )
 }
 
+function IconPrayer({ className }: { className?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/pray.webp" alt="" className={cn(className, 'object-contain dark:invert')} />
+  )
+}
+
 function IconHeadphones({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -76,6 +84,7 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'journey', label: 'Guide', icon: IconCompass },
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
+  { id: 'prayer', label: 'Prayer', icon: IconPrayer },
   { id: 'discover', label: 'Discover', icon: IconLibrary },
   // Music tab disabled — re-add { id: 'listen', label: 'Music', icon: IconHeadphones } to bring it back
 ]
@@ -83,7 +92,7 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
 export function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
-    journey: 0, formation: 0, readings: 0, discover: 0, listen: 0,
+    journey: 0, formation: 0, readings: 0, prayer: 0, discover: 0, listen: 0,
   })
   const [barsVisible, setBarsVisible] = useState(true)
   const [guideDetailOpen, setGuideDetailOpen] = useState(false)
@@ -293,7 +302,7 @@ export function AppShell() {
   // Read #tab hash from URL on load
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as Tab
-    if (hash && ['readings', 'mass', 'formation', 'journey', 'discover'].includes(hash)) {
+    if (hash && ['readings', 'mass', 'formation', 'journey', 'prayer', 'discover'].includes(hash)) {
       setActiveTab(hash)
     }
   }, [])
@@ -367,6 +376,7 @@ export function AppShell() {
           {activeTab === 'readings' && <ReadingsTab key={tabKeys.readings} />}
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onLessonChange={setFormationLessonOpen} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} onDetailChange={setGuideDetailOpen} />}
+          {activeTab === 'prayer' && <PrayerTab key={tabKeys.prayer} />}
           {activeTab === 'discover' && <DiscoverTab key={tabKeys.discover} />}
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>

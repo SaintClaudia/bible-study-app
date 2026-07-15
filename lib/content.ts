@@ -2025,3 +2025,65 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
 ]
+
+/* ----------------------------------------------------------------
+   Prayers — traditional Catholic prayers.
+------------------------------------------------------------------*/
+
+export type Prayer = {
+  id: string
+  title: string
+  note: string
+  text: string
+}
+
+export const prayers: Prayer[] = [
+  {
+    id: 'our-father',
+    title: 'Our Father',
+    note: 'Taught by Jesus himself to his disciples — prayed by Christians around the world every day.',
+    text: 'Our Father, who art in heaven,\nhallowed be thy name;\nthy kingdom come;\nthy will be done\non earth as it is in heaven.\nGive us this day our daily bread;\nand forgive us our trespasses\nas we forgive those who trespass against us;\nand lead us not into temptation,\nbut deliver us from evil.\nAmen.',
+  },
+  {
+    id: 'hail-mary',
+    title: 'Hail Mary',
+    note: 'The central prayer of the Rosary, honoring Mary as the Mother of God.',
+    text: 'Hail Mary, full of grace,\nthe Lord is with thee;\nblessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God,\npray for us sinners,\nnow and at the hour of our death.\nAmen.',
+  },
+  {
+    id: 'act-of-contrition',
+    title: 'Act of Contrition',
+    note: 'Prayed after confessing sins, expressing sorrow and a firm intention to change.',
+    text: 'O my God,\nI am heartily sorry for having offended you,\nand I detest all my sins\nbecause of your just punishments,\nbut most of all because they offend you, my God,\nwho are all good and deserving of all my love.\nI firmly resolve, with the help of your grace,\nto do penance,\nto sin no more,\nand to avoid the near occasion of sin.\nAmen.',
+  },
+  {
+    id: 'confiteor',
+    title: 'Confiteor',
+    note: 'Prayed at the start of Mass during the Penitential Act, as the whole congregation confesses together.',
+    text: 'I confess to almighty God\nand to you, my brothers and sisters,\nthat I have greatly sinned,\nin my thoughts and in my words,\nin what I have done and in what I have failed to do,\nthrough my fault, through my fault,\nthrough my most grievous fault;\ntherefore I ask blessed Mary ever-Virgin,\nall the Angels and Saints,\nand you, my brothers and sisters,\nto pray for me to the Lord our God.',
+  },
+  {
+    id: 'apostles-creed',
+    title: "Apostles' Creed",
+    note: 'A summary of the core beliefs of the Christian faith, dating back to the early Church.',
+    text: 'I believe in God,\nthe Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,\nwas crucified, died and was buried;\nHe descended into hell;\nthe third day He rose again from the dead;\nHe ascended into heaven,\nand sits at the right hand of God the Father almighty,\nfrom thence He shall come to judge the living and the dead.\nI believe in the Holy Spirit,\nthe holy Catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting.\nAmen.',
+  },
+  {
+    id: 'saint-michael',
+    title: 'Saint Michael Prayer',
+    note: 'A prayer for protection against evil, often prayed after Mass.',
+    text: 'Saint Michael the Archangel,\ndefend us in battle.\nBe our defense against the wickedness and snares of the Devil.\nMay God rebuke him, we humbly pray,\nand do thou, O Prince of the heavenly hosts,\nby the power of God,\nthrust into hell Satan and all the evil spirits\nwho prowl about the world seeking the ruin of souls.\nAmen.',
+  },
+  {
+    id: 'saint-benedict',
+    title: 'Saint Benedict Medal Prayer',
+    note: "The exorcism prayer inscribed around the Saint Benedict Medal, used for protection against evil. In Latin: Crux sacra sit mihi lux, non draco sit mihi dux. Vade retro Satana! Numquam suade mihi vana! Sunt mala quae libas, ipse venena bibas!",
+    text: 'May the Holy Cross be my light;\nlet not the dragon be my guide.\nBegone, Satan!\nNever tempt me with your vanities!\nWhat you offer me is evil.\nDrink the poison yourself!',
+  },
+  {
+    id: 'glory-be',
+    title: 'Glory Be',
+    note: 'A short prayer of praise to the Holy Trinity, often prayed at the end of each decade of the Rosary.',
+    text: 'Glory be to the Father,\nand to the Son,\nand to the Holy Spirit.\nAs it was in the beginning,\nis now, and ever shall be,\nworld without end.\nAmen.',
+  },
+]
