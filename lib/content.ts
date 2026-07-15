@@ -2086,4 +2086,10 @@ export const prayers: Prayer[] = [
     note: 'A short prayer of praise to the Holy Trinity, often prayed at the end of each decade of the Rosary.',
     text: 'Glory be to the Father,\nand to the Son,\nand to the Holy Spirit.\nAs it was in the beginning,\nis now, and ever shall be,\nworld without end.\nAmen.',
   },
+  {
+    id: 'grace-before-meals',
+    title: 'Grace Before Meals',
+    note: 'Prayed before eating, thanking God for the meal and asking his blessing on it — a custom dating back to the 7th century.',
+    text: 'Bless us, O Lord, and these Thy gifts,\nwhich we are about to receive\nfrom Thy bounty,\nthrough Christ our Lord.\nAmen.',
+  },
 ]
