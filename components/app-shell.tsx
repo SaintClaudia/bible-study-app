@@ -77,7 +77,7 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'discover', label: 'Discover', icon: IconLibrary },
-  { id: 'listen', label: 'Music', icon: IconHeadphones },
+  // Music tab disabled — re-add { id: 'listen', label: 'Music', icon: IconHeadphones } to bring it back
 ]
 
 export function AppShell() {
