@@ -6,8 +6,10 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { ReadingsTab } from '@/components/readings/readings-tab'
 import { FormationTab } from '@/components/formation/formation-tab'
 import { JourneyTab } from '@/components/journey/journey-tab'
-import { DiscoverTab } from '@/components/discover/discover-tab'
+import { AccountTab } from '@/components/account/account-tab'
 import { PrayerTab } from '@/components/prayer/prayer-tab'
+import { DiscoverTab } from '@/components/discover/discover-tab'
+import { SaintTab } from '@/components/saints/saint-tab'
 import { MusicPlayerContext } from '@/components/music-player-context'
 import { MiniPlayer, MiniPlayerBar } from '@/components/music-player'
 import { ListenTab } from '@/components/listen/listen-tab'
@@ -16,7 +18,7 @@ import { toast, Toaster } from 'sonner'
 
 const listenItems = resourceGroups.find(g => g.id === 'listen')?.items ?? []
 
-type Tab = 'readings' | 'formation' | 'journey' | 'prayer' | 'discover' | 'listen'
+type Tab = 'readings' | 'formation' | 'journey' | 'prayer' | 'account' | 'discover' | 'saint' | 'listen'
 
 function IconBible({ className }: { className?: string }) {
   return (
@@ -53,6 +55,15 @@ function IconCompass({ className }: { className?: string }) {
   )
 }
 
+function IconAccount({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 21a8 8 0 0116 0"/>
+    </svg>
+  )
+}
+
 function IconLibrary({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -60,6 +71,22 @@ function IconLibrary({ className }: { className?: string }) {
       <rect x="11" y="3" width="5" height="18" rx="1"/>
       <path d="M18 5.5l2.6.7a1 1 0 01.7 1.2L18 21"/>
     </svg>
+  )
+}
+
+function IconSaint({ className }: { className?: string }) {
+  return (
+    // The outer span keeps the same reserved box as the other nav icons (so labels
+    // stay aligned across tabs); the image itself renders slightly larger and centered
+    // on top of it, since this artwork has more internal padding than the hand-drawn icons.
+    <span className={cn(className, 'relative inline-block')}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/catholic-life.webp"
+        alt=""
+        className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 object-contain dark:invert"
+      />
+    </span>
   )
 }
 
@@ -85,14 +112,16 @@ const tabs: { id: Tab; label: string; icon: ({ className }: { className?: string
   { id: 'formation', label: 'Formation', icon: IconDove },
   { id: 'readings', label: 'Readings', icon: IconBible },
   { id: 'prayer', label: 'Prayer', icon: IconPrayer },
-  { id: 'discover', label: 'Discover', icon: IconLibrary },
+  { id: 'saint', label: 'Saint', icon: IconSaint },
+  // Account tab disabled — re-add { id: 'account', label: 'Account', icon: IconAccount } to bring it back
+  // Discover tab disabled — re-add { id: 'discover', label: 'Discover', icon: IconLibrary } to bring it back
   // Music tab disabled — re-add { id: 'listen', label: 'Music', icon: IconHeadphones } to bring it back
 ]
 
 export function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>('readings')
   const [tabKeys, setTabKeys] = useState<Record<Tab, number>>({
-    journey: 0, formation: 0, readings: 0, prayer: 0, discover: 0, listen: 0,
+    journey: 0, formation: 0, readings: 0, prayer: 0, account: 0, discover: 0, saint: 0, listen: 0,
   })
   const [barsVisible, setBarsVisible] = useState(true)
   const [guideDetailOpen, setGuideDetailOpen] = useState(false)
@@ -302,7 +331,7 @@ export function AppShell() {
   // Read #tab hash from URL on load
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as Tab
-    if (hash && ['readings', 'mass', 'formation', 'journey', 'prayer', 'discover'].includes(hash)) {
+    if (hash && ['readings', 'mass', 'formation', 'journey', 'prayer', 'saint'].includes(hash)) {
       setActiveTab(hash)
     }
   }, [])
@@ -377,7 +406,9 @@ export function AppShell() {
           {activeTab === 'formation' && <FormationTab key={tabKeys.formation} onLessonChange={setFormationLessonOpen} />}
           {activeTab === 'journey' && <JourneyTab key={tabKeys.journey} onDetailChange={setGuideDetailOpen} />}
           {activeTab === 'prayer' && <PrayerTab key={tabKeys.prayer} />}
+          {activeTab === 'account' && <AccountTab key={tabKeys.account} />}
           {activeTab === 'discover' && <DiscoverTab key={tabKeys.discover} />}
+          {activeTab === 'saint' && <SaintTab key={tabKeys.saint} />}
           {activeTab === 'listen' && <ListenTab key={tabKeys.listen} />}
         </main>
 
