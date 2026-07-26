@@ -119,7 +119,7 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
               <button
                 type="button"
                 onClick={() => openLesson(nextLesson)}
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-neutral-900 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-neutral-800"
               >
                 Next
                 <ChevronRight className="h-4 w-4" aria-hidden />
@@ -128,7 +128,7 @@ export function FormationTab({ onLessonChange }: FormationTabProps) {
               <button
                 type="button"
                 onClick={closeLesson}
-                className="flex flex-1 items-center justify-center rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+                className="flex flex-1 items-center justify-center rounded-full bg-neutral-900 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-neutral-800"
               >
                 Done
               </button>

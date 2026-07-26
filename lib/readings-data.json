@@ -10,25 +10,65 @@
         "label": "First Reading",
         "reference": "1 Kings 3:5, 7-12",
         "fullText": "The LORD appeared to Solomon in a dream at night.\nGod said, \"Ask something of me and I will give it to you.\"\nSolomon answered:\n\"O LORD, my God, you have made me, your servant, king\nto succeed my father David;\nbut I am a mere youth, not knowing at all how to act.\nI serve you in the midst of the people whom you have chosen,\na people so vast that it cannot be numbered or counted.\nGive your servant, therefore, an understanding heart\nto judge your people and to distinguish right from wrong.\nFor who is able to govern this vast people of yours?\"\n\nThe LORD was pleased that Solomon made this request.\nSo God said to him:\n\"Because you have asked for this—\nnot for a long life for yourself,\nnor for riches,\nnor for the life of your enemies,\nbut for understanding so that you may know what is right—\nI do as you requested.\nI give you a heart so wise and understanding\nthat there has never been anyone like you up to now,\nand after you there will come no one to equal you.\"",
-        "summary": "God appears to the young King Solomon in a dream and offers him anything he wants. Instead of asking for riches or power, Solomon humbly asks for wisdom — a heart that can tell right from wrong so he can serve his people well. God is so pleased with this selfless request that he grants Solomon extraordinary wisdom. It's a beautiful reminder that asking for the right things, with the right heart, matters deeply to God."
+        "summary": "God appears to the young King Solomon in a dream and offers him anything he wants. Instead of asking for riches or power, Solomon humbly asks for wisdom — a heart that can tell right from wrong so he can serve his people well. God is so pleased with this selfless request that he grants Solomon extraordinary wisdom. It's a beautiful reminder that asking for the right things, with the right heart, matters deeply to God.",
+        "reflection": {
+          "prompts": [
+            {
+              "question": "Imagine God asked you that same question — \"Ask something of me and I will give it to you.\" What's the first thing that comes to mind?",
+              "starter": "If God asked me that today, I'd probably ask for…"
+            }
+          ]
+        }
       },
       {
         "label": "Responsorial Psalm",
         "reference": "Psalms 119:57, 72, 76-77, 127-128, 129-130",
         "fullText": "R. (97a) Lord, I love your commands.\nI have said, O LORD, that my part\nis to keep your words.\nThe law of your mouth is to me more precious\nthan thousands of gold and silver pieces.\nR. Lord, I love your commands.\nLet your kindness comfort me\naccording to your promise to your servants.\nLet your compassion come to me that I may live,\nfor your law is my delight.\nR. Lord, I love your commands.\nFor I love your commands\nmore than gold, however fine.\nFor in all your precepts I go forward;\nevery false way I hate.\nR. Lord, I love your commands.\nWonderful are your decrees;\ntherefore I observe them.\nThe revelation of your words sheds light,\ngiving understanding to the simple.\nR. Lord, I love your commands.",
-        "summary": "This psalm is a love song to God's guidance. The writer treasures God's teachings more than gold or silver, finding in them light, comfort, and a clear path forward. The refrain — 'Lord, I love your commands' — captures a heart that doesn't see God's ways as burdensome rules, but as a precious gift. For someone new to the faith, it's an encouragement that over time, God's wisdom can become something we genuinely delight in."
+        "summary": "This psalm is a love song to God's guidance. The writer treasures God's teachings more than gold or silver, finding in them light, comfort, and a clear path forward. The refrain — 'Lord, I love your commands' — captures a heart that doesn't see God's ways as burdensome rules, but as a precious gift. For someone new to the faith, it's an encouragement that over time, God's wisdom can become something we genuinely delight in.",
+        "reflection": {
+          "prompts": [
+            {
+              "question": "The psalm says, \"I love your commands more than gold.\" Is there a rule in your life that actually feels more like a gift than a burden?",
+              "starter": "The rule I thought of is… and it actually helps me by…"
+            }
+          ]
+        }
       },
       {
         "label": "Second Reading",
         "reference": "Romans 8:28-30",
         "fullText": "Brothers and sisters:\nWe know that all things work for good for those who love God,\nwho are called according to his purpose.\nFor those he foreknew he also predestined\nto be conformed to the image of his Son,\nso that he might be the firstborn\namong many brothers and sisters.\nAnd those he predestined he also called;\nand those he called he also justified;\nand those he justified he also glorified.",
-        "summary": "Saint Paul reassures us that God is at work in our lives even when things are hard or confusing. Those who love God are not wandering through life by accident — they are known and loved by God, who is gently shaping them to become more like Jesus. This process of being called, changed, and brought into glory is God's gift to us, not something we earn on our own. It's a deeply comforting reminder that we are held in a purpose much larger than ourselves."
+        "summary": "Saint Paul reassures us that God is at work in our lives even when things are hard or confusing. Those who love God are not wandering through life by accident — they are known and loved by God, who is gently shaping them to become more like Jesus. This process of being called, changed, and brought into glory is God's gift to us, not something we earn on our own. It's a deeply comforting reminder that we are held in a purpose much larger than ourselves.",
+        "reflection": {
+          "prompts": [
+            {
+              "question": "Paul writes, \"all things work for good for those who love God.\" Has anything hard in your life ended up leading somewhere good?",
+              "starter": "The hard time I'm thinking of is… and looking back, it led to…"
+            },
+            {
+              "question": "Paul says we're \"called according to his purpose.\" Is there something right now that feels out of your hands?",
+              "starter": "Right now, the thing that feels out of my hands is…"
+            }
+          ]
+        }
       },
       {
         "label": "Gospel",
         "reference": "Matthew 13:44-52",
         "fullText": "Jesus said to his disciples:\n\"The kingdom of heaven is like a treasure buried in a field,\nwhich a person finds and hides again,\nand out of joy goes and sells all that he has and buys that field.\nAgain, the kingdom of heaven is like a merchant\nsearching for fine pearls.\nWhen he finds a pearl of great price,\nhe goes and sells all that he has and buys it.\nAgain, the kingdom of heaven is like a net thrown into the sea,\nwhich collects fish of every kind.\nWhen it is full they haul it ashore\nand sit down to put what is good into buckets.\nWhat is bad they throw away.\nThus it will be at the end of the age.\nThe angels will go out and separate the wicked from the righteous\nand throw them into the fiery furnace,\nwhere there will be wailing and grinding of teeth.\n\n\"Do you understand all these things?\"\nThey answered, \"Yes.\"\nAnd he replied,\n\"Then every scribe who has been instructed in the kingdom of heaven\nis like the head of a household\nwho brings from his storeroom both the new and the old.\"",
-        "summary": "Jesus tells three short stories — parables — to describe what the kingdom of heaven is like. A man stumbles upon buried treasure and joyfully sells everything to buy that field. A merchant finds the perfect pearl and trades all he owns to have it. Both images say the same thing: when you truly discover what God is offering, nothing else compares. Jesus isn't asking us to give up good things grudgingly, but to recognize something so wonderful that letting go of lesser things feels like joy, not loss."
+        "summary": "Jesus tells three short stories — parables — to describe what the kingdom of heaven is like. A man stumbles upon buried treasure and joyfully sells everything to buy that field. A merchant finds the perfect pearl and trades all he owns to have it. Both images say the same thing: when you truly discover what God is offering, nothing else compares. Jesus isn't asking us to give up good things grudgingly, but to recognize something so wonderful that letting go of lesser things feels like joy, not loss.",
+        "reflection": {
+          "prompts": [
+            {
+              "question": "The man in the story \"sells all that he has\" for the treasure. If getting closer to God meant giving up one thing, what comes to mind?",
+              "starter": "The first thing that comes to mind is…"
+            },
+            {
+              "question": "The story says he does this \"out of joy,\" not obligation. When has your faith felt like joy instead of a duty?",
+              "starter": "A moment that comes to mind is…"
+            }
+          ]
+        }
       }
     ]
   }

@@ -60,6 +60,14 @@ jobs:
               if (!r.label || !r.reference || !r.fullText || !r.summary) {
                 throw new Error('Reading ' + i + ' is missing required fields');
               }
+              if (!Array.isArray(r.reflection?.prompts) || r.reflection.prompts.length === 0) {
+                throw new Error('Reading ' + i + ' is missing reflection prompts');
+              }
+              r.reflection.prompts.forEach((p, j) => {
+                if (!p.question) {
+                  throw new Error('Reading ' + i + ' prompt ' + j + ' is missing a question');
+                }
+              });
             });
             console.log('Schema OK — ' + s.readings.length + ' readings for ' + s.date);
           "

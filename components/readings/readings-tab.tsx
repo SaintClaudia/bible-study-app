@@ -1,16 +1,28 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronDown, X } from 'lucide-react'
+import { ArrowRight, ChevronDown, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useLocalStorage } from '@/hooks/use-local-storage'
-import { fetchSundayReadings, type DailyReadings } from '@/lib/readings'
+import { fetchSundayReadings, getReflectionResumeStep, getReflectionStatus, type DailyReadings, type ReflectionStatus } from '@/lib/readings'
 import { getLiturgicalColor, LITURGICAL_COLOR_HEX } from '@/lib/liturgical-color'
+import { ReflectMode } from '@/components/readings/reflect-mode'
+
+function IconChristHand({ className }: { className?: string }) {
+  return (
+    // Always inverted to white — this icon sits on the CTA's dark surface in both light and dark theme.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/christ-hand.webp" alt="" className={cn(className, 'object-contain invert')} />
+  )
+}
 
 export function ReadingsTab() {
   const [data, setData] = useState<DailyReadings | null>(null)
   const [loading, setLoading] = useState(true)
   const [openReading, setOpenReading] = useState<number | null>(null)
+  const [reflectModeOpen, setReflectModeOpen] = useState(false)
+  const [reflectStatus, setReflectStatus] = useState<ReflectionStatus>('not-started')
+  const [reflectStartStep, setReflectStartStep] = useState(0)
   const [introDismissed, setIntroDismissed, hydrated] = useLocalStorage(
     'bs.readingsIntroDismissed',
     false,
@@ -20,6 +32,7 @@ export function ReadingsTab() {
     fetchSundayReadings().then((d) => {
       setData(d)
       setLoading(false)
+      if (d) setReflectStatus(getReflectionStatus(d.date, d.readings))
     })
   }, [])
 
@@ -164,6 +177,57 @@ export function ReadingsTab() {
         })}
         </div>
       </section>
+
+      {/* Reflect & Go Deeper */}
+      {data.readings.some((r) => r.reflection) && (
+        <button
+          type="button"
+          onClick={() => {
+            const reflectable = data.readings.filter((r) => r.reflection)
+            setReflectStartStep(getReflectionResumeStep(data.date, reflectable))
+            setReflectModeOpen(true)
+          }}
+          className="relative flex w-full items-center gap-3.5 overflow-hidden rounded-2xl bg-neutral-900 p-5 text-left dark:bg-neutral-800"
+        >
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10">
+            <IconChristHand className="h-5 w-5" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-heading text-lg font-normal leading-tight text-white">Reflect &amp; Go Deeper</p>
+            <p className="mt-0.5 flex items-center gap-1.5 text-sm" style={{ color: '#89877E' }}>
+              {reflectStatus !== 'not-started' && (
+                <span
+                  className={cn(
+                    'h-1.5 w-1.5 shrink-0 rounded-full',
+                    reflectStatus === 'complete' ? 'bg-emerald-400' : 'bg-amber-400',
+                  )}
+                  aria-hidden="true"
+                />
+              )}
+              {reflectStatus === 'complete'
+                ? 'Completed — tap to review'
+                : reflectStatus === 'in-progress'
+                  ? 'In progress — pick up where you left off'
+                  : 'A question for each passage'}
+            </p>
+          </div>
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </div>
+        </button>
+      )}
+
+      {reflectModeOpen && (
+        <ReflectMode
+          date={data.date}
+          readings={data.readings.filter((r) => r.reflection)}
+          initialStep={reflectStartStep}
+          onExit={() => {
+            setReflectModeOpen(false)
+            setReflectStatus(getReflectionStatus(data.date, data.readings))
+          }}
+        />
+      )}
 
     </div>
   )

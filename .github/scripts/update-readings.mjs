@@ -164,13 +164,17 @@ async function main() {
     .map(r => `**${r.label} — ${r.reference}**\n${r.fullText.slice(0, 1200)}`)
     .join('\n\n---\n\n')
 
-  const prompt = `You are writing content for a Catholic app designed for people exploring or newly entering the faith through OCIA. Keep language warm, clear, and free of jargon.
+  const prompt = `You are writing content for a Catholic app designed for people exploring or newly entering the faith through OCIA — many have never opened a Bible or done a reflection exercise before. Keep language warm, clear, and free of jargon. Target an 8th-9th grade reading level (short sentences, common words, active voice) per WCAG 2.2's reading-level guidance.
 
 This Sunday's Mass is: ${mass.title}
 
 Readings:
 
 ${readingBlocks}
+
+For each reading, also write a "reflection" object with a "prompts" array of 1-2 prompt objects — ONLY write a second prompt if the passage genuinely offers two distinct angles worth sitting with; never pad to hit a count. The reader will see the actual Scripture text right above these prompts, so don't restate or summarize the passage. Each prompt has:
+  - "question": one honest, personal, non-academic question that invites the reader to connect the passage to their own life right now. Keep it to two short sentences: first, a brief quote lifted directly from the passage's own words above (in quotation marks, verbatim) — prefer quoting over paraphrasing, it's more concise and stays grounded in the actual text; second, the question itself. The reader should be able to picture a specific, concrete example within a few seconds — not have to first decode an abstract concept. Avoid churchy or vague nouns like "a rule or teaching," "your faith journey," "God's calling," "your walk with God" — instead point at something everyday and specific (a chore, a habit, a relationship, a decision, a Tuesday). Never assume prior Bible knowledge or church teaching, and never assume the reader already identifies as a person of faith.
+  - "starter" (optional): the first few words of an answer, written as an unfinished sentence ending in an ellipsis (e.g. "The rule I thought of is… and honestly it feels like…"), shown as the placeholder text inside the reader's answer box. It should model how to begin, not instruct or reassure — never write it as advice or a meta-comment about the question.
 
 Respond with ONLY valid JSON in this exact structure (no markdown fences, no commentary):
 {
@@ -183,6 +187,12 @@ Respond with ONLY valid JSON in this exact structure (no markdown fences, no com
     "<2-4 sentence plain-language summary for ${readings[1]?.label ?? 'Responsorial Psalm'}>",
     "<2-4 sentence plain-language summary for ${readings[2]?.label ?? 'Second Reading'}>",
     "<2-4 sentence plain-language summary for ${readings[3]?.label ?? 'Gospel'}>"
+  ],
+  "reflections": [
+    { "prompts": [{ "question": "<for ${readings[0]?.label ?? 'First Reading'}>", "starter": "<...>" }] },
+    { "prompts": [{ "question": "<for ${readings[1]?.label ?? 'Responsorial Psalm'}>", "starter": "<...>" }] },
+    { "prompts": [{ "question": "<for ${readings[2]?.label ?? 'Second Reading'}>", "starter": "<...>" }] },
+    { "prompts": [{ "question": "<for ${readings[3]?.label ?? 'Gospel'}>", "starter": "<...>" }] }
   ]
 }`
 
@@ -198,8 +208,11 @@ Respond with ONLY valid JSON in this exact structure (no markdown fences, no com
 
   console.log(`  Season: ${meta.season} | Theme: "${meta.theme}"`)
 
-  // Apply summaries
-  readings.forEach((r, i) => { r.summary = meta.summaries[i] ?? '' })
+  // Apply summaries + reflections
+  readings.forEach((r, i) => {
+    r.summary = meta.summaries[i] ?? ''
+    if (meta.reflections?.[i]) r.reflection = meta.reflections[i]
+  })
 
   // 5. Build final data object
   const data = {
