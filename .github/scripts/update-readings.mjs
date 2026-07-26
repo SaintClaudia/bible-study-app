@@ -164,7 +164,9 @@ async function main() {
     .map(r => `**${r.label} — ${r.reference}**\n${r.fullText.slice(0, 1200)}`)
     .join('\n\n---\n\n')
 
-  const prompt = `You are writing content for a Catholic app designed for people exploring or newly entering the faith through OCIA — many have never opened a Bible or done a reflection exercise before. Keep language warm, clear, and free of jargon. Target an 8th-9th grade reading level (short sentences, common words, active voice) per WCAG 2.2's reading-level guidance.
+  const prompt = `You are writing content for a Catholic app designed for people exploring or newly entering the faith through OCIA. Many have never opened a Bible or done a reflection exercise before. Keep language warm, clear, and free of jargon. Target an 8th-9th grade reading level (short sentences, common words, active voice) per WCAG 2.2's reading-level guidance.
+
+Avoid em dashes. Use periods, commas, or "and"/"but" instead. Em dashes are a tell for AI-generated writing, so keep them rare to nonexistent across every field below.
 
 This Sunday's Mass is: ${mass.title}
 
@@ -172,14 +174,14 @@ Readings:
 
 ${readingBlocks}
 
-For each reading, also write a "reflection" object with a "prompts" array of 1-2 prompt objects — ONLY write a second prompt if the passage genuinely offers two distinct angles worth sitting with; never pad to hit a count. The reader will see the actual Scripture text right above these prompts, so don't restate or summarize the passage. Each prompt has:
-  - "question": one honest, personal, non-academic question that invites the reader to connect the passage to their own life right now. Keep it to two short sentences: first, a brief quote lifted directly from the passage's own words above (in quotation marks, verbatim) — prefer quoting over paraphrasing, it's more concise and stays grounded in the actual text; second, the question itself. The reader should be able to picture a specific, concrete example within a few seconds — not have to first decode an abstract concept. Avoid churchy or vague nouns like "a rule or teaching," "your faith journey," "God's calling," "your walk with God" — instead point at something everyday and specific (a chore, a habit, a relationship, a decision, a Tuesday). Never assume prior Bible knowledge or church teaching, and never assume the reader already identifies as a person of faith.
-  - "starter" (optional): the first few words of an answer, written as an unfinished sentence ending in an ellipsis (e.g. "The rule I thought of is… and honestly it feels like…"), shown as the placeholder text inside the reader's answer box. It should model how to begin, not instruct or reassure — never write it as advice or a meta-comment about the question.
+For each reading, also write a "reflection" object with a "prompts" array of 1-2 prompt objects. Only write a second prompt if the passage genuinely offers two distinct angles worth sitting with; never pad to hit a count. The reader will see the actual Scripture text right above these prompts, so don't restate or summarize the passage. Each prompt has:
+  - "question": one honest, personal, non-academic question that invites the reader to connect the passage to their own life right now. Keep it to two short sentences. First, a brief quote lifted directly from the passage's own words above (in quotation marks, verbatim); quoting is preferred over paraphrasing since it's more concise and stays grounded in the actual text. Second, the question itself. The reader should be able to picture a specific, concrete example within a few seconds, not decode an abstract concept first. Avoid churchy or vague nouns like "a rule or teaching," "your faith journey," "God's calling," "your walk with God." Instead point at something everyday and specific (a chore, a habit, a relationship, a decision, a Tuesday). Never assume prior Bible knowledge or church teaching, and never assume the reader already identifies as a person of faith.
+  - "starter" (optional): the first few words of an answer, written as an unfinished sentence ending in an ellipsis (e.g. "The rule I thought of is… and honestly it feels like…"), shown as the placeholder text inside the reader's answer box. It should model how to begin, not instruct or reassure. Never write it as advice or a meta-comment about the question.
 
 Respond with ONLY valid JSON in this exact structure (no markdown fences, no commentary):
 {
   "season": "<one of: Ordinary Time | Advent | Christmas | Lent | Easter>",
-  "color": "<only include this key on special Sundays that depart from their season color: rose for Laetare/Gaudete, red for Pentecost/Palm Sunday, white for Christ the King — omit on all other Sundays>",
+  "color": "<only include this key on special Sundays that depart from their season color: rose for Laetare/Gaudete, red for Pentecost/Palm Sunday, white for Christ the King. Omit on all other Sundays>",
   "theme": "<3-6 word title capturing the week's thread>",
   "themeNote": "<2-3 sentences weaving the readings together for someone new to the faith>",
   "summaries": [
