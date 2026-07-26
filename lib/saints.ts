@@ -15,6 +15,12 @@ export interface SaintOfTheDay {
   bio: string
   image: string
   patronOf?: string
+  // Why the Church still keeps this saint's memory alive today, distinct from the bio's narrative.
+  whyRemembered?: string
+  // Short, concrete facts — dates, titles, firsts — not full sentences of narrative.
+  facts?: string[]
+  // One fun or surprising detail, often prefixed with an emoji (e.g. "💡 ...").
+  didYouKnow?: string
 }
 
 function toMonthDayKey(date: Date): string {

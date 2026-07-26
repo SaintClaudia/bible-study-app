@@ -5,7 +5,15 @@
     "color": "white",
     "bio": "Junípero Serra was a Spanish Franciscan priest who left a comfortable teaching post in Spain to become a missionary, eventually founding nine of California's original missions. He walked thousands of miles on foot despite a chronic leg injury, driven by a desire to share the Gospel. His feast is a reminder that ordinary bodies dealing with real limitations can still carry out extraordinary callings.",
     "image": "/saint-junipero-serra.webp",
-    "patronOf": "California missions"
+    "patronOf": "California missions",
+    "whyRemembered": "Serra is remembered as one of the most influential missionaries in California history. He's credited with spreading Catholicism across the American West, though his legacy is also examined today for how Native communities fared within the mission system.",
+    "facts": [
+      "Born on the Spanish island of Mallorca in 1713",
+      "Founded 9 of California's 21 Spanish missions, including San Diego and San Francisco",
+      "Beatified by Pope John Paul II in 1988",
+      "Walked with a permanently injured leg for most of his missionary life"
+    ],
+    "didYouKnow": "Several California cities, including San Francisco and Ventura, trace their origins directly back to missions Serra personally founded."
   },
   "07-05": {
     "name": "Saint Elizabeth of Portugal",
@@ -13,7 +21,15 @@
     "color": "white",
     "bio": "Elizabeth of Portugal was a queen who used her position to make peace, repeatedly stepping in to broker reconciliation between warring family members, including her own husband and son. Widowed later in life, she gave away much of her wealth to the poor and joined a Franciscan community, choosing simplicity over the comfort her rank could have afforded her. Her feast day in the US is set on July 5 rather than July 4 specifically so it doesn't compete with Independence Day.",
     "image": "/saint-elizabeth-of-portugal.webp",
-    "patronOf": "Peace and difficult marriages"
+    "patronOf": "Peace and difficult marriages",
+    "whyRemembered": "She's remembered as a model of using power for peace rather than personal gain, choosing reconciliation over conflict even within her own family.",
+    "facts": [
+      "Born a Spanish princess in Aragon in 1271",
+      "Named after her great-aunt, St. Elizabeth of Hungary",
+      "Became Queen of Portugal through her marriage to King Denis",
+      "Retired to a Poor Clares convent after being widowed"
+    ],
+    "didYouKnow": "She's sometimes called the \"Peacemaker Queen\" for personally riding out to stop a war between her own son and husband."
   },
   "07-03": {
     "name": "Saint Thomas the Apostle",
@@ -21,7 +37,15 @@
     "color": "red",
     "bio": "Thomas is remembered as \"doubting Thomas\" — the apostle who refused to believe Jesus had risen until he could see and touch his wounds himself. When Jesus appeared and invited him to do just that, Thomas responded with one of the most direct professions of faith in the Gospels: \"My Lord and my God.\" His story is good news for anyone who needs proof before they can believe.",
     "image": "/saint-thomas-the-apostle.webp",
-    "patronOf": "Architects and doubters"
+    "patronOf": "Architects and doubters",
+    "whyRemembered": "Thomas's honest doubt, followed by his bold declaration of faith, has made him a patron for anyone who struggles to believe without evidence.",
+    "facts": [
+      "One of the Twelve Apostles chosen directly by Jesus",
+      "Tradition holds he traveled to India to spread Christianity",
+      "The Saint Thomas Christians of Kerala, India trace their roots to his missionary work",
+      "His feast was moved to July 3 in 1969 so it falls outside of Advent"
+    ],
+    "didYouKnow": "There are still Christian communities in India today who call themselves \"Thomas Christians,\" tracing their faith back nearly 2,000 years to his preaching."
   },
   "07-06": {
     "name": "Saint Maria Goretti",
@@ -29,14 +53,30 @@
     "color": "red",
     "bio": "Maria Goretti was an eleven-year-old Italian girl who was attacked and killed while resisting an assault in 1902. Before she died, she forgave her attacker — a forgiveness so complete that he later converted and attended her canonization. She's one of the youngest saints in Church history and a witness that mercy is possible even after the worst violence.",
     "image": "/saint-maria-goretti.webp",
-    "patronOf": "Youth and victims of assault"
+    "patronOf": "Youth and victims of assault",
+    "whyRemembered": "Her story is remembered as one of the most powerful examples of forgiveness in the modern Church, showing that mercy can outlast even the worst violence.",
+    "facts": [
+      "Born in 1890 to a poor farming family in Italy",
+      "Died at age 11 after being attacked in 1902",
+      "Her killer, Alessandro Serenelli, later converted in prison and attended her canonization",
+      "Canonized in 1950, with her mother present, the first time a saint's parent witnessed a canonization"
+    ],
+    "didYouKnow": "Alessandro Serenelli spent the rest of his life as a lay brother in a monastery after his release from prison, and credited Maria's forgiveness with changing his life."
   },
   "07-09": {
     "name": "Saint Augustine Zhao Rong and Companions",
     "feastRank": "Optional Memorial",
     "color": "red",
     "bio": "Augustine Zhao Rong was a Chinese Catholic priest martyred in 1815, one of 120 Chinese martyrs canonized together by Pope John Paul II in 2000. Their shared feast honors clergy, parents, and children who were killed for their faith in China between the 17th and 20th centuries. It's a reminder that the Church is genuinely global, with roots of martyrdom far beyond Europe.",
-    "image": "/saint-augustine-zhao-rong.webp"
+    "image": "/saint-augustine-zhao-rong.webp",
+    "whyRemembered": "This shared feast honors the long, often overlooked history of Christian martyrdom in China, spanning centuries of persecution.",
+    "facts": [
+      "Includes 120 martyrs killed in China between 1648 and 1930",
+      "Augustine Zhao Rong was a former soldier who guarded a missionary priest before converting and becoming a priest himself",
+      "The group includes bishops, priests, sisters, and lay people",
+      "Canonized together by Pope John Paul II on October 1, 2000"
+    ],
+    "didYouKnow": "The group includes several children among the youngest martyrs the Church has ever canonized, since entire Catholic families were sometimes killed together during the persecutions."
   },
   "07-11": {
     "name": "Saint Benedict, Abbot",
@@ -44,14 +84,30 @@
     "color": "white",
     "bio": "Benedict of Nursia left his studies in Rome to live as a hermit, eventually founding twelve monasteries and writing the Rule of St. Benedict — a guide to communal, prayerful living still followed by monks today. Pope Paul VI named him a patron of Europe for how monasteries preserved learning and faith through turbulent centuries. His famous motto, \"ora et labora\" (\"pray and work\"), captures a life balanced between contemplation and ordinary duty.",
     "image": "/saint-benedict.webp",
-    "patronOf": "Europe and students"
+    "patronOf": "Europe and students",
+    "whyRemembered": "Benedict's Rule shaped Western monasticism so deeply that Pope Paul VI named him patron of all Europe in 1964, crediting monasteries with preserving learning and faith through the collapse of the Roman Empire.",
+    "facts": [
+      "Born around 480 AD in Nursia, Italy",
+      "Twin brother of St. Scholastica",
+      "Founded the monastery of Monte Cassino, still active today",
+      "His Rule of St. Benedict is still followed by monks and nuns worldwide"
+    ],
+    "didYouKnow": "The St. Benedict Medal, bearing his image, is one of the oldest and most widely used sacramentals in the Catholic Church, traditionally worn for protection."
   },
   "07-13": {
     "name": "Saint Henry",
     "feastRank": "Optional Memorial",
     "color": "white",
     "bio": "Henry II was Holy Roman Emperor from 1014 until his death in 1024, remembered for ruling with a strong sense of Christian duty and generosity toward the Church. He and his wife, Cunigunde, are traditionally held to have lived a marriage devoted to God, and he used his position to found dioceses and support monastic reform. He shows that holiness isn't reserved for those outside positions of power.",
-    "image": "/saint-henry.webp"
+    "image": "/saint-henry.webp",
+    "whyRemembered": "He's remembered for proving that political power and personal holiness aren't opposites, using his reign to strengthen the Church rather than himself.",
+    "facts": [
+      "Became Holy Roman Emperor in 1014",
+      "Founded the Diocese of Bamberg in Germany",
+      "He and his wife Cunigunde are both venerated as saints",
+      "Canonized in 1146, over a century after his death"
+    ],
+    "didYouKnow": "Henry and Cunigunde are one of the few married couples in Church history where both spouses were later canonized as saints."
   },
   "07-14": {
     "name": "Blessed Kateri Tekakwitha",
@@ -59,21 +115,45 @@
     "color": "white",
     "bio": "Kateri Tekakwitha was a Mohawk woman born in present-day New York who converted to Catholicism as a teenager despite fierce opposition from her family and community. She took a vow of virginity, cared for the sick and elderly, and died at just 24 after a life of quiet devotion. She was canonized in 2012 as the first Native American saint recognized by the Catholic Church.",
     "image": "/saint-kateri-tekakwitha.webp",
-    "patronOf": "Native Americans and ecology"
+    "patronOf": "Native Americans and ecology",
+    "whyRemembered": "She's remembered as a bridge between Native American heritage and Catholic faith, showing that holiness can take root in any culture.",
+    "facts": [
+      "Born in 1656 in present-day New York to a Mohawk father and Algonquin mother",
+      "Survived smallpox as a child, which scarred her face and damaged her eyesight",
+      "Baptized at age 19 against her family's wishes",
+      "Canonized in 2012 as the first Native American saint"
+    ],
+    "didYouKnow": "She's known as the \"Lily of the Mohawks,\" and witnesses at her death said the smallpox scars on her face seemed to disappear soon after she died."
   },
   "07-15": {
     "name": "Saint Bonaventure",
     "feastRank": "Memorial",
     "color": "white",
     "bio": "Bonaventure was an Italian Franciscan friar, bishop, and theologian so respected that he was given the title \"Seraphic Doctor.\" As Minister General of the Franciscans, he helped unify a young religious order that was struggling to define its identity after St. Francis's death. He taught that knowing God and loving God are meant to go together, never separated.",
-    "image": "/saint-bonaventure.webp"
+    "image": "/saint-bonaventure.webp",
+    "whyRemembered": "As Minister General of the Franciscans, he's remembered for holding a divided religious order together and giving it a lasting theological identity.",
+    "facts": [
+      "Born around 1221 in Bagnoregio, Italy",
+      "Studied and later taught at the University of Paris, alongside St. Thomas Aquinas",
+      "Made a cardinal by Pope Gregory X in 1273",
+      "Named a Doctor of the Church in 1588"
+    ],
+    "didYouKnow": "According to tradition, when messengers arrived to make him a cardinal, they found him washing dishes and had to wait for him to finish before he'd accept the honor."
   },
   "07-16": {
     "name": "Our Lady of Mount Carmel",
     "feastRank": "Optional Memorial",
     "color": "white",
     "bio": "This feast honors the Blessed Virgin Mary under her title as patroness of the Carmelite order, tracing back to a vision in which Mary gave the Brown Scapular to St. Simon Stock as a sign of her protection. Wearing the scapular has since become a devotion for many Catholics, symbolizing a desire to be clothed in Mary's care. It's a feast about trusting a mother's watchfulness over her children.",
-    "image": "/our-lady-of-mount-carmel.webp"
+    "image": "/our-lady-of-mount-carmel.webp",
+    "whyRemembered": "This feast is remembered as a celebration of Mary's ongoing protection over those devoted to her, especially through the Brown Scapular.",
+    "facts": [
+      "Traces back to hermits living on Mount Carmel in the Holy Land in the 12th century",
+      "The vision of Mary giving the scapular to St. Simon Stock is traditionally dated to 1251",
+      "The Carmelite religious order takes its name from this same mountain",
+      "Celebrated as a national feast day in several countries, including Chile"
+    ],
+    "didYouKnow": "Mount Carmel is a real mountain range in northern Israel, referenced throughout the Old Testament, including in the story of the prophet Elijah."
   },
   "07-18": {
     "name": "Saint Camillus de Lellis",
@@ -81,21 +161,45 @@
     "color": "white",
     "bio": "Camillus de Lellis spent his early adulthood as a soldier and gambler before a conversion experience redirected his life toward caring for the sick. He founded the Camillians, a religious order dedicated to nursing, whose members wore a red cross — an image still associated with medical care today. His life shows that a rough past doesn't disqualify someone from a holy calling.",
     "image": "/saint-camillus-de-lellis.webp",
-    "patronOf": "The sick, hospitals, nurses, and physicians"
+    "patronOf": "The sick, hospitals, nurses, and physicians",
+    "whyRemembered": "He's remembered for transforming how the sick were cared for, insisting patients be treated with the same tenderness Christ would show.",
+    "facts": [
+      "Born in 1550 in Italy, reportedly nearly 6'6\" tall",
+      "Struggled with a gambling addiction before his conversion",
+      "Founded the Camillians, whose members still wear a red cross today",
+      "Declared patron of hospitals, nurses, and the sick by Pope Leo XIII"
+    ],
+    "didYouKnow": "The red cross worn by Camillus's order predates the modern Red Cross symbol by roughly 250 years."
   },
   "07-20": {
     "name": "Saint Apollinaris",
     "feastRank": "Optional Memorial",
     "color": "red",
     "bio": "Apollinaris served as the first bishop of Ravenna, Italy, guiding his community with courage during a time of persecution in the early Church. Tradition holds he was martyred for his unwavering witness to Christ. Very little is documented about the details of his life, but his memorial has been kept on the Roman calendar for centuries in honor of the early bishops who paid the ultimate price for the faith.",
-    "image": "/saint-apollinaris.webp"
+    "image": "/saint-apollinaris.webp",
+    "whyRemembered": "He's remembered as a symbol of the early Church's leadership under persecution, even though few details of his life survive.",
+    "facts": [
+      "Traditionally regarded as the first bishop of Ravenna, Italy",
+      "Said to have been a disciple of St. Peter the Apostle",
+      "Little is documented about his life with certainty",
+      "His relics are enshrined in the Basilica of Sant'Apollinare in Classe, a UNESCO World Heritage Site"
+    ],
+    "didYouKnow": "The basilica built in his honor near Ravenna is famous for its stunning 6th-century mosaics, still largely intact after 1,500 years."
   },
   "07-21": {
     "name": "Saint Lawrence of Brindisi",
     "feastRank": "Optional Memorial",
     "color": "white",
     "bio": "Lawrence of Brindisi was an Italian Capuchin friar and gifted linguist, fluent in at least eight languages, which he put to use preaching and negotiating across Europe. He served as a theological advisor to popes and, according to tradition, once rallied an outnumbered Christian army before a decisive battle carrying only a crucifix rather than a weapon. He was later named a Doctor of the Church for his preaching and writing.",
-    "image": "/saint-lawrence-of-brindisi.webp"
+    "image": "/saint-lawrence-of-brindisi.webp",
+    "whyRemembered": "He's remembered for putting extraordinary intellectual gifts entirely in service of the Church, from diplomacy to preaching to scholarship.",
+    "facts": [
+      "Born in 1559 in Brindisi, Italy",
+      "Fluent in at least eight languages, including Hebrew and Arabic",
+      "Served as a military chaplain and reportedly rallied troops before battle carrying only a crucifix",
+      "Named a Doctor of the Church in 1959"
+    ],
+    "didYouKnow": "He could reportedly recite the entire Bible from memory in its original languages."
   },
   "07-22": {
     "name": "Saint Mary Magdalene",
@@ -103,7 +207,15 @@
     "color": "white",
     "bio": "Mary Magdalene followed Jesus throughout his ministry, stood at the foot of the cross when most others had fled, and was the first person to see the risen Christ on Easter morning. Because of this, the Church calls her \"Apostle to the Apostles\" — she was the one entrusted to run and tell Peter and the others that Jesus had risen. Her feast celebrates faithful presence, especially in the hardest and most uncertain moments.",
     "image": "/saint-mary-magdalene.webp",
-    "patronOf": "Converts and penitents"
+    "patronOf": "Converts and penitents",
+    "whyRemembered": "She's remembered as the first witness to the Resurrection, entrusted by Christ himself to carry the most important news in history.",
+    "facts": [
+      "Mentioned by name more than any other woman in the Gospels except Mary, the mother of Jesus",
+      "Present at the crucifixion when most of the apostles had fled",
+      "The first person to see the risen Jesus, according to John's Gospel",
+      "Pope Francis raised her liturgical celebration to a Feast in 2016, equal in rank to the apostles"
+    ],
+    "didYouKnow": "Because Jesus sent her to announce the Resurrection to the other apostles, the Church has called her \"Apostle to the Apostles\" since at least the early Middle Ages."
   },
   "07-23": {
     "name": "Saint Bridget of Sweden",
@@ -111,14 +223,30 @@
     "color": "white",
     "bio": "Bridget of Sweden was a wife, mother of eight, and later a widow who founded a religious order after receiving visions she believed came from Christ. She traveled to Rome and spent decades advocating for reform in the Church, never losing her voice despite resistance from those in power. She's one of six patron saints of Europe, honored for the way she balanced family life, mysticism, and outspoken faith.",
     "image": "/saint-bridget-of-sweden.webp",
-    "patronOf": "Europe and widows"
+    "patronOf": "Europe and widows",
+    "whyRemembered": "She's remembered for refusing to separate motherhood, mysticism, and outspoken faith, living all three fully at once.",
+    "facts": [
+      "Born around 1303 into Swedish nobility",
+      "Mother of eight children, including St. Catherine of Sweden",
+      "Founded the Bridgettine order after being widowed",
+      "Named a patron saint of Europe by Pope John Paul II in 1999"
+    ],
+    "didYouKnow": "She spent the last decades of her life in Rome, working to convince the Pope to return the papacy there from Avignon, France."
   },
   "07-24": {
     "name": "Saint Sharbel Makhlouf",
     "feastRank": "Optional Memorial",
     "color": "white",
     "bio": "Sharbel Makhlouf was a Lebanese Maronite monk who spent the last 23 years of his life as a hermit, devoted almost entirely to prayer and the Eucharist. After his death, extraordinary healings were reported at his tomb, and he remains one of the most widely venerated saints in the Middle East across religious lines. His life is a quiet witness that a hidden life of prayer can still radiate outward.",
-    "image": "/saint-sharbel-makhlouf.webp"
+    "image": "/saint-sharbel-makhlouf.webp",
+    "whyRemembered": "He's remembered as proof that a quiet, hidden life of prayer can still touch millions, long after death.",
+    "facts": [
+      "Born in Lebanon in 1828",
+      "Lived the last 23 years of his life as a hermit",
+      "Reported to have appeared in visions and healings to people of many faiths after his death",
+      "Canonized in 1977 by Pope Paul VI"
+    ],
+    "didYouKnow": "When his tomb was opened decades after his death, witnesses reported his body remained incorrupt, and it reportedly exuded a mysterious liquid for years."
   },
   "07-25": {
     "name": "Saint James, Apostle",
@@ -126,7 +254,15 @@
     "color": "red",
     "bio": "James, the son of Zebedee, was one of the first apostles Jesus called and one of only three present at the Transfiguration and in the Garden of Gethsemane. He was the first apostle to be martyred, beheaded by Herod Agrippa I around the year 44. Tradition holds his remains rest in Santiago de Compostela, Spain, which has drawn pilgrims on the Camino de Santiago for over a thousand years.",
     "image": "/saint-james-the-great.webp",
-    "patronOf": "Spain, pilgrims, and travelers"
+    "patronOf": "Spain, pilgrims, and travelers",
+    "whyRemembered": "He's remembered as one of Jesus's closest companions and the first apostle to give his life for the faith.",
+    "facts": [
+      "One of the first four apostles Jesus called, alongside his brother John",
+      "Nicknamed, with John, a \"Son of Thunder\" by Jesus",
+      "Beheaded by Herod Agrippa I around 44 AD, according to the Acts of the Apostles",
+      "Patron saint of Spain, where tradition holds his remains rest in Santiago de Compostela"
+    ],
+    "didYouKnow": "The Camino de Santiago, a pilgrimage route to his tomb, has drawn walking pilgrims for over 1,000 years and remains hugely popular today."
   },
   "07-29": {
     "name": "Saint Martha",
@@ -134,7 +270,15 @@
     "color": "white",
     "bio": "Martha welcomed Jesus into her home in Bethany and famously grew frustrated preparing a meal while her sister Mary sat listening at his feet — a moment Jesus gently used to teach about priorities, not to condemn hospitality itself. Later, when her brother Lazarus died, it was Martha who ran out to meet Jesus and professed, \"I believe that you are the Christ, the Son of God.\" She's honored alongside Mary and Lazarus as one of Jesus's closest friends.",
     "image": "/saint-martha.webp",
-    "patronOf": "Cooks and homemakers"
+    "patronOf": "Cooks and homemakers",
+    "whyRemembered": "She's remembered for the honest, unguarded faith she showed Jesus, questioning him one moment and professing total belief in him the next.",
+    "facts": [
+      "Sister of Mary of Bethany and Lazarus, all close friends of Jesus",
+      "Her home in Bethany was a place Jesus regularly visited and stayed",
+      "Present when Jesus raised her brother Lazarus from the dead",
+      "Named alongside Mary and Lazarus in the Roman Martyrology's shared feast"
+    ],
+    "didYouKnow": "Her name comes from the Aramaic word for \"lady\" or \"mistress of the house,\" fitting for the Gospel scene where she's busy managing hospitality for Jesus."
   },
   "07-26": {
     "name": "Saints Joachim and Anne",
@@ -142,14 +286,30 @@
     "color": "white",
     "bio": "Joachim and Anne are honored by tradition as the parents of the Virgin Mary and the earthly grandparents of Jesus. Their names never appear in the Bible itself — what we know of them comes from early Christian writings outside Scripture — but the Church has held onto their memory as a reminder that Jesus was born into a real family with its own generations of quiet faith. Their feast has become an especially meaningful day to honor grandparents and the faith they pass down.",
     "image": "/saint-joachim-and-anne.webp",
-    "patronOf": "Grandparents"
+    "patronOf": "Grandparents",
+    "whyRemembered": "They're remembered as a reminder that Jesus's family tree includes ordinary grandparents whose quiet faith shaped the family he was born into.",
+    "facts": [
+      "Their names come from the Gospel of James, a text outside the official Bible",
+      "Devotion to St. Anne has existed since at least the 6th century",
+      "The Basilica of Sainte-Anne-de-Beaupré in Quebec is one of the most visited pilgrimage sites in North America",
+      "Pope Francis established this feast as a World Day for Grandparents and the Elderly in 2021"
+    ],
+    "didYouKnow": "Saint Anne is one of the most beloved saints in the Catholic Church, and countless churches, shrines, and schools around the world are dedicated to her. The Basilica of Sainte-Anne-de-Beaupré in Quebec has been a major pilgrimage site for hundreds of years."
   },
   "07-30": {
     "name": "Saint Peter Chrysologus",
     "feastRank": "Optional Memorial",
     "color": "white",
     "bio": "Peter Chrysologus served as Bishop of Ravenna in the fifth century and earned the nickname \"Chrysologus\" — golden-worded — for the clarity and warmth of his preaching. His surviving homilies are short and direct, written for ordinary people rather than scholars, which is part of why the Church later named him a Doctor of the Church. He shows that great theology doesn't have to be complicated to be true.",
-    "image": "/saint-peter-chrysologus.webp"
+    "image": "/saint-peter-chrysologus.webp",
+    "whyRemembered": "He's remembered for proving that preaching doesn't need to be complicated to move people, only clear and heartfelt.",
+    "facts": [
+      "Born around 380 AD in Imola, Italy",
+      "Served as Bishop of Ravenna for about 18 years",
+      "His nickname \"Chrysologus\" means \"golden-worded\"",
+      "Named a Doctor of the Church in 1729"
+    ],
+    "didYouKnow": "Nearly 180 of his short homilies survive today, valued for how directly they speak to ordinary listeners rather than scholars."
   },
   "07-31": {
     "name": "Saint Ignatius of Loyola",
@@ -157,6 +317,14 @@
     "color": "white",
     "bio": "Ignatius of Loyola was a Spanish soldier whose leg was shattered by a cannonball, and it was during his long recovery that he began reading about the life of Christ and the saints, sparking a total conversion. He went on to found the Society of Jesus (the Jesuits) and wrote the Spiritual Exercises, a method of prayer still used by Catholics today to discern God's will in daily life. His feast is a reminder that God can redirect even a shattered plan into something greater.",
     "image": "/saint-ignatius-of-loyola.webp",
-    "patronOf": "Jesuits and retreats"
+    "patronOf": "Jesuits and retreats",
+    "whyRemembered": "He's remembered for turning a battlefield injury into a spiritual awakening that reshaped the Church, founding one of its most influential religious orders.",
+    "facts": [
+      "Born in 1491 in the Basque region of Spain",
+      "Wounded by a cannonball at the Battle of Pamplona in 1521",
+      "Founded the Society of Jesus (the Jesuits) in 1540",
+      "Wrote the Spiritual Exercises, still used in retreats worldwide"
+    ],
+    "didYouKnow": "During his recovery, the only books available to him were about the life of Christ and the saints, since the romance novels he'd hoped for weren't around, and that's what sparked his conversion."
   }
 }

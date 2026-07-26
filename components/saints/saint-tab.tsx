@@ -103,14 +103,54 @@ export function SaintTab() {
             <Image src={saint.image} alt={saint.name} fill className="object-cover object-top" />
           </div>
 
-          <section className="flex flex-col gap-4">
-            <p className="text-base leading-relaxed text-foreground">{saint.bio}</p>
+          <section className="flex flex-col gap-6">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                Their Story
+              </p>
+              <p className="mt-2 text-base leading-relaxed text-foreground">{saint.bio}</p>
+            </div>
+
+            {saint.whyRemembered && (
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                  Why We Remember Them Today
+                </p>
+                <p className="mt-2 text-base leading-relaxed text-foreground">{saint.whyRemembered}</p>
+              </div>
+            )}
+
             {saint.patronOf && (
               <div className="rounded-2xl border border-border bg-card p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                   Patron of
                 </p>
                 <p className="mt-1.5 text-base text-foreground">{saint.patronOf}</p>
+              </div>
+            )}
+
+            {saint.facts && saint.facts.length > 0 && (
+              <div className="rounded-2xl border border-border bg-card p-5">
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                  Facts
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                  {saint.facts.map((fact, i) => (
+                    <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-foreground">
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-muted-foreground" aria-hidden="true" />
+                      <span>{fact}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {saint.didYouKnow && (
+              <div className="rounded-2xl bg-secondary px-5 py-4">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                  Did You Know?
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">{saint.didYouKnow}</p>
               </div>
             )}
           </section>
