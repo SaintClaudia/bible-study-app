@@ -91,8 +91,8 @@ export function SaintTab() {
           </p>
           <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">
             Every day, the Church remembers a saint or holy figure whose life points back
-            to Christ. We share their story here so you can carry a little of their
-            witness with you.
+            to Christ. Their stories remind us that ordinary people can become
+            extraordinary through God&apos;s grace.
           </p>
         </section>
       )}
