@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { X } from 'lucide-react'
+import { useLocalStorage } from '@/hooks/use-local-storage'
 import { fetchSaintOfTheDay, type SaintOfTheDay } from '@/lib/saints'
 import { LITURGICAL_COLOR_HEX } from '@/lib/liturgical-color'
 
@@ -20,6 +22,10 @@ export function SaintTab() {
   const [saint, setSaint] = useState<SaintOfTheDay | null>(null)
   const [loading, setLoading] = useState(true)
   const [displayDate, setDisplayDate] = useState(() => new Date())
+  const [introDismissed, setIntroDismissed, hydrated] = useLocalStorage(
+    'bs.saintIntroDismissed',
+    false,
+  )
 
   useEffect(() => {
     const date = getPreviewDate() ?? new Date()
@@ -68,6 +74,28 @@ export function SaintTab() {
           </span>
         )}
       </section>
+
+      {/* Intro context card — dismissible */}
+      {hydrated && !introDismissed && (
+        <section className="relative rounded-2xl bg-secondary px-5 py-4 pr-12">
+          <button
+            type="button"
+            onClick={() => setIntroDismissed(true)}
+            aria-label="Dismiss"
+            className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+            Saint of the Day
+          </p>
+          <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">
+            Every day, the Church remembers a saint or holy figure whose life points back
+            to Christ. We share their story here so you can carry a little of their
+            witness with you.
+          </p>
+        </section>
+      )}
 
       {saint ? (
         <>
