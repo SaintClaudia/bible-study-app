@@ -32,3 +32,20 @@ export async function fetchSaintOfTheDay(date: Date = new Date()): Promise<Saint
   const entry = (saintsData as Record<string, SaintOfTheDay>)[key]
   return entry ?? null
 }
+
+// Used on plain ferial days (no saint assigned) to preview what's coming up
+// next, rather than leaving the page empty. Searches forward day by day —
+// bounded to a year so it can't loop forever once the dataset covers less
+// than a full year (currently just July).
+export async function fetchNextSaint(
+  afterDate: Date = new Date(),
+): Promise<{ date: Date; saint: SaintOfTheDay } | null> {
+  const data = saintsData as Record<string, SaintOfTheDay>
+  for (let i = 1; i <= 366; i++) {
+    const candidate = new Date(afterDate)
+    candidate.setDate(candidate.getDate() + i)
+    const entry = data[toMonthDayKey(candidate)]
+    if (entry) return { date: candidate, saint: entry }
+  }
+  return null
+}
