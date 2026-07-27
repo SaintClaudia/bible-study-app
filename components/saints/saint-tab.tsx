@@ -20,15 +20,10 @@ function getPreviewDate(): Date | null {
 
 // A full saint writeup: name, badge, portrait, and every content section.
 // Reused for today's actual saint and, on ferial days, for the upcoming one.
-function SaintContent({ saint, comingUpLabel }: { saint: SaintOfTheDay; comingUpLabel?: string }) {
+function SaintContent({ saint }: { saint: SaintOfTheDay }) {
   return (
     <>
       <div>
-        {comingUpLabel && (
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-            {comingUpLabel}
-          </p>
-        )}
         <h1 className="mt-3 font-heading text-[3.25rem] font-normal leading-[1.05] tracking-[-0.01em] text-foreground text-balance">
           {saint.name}
         </h1>
@@ -105,8 +100,6 @@ export function SaintTab() {
     'bs.saintIntroDismissed',
     false,
   )
-  const [noFeastDismissed, setNoFeastDismissed] = useState(false)
-
   useEffect(() => {
     const date = getPreviewDate() ?? new Date()
     setDisplayDate(date)
@@ -120,6 +113,14 @@ export function SaintTab() {
   const today = displayDate.toLocaleDateString('en-US', {
     weekday: 'long', month: 'long', day: 'numeric',
   })
+
+  // On ferial days we preview the next saint, so the header date should point to
+  // that saint's day instead of stacking "today" above a duplicate "Coming up" date.
+  const headerLabel = !saint && nextSaint
+    ? `Coming up ${nextSaint.date.toLocaleDateString('en-US', {
+        weekday: 'long', month: 'long', day: 'numeric',
+      })}`
+    : today
 
   if (loading) {
     return (
@@ -139,7 +140,7 @@ export function SaintTab() {
     <div className="flex flex-col gap-8">
       <section className="pt-12">
         <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-          {today}
+          {headerLabel}
         </p>
       </section>
 
@@ -169,33 +170,8 @@ export function SaintTab() {
 
       {!saint && (
         <>
-          {!noFeastDismissed && (
-            <section className="relative rounded-2xl bg-secondary px-5 py-4 pr-12">
-              <button
-                type="button"
-                onClick={() => setNoFeastDismissed(true)}
-                aria-label="Dismiss"
-                className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              >
-                <X className="h-4 w-4" aria-hidden="true" />
-              </button>
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                No Saint Today
-              </p>
-              <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">
-                There&apos;s no major feast on the Catholic calendar today. Here&apos;s who&apos;s
-                coming up next.
-              </p>
-            </section>
-          )}
-
           {nextSaint ? (
-            <SaintContent
-              saint={nextSaint.saint}
-              comingUpLabel={`Coming up ${nextSaint.date.toLocaleDateString('en-US', {
-                weekday: 'long', month: 'long', day: 'numeric',
-              })}`}
-            />
+            <SaintContent saint={nextSaint.saint} />
           ) : (
             <section className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card px-6 py-16 text-center">
               <p className="font-heading text-xl text-foreground">No major feast today</p>
