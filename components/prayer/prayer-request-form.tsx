@@ -81,15 +81,6 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
                 <h1 className="font-heading text-3xl font-normal leading-tight text-foreground">
                   Share what&apos;s on your heart
                 </h1>
-                <p className="text-base leading-relaxed text-muted-foreground">
-                  Prayer requests are shared only with our Bible Study prayer team and are
-                  never posted publicly. You are welcome to share as much or as little as you
-                  feel comfortable sharing. If you&apos;d prefer, you can simply provide a
-                  first name or ask for prayers without any details at all.
-                </p>
-                <p className="text-base leading-relaxed text-muted-foreground">
-                  God knows your heart, even when words are difficult to find.
-                </p>
               </div>
 
               <div className="flex flex-col gap-2">
