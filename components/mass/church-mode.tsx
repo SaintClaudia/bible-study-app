@@ -283,7 +283,10 @@ export function ChurchMode({ onExit }: { onExit: () => void }) {
     <div className="fixed inset-0 z-50 bg-background flex flex-col">
 
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+      <div
+        className="flex items-center justify-between px-5 py-4 border-b border-border"
+        style={{ paddingTop: 'max(env(safe-area-inset-top), 16px)' }}
+      >
         <div className="flex flex-col">
           <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             {step.phase}
