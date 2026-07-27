@@ -2,6 +2,16 @@
 
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+// Only inverted in dark theme — this icon sits on the neutral bg-secondary
+// circle, unlike the always-white version used on the CTA's dark surface.
+function IconPrayingHands({ className }: { className?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/praying-hands.webp" alt="" className={cn(className, 'object-contain dark:invert')} />
+  )
+}
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -61,6 +71,9 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-secondary">
+                <IconPrayingHands className="h-7 w-7" />
+              </div>
               <div className="flex flex-col gap-2">
                 <h1 className="font-heading text-3xl font-normal leading-tight text-foreground">
                   Share what&apos;s on your heart

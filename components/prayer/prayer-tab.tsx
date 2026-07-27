@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { prayers } from '@/lib/content'
 import { PrayerRequestForm } from '@/components/prayer/prayer-request-form'
@@ -88,6 +88,9 @@ export function PrayerTab() {
           <p className="mt-0.5 text-sm" style={{ color: '#89877E' }}>
             Share what&apos;s on your heart
           </p>
+        </div>
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+          <ArrowRight className="h-4 w-4" aria-hidden />
         </div>
       </button>
 
