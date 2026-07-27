@@ -60,9 +60,10 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
               <h1 className="font-heading text-3xl font-normal leading-tight text-foreground">
                 Your prayer request has been received.
               </h1>
-              <p className="text-base leading-relaxed text-muted-foreground max-w-xs">
-                Thank you for sharing your prayer intention. Our Bible Study prayer team will
-                be praying for you.
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Thank you for sharing your prayer intention.
+                <br />
+                Our Bible Study prayer team will be praying for you.
               </p>
               <button
                 type="button"
