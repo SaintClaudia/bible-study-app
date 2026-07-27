@@ -51,14 +51,12 @@ export function ReflectMode({
 
   if (!reading?.reflection) return null
 
-  const savedForReading = responses[date]?.[reading.reference] ?? []
+  const savedForReading = responses[date]?.[reading.reference] ?? ''
 
-  function updateResponse(promptIndex: number, text: string) {
+  function updateResponse(text: string) {
     setResponses((prev) => {
       const dateEntry = { ...(prev[date] ?? {}) }
-      const arr = [...(dateEntry[reading.reference] ?? [])]
-      arr[promptIndex] = text
-      dateEntry[reading.reference] = arr
+      dateEntry[reading.reference] = text
       return { ...prev, [date]: dateEntry }
     })
   }
@@ -160,21 +158,22 @@ export function ReflectMode({
               </div>
             )}
 
-            <div className="flex flex-col gap-5 mt-2">
-              {reading.reflection.prompts.map((prompt, i) => (
-                <div key={i} className="flex flex-col gap-5">
-                  <p className="font-heading text-xl font-normal leading-snug text-foreground">
-                    {prompt.question}
-                  </p>
-                  <textarea
-                    value={savedForReading[i] ?? ''}
-                    onChange={(e) => updateResponse(i, e.target.value)}
-                    placeholder={prompt.starter ?? 'Write your reflection here…'}
-                    rows={4}
-                    className="w-full resize-none rounded-2xl border border-border bg-card p-4 text-base leading-relaxed text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20"
-                  />
-                </div>
-              ))}
+            <div className="flex flex-col gap-8 mt-2">
+              <div className="flex flex-col gap-4">
+                <p className="text-base leading-relaxed text-foreground/90">
+                  {reading.reflection.reflection}
+                </p>
+                <p className="text-base font-semibold leading-snug tracking-tight text-foreground">
+                  {reading.reflection.question}
+                </p>
+              </div>
+              <textarea
+                value={savedForReading}
+                onChange={(e) => updateResponse(e.target.value)}
+                placeholder="Write your reflection here…"
+                rows={4}
+                className="w-full resize-none rounded-2xl border border-border bg-card p-4 text-base leading-relaxed text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20"
+              />
             </div>
           </div>
         )}

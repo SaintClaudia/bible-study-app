@@ -174,9 +174,11 @@ Readings:
 
 ${readingBlocks}
 
-For each reading, also write a "reflection" object with a "prompts" array of 1-2 prompt objects. Only write a second prompt if the passage genuinely offers two distinct angles worth sitting with; never pad to hit a count. The reader will see the actual Scripture text right above these prompts, so don't restate or summarize the passage. Each prompt has:
-  - "question": one honest, personal, non-academic question that invites the reader to connect the passage to their own life right now. Keep it to two short sentences. First, a brief quote lifted directly from the passage's own words above (in quotation marks, verbatim); quoting is preferred over paraphrasing since it's more concise and stays grounded in the actual text. Second, the question itself. The reader should be able to picture a specific, concrete example within a few seconds, not decode an abstract concept first. Avoid churchy or vague nouns like "a rule or teaching," "your faith journey," "God's calling," "your walk with God." Instead point at something everyday and specific (a chore, a habit, a relationship, a decision, a Tuesday). Never assume prior Bible knowledge or church teaching, and never assume the reader already identifies as a person of faith.
-  - "starter" (optional): the first few words of an answer, written as an unfinished sentence ending in an ellipsis (e.g. "The rule I thought of is… and honestly it feels like…"), shown as the placeholder text inside the reader's answer box. It should model how to begin, not instruct or reassure. Never write it as advice or a meta-comment about the question.
+For each reading, also write a "reflection" object with two fields. The reader will see the actual Scripture text right above this, so don't quote or restate the passage:
+  - "reflection": one or two short, plain-language sentences summarizing the passage's spiritual invitation. Not a quote or a summary of events, an insight into what God is offering or inviting in this passage. Warm, plain language, no theological jargon.
+  - "question": one gentle, open-ended question that helps the reader apply that message personally, connecting it to something everyday and specific (a chore, a habit, a relationship, a decision, a Tuesday) rather than an abstract concept. Avoid churchy or vague nouns like "a rule or teaching," "your faith journey," "God's calling," "your walk with God." Never phrase it like a test or comprehension check (avoid "Can you name...", "According to the passage...", "What is..."). Never assume prior Bible knowledge, and never assume the reader already identifies as a person of faith.
+
+Keep "reflection" and "question" together under about 55 words total.
 
 Respond with ONLY valid JSON in this exact structure (no markdown fences, no commentary):
 {
@@ -191,10 +193,10 @@ Respond with ONLY valid JSON in this exact structure (no markdown fences, no com
     "<2-4 sentence plain-language summary for ${readings[3]?.label ?? 'Gospel'}>"
   ],
   "reflections": [
-    { "prompts": [{ "question": "<for ${readings[0]?.label ?? 'First Reading'}>", "starter": "<...>" }] },
-    { "prompts": [{ "question": "<for ${readings[1]?.label ?? 'Responsorial Psalm'}>", "starter": "<...>" }] },
-    { "prompts": [{ "question": "<for ${readings[2]?.label ?? 'Second Reading'}>", "starter": "<...>" }] },
-    { "prompts": [{ "question": "<for ${readings[3]?.label ?? 'Gospel'}>", "starter": "<...>" }] }
+    { "reflection": "<for ${readings[0]?.label ?? 'First Reading'}>", "question": "<...>" },
+    { "reflection": "<for ${readings[1]?.label ?? 'Responsorial Psalm'}>", "question": "<...>" },
+    { "reflection": "<for ${readings[2]?.label ?? 'Second Reading'}>", "question": "<...>" },
+    { "reflection": "<for ${readings[3]?.label ?? 'Gospel'}>", "question": "<...>" }
   ]
 }`
 
