@@ -306,5 +306,359 @@
       "Founded the Society of Jesus (the Jesuits) in 1540",
       "Wrote the Spiritual Exercises, still used in retreats worldwide"
     ]
+  },
+  "08-01": {
+    "name": "Saint Alphonsus Liguori",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Alphonsus Liguori trained as a lawyer in Naples and won nearly every case he argued, until he lost one badly enough to walk away from the courtroom for good. He became a priest instead, spending his life preaching to poor and rural communities that other clergy often overlooked. He founded the Redemptorists, a religious order dedicated to bringing the Gospel to people living on the margins, and wrote extensively to help ordinary Catholics understand right from wrong without fear or confusion.",
+    "image": "/saint-alphonsus-liguori.webp",
+    "patronOf": "Confessors and moral theologians",
+    "whyRemembered": "He's remembered for redirecting a promising legal career toward the people the Church was most likely to pass by, and for writing about morality in a way meant to comfort consciences rather than frighten them.",
+    "facts": [
+      "Born in Naples, Italy, in 1696",
+      "Practiced law for about 8 years before becoming a priest",
+      "Founded the Redemptorists in 1732 to serve rural and poor communities",
+      "Named a Doctor of the Church in 1871"
+    ]
+  },
+  "08-02": {
+    "name": "Saint Peter Julian Eymard",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "Peter Julian Eymard spent years as a parish priest and later a Marist before feeling drawn toward one specific longing: helping ordinary Catholics fall in love with the Eucharist. He founded a religious congregation dedicated entirely to Eucharistic adoration, believing that time spent quietly in Christ's presence could change a person more than any argument or sermon.",
+    "image": "/saint-peter-julian-eymard.webp",
+    "whyRemembered": "He's remembered for treating time before the Eucharist not as an obligation but as an encounter, something worth building an entire religious order around.",
+    "facts": [
+      "Born in La Mure, France, in 1811",
+      "Served as a parish priest and later joined the Marist Fathers",
+      "Founded the Congregation of the Blessed Sacrament in 1856",
+      "Canonized in 1962 by Pope John XXIII"
+    ]
+  },
+  "08-04": {
+    "name": "Saint John Vianney",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "John Vianney struggled so much in seminary that his superiors almost didn't ordain him, yet he became one of the most sought-after confessors in Church history. Sent to the small, spiritually neglected village of Ars, France, he spent up to sixteen hours a day hearing confessions as pilgrims traveled from across Europe just to speak with him. He believed no one was too far gone for God's mercy, and he lived that belief out one confession at a time.",
+    "image": "/saint-john-vianney.webp",
+    "patronOf": "Parish priests",
+    "whyRemembered": "He's remembered for proving that holiness doesn't require brilliance, only persistence, patience, and an enormous capacity to sit with people in their worst moments without flinching.",
+    "facts": [
+      "Born near Lyon, France, in 1786",
+      "Nearly failed out of seminary due to difficulty with Latin",
+      "Spent over 40 years as pastor of the small parish of Ars",
+      "Declared patron saint of parish priests by Pope Pius XI in 1929"
+    ]
+  },
+  "08-05": {
+    "name": "Dedication of the Basilica of Saint Mary Major",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "According to tradition, a wealthy Roman couple with no heirs asked Mary to show them how to spend their fortune in a way that pleased her. Mary is said to have answered with a miracle: snow falling on a Roman hill in the middle of August, marking the exact spot where a church should be built in her honor. That church became the Basilica of Saint Mary Major, the largest church in Rome dedicated to Mary and one of the oldest continuously used churches in the world.",
+    "image": "/santa-maria-maggiore.webp",
+    "imageAspectRatio": "35/39",
+    "whyRemembered": "This feast is remembered as a celebration of one of Christianity's oldest and most beloved Marian shrines, a place pilgrims have visited for over 1,600 years.",
+    "facts": [
+      "Traditionally dated to a miraculous summer snowfall in 358 AD",
+      "Also known as Our Lady of the Snows",
+      "The largest of Rome's Marian churches, and one of its four papal basilicas",
+      "Still holds a reenactment of the legendary snowfall every August 5th, with white flower petals released from the ceiling"
+    ]
+  },
+  "08-07": {
+    "name": "Saint Cajetan",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "Cajetan trained as a lawyer and diplomat before giving it up to become a priest, eventually founding a new religious community called the Theatines. He and his companions took an unusual vow: they would rely entirely on God's providence, never asking for donations or holding steady income, trusting that what they needed would come. He also helped open one of the first known charitable pawnshops, a way to help the poor borrow money without predatory interest.",
+    "image": "/saint-cajetan.webp",
+    "patronOf": "Workers and job seekers",
+    "whyRemembered": "He's remembered for taking radical trust in God seriously enough to build an entire way of life around it, and for finding practical ways to protect the poor from being taken advantage of.",
+    "facts": [
+      "Born in Vicenza, Italy, in 1480",
+      "Co-founded the Theatines, a religious order devoted to reforming clergy life",
+      "Helped establish early charitable pawnshops to protect the poor from predatory lenders",
+      "Canonized in 1671 by Pope Clement X"
+    ]
+  },
+  "08-08": {
+    "name": "Saint Dominic",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Dominic set out to preach against a widespread heresy in southern France, and quickly realized that arguments alone weren't changing hearts. He became convinced that preaching needed to be paired with a life that visibly matched its message, so he founded the Order of Preachers, known today as the Dominicans, built on both rigorous study and radical poverty. He and his followers are also closely tied to popularizing the rosary as a way to pray through Scripture alongside Mary.",
+    "image": "/saint-dominic.webp",
+    "patronOf": "Astronomers and natural scientists",
+    "whyRemembered": "He's remembered for insisting that truth has to be lived, not just argued, and for building an order that took both the mind and the poor seriously at the same time.",
+    "facts": [
+      "Born in Caleruega, Spain, around 1170",
+      "Founded the Order of Preachers (Dominicans) in 1216",
+      "Traditionally credited with popularizing the rosary",
+      "Canonized in 1234, just 13 years after his death"
+    ]
+  },
+  "08-09": {
+    "name": "Saint Teresa Benedicta of the Cross (Edith Stein)",
+    "feastRank": "Optional Memorial",
+    "color": "red",
+    "bio": "Edith Stein was a brilliant Jewish philosopher who, after reading the autobiography of Saint Teresa of Ávila in a single night, converted to Catholicism and eventually became a Discalced Carmelite nun. When the Nazis began targeting Jewish converts, she was arrested along with her sister and deported to Auschwitz, where she was killed in the gas chambers in 1942. She's remembered as both a thinker who never stopped searching for truth and a martyr who never renounced either her Jewish heritage or her Catholic faith.",
+    "image": "/saint-edith-stein.webp",
+    "patronOf": "Europe and converts",
+    "whyRemembered": "She's remembered for refusing to separate her identity as a Jewish woman from her identity as a Catholic nun, and for meeting genocide with faith instead of despair.",
+    "facts": [
+      "Born in Breslau, Germany (now Wrocław, Poland), in 1891",
+      "Studied under philosopher Edmund Husserl before her conversion",
+      "Entered the Discalced Carmelites and took the name Teresa Benedicta of the Cross",
+      "Canonized in 1998 and named a patron saint of Europe by Pope John Paul II"
+    ]
+  },
+  "08-10": {
+    "name": "Saint Lawrence",
+    "feastRank": "Feast",
+    "color": "red",
+    "bio": "Lawrence was one of seven deacons in Rome responsible for distributing the Church's resources to the poor. When Roman authorities demanded he hand over the Church's treasures, tradition holds that he instead gathered the poor, the sick, and the suffering of the city and presented them, saying, \"These are the treasures of the Church.\" He was martyred for his defiance, and early accounts describe him facing his death with striking composure.",
+    "image": "/saint-lawrence-deacon.webp",
+    "patronOf": "The poor, cooks, and deacons",
+    "whyRemembered": "He's remembered for redefining what wealth actually means, insisting that the people the Church serves are worth more than any gold or silver it holds.",
+    "facts": [
+      "Served as a deacon in Rome under Pope Sixtus II",
+      "Martyred in 258 AD during the persecution under Emperor Valerian",
+      "One of the most venerated martyrs in early Church history",
+      "The Basilica of San Lorenzo fuori le Mura in Rome is built over his traditional burial site"
+    ]
+  },
+  "08-11": {
+    "name": "Saint Clare of Assisi",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Clare was an eighteen-year-old noblewoman when she secretly left her family's home at night to join Francis of Assisi's new way of life. Her family tried repeatedly to bring her back, but she cut off her hair and refused to leave, eventually founding the Poor Clares, a community of women committed to owning nothing at all. She spent the rest of her life defending her order's right to live in complete poverty, even petitioning the Pope directly when others tried to soften the rule.",
+    "image": "/saint-clare-of-assisi.webp",
+    "patronOf": "Television and eye ailments",
+    "whyRemembered": "She's remembered for choosing radical simplicity when every option in front of her offered comfort instead, and for refusing to let anyone talk her out of it.",
+    "facts": [
+      "Born in Assisi, Italy, in 1194",
+      "Left home at 18 to join Francis of Assisi's movement",
+      "Founded the Poor Clares, a contemplative order of women",
+      "Named patron saint of television by Pope Pius XII, after reportedly seeing a Mass projected on her wall while too ill to attend in person"
+    ]
+  },
+  "08-12": {
+    "name": "Saint Jane Frances de Chantal",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "Jane Frances de Chantal was a young widow with four children when she met Francis de Sales, who became her spiritual director and close friend. Together they founded the Visitation Sisters, a religious order deliberately designed to welcome women that other convents turned away, including those in poor health, older in age, or without a dowry. She balanced raising her children with building an order that reshaped who was considered fit for religious life.",
+    "image": "/saint-jane-frances-de-chantal.webp",
+    "patronOf": "Widows and in-law relationships",
+    "whyRemembered": "She's remembered for creating space in the Church for the women everyone else had already written off.",
+    "facts": [
+      "Born in Dijon, France, in 1572",
+      "Widowed at 28 with four young children",
+      "Co-founded the Order of the Visitation of Holy Mary with Saint Francis de Sales",
+      "Her order deliberately accepted women rejected elsewhere due to age or health"
+    ]
+  },
+  "08-13": {
+    "name": "Saints Pontian and Hippolytus",
+    "feastRank": "Optional Memorial",
+    "color": "red",
+    "bio": "Pontian was the pope, and Hippolytus was a priest who had broken away from the Church to become a rival, competing claimant to the papacy. When Roman persecution sent them both to the brutal labor mines of Sardinia, tradition holds the two men reconciled before their deaths, healing a division inside the Church even as they suffered for it together. Pontian became the first pope to resign, doing so from exile so a successor could lead in his place.",
+    "image": "/saint-pontian.webp",
+    "whyRemembered": "They're remembered as a reminder that reconciliation is possible even between people on opposite sides of a bitter Church conflict, especially when suffering strips away everything but the truth.",
+    "facts": [
+      "Pontian served as pope from 230 to 235 AD",
+      "Hippolytus was a priest and theologian who had set himself up as a rival claimant to the papacy",
+      "Both were condemned to the mines of Sardinia, a sentence that was effectively a death sentence",
+      "Tradition holds they reconciled before dying, healing the schism between them"
+    ]
+  },
+  "08-14": {
+    "name": "Saint Maximilian Kolbe",
+    "feastRank": "Memorial",
+    "color": "red",
+    "bio": "Maximilian Kolbe was a Polish Franciscan friar imprisoned at Auschwitz during World War II. When a prisoner was chosen at random to be starved to death as punishment for another man's escape, Kolbe volunteered to take his place, saying he was a priest with no wife or children waiting for him. He spent his final two weeks in a starvation bunker leading the other condemned men in prayer, and was ultimately killed by lethal injection when he wouldn't die quickly enough.",
+    "image": "/saint-maximilian-kolbe.webp",
+    "patronOf": "Prisoners, families, and the pro-life movement",
+    "whyRemembered": "He's remembered for the most direct kind of love the Gospels describe, laying down his life for a stranger, in one of the darkest places human beings have ever built.",
+    "facts": [
+      "Born in Poland in 1894",
+      "Founded a religious community and radio station dedicated to spreading devotion to Mary",
+      "Volunteered to die in place of a fellow prisoner, Franciszek Gajowniczek, at Auschwitz in 1941",
+      "Canonized in 1982 by Pope John Paul II, who named him a martyr of charity"
+    ]
+  },
+  "08-15": {
+    "name": "The Assumption of the Blessed Virgin Mary",
+    "feastRank": "Solemnity",
+    "color": "white",
+    "bio": "The Assumption celebrates the Church's belief that at the end of her life, Mary was taken body and soul into heaven, rather than her body remaining behind. It isn't described directly in Scripture, but the Church has held this belief since the earliest centuries of Christianity, formally defining it as dogma in 1950. For Catholics, it's a preview of what's promised to every believer, a sign that the resurrection of Jesus was never meant to be his alone.",
+    "image": "/assumption-of-mary.webp",
+    "whyRemembered": "This feast is remembered as one of the Church's oldest and most important celebrations of Mary, pointing forward to the hope every Christian shares in the resurrection of the body.",
+    "facts": [
+      "One of the four Marian dogmas of the Catholic Church",
+      "Formally defined by Pope Pius XII in 1950, though the belief dates back over a thousand years earlier",
+      "Celebrated as a holy day of obligation in the United States",
+      "Sometimes called the Dormition, meaning \"falling asleep,\" in Eastern Christian tradition"
+    ]
+  },
+  "08-16": {
+    "name": "Saint Stephen of Hungary",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "Stephen was the first king of Hungary, crowned on Christmas Day in the year 1000 with a crown reportedly sent by the Pope himself. He spent his reign converting his kingdom to Christianity, often by force, while also building churches, monasteries, and a legal system rooted in Christian values. Despite the harshness of some of his methods by later standards, he's remembered as the founder of a Christian nation that endured for a thousand years.",
+    "image": "/saint-stephen-of-hungary.webp",
+    "patronOf": "Hungary",
+    "whyRemembered": "He's remembered as proof that entire nations, not just individuals, can be shaped by one person's conviction and willingness to build something lasting.",
+    "facts": [
+      "Crowned the first King of Hungary on Christmas Day, 1000 AD",
+      "Established Hungary's first dioceses and monasteries",
+      "Canonized in 1083, less than 50 years after his death",
+      "His feast falls on Hungary's national holiday, State Foundation Day"
+    ]
+  },
+  "08-19": {
+    "name": "Saint John Eudes",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "John Eudes ministered to plague victims as a young priest, an experience that shaped the rest of his life around caring for people society had given up on. He founded a religious order dedicated to helping women leave prostitution and rebuild their lives, at a time when few in the Church wanted anything to do with them. He was also one of the earliest and most influential promoters of devotion to the Sacred Heart of Jesus and the Immaculate Heart of Mary.",
+    "image": "/saint-john-eudes.webp",
+    "whyRemembered": "He's remembered for going toward the people his own era had cast aside, and for helping shape one of Catholicism's most enduring devotions along the way.",
+    "facts": [
+      "Born in Normandy, France, in 1601",
+      "Ministered to plague victims early in his priesthood",
+      "Founded a religious order to help women leaving prostitution rebuild their lives",
+      "A key figure in popularizing devotion to the Sacred Heart of Jesus"
+    ]
+  },
+  "08-20": {
+    "name": "Saint Bernard of Clairvaux",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Bernard joined a struggling monastery as a young man and, within a few years, was sent out to found a new one at Clairvaux, which grew so quickly under his leadership that it launched dozens more across Europe. He became one of the most sought-after preachers and advisors of his time, counseling popes and kings alike, yet he insisted his monks live simply and pray constantly. His writing on the love of God is still read today for how directly and warmly it speaks to the heart.",
+    "image": "/saint-bernard-of-clairvaux.webp",
+    "patronOf": "Beekeepers and candlemakers",
+    "whyRemembered": "He's remembered for combining enormous public influence with an unshakable commitment to a quiet, disciplined life of prayer.",
+    "facts": [
+      "Born near Dijon, France, in 1090",
+      "Founded the monastery of Clairvaux at just 25 years old",
+      "Helped spread the Cistercian reform of monastic life across Europe",
+      "Named a Doctor of the Church in 1830, nicknamed the \"Mellifluous Doctor\" for his eloquence"
+    ]
+  },
+  "08-21": {
+    "name": "Saint Pius X",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Pius X was the son of a village postman who rose to become pope, and he never lost the plain, pastoral instincts of his upbringing. He lowered the age children could receive their First Communion, believing they shouldn't have to wait so long to meet Christ in the Eucharist, and he pushed for ordinary Catholics to receive Communion frequently rather than rarely. He also worked to simplify Church music and law, always with an eye toward making the faith more accessible, not less.",
+    "image": "/saint-pius-x.webp",
+    "patronOf": "First Communicants and catechists",
+    "whyRemembered": "He's remembered for using the papacy to lower barriers between ordinary Catholics and the sacraments, rather than raise them.",
+    "facts": [
+      "Born Giuseppe Sarto in 1835 in a small village near Venice",
+      "Elected pope in 1903",
+      "Lowered the age for First Communion to around 7 years old",
+      "Canonized in 1954, one of the first popes canonized in centuries"
+    ]
+  },
+  "08-22": {
+    "name": "The Queenship of Mary",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "This feast honors Mary as Queen of Heaven, a title the Church has used for her since the earliest centuries of Christian art and prayer. It falls exactly one week after the Assumption, tying the two feasts together: because Mary was taken body and soul into heaven, the Church honors her there not as a distant figure but as a mother who reigns alongside her Son. The title isn't about power for its own sake, but about the honor a child gives a mother who said yes to God completely.",
+    "image": "/queenship-of-mary.webp",
+    "whyRemembered": "This feast is remembered as a celebration of Mary's closeness to Christ, honoring her not as someone above us but as someone who leads by having trusted God first.",
+    "facts": [
+      "Formally established by Pope Pius XII in 1954",
+      "Deliberately placed one week after the Assumption to link the two feasts",
+      "Reflected for centuries earlier in art through the \"Coronation of the Virgin\" theme",
+      "One of several titles for Mary rooted in her closeness to Christ, alongside Mother of God and Our Lady"
+    ]
+  },
+  "08-23": {
+    "name": "Saint Rose of Lima",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "Rose of Lima was known for her striking beauty as a young woman, but she deliberately disfigured her appearance at times, believing it distracted from a life she wanted to give entirely to God. She lived much of her life in a small hut in her family's garden in Lima, Peru, praying for hours and caring for the sick, elderly, and poor children of the city out of her own limited means. She became the first person born in the Americas to be canonized a saint.",
+    "image": "/saint-rose-of-lima.webp",
+    "patronOf": "Latin America, the Philippines, and florists",
+    "whyRemembered": "She's remembered as proof that holiness took root in the Americas from the very beginning, and for choosing a life of quiet service over the attention her beauty could have brought her.",
+    "facts": [
+      "Born in Lima, Peru, in 1586",
+      "Joined the Third Order of Saint Dominic as a laywoman",
+      "Cared for the sick and poor of Lima from a small hut in her family's garden",
+      "Canonized in 1671, the first saint born in the Americas"
+    ]
+  },
+  "08-24": {
+    "name": "Saint Bartholomew the Apostle",
+    "feastRank": "Feast",
+    "color": "red",
+    "bio": "Many scholars believe Bartholomew is the same person the Gospel of John calls Nathanael, the man Jesus described as \"a true Israelite, in whom there is no duplicity,\" the moment they met. Little else is recorded about him directly in Scripture, but tradition holds he carried the Gospel as far as India and Armenia, and that he was martyred by being flayed alive for his preaching. Despite how little is written about him, the early Church remembered him as one of the boldest of the Twelve.",
+    "image": "/saint-bartholomew.webp",
+    "patronOf": "Tanners and leatherworkers",
+    "whyRemembered": "He's remembered for carrying the Gospel to distant lands with almost no recognition in Scripture, a reminder that faithfulness doesn't require the spotlight.",
+    "facts": [
+      "Likely the same figure called Nathanael in the Gospel of John",
+      "One of the Twelve Apostles chosen directly by Jesus",
+      "Tradition holds he preached in Armenia, Persia, and India",
+      "Michelangelo included a self-portrait on Bartholomew's flayed skin in his fresco The Last Judgment"
+    ]
+  },
+  "08-25": {
+    "name": "Saint Joseph Calasanz",
+    "feastRank": "Optional Memorial",
+    "color": "white",
+    "bio": "Joseph Calasanz was a well-connected priest in Rome when he became convinced that poor children deserved a real education, not just charity. At a time when schooling was mostly reserved for the wealthy, he opened one of Europe's first free public schools and founded the Piarists, a religious order devoted entirely to teaching. He also became a close friend of the astronomer Galileo, defending scientific inquiry at a moment when it was politically risky to do so.",
+    "image": "/saint-joseph-calasanz.webp",
+    "patronOf": "Catholic schools and students",
+    "whyRemembered": "He's remembered for believing that a poor child's mind was worth investing in just as much as a wealthy one's, decades before public education became common.",
+    "facts": [
+      "Born in Peralta de la Sal, Spain, in 1557",
+      "Opened one of the first free public schools in Europe in 1597",
+      "Founded the Piarists, a religious order dedicated to educating poor children",
+      "A personal friend of the astronomer Galileo Galilei"
+    ]
+  },
+  "08-27": {
+    "name": "Saint Monica",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Monica spent decades praying for her son Augustine, who spent his young adulthood chasing ambition and pleasure while dismissing the faith she tried to hand him. She followed him from North Africa to Italy, refusing to give up even when it seemed hopeless, and lived to see him convert and become one of the greatest theologians in Church history. Augustine later wrote about her tears and persistence in his Confessions, calling her prayers the reason he was saved.",
+    "image": "/saint-monica.webp",
+    "patronOf": "Mothers and difficult marriages",
+    "whyRemembered": "She's remembered as a witness that persistent, patient prayer for someone you love is never wasted, even when the answer takes decades to arrive.",
+    "facts": [
+      "Born in North Africa (modern-day Algeria) around 331 AD",
+      "Prayed for her son Augustine's conversion for roughly 17 years",
+      "Also endured a difficult marriage to a non-Christian husband who eventually converted before his death",
+      "Her story is told largely through her son Augustine's memoir, the Confessions"
+    ]
+  },
+  "08-28": {
+    "name": "Saint Augustine of Hippo",
+    "feastRank": "Memorial",
+    "color": "white",
+    "bio": "Augustine spent his younger years chasing ambition, pleasure, and a philosophy that had little room for God, despite his mother Monica's persistent prayers. His conversion came suddenly, prompted by a child's voice telling him to \"take up and read,\" which led him to open Scripture to a passage that changed the direction of his life. He went on to become one of the most influential thinkers in Christian history, writing openly about his own failures in his memoir, the Confessions, so others could see that grace reaches even the most resistant heart.",
+    "image": "/saint-augustine-of-hippo.webp",
+    "patronOf": "Theologians",
+    "whyRemembered": "He's remembered for being brutally honest about his own struggles and failures, making his eventual conversion feel reachable rather than distant.",
+    "facts": [
+      "Born in Thagaste, North Africa (modern-day Algeria), in 354 AD",
+      "Lived years of restlessness before his conversion at age 31",
+      "Wrote the Confessions, one of the first Western autobiographies",
+      "Named a Doctor of the Church and one of the most influential theologians in Christian history"
+    ]
+  },
+  "08-29": {
+    "name": "The Beheading of Saint John the Baptist",
+    "feastRank": "Memorial",
+    "color": "red",
+    "bio": "John the Baptist publicly criticized King Herod Antipas for unlawfully marrying his brother's wife, Herodias, and it cost him his freedom and eventually his life. Imprisoned for his boldness, John was executed after Herodias's daughter danced for Herod and, prompted by her mother, asked for John's head on a platter. He died the way he had lived, refusing to soften the truth even when it was dangerous to speak it.",
+    "image": "/beheading-of-john-the-baptist.webp",
+    "whyRemembered": "He's remembered for paying the full cost of telling the truth to power, and for never wavering from his role as the one who prepared the way for Jesus.",
+    "facts": [
+      "John the Baptist was Jesus's cousin and the one who baptized him in the Jordan River",
+      "He publicly condemned Herod Antipas's unlawful marriage to Herodias",
+      "Executed by beheading at Herod's court, according to the Gospels of Matthew and Mark",
+      "This is a separate feast from his Nativity, celebrated June 24"
+    ]
   }
 }

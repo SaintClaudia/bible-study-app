@@ -42,7 +42,7 @@ function SaintContent({ saint, comingUpLabel }: { saint: SaintOfTheDay; comingUp
         </span>
       </div>
 
-      <div className="relative w-full overflow-hidden rounded-2xl bg-secondary" style={{ aspectRatio: '1/1' }}>
+      <div className="relative w-full overflow-hidden rounded-2xl bg-secondary" style={{ aspectRatio: saint.imageAspectRatio ?? '1/1' }}>
         <Image src={saint.image} alt={saint.name} fill className="object-cover object-top" />
       </div>
 
