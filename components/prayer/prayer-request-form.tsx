@@ -39,7 +39,10 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-background flex flex-col">
-      <div className="flex items-center justify-end px-5 py-4 border-b border-border">
+      <div
+        className="flex items-center justify-end px-5 py-4 border-b border-border"
+        style={{ paddingTop: 'max(env(safe-area-inset-top), 16px)' }}
+      >
         <button
           type="button"
           onClick={onExit}
