@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, HandHeart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { prayers } from '@/lib/content'
+import { PrayerRequestForm } from '@/components/prayer/prayer-request-form'
 
 export function PrayerTab() {
   const [open, setOpen] = useState<string | null>(null)
+  const [requestFormOpen, setRequestFormOpen] = useState(false)
 
   return (
     <div className="flex flex-col gap-8">
@@ -64,6 +66,24 @@ export function PrayerTab() {
           )
         })}
       </section>
+
+      <button
+        type="button"
+        onClick={() => setRequestFormOpen(true)}
+        className="relative flex w-full items-center gap-3.5 overflow-hidden rounded-2xl bg-neutral-900 p-5 text-left dark:bg-neutral-800"
+      >
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10">
+          <HandHeart className="h-5 w-5 text-white" aria-hidden />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="font-heading text-lg font-normal leading-tight text-white">Submit a Prayer Request</p>
+          <p className="mt-0.5 text-sm" style={{ color: '#89877E' }}>
+            Share what&apos;s on your heart
+          </p>
+        </div>
+      </button>
+
+      {requestFormOpen && <PrayerRequestForm onExit={() => setRequestFormOpen(false)} />}
 
     </div>
   )
