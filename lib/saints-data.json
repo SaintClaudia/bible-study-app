@@ -366,6 +366,21 @@
       "Still holds a reenactment of the legendary snowfall every August 5th, with white flower petals released from the ceiling"
     ]
   },
+  "08-06": {
+    "name": "The Transfiguration of the Lord",
+    "feastRank": "Feast",
+    "color": "white",
+    "bio": "Jesus led Peter, James, and John up a high mountain and let them see him as he truly is. His face became as bright as the sun and his clothes turned dazzling white, and Moses and Elijah appeared beside him, standing in for the Law and the Prophets of the Old Testament. A voice came from a bright cloud saying, \"This is my beloved Son, listen to him,\" the same words spoken at Jesus' baptism. The three apostles were so overcome that they fell to the ground, and Jesus had to reach down and tell them not to be afraid.",
+    "image": "/transfiguration-of-the-lord.webp",
+    "imageAspectRatio": "2/3",
+    "whyRemembered": "This feast is remembered as a glimpse of the glory waiting on the other side of the cross, given to the apostles before Jesus' suffering so they would have something to hold onto when it came.",
+    "facts": [
+      "Traditionally believed to have taken place on Mount Tabor in Galilee",
+      "Recounted in three Gospels: Matthew, Mark, and Luke",
+      "The Gospel account is read every year on the Second Sunday of Lent",
+      "Made a feast for the whole Church by Pope Callixtus III in 1456"
+    ]
+  },
   "08-07": {
     "name": "Saint Cajetan",
     "feastRank": "Optional Memorial",
