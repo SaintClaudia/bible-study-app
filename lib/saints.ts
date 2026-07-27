@@ -38,14 +38,19 @@ export async function fetchSaintOfTheDay(date: Date = new Date()): Promise<Saint
 }
 
 // Used on plain ferial days (no saint assigned) to preview what's coming up
-// next, rather than leaving the page empty. Searches forward day by day —
-// bounded to a year so it can't loop forever once the dataset covers less
-// than a full year (currently just July).
+// next, rather than leaving the page empty. Searches forward day by day, but
+// bounded to 14 days — comfortably wider than any real gap between two
+// populated dates (currently 3 days at most) — so that once the dataset runs
+// off the edge of its populated months (e.g. Aug 31 with only July/August
+// seeded), this returns null instead of jumping to a saint many months away
+// and presenting it as though it were the genuinely next one on the calendar.
+const MAX_NEXT_SAINT_SEARCH_DAYS = 14
+
 export async function fetchNextSaint(
   afterDate: Date = new Date(),
 ): Promise<{ date: Date; saint: SaintOfTheDay } | null> {
   const data = saintsData as Record<string, SaintOfTheDay>
-  for (let i = 1; i <= 366; i++) {
+  for (let i = 1; i <= MAX_NEXT_SAINT_SEARCH_DAYS; i++) {
     const candidate = new Date(afterDate)
     candidate.setDate(candidate.getDate() + i)
     const entry = data[toMonthDayKey(candidate)]

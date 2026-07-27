@@ -200,7 +200,7 @@ export function SaintTab() {
             <section className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card px-6 py-16 text-center">
               <p className="font-heading text-xl text-foreground">No major feast today</p>
               <p className="max-w-xs text-sm text-muted-foreground">
-                Today is an ordinary weekday on the calendar — check back soon for the next saint.
+                Today is an ordinary weekday on the calendar. Check back soon for the next saint.
               </p>
             </section>
           )}
