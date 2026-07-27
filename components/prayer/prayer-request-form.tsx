@@ -70,7 +70,7 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
                 onClick={onExit}
                 className="mt-2 rounded-full bg-neutral-900 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-neutral-800"
               >
-                Done
+                Amen
               </button>
             </div>
           ) : (
