@@ -41,14 +41,15 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
       </div>
 
       <div className="flex-1 overflow-y-auto px-5 py-6">
-        <div className="flex flex-col gap-6 max-w-md mx-auto">
+        <div className="flex flex-col gap-6 max-w-2xl mx-auto">
           {status === 'success' ? (
             <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
               <h1 className="font-heading text-3xl font-normal leading-tight text-foreground">
-                Thank you
+                Your prayer request has been received.
               </h1>
               <p className="text-base leading-relaxed text-muted-foreground max-w-xs">
-                Your request has been received. We will hold you in prayer.
+                Thank you for sharing your prayer intention. Our Bible Study prayer team will
+                be praying for you.
               </p>
               <button
                 type="button"
@@ -65,11 +66,13 @@ export function PrayerRequestForm({ onExit }: { onExit: () => void }) {
                   Share what&apos;s on your heart
                 </h1>
                 <p className="text-base leading-relaxed text-muted-foreground">
-                  Prayer requests are shared only with our Bible study prayer team and are
+                  Prayer requests are shared only with our Bible Study prayer team and are
                   never posted publicly. You are welcome to share as much or as little as you
                   feel comfortable sharing. If you&apos;d prefer, you can simply provide a
-                  first name or ask for prayers without any details at all. God knows your
-                  heart, even when words are difficult to find.
+                  first name or ask for prayers without any details at all.
+                </p>
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  God knows your heart, even when words are difficult to find.
                 </p>
               </div>
 

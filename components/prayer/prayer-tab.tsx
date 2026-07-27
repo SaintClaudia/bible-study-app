@@ -1,10 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, HandHeart } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { prayers } from '@/lib/content'
 import { PrayerRequestForm } from '@/components/prayer/prayer-request-form'
+
+function IconPrayingHands({ className }: { className?: string }) {
+  return (
+    // Always inverted to white — this icon sits on the CTA's dark surface in both light and dark theme.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/praying-hands.webp" alt="" className={cn(className, 'object-contain invert')} />
+  )
+}
 
 export function PrayerTab() {
   const [open, setOpen] = useState<string | null>(null)
@@ -73,7 +81,7 @@ export function PrayerTab() {
         className="relative flex w-full items-center gap-3.5 overflow-hidden rounded-2xl bg-neutral-900 p-5 text-left dark:bg-neutral-800"
       >
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10">
-          <HandHeart className="h-5 w-5 text-white" aria-hidden />
+          <IconPrayingHands className="h-5 w-5" />
         </div>
         <div className="min-w-0 flex-1">
           <p className="font-heading text-lg font-normal leading-tight text-white">Submit a Prayer Request</p>
