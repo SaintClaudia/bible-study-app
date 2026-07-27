@@ -108,7 +108,11 @@ export function SaintTab() {
               <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                 Their Story
               </p>
-              <p className="mt-2 text-base leading-relaxed text-foreground">{saint.bio}</p>
+              <div className="mt-2 flex flex-col gap-3">
+                {saint.bio.split('\n\n').map((paragraph, i) => (
+                  <p key={i} className="text-base leading-relaxed text-foreground">{paragraph}</p>
+                ))}
+              </div>
             </div>
 
             {saint.whyRemembered && (
@@ -142,15 +146,6 @@ export function SaintTab() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            )}
-
-            {saint.didYouKnow && (
-              <div className="rounded-2xl bg-secondary px-5 py-4">
-                <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                  Did You Know?
-                </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-foreground/80">{saint.didYouKnow}</p>
               </div>
             )}
           </section>
