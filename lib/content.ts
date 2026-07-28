@@ -2072,7 +2072,7 @@ export const prayers: Prayer[] = [
     id: 'saint-michael',
     title: 'Saint Michael Prayer',
     note: 'A prayer for protection against evil, often prayed after Mass.',
-    text: 'Saint Michael the Archangel,\ndefend us in battle.\nBe our defense against the wickedness and snares of the Devil.\nMay God rebuke him, we humbly pray,\nand do thou, O Prince of the heavenly hosts,\nby the power of God,\nthrust into hell Satan and all the evil spirits\nwho prowl about the world seeking the ruin of souls.\nAmen.',
+    text: 'Saint Michael the Archangel,\ndefend us in battle.\nBe our protection against the wickedness and snares of the devil.\nMay God rebuke him, we humbly pray,\nand do thou, O Prince of the heavenly host,\nby the power of God,\ncast into hell Satan and all the evil spirits\nwho prowl about the world seeking the ruin of souls.\nAmen.',
   },
   {
     id: 'saint-benedict',
