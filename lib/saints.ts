@@ -19,6 +19,9 @@ export interface SaintOfTheDay {
   whyRemembered?: string
   // Short, concrete facts — dates, titles, firsts — not full sentences of narrative.
   facts?: string[]
+  // A traditional prayer associated with the saint, verbatim. Only set when
+  // one genuinely exists and is commonly prayed (e.g. the Saint Michael Prayer).
+  prayer?: string
   // CSS aspect-ratio for the portrait container (e.g. "1/1"). Defaults to a
   // square in the UI when omitted; override for images that get awkwardly
   // cropped as a square (a tall building, a wide composition, etc).

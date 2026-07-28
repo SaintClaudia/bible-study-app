@@ -86,6 +86,17 @@ function SaintContent({ saint }: { saint: SaintOfTheDay }) {
             </ul>
           </div>
         )}
+
+        {saint.prayer && (
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+              Their Prayer
+            </p>
+            <p className="whitespace-pre-wrap text-base leading-[1.85] text-foreground/90">
+              {saint.prayer}
+            </p>
+          </div>
+        )}
       </section>
     </>
   )
