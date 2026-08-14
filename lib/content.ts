@@ -2051,6 +2051,12 @@ export const prayers: Prayer[] = [
     text: 'Hail Mary, full of grace,\nthe Lord is with thee;\nblessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God,\npray for us sinners,\nnow and at the hour of our death.\nAmen.',
   },
   {
+    id: 'apostles-creed',
+    title: "Apostles' Creed",
+    note: 'A summary of the core beliefs of the Christian faith, dating back to the early Church.',
+    text: 'I believe in God,\nthe Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,\nwas crucified, died and was buried;\nHe descended into hell;\nthe third day He rose again from the dead;\nHe ascended into heaven,\nand sits at the right hand of God the Father almighty,\nfrom thence He shall come to judge the living and the dead.\nI believe in the Holy Spirit,\nthe holy Catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting.\nAmen.',
+  },
+  {
     id: 'act-of-contrition',
     title: 'Act of Contrition',
     note: 'Prayed after confessing sins, expressing sorrow and a firm intention to change.',
@@ -2063,10 +2069,28 @@ export const prayers: Prayer[] = [
     text: 'I confess to almighty God\nand to you, my brothers and sisters,\nthat I have greatly sinned,\nin my thoughts and in my words,\nin what I have done and in what I have failed to do,\nthrough my fault, through my fault,\nthrough my most grievous fault;\ntherefore I ask blessed Mary ever-Virgin,\nall the Angels and Saints,\nand you, my brothers and sisters,\nto pray for me to the Lord our God.',
   },
   {
-    id: 'apostles-creed',
-    title: "Apostles' Creed",
-    note: 'A summary of the core beliefs of the Christian faith, dating back to the early Church.',
-    text: 'I believe in God,\nthe Father almighty,\nCreator of heaven and earth,\nand in Jesus Christ, his only Son, our Lord,\nwho was conceived by the Holy Spirit,\nborn of the Virgin Mary,\nsuffered under Pontius Pilate,\nwas crucified, died and was buried;\nHe descended into hell;\nthe third day He rose again from the dead;\nHe ascended into heaven,\nand sits at the right hand of God the Father almighty,\nfrom thence He shall come to judge the living and the dead.\nI believe in the Holy Spirit,\nthe holy Catholic Church,\nthe communion of saints,\nthe forgiveness of sins,\nthe resurrection of the body,\nand life everlasting.\nAmen.',
+    id: 'glory-be',
+    title: 'Glory Be',
+    note: 'A short prayer of praise to the Holy Trinity, often prayed at the end of each decade of the Rosary.',
+    text: 'Glory be to the Father,\nand to the Son,\nand to the Holy Spirit.\nAs it was in the beginning,\nis now, and ever shall be,\nworld without end.\nAmen.',
+  },
+  {
+    id: 'serenity-prayer',
+    title: 'Serenity Prayer',
+    note: 'A prayer for peace with what cannot be changed, courage for what can, and the wisdom to know the difference — widely prayed in recovery communities.',
+    text: 'God, grant me the serenity\nto accept the things I cannot change,\nthe courage to change the things I can,\nand the wisdom to know the difference.',
+  },
+  {
+    id: 'morning-offering',
+    title: 'Morning Offering',
+    note: 'A prayer to begin the day, offering everything ahead — the good and the hard — to God before it unfolds.',
+    text: 'O Jesus, through the Immaculate Heart of Mary,\nI offer you my prayers, works, joys, and sufferings of this day\nfor all the intentions of your Sacred Heart\nin union with the Holy Sacrifice of the Mass throughout the world,\nfor the salvation of souls,\nthe reparation of sins,\nthe reunion of all Christians,\nand in particular for the intentions of the Holy Father.\nAmen.',
+  },
+  {
+    id: 'grace-before-meals',
+    title: 'Grace Before Meals',
+    note: 'Prayed before eating, thanking God for the meal and asking his blessing on it — a custom dating back to the 7th century.',
+    text: 'Bless us, O Lord, and these Thy gifts,\nwhich we are about to receive\nfrom Thy bounty,\nthrough Christ our Lord.\nAmen.',
   },
   {
     id: 'saint-michael',
@@ -2079,29 +2103,5 @@ export const prayers: Prayer[] = [
     title: 'Saint Benedict Medal Prayer',
     note: "The exorcism prayer inscribed around the Saint Benedict Medal, used for protection against evil. In Latin: Crux sacra sit mihi lux, non draco sit mihi dux. Vade retro Satana! Numquam suade mihi vana! Sunt mala quae libas, ipse venena bibas!",
     text: 'May the Holy Cross be my light;\nlet not the dragon be my guide.\nBegone, Satan!\nNever tempt me with your vanities!\nWhat you offer me is evil.\nDrink the poison yourself!',
-  },
-  {
-    id: 'glory-be',
-    title: 'Glory Be',
-    note: 'A short prayer of praise to the Holy Trinity, often prayed at the end of each decade of the Rosary.',
-    text: 'Glory be to the Father,\nand to the Son,\nand to the Holy Spirit.\nAs it was in the beginning,\nis now, and ever shall be,\nworld without end.\nAmen.',
-  },
-  {
-    id: 'grace-before-meals',
-    title: 'Grace Before Meals',
-    note: 'Prayed before eating, thanking God for the meal and asking his blessing on it — a custom dating back to the 7th century.',
-    text: 'Bless us, O Lord, and these Thy gifts,\nwhich we are about to receive\nfrom Thy bounty,\nthrough Christ our Lord.\nAmen.',
-  },
-  {
-    id: 'morning-offering',
-    title: 'Morning Offering',
-    note: 'A prayer to begin the day, offering everything ahead — the good and the hard — to God before it unfolds.',
-    text: 'O Jesus, through the Immaculate Heart of Mary,\nI offer you my prayers, works, joys, and sufferings of this day\nfor all the intentions of your Sacred Heart\nin union with the Holy Sacrifice of the Mass throughout the world,\nfor the salvation of souls,\nthe reparation of sins,\nthe reunion of all Christians,\nand in particular for the intentions of the Holy Father.\nAmen.',
-  },
-  {
-    id: 'serenity-prayer',
-    title: 'Serenity Prayer',
-    note: 'A prayer for peace with what cannot be changed, courage for what can, and the wisdom to know the difference — widely prayed in recovery communities.',
-    text: 'God, grant me the serenity\nto accept the things I cannot change,\nthe courage to change the things I can,\nand the wisdom to know the difference.',
   },
 ]
