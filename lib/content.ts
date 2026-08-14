@@ -2096,6 +2096,12 @@ export const prayers: Prayer[] = [
     id: 'morning-offering',
     title: 'Morning Offering',
     note: 'A prayer to begin the day, offering everything ahead — the good and the hard — to God before it unfolds.',
-    text: 'O Jesus, through the Immaculate Heart of Mary,\nI offer You my prayers, works, joys, and sufferings of this day\nfor all the intentions of Your Sacred Heart,\nin union with the Holy Sacrifice of the Mass throughout the world,\nin reparation for my sins,\nfor the intentions of all my relatives and friends,\nand in particular for the intentions of the Holy Father.\nAmen.',
+    text: 'O Jesus, through the Immaculate Heart of Mary,\nI offer you my prayers, works, joys, and sufferings of this day\nfor all the intentions of your Sacred Heart\nin union with the Holy Sacrifice of the Mass throughout the world,\nfor the salvation of souls,\nthe reparation of sins,\nthe reunion of all Christians,\nand in particular for the intentions of the Holy Father.\nAmen.',
+  },
+  {
+    id: 'serenity-prayer',
+    title: 'Serenity Prayer',
+    note: 'A prayer for peace with what cannot be changed, courage for what can, and the wisdom to know the difference — widely prayed in recovery communities.',
+    text: 'God, grant me the serenity\nto accept the things I cannot change,\nthe courage to change the things I can,\nand the wisdom to know the difference.',
   },
 ]
