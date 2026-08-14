@@ -2092,4 +2092,10 @@ export const prayers: Prayer[] = [
     note: 'Prayed before eating, thanking God for the meal and asking his blessing on it — a custom dating back to the 7th century.',
     text: 'Bless us, O Lord, and these Thy gifts,\nwhich we are about to receive\nfrom Thy bounty,\nthrough Christ our Lord.\nAmen.',
   },
+  {
+    id: 'morning-offering',
+    title: 'Morning Offering',
+    note: 'A prayer to begin the day, offering everything ahead — the good and the hard — to God before it unfolds.',
+    text: 'O Jesus, through the Immaculate Heart of Mary,\nI offer You my prayers, works, joys, and sufferings of this day\nfor all the intentions of Your Sacred Heart,\nin union with the Holy Sacrifice of the Mass throughout the world,\nin reparation for my sins,\nfor the intentions of all my relatives and friends,\nand in particular for the intentions of the Holy Father.\nAmen.',
+  },
 ]
