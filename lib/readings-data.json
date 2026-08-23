@@ -1,49 +1,49 @@
 {
   "sunday": {
-    "date": "2026-08-23",
-    "liturgicalDay": "Twenty-first Sunday in Ordinary Time",
+    "date": "2026-08-30",
+    "liturgicalDay": "Twenty-second Sunday in Ordinary Time",
     "season": "Ordinary Time",
-    "theme": "Keys, Trust, and Authority",
-    "themeNote": "All three readings this week circle around one big idea: God places authority in specific people and trusts them to carry it well. In Isaiah, God hands a key to a faithful servant. In the Gospel, Jesus hands that same kind of key to Peter and builds his whole Church on Peter's trust. Paul reminds us that behind all of this is a God whose wisdom is far beyond what any of us can fully map out, and who deserves our awe and gratitude.",
+    "theme": "Carrying What Burns Within",
+    "themeNote": "This week's readings all ask the same quiet question: what are you willing to endure for something true and good? Jeremiah tried to stay silent but couldn't. Paul asks us to stop letting the world around us do all the shaping. And Jesus tells his followers that the path forward runs straight through difficulty, not around it.",
     "readings": [
       {
         "label": "First Reading",
-        "reference": "Isaiah 22:19-23",
-        "fullText": "Thus says the LORD to Shebna, master of the palace:\n\"I will thrust you from your office\nand pull you down from your station.\nOn that day I will summon my servant\nEliakim, son of Hilkiah;\nI will clothe him with your robe,\nand gird him with your sash,\nand give over to him your authority.\nHe shall be a father to the inhabitants of Jerusalem,\nand to the house of Judah.\nI will place the key of the House of David on Eliakim's shoulder;\nwhen he opens, no one shall shut,\nwhen he shuts, no one shall open.\nI will fix him like a peg in a sure spot,\nto be a place of honor for his family.\"",
-        "summary": "God is speaking through the prophet Isaiah, and he is making a leadership change. A man named Shebna has been in charge, but God is removing him and putting a man named Eliakim in his place. God describes giving Eliakim a special key, one that lets him open doors no one else can close and close doors no one else can open. This key is a sign of real, lasting authority given by God himself.",
+        "reference": "Jeremiah 20:7-9",
+        "fullText": "You duped me, O LORD, and I let myself be duped;\nyou were too strong for me, and you triumphed.\nAll the day I am an object of laughter;\neveryone mocks me.\n\nWhenever I speak, I must cry out,\nviolence and outrage is my message;\nthe word of the LORD has brought me\nderision and reproach all the day.\n\nI say to myself, I will not mention him,\nI will speak in his name no more.\nBut then it becomes like fire burning in my heart,\nimprisoned in my bones;\nI grow weary holding it in, I cannot endure it.",
+        "summary": "Jeremiah is frustrated. He feels like God pulled him into a role he never asked for, and speaking God's message has brought him nothing but ridicule. He tries to quit, to just stop talking about God altogether. But he finds he can't do it. Something inside him keeps burning, and staying silent feels worse than the mockery.",
         "reflection": {
-          "reflection": "God sometimes moves trusted people into new roles not as a punishment to others but as a gift to everyone. Being chosen for something important is also being called to serve.",
-          "question": "Think of someone in your life who leads quietly and without much fanfare. What do you think makes their kind of leadership feel trustworthy?"
+          "reflection": "God can put something so deep inside us that we can't stay quiet about it, even when speaking up costs us. That inner fire is worth paying attention to.",
+          "question": "Is there something you keep coming back to, a conviction or a value, that feels hard to ignore even when it would be easier to just let it go?"
         }
       },
       {
         "label": "Responsorial Psalm",
-        "reference": "Psalms 138:1-2, 2-3, 6, 8",
-        "fullText": "R. (8bc) Lord, your love is eternal; do not forsake the work of your hands.\nI will give thanks to you, O LORD, with all my heart,\nfor you have heard the words of my mouth;\nin the presence of the angels I will sing your praise;\nI will worship at your holy temple.\nR. Lord, your love is eternal; do not forsake the work of your hands.\nI will give thanks to your name,\nbecause of your kindness and your truth:\nWhen I called, you answered me;\nyou built up strength within me.\nR. Lord, your love is eternal; do not forsake the work of your hands.\nThe LORD is exalted, yet the lowly he sees,\nand the proud he knows from afar.\nYour kindness, O LORD, endures forever;\nforsake not the work of your hands.\nR. Lord, your love is eternal; do not forsake the work of your hands.",
-        "summary": "The psalm is a song of gratitude from someone who prayed and felt God come through for them. The writer praises God openly, even in front of others, because God answered when called. The psalm holds two ideas together: God is great and far above us, and yet God still notices the humble and the overlooked. The repeated refrain asks God not to walk away from the people he has made.",
+        "reference": "Psalms 63:2, 3-4, 5-6, 8-9",
+        "fullText": "R. (2b) My soul is thirsting for you, O Lord my God.\nO God, you are my God whom I seek;\nfor you my flesh pines and my soul thirsts\nlike the earth, parched, lifeless and without water.\nR. My soul is thirsting for you, O Lord my God.\nThus have I gazed toward you in the sanctuary\nto see your power and your glory,\nfor your kindness is a greater good than life;\nmy lips shall glorify you.\nR. My soul is thirsting for you, O Lord my God.\nThus will I bless you while I live;\nlifting up my hands, I will call upon your name.\nAs with the riches of a banquet shall my soul be satisfied,\nand with exultant lips my mouth shall praise you.\nR. My soul is thirsting for you, O Lord my God.\nYou are my help,\nand in the shadow of your wings I shout for joy.\nMy soul clings fast to you;\nyour right hand upholds me.\nR. My soul is thirsting for you, O Lord my God.",
+        "summary": "The psalmist is deeply longing for God, the way someone lost in a desert longs for water. This isn't a polite or distant feeling. It is urgent and physical. But even in that longing, there is trust. The psalmist clings to God and finds real comfort, like someone finally sitting down to a full meal after going hungry.",
         "reflection": {
-          "reflection": "God hears us when we call out, and that is worth saying out loud. Gratitude shared openly can itself become a kind of prayer.",
-          "question": "Is there something that worked out recently, big or small, that you have not really stopped to feel grateful for yet?"
+          "reflection": "Longing is not the opposite of trust. The psalm shows that aching for something more can actually be the beginning of finding it.",
+          "question": "When was the last time you felt a quiet but persistent sense that something was missing? What were you doing, and what do you think you were actually looking for?"
         }
       },
       {
         "label": "Second Reading",
-        "reference": "Romans 11:33-36",
-        "fullText": "Oh, the depth of the riches and wisdom and knowledge of God!\nHow inscrutable are his judgments and how unsearchable his ways!\nFor who has known the mind of the Lord\nor who has been his counselor?\nOr who has given the Lord anything\nthat he may be repaid?\nFor from him and through him and for him are all things.\nTo him be glory forever. Amen.",
-        "summary": "Paul is not explaining a doctrine here so much as standing in wonder. He is saying that God's wisdom and knowledge are so deep that no human being could ever fully understand them. No one taught God anything, and no one has ever done God a favor that needed paying back. Everything comes from God, exists through God, and finds its purpose in God.",
+        "reference": "Romans 12:1-2",
+        "fullText": "I urge you, brothers and sisters, by the mercies of God,\nto offer your bodies as a living sacrifice,\nholy and pleasing to God, your spiritual worship.\nDo not conform yourselves to this age\nbut be transformed by the renewal of your mind,\nthat you may discern what is the will of God,\nwhat is good and pleasing and perfect.",
+        "summary": "Paul is writing to early Christians in Rome and urging them to make their whole lives an act of worship, not just what happens at a service. He warns them not to let the surrounding culture decide who they are or what they value. Instead, he says, let your mind be renewed so you can figure out what is actually good.",
         "reflection": {
-          "reflection": "Paul is not frustrated by how much he does not know about God. He is amazed by it. There is an invitation here to let mystery feel like wonder instead of a problem to solve.",
-          "question": "When something in your life does not make sense right now, does it feel more like a locked door or more like a question you are still sitting with?"
+          "reflection": "Paul says our everyday lives, not just our big moments, are where real transformation happens. Small choices add up and gradually shape who we become.",
+          "question": "Think about one habit you have on a regular weekday. Does it tend to leave you feeling more like the person you want to be, or less?"
         }
       },
       {
         "label": "Gospel",
-        "reference": "Matthew 16:13-20",
-        "fullText": "Jesus went into the region of Caesarea Philippi and\nhe asked his disciples,\n\"Who do people say that the Son of Man is?\"\nThey replied, \"Some say John the Baptist, others Elijah,\nstill others Jeremiah or one of the prophets.\"\nHe said to them, \"But who do you say that I am?\"\nSimon Peter said in reply,\n\"You are the Christ, the Son of the living God.\"\nJesus said to him in reply,\n\"Blessed are you, Simon son of Jonah.\nFor flesh and blood has not revealed this to you, but my heavenly Father.\nAnd so I say to you, you are Peter,\nand upon this rock I will build my church,\nand the gates of the netherworld shall not prevail against it.\nI will give you the keys to the kingdom of heaven.\nWhatever you bind on earth shall be bound in heaven;\nand whatever you loose on earth shall be loosed in heaven.\"\nThen he strictly ordered his disciples\nto tell no one that he was the Christ.",
-        "summary": "Jesus asks his disciples a direct question: who do people think he is? He gets a few different answers. Then he makes it personal and asks who they think he is. Peter speaks up and says Jesus is the Messiah, the Son of the living God. Jesus tells Peter that this answer did not come from human reasoning but from God. He then gives Peter a new name and says he will build his Church on him, handing him the keys to the kingdom.",
+        "reference": "Matthew 16:21-27",
+        "fullText": "Jesus began to show his disciples\nthat he must go to Jerusalem and suffer greatly\nfrom the elders, the chief priests, and the scribes,\nand be killed and on the third day be raised.\nThen Peter took Jesus aside and began to rebuke him,\n\"God forbid, Lord! No such thing shall ever happen to you.\"\nHe turned and said to Peter,\n\"Get behind me, Satan! You are an obstacle to me.\nYou are thinking not as God does, but as human beings do.\"\n\nThen Jesus said to his disciples,\n\"Whoever wishes to come after me must deny himself,\ntake up his cross, and follow me.\nFor whoever wishes to save his life will lose it,\nbut whoever loses his life for my sake will find it.\nWhat profit would there be for one to gain the whole world\nand forfeit his life?\nOr what can one give in exchange for his life?\nFor the Son of Man will come with his angels in his Father's glory,\nand then he will repay all according to his conduct.\"",
+        "summary": "Jesus tells his disciples plainly that he is going to suffer and die in Jerusalem. Peter pulls him aside and pushes back hard. He doesn't want that for Jesus. But Jesus corrects him sharply, because Peter is thinking about what feels safe, not what is true. Then Jesus turns to all of them and says that following him means picking up your own cross, not avoiding it.",
         "reflection": {
-          "reflection": "Jesus does not just ask about opinions. He asks what you personally think of him. That question is still open, and there is no wrong way to be honest about where you are.",
-          "question": "If Jesus asked you today, right now, who you think he is, what would you actually say?"
+          "reflection": "Jesus does not promise an easy road. He promises that the things worth having often require us to let go of what feels safe or comfortable.",
+          "question": "Is there something in your life right now that you know is worth doing but that you've been putting off because it feels hard or risky?"
         }
       }
     ]
