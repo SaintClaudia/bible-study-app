@@ -1,49 +1,49 @@
 {
   "sunday": {
-    "date": "2026-09-13",
-    "liturgicalDay": "Twenty-fourth Sunday in Ordinary Time",
+    "date": "2026-09-20",
+    "liturgicalDay": "Twenty-fifth Sunday in Ordinary Time",
     "season": "Ordinary Time",
-    "theme": "Forgiven People Forgive Others",
-    "themeNote": "Every reading this week circles back to one idea: we have all been forgiven far more than we could ever repay, and that gift is meant to flow outward. Sirach warns that holding onto anger blocks us from receiving healing. Paul reminds us that our whole life belongs to a God who is endlessly merciful. And Jesus makes it vivid with a story about a man who forgot what it felt like to be let off the hook.",
+    "theme": "God's Surprising Generosity",
+    "themeNote": "This week's readings share one big idea: God gives more than we expect, and in ways we don't always understand. Isaiah reminds us that God's thinking is far beyond ours. Paul shows us someone whose whole life is shaped by that trust. And Jesus tells a story that turns our sense of fairness upside down, in the best possible way.",
     "readings": [
       {
         "label": "First Reading",
-        "reference": "Sirach 27:30—28:7",
-        "fullText": "Wrath and anger are hateful things,\nyet the sinner hugs them tight.\nThe vengeful will suffer the LORD’s vengeance,\nfor he remembers their sins in detail.\nForgive your neighbor’s injustice;\nthen when you pray, your own sins will be forgiven.\nCould anyone nourish anger against another\nand expect healing from the LORD?\nCould anyone refuse mercy to another like himself,\ncan he seek pardon for his own sins?\nIf one who is but flesh cherishes wrath,\nwho will forgive his sins?\nRemember your last days, set enmity aside;\nremember death and decay, and cease from sin!\nThink of the commandments, hate not your neighbor;\nremember the Most High’s covenant, and overlook faults.",
-        "summary": "The book of Sirach is an ancient collection of wisdom for everyday life. This passage is blunt: anger and the desire for payback are poisonous, and holding onto them keeps us from being whole. If we want God to forgive us, we have to be willing to forgive the people around us. Thinking about our own limits and our own need for mercy is what opens the door.",
+        "reference": "Isaiah 55:6-9",
+        "fullText": "Seek the LORD while he may be found,\ncall him while he is near.\nLet the scoundrel forsake his way,\nand the wicked his thoughts;\nlet him turn to the LORD for mercy;\nto our God, who is generous in forgiving.\nFor my thoughts are not your thoughts,\nnor are your ways my ways, says the LORD.\nAs high as the heavens are above the earth,\nso high are my ways above your ways\nand my thoughts above your thoughts.",
+        "summary": "The prophet Isaiah urges people to turn back to God, promising that God is ready to forgive. God is not like us. God's ways are higher and wider than anything we can fully grasp. The invitation is simple: come back, and you will find mercy waiting.",
         "reflection": {
-          "reflection": "God offers us healing, but holding a grudge can quietly block it. Letting go of resentment is not about excusing what happened. It is about freeing ourselves to receive what God is already offering.",
-          "question": "Is there someone in your life right now, maybe a family member, a coworker, or an old friend, whose name comes to mind when you think about a hurt you are still carrying?"
+          "reflection": "God is not waiting to punish. He is waiting to forgive, and the door is always open. Turning toward him, even slowly, is enough to start.",
+          "question": "Is there something you have been putting off because you felt like you had waited too long or made too big a mess to fix it?"
         }
       },
       {
         "label": "Responsorial Psalm",
-        "reference": "Psalms 103:1-2, 3-4, 9-10, 11-12",
-        "fullText": "R. (8) The Lord is kind and merciful, slow to anger, and rich in compassion.\nBless the LORD, O my soul;\nand all my being, bless his holy name.\nBless the LORD, O my soul,\nand forget not all his benefits.\nR. The Lord is kind and merciful, slow to anger, and rich in compassion.\nHe pardons all your iniquities,\nheals all your ills.\nHe redeems your life from destruction,\ncrowns you with kindness and compassion.\nR. The Lord is kind and merciful, slow to anger, and rich in compassion.\nHe will not always chide,\nnor does he keep his wrath forever.\nNot according to our sins does he deal with us,\nnor does he requite us according to our crimes.\nR. The Lord is kind and merciful, slow to anger, and rich in compassion.\nFor as the heavens are high above the earth,\nso surpassing is his kindness toward those who fear him.\nAs far as the east is from the west,\nso far has he put our transgressions from us.\nR. The Lord is kind and merciful, slow to anger, and rich in compassion.",
-        "summary": "Psalm 103 is a song of praise for a God who does not treat us the way our mistakes deserve. God pardons, heals, and redeems. The image of sins removed as far as east is from west paints a picture of total, lasting forgiveness. The response we are invited to sing together sums it up: God is kind, merciful, slow to anger, and rich in compassion.",
+        "reference": "Psalms 145:2-3, 8-9, 17-18",
+        "fullText": "R. (18a) The Lord is near to all who call upon him.\nEvery day will I bless you,\nand I will praise your name forever and ever.\nGreat is the LORD and highly to be praised;\nhis greatness is unsearchable.\nR. The Lord is near to all who call upon him.\nThe LORD is gracious and merciful,\nslow to anger and of great kindness.\nThe LORD is good to all\nand compassionate toward all his works.\nR. The Lord is near to all who call upon him.\nThe LORD is just in all his ways\nand holy in all his works.\nThe LORD is near to all who call upon him,\nto all who call upon him in truth.\nR. The Lord is near to all who call upon him.",
+        "summary": "This psalm is a song of praise for who God is. God is kind, patient, and full of compassion for everyone. No matter when you turn to God or how far you feel from him, the psalm says the same thing: God is near to those who call.",
         "reflection": {
-          "reflection": "God does not keep a running tally of everything we get wrong. That kind of radical patience is what we are being invited to receive and then pass along to the people we see every day.",
-          "question": "Think about a moment this week when someone was patient with you. What did it feel like, and did it change how you treated anyone afterward?"
+          "reflection": "God does not keep his distance. He is close the moment you reach out, even if all you have is a quiet moment before bed or a few honest words in your head.",
+          "question": "When during your normal week might you actually have a few quiet seconds to notice that you are not alone?"
         }
       },
       {
         "label": "Second Reading",
-        "reference": "Romans 14:7-9",
-        "fullText": "Brothers and sisters:\nNone of us lives for oneself, and no one dies for oneself.\nFor if we live, we live for the Lord,\nand if we die, we die for the Lord;\nso then, whether we live or die, we are the Lord’s.\nFor this is why Christ died and came to life,\nthat he might be Lord of both the dead and the living.",
-        "summary": "Paul is writing to a community in Rome that is wrestling with differences and divisions. He cuts through the noise with something simple: none of us lives or dies for ourselves alone. We belong to Christ, who died and rose so that he could be Lord of everyone. That shared belonging is the reason we treat one another with care.",
+        "reference": "Philippians 1:20c-24, 27a",
+        "fullText": "Brothers and sisters:\nChrist will be magnified in my body, whether by life or by death.\nFor to me life is Christ, and death is gain.\nIf I go on living in the flesh,\nthat means fruitful labor for me.\nAnd I do not know which I shall choose.\nI am caught between the two.\nI long to depart this life and be with Christ,\nfor that is far better.\nYet that I remain in the flesh\nis more necessary for your benefit.\n\nOnly, conduct yourselves in a way worthy of the gospel of Christ.",
+        "summary": "Paul is writing from prison and is honest about a tension he feels. He wants to be with Christ fully, but he also knows his friends still need him. So he chooses to stay and serve. His closing line is a quiet challenge: live in a way that matches what you believe.",
         "reflection": {
-          "reflection": "Paul says our lives are not just our own. Everything we do, even the small ordinary things, is connected to something bigger. That can feel like pressure, but it can also feel like company.",
-          "question": "When you think about a regular part of your day, like your commute, your work, or how you talk to the people at home, does it feel like something you do alone or something that matters to others too?"
+          "reflection": "Paul found a sense of purpose by asking how he could help the people around him, not just what he wanted for himself. That kind of focus can change an ordinary day.",
+          "question": "Think of someone in your life right now who could use a little more of your attention. What is one small thing you could do for them this week?"
         }
       },
       {
         "label": "Gospel",
-        "reference": "Matthew 18:21-35",
-        "fullText": "Peter approached Jesus and asked him,\n“Lord, if my brother sins against me,\nhow often must I forgive?\nAs many as seven times?”\nJesus answered, “I say to you, not seven times but seventy-seven times.\nThat is why the kingdom of heaven may be likened to a king\nwho decided to settle accounts with his servants.\nWhen he began the accounting,\na debtor was brought before him who owed him a huge amount.\nSince he had no way of paying it back,\nhis master ordered him to be sold,\nalong with his wife, his children, and all his property,\nin payment of the debt.\nAt that, the servant fell down, did him homage, and said,\n‘Be patient with me, and I will pay you back in full.’\nMoved with compassion the master of that servant\nlet him go and forgave him the loan.\nWhen that servant had left, he found one of his fellow servants\nwho owed him a much smaller amount.\nHe seized him and started to choke him, demanding,\n‘Pay back what you owe.’\nFalling to his knees, his fellow servant begged him,\n‘Be patient with me, and I will pay you back.’\nBut he refused.\nInstead, he had the fellow servant put in prison\nuntil he paid back the debt.\nNow when his fellow servants saw what had happened,\nthey were deeply disturbed, and went to their master\nand reported the whole affair.\nHis master summoned him and said to him, ‘You wicked servant!\nI forgave you your entire debt because you begged me to.\nShould you not have had pity on your fellow servant,\nas I had pity on you?’\nThen in anger his master handed him over to the torturers\nuntil he should pay back the whole debt.\nSo will my heavenly Father do to you,\nunless each of you forgives your brother from your heart.”",
-        "summary": "Peter thinks he is being generous by offering to forgive someone seven times. Jesus answers with a number so large it is basically saying there is no limit. Then he tells a story about a servant whose master canceled an enormous debt, only to watch that same servant turn around and throw a fellow worker in prison over a small amount. The contrast is meant to land hard. We have been forgiven so much, and Jesus is asking us to let that reality change how we treat others.",
+        "reference": "Matthew 20:1-16a",
+        "fullText": "Jesus told his disciples this parable:\n\"The kingdom of heaven is like a landowner\nwho went out at dawn to hire laborers for his vineyard.\nAfter agreeing with them for the usual daily wage,\nhe sent them into his vineyard.\nGoing out about nine o'clock,\nthe landowner saw others standing idle in the marketplace,\nand he said to them, 'You too go into my vineyard,\nand I will give you what is just.'\nSo they went off.\nAnd he went out again around noon,\nand around three o'clock, and did likewise.\nGoing out about five o'clock,\nthe landowner found others standing around, and said to them,\n'Why do you stand here idle all day?'\nThey answered, 'Because no one has hired us.'\nHe said to them, 'You too go into my vineyard.'\nWhen it was evening the owner of the vineyard said to his foreman,\n'Summon the laborers and give them their pay,\nbeginning with the last and ending with the first.'\nWhen those who had started about five o'clock came,\neach received the usual daily wage.\nSo when the first came, they thought that they would receive more,\nbut each of them also got the usual wage.\nAnd on receiving it they grumbled against the landowner, saying,\n'These last ones worked only one hour,\nand you have made them equal to us,\nwho bore the day's burden and the heat.'\nHe said to one of them in reply,\n'My friend, I am not cheating you.\nDid you not agree with me for the usual daily wage?\nTake what is yours and go.\nWhat if I wish to give this last one the same as you?\nOr am I not free to do as I wish with my own money?\nAre you envious because I am generous?'\nThus, the last will be first, and the first will be last.\"",
+        "summary": "Jesus tells a story about a vineyard owner who hires workers throughout the day, some at sunrise and some just an hour before sunset. At the end of the day, everyone gets the same pay. The all-day workers are upset, but the owner says he has the right to be generous. It is a picture of how God welcomes everyone, no matter when they show up.",
         "reflection": {
-          "reflection": "Jesus is not asking us to pretend a wrong never happened. He is inviting us to notice how much we have already been given and to let that be the starting point for how we respond to others.",
-          "question": "Think of a time someone forgave you for something, even something small. How did it affect the way you saw that person or treated them going forward?"
+          "reflection": "God's generosity does not run out, and it does not depend on how early you arrived or how much you have done. Everyone gets the full gift.",
+          "question": "Have you ever felt like you were too late to belong somewhere or that others deserved good things more than you did? What does it feel like to consider that you might be wrong about that?"
         }
       }
     ]
