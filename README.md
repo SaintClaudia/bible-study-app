@@ -1,9 +1,8 @@
 # Bible Study — OCIA Catholic Companion
 
-A mobile-first web app for anyone exploring or living the Catholic faith. Sunday readings, Mass guidance, faith formation, a journey into the Church, and curated resources — all in one place.
+> **Project status:** Retired. The app and its marketing website are no longer live or actively maintained. This repository is preserved as a source-code and portfolio reference.
 
-**Live:** [app.biblestudylovesyou.com](https://app.biblestudylovesyou.com)
-**Marketing site:** [biblestudylovesyou.com](https://biblestudylovesyou.com)
+A mobile-first web app created for anyone exploring or living the Catholic faith. It brought Sunday readings, Mass guidance, faith formation, a journey into the Church, and curated resources together in one place.
 
 ---
 
@@ -11,7 +10,7 @@ A mobile-first web app for anyone exploring or living the Catholic faith. Sunday
 
 | Tab | What it does |
 |---|---|
-| **Readings** | This Sunday's Mass readings (NABRE) with plain-language summaries — auto-updated every Sunday at 5pm CST via GitHub Actions + Claude |
+| **Readings** | Sunday Mass readings (NABRE) with plain-language summaries, formerly updated via GitHub Actions + Claude |
 | **Mass** | Step-by-step guidance through the Order of the Mass, including Church Mode for use during Mass |
 | **Formation** | Learning paths on attending Mass, prayer, Catholic beliefs, and living the faith |
 | **Journey** | Honest answers for those exploring or entering the Church — OCIA, marriage, the Easter Vigil, common questions |
@@ -99,18 +98,18 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Automated Sunday Readings
+## Sunday Readings Automation
 
-Readings update automatically every Sunday at 5pm CST via a GitHub Action:
+The live project formerly updated readings every Sunday at 5pm CST via a GitHub Action. That production automation is no longer active, but the implementation remains in the repository for reference:
 
 1. Playwright launches a real browser to fetch readings from [bible.usccb.org](https://bible.usccb.org) (bypasses bot protection)
 2. `catholic-mass-readings` parses the HTML into structured readings
 3. Claude (`claude-sonnet-4-6`) generates plain-language summaries and liturgical metadata
-4. `lib/readings-data.json` is committed and Vercel redeploys automatically
+4. `lib/readings-data.json` is committed and the former Vercel deployment rebuilds
 
 **Required GitHub secret:** `ANTHROPIC_API_KEY`
 
-To trigger manually: Actions → Update Sunday Readings → Run workflow (optionally pass a `YYYY-MM-DD` date override).
+If reactivating the project, the workflow can be triggered manually from Actions → Update Sunday Readings → Run workflow (optionally pass a `YYYY-MM-DD` date override).
 
 ---
 
@@ -123,17 +122,19 @@ All non-readings content lives in `lib/content.ts`:
 - **`journeyTopics`** — Journey tab articles and FAQs
 - **`resourceGroups`** — Resources tab (Watch, Read, Explore, Listen)
 
-Edit the relevant export and push to deploy.
+Edit the relevant export to update the local project. Pushing no longer deploys a live site.
 
 ---
 
 ## Deployment
 
-Deployed on **Vercel**. Every push to `main` triggers an automatic deploy (~60 seconds).
+The app was formerly deployed on **Vercel**. It is no longer live, and pushes to `main` should not be expected to create a production deployment.
 
 ---
 
-## Roadmap
+## Historical Roadmap
+
+The following items were planned while the project was active and are retained for context; this roadmap is no longer active.
 
 | Priority | Item | Description |
 |---|---|---|
