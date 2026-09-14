@@ -100,7 +100,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Sunday Readings Automation
 
-The live project formerly updated readings every Sunday at 5pm CST via a GitHub Action. That production automation is no longer active, but the implementation remains in the repository for reference:
+The live project updated readings every Sunday at 5pm CST via a GitHub Action. Scheduled production updates are no longer needed now that the project is retired, but the implementation remains in the repository for reference:
 
 1. Playwright launches a real browser to fetch readings from [bible.usccb.org](https://bible.usccb.org) (bypasses bot protection)
 2. `catholic-mass-readings` parses the HTML into structured readings
